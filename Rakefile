@@ -46,7 +46,7 @@ task :install do
     `ln -s "$PWD/bin" "#{ENV["HOME"]}/bin"`
   end
 
-  if !File.exists?("usb")
+  if !File.exists?("#{ENV["HOME"]}/usb")
     `ln -s "#{ENV["HOME"]}/usb" "/media/usb0"`
   end
 end
