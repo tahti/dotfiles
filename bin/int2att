@@ -1,0 +1,3 @@
+#!/bin/zsh
+export I2G_DATA="/home/piotr/bin/share/intel2gas/"
+intel2gas </dev/stdin >/dev/stdout

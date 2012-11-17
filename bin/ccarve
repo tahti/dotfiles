@@ -1,0 +1,2 @@
+#!/bin/sh
+~/svn/piotrkordy/projects/carving/bin/ccarve "$@"

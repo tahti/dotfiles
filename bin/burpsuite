@@ -1,0 +1,2 @@
+#!/bin/sh
+/usr/lib/jvm/java-7-openjdk-amd64/bin/java -jar burpsuite_v1.4.01.jar

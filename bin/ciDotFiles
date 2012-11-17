@@ -1,0 +1,3 @@
+#!/bin/zsh
+cp -R $HOME/.bashrc $HOME/.bash_aliases $HOME/.vimrc $HOME/.i3 $HOME/.fehbg $HOME/.pentadactylrc $HOME/svn/piotrkordy/dotfiles/viroflay
+svn ci $HOME/svn/piotrkordy/dotfiles/viroflay 

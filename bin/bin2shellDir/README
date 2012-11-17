@@ -1,0 +1,32 @@
+Assembly to shellcode utility
+http://blog.markloiseau.com/2012/06/assembly-to-shellcode/
+
+bin2shell.c - convert a binary file to a c-escaped hexadecimal string
+nasm2shell - convert an NASM source file to c-escaped shellcode
+as2shell - convert a GNU as source file to c-escaped shellcode
+
+-----------------
+-   Compiling   -
+-----------------
+
+To compile bin2shell.c, enter the directory containing the Makefile
+and type "make"
+
+-----------------
+-  Installing   -
+-----------------
+
+To install bin2shell and nasm2shell, type "sudo make install"
+
+-----------------
+-   Running     -
+-----------------
+
+To convert a binary file to a c-escaped shellcode string, type
+bin2shell yourfile.bin
+
+To convert an NASM file to shellcode, type
+nasm2shell yourfile.nasm
+
+To convert a GNU as file to shellcode, type
+as2shell yourfile.S

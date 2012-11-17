@@ -1,0 +1,22 @@
+#!/bin/bash
+
+if [ "$#" == "0" ]; then
+	echo "Usage: ./as2shell file"
+	exit 1
+fi
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# Convert asm to bin
+as $1 -o $1b2s.o
+objcopy -O binary $1b2s.o $1b2s.bin
+
+if [ -x $DIR/ascii2shell ]; then
+	if [ $? -eq 0 ]; then
+		# convert bin to shell
+		$DIR/ascii2shell $1b2s.bin
+		rm `pwd`/$1b2s.o `pwd`/$1b2s.bin
+	fi
+else
+	echo "Error: couldn't find bin2shell executable"
+fi

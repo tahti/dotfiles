@@ -1,0 +1,89 @@
+--- bvi.c	2003-12-19 12:05:06.000000000 +0100
++++ bviNew.c	2012-10-11 11:31:22.000000000 +0200
+@@ -323,7 +323,7 @@
+ 						else	x = AnzAdd + Anzahl3;
+ 					break;
+ 		case KEY_LL:
+-		case 'L':   if (precount < 1) precount = 1;
++		case 'N':   if (precount < 1) precount = 1;
+ 					n = maxy - 1;
+ 					if ((PTR)((pagepos + screen)) > maxpos)
+ 						n = (int)(maxpos - pagepos) / Anzahl;
+@@ -345,7 +345,7 @@
+ 					break;
+ 		case ' ':
+ 		case KEY_RIGHT:
+-		case 'l':	do {
++		case 'n':	do {
+ 						/*
+ 						if (x < (Anzahl3 + 6))  x += 3;
+ 						*/
+@@ -359,7 +359,7 @@
+ 					break;
+ 		case '-':
+ 		case KEY_UP :
+-		case 'k':	do {
++		case 'c':	do {
+ 						if (y > 0) y--;
+ 							else scrollup(1);
+ 					} while(--precount > 0);
+@@ -367,8 +367,8 @@
+ 		case '+':
+ 		case CR:	if (loc == HEX) x = AnzAdd;
+ 						else		x = AnzAdd + Anzahl3;
+-		case 'j':
+-		case BVICTRL('J'):
++		case 't':
++		case BVICTRL('T'):
+ 		case BVICTRL('N'):
+ 		case KEY_DOWN:
+ 					do {
+@@ -451,8 +451,8 @@
+ 					break;
+ 		case 'F':	
+ 		case 'f':	
+-		case 't':	
+-		case 'T':	do_ft(ch, 0);
++		case 'l':	
++		case 'L':	do_ft(ch, 0);
+ 					break;
+ 		case 'G':   last_motion = current;
+ 					if (precount > -1)	{
+@@ -500,8 +500,8 @@
+ 					last_motion = current;
+ 					searching(ch, line, current, maxpos - 1, P(P_WS));
+ 					break;
+-		case 'n': 		/**** Search Next ****/
+-		case 'N':   last_motion = current;
++		case 'k': 		/**** Search Next ****/
++		case 'K':   last_motion = current;
+ 					searching(ch, "", current, maxpos - 1, P(P_WS));
+ 					break;
+ 		case 'm':	do_mark(vgetc(), current);
+@@ -619,7 +619,7 @@
+ 					sprintf(rep_buf, "%ldp", precount);
+ 					do_put(current, yanked, yank_buf);
+ 					break;
+-				case 'c':
++				case 'j':
+ 				case 'd':
+ 					count = range(ch);
+ 					if (count > 0)
+@@ -940,7 +940,7 @@
+ 		}
+ 		return(start_addr - current);
+ 	case 'f':
+-	case 't':
++	case 'l':
+ 		precount = count;
+ 		end_addr = do_ft(ch1, 1);
+ 		if (!end_addr) {
+@@ -949,7 +949,7 @@
+ 		}
+ 		return (end_addr + 1 - current);
+ 	case 'F':
+-	case 'T':
++	case 'J':
+ 		precount = count;
+ 		start_addr = do_ft(ch1, 1);
+ 		if (!start_addr) {

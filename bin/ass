@@ -1,0 +1,30 @@
+#!/bin/zsh
+inp=$(cat /dev/stdin)
+funcName=$(echo $inp|head -n 1|awk '{print $2}'|sed 's/(.*//')
+#echo $funcName
+stub=$(echo "#include <stdio.h>
+#include <stdlib.h>
+int main(void) {
+    return 0;
+}
+")
+while getopts ":ods" opt; do
+  case ${opt} in
+    s) echo $stub"\n"$inp
+      exit 0
+      ;;
+    o) optim="-O3"
+      ;;
+    d)
+       echo $stub"\n"$inp|gcc ${optim} -o /dev/stdout -xc -m32 -masm=intel - >/tmp/d.obj
+       objdump --disassembler-options=intel -d /tmp/d.obj |awk  '/'$funcName'/,/ret/'
+       exit 0
+      ;;
+    \?) 
+      ;;
+  esac
+done
+echo $stub"\n"$inp|gcc ${optim} -S -o- -xc -m32 -masm=intel -|awk  '/^'$funcName'/,/ret/'
+#echo $stub"\n"$inp
+
+

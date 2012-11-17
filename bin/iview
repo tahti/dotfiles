@@ -1,0 +1,2 @@
+#/bin/bash
+wine  ~/.wine/drive_c/Program\ Files/IrfanView/i_view32.exe $1 $2 $3 $4

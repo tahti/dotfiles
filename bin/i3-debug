@@ -1,0 +1,3 @@
+ulimit -c unlimited
+sudo sysctl -w kernel.core_pattern=core.%e.%p
+exec /usr/bin/i3 -V -d all >~/i3log-$(date +'%F-%k-%M-%S') 2>&1

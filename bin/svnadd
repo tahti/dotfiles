@@ -1,0 +1,7 @@
+#!/bin/bash
+result=$(svn status |sed "/^\? .*${1}$/!d;s/^\? *//")
+if  [ -n "$result" ] 
+  then
+    svn add $result
+    echo "$result"
+fi

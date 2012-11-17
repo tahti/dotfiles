@@ -1,0 +1,5 @@
+#/bin/zsh
+mv ~/$1 ~/svn/piotrkordy/dotfiles/viroflay/
+ln -s ~/svn/piotrkordy/dotfiles/viroflay/$1 ~/$1
+svn add ~/svn/piotrkordy/dotfiles/viroflay/$1
+

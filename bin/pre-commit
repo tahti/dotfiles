@@ -1,0 +1,59 @@
+#!/usr/bin/perl 
+
+#
+# pre-commit hook for Subversion
+# author Piotr Kordy
+#
+$repos = shift;
+$txn = shift;
+
+# list files changed on this transaction
+foreach $line (`/usr/bin/svnlook changed -t $txn \"$repos\"`)
+{
+  chomp($line);
+  if ($line !~ /^([AUD\_])..\s(.+)$/)
+  {
+    print STDERR "Can't parse [$line].\n";
+    exit(-1);
+  }
+  else
+  {
+    $action = $1;
+    $fullName = $2;
+
+    # check check only added or modified files
+    if ($action =~ /[AU]/)
+    {
+      chomp($fullName);
+      $file = `/usr/bin/basename "$fullName"`;
+      chomp($file);
+      #check for white space at start or end of the filename
+      if (($file =~ /^[ ].+$/)||($file =~/^.+[ ]$/)) 
+      {
+       print STDERR "Filename \'$fullName\' starts or ends with whitespace.\n";
+        exit(-1);
+      }
+      #check for allowed characters
+      if ($file !~ /^[\.a-zA-Z0-9_\- \(\)\$\&\,\+\=]+$/)
+      {
+       print STDERR "Filename \'$fullName\' contains illegal characters.\n";
+       print STDERR "Allowed characters: a-z, A-Z, 0-9, space, '_', '-', '\$', '(', ')', '&', ',', '+', '='.\n";
+        exit(-1);
+      }
+      #check for file name length
+      if (length($file)>144)
+      {
+       print STDERR "\'$fullName\' longer than 144 characters.\n";
+        exit(-1);
+      }
+      #check for reserved names
+      if ($file =~ /^PRN|CON|AUX|CLOCK|NUL|COM\d|LPT\d$/)
+      {
+        print STDERR "\'$fullName\' is a Windows reserved device name.\n";
+        exit(-1);
+      }
+    }
+  }
+}
+
+exit(0); 

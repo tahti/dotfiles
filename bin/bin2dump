@@ -1,0 +1,2 @@
+#!/bin/sh
+objdump -mi386 -D -b binary --disassembler-options=intel $1 $2 $3 $4 $5

@@ -1,0 +1,28 @@
+#!/bin/bash
+
+if [ "$#" == "0" ]; then
+    file=/dev/stdin
+    n=std
+    cat $file>$n
+	#echo "Usage: ./nasm2shell file"
+	#exit 1
+else
+    file=$1
+    n=$1
+fi
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+#nasm -fbin -o $1b2s.bin $1
+nasm -felf32 -o ${n}b2s.o $n
+objcopy -O binary ${n}b2s.o ${n}b2s.bin
+
+if [ -x $DIR/ascii2shell ]; then
+	if [ $? -eq 0 ]; then
+		# convert bin to shell
+		$DIR/ascii2shell ${n}b2s.bin
+        rm `pwd`/${n}b2s.o `pwd`/${n}b2s.bin `pwd`/${n}
+	fi
+else
+	echo "Error: couldn't find ascii2shell executable"
+fi

@@ -1,0 +1,430 @@
+#! /bin/bash
+# #############################################################################
+
+       NAME_="unpack"
+       HTML_="uncompress unpack script"
+    PURPOSE_="unpack zip, tar, tgz, tar.gz, tar.bz2, tar.z, rar, arj, 7z and others to a dir of the same name as archive prefix"
+   SYNOPSIS_="$NAME_ [-vhdlr] <file> [file...]"
+   REQUIRES_="standard GNU commands and bash, 7z, rzip,lrzip, zoo"
+    VERSION_="2.0"
+       DATE_="1999-09-20; last update: 2012-02-03"
+     AUTHOR_="Dawid Michalczyk and Piotr Kordy"
+        URL_="www.comp.eonworks.com"
+   CATEGORY_="compress"
+   PLATFORM_="Linux"
+      SHELL_="bash"
+ DISTRIBUTE_="yes"
+
+# #############################################################################
+# This program is distributed under the terms of the GNU General Public License
+
+# HISTORY:
+# 2011-02-06 v2.0 - added support for much more formats
+# 2006-02-03 v1.2 - added the -C flag to tar options. Otherwise tar would not 
+#            extract to a dir with different name then the one found in the 
+#            archive.
+
+usage () {
+
+echo >&2 "$NAME_ $VERSION_ - $PURPOSE_
+Usage: $SYNOPSIS_
+Requires: $REQUIRES_
+Options:
+     -r, remove the compressed file after extraction
+     -d, move to directory the same as file name
+     -v, verbose
+     -h, usage and options (help)
+     -l, see this script"
+    exit 1
+}
+
+# args check
+[ $# -eq 0 ] && { echo >&2 missing argument, type $NAME_ -h for help; exit 1; }
+
+# var init
+rmf=
+verbose=
+moveDir=
+
+# option and argument handling
+while getopts vhdlr options; do
+
+    case $options in
+        r) rmf=on ;;
+        v) verbose=on ;;
+        d) moveDir=on ;;
+        h) usage ;;
+        l) more $0; exit 1 ;;
+       \?) echo invalid argument, type $NAME_ -h for help; exit 1 ;;
+    esac
+
+done
+shift $(( $OPTIND - 1 ))
+
+mkdirf() {
+
+    # usage: fnc <file_prefix> <file>
+
+    [ -d $1 ] && { echo "${NAME_}: skipping ${2} - dir ${1} already exist" ; continue; }
+    #echo $1
+    mkdir $1
+#    [[ $verbose ]] && echo "${NAME_}: unpacking "$2
+}
+
+#file_getDirname() {
+#
+#    local _dir="${1%${1##*/}}"
+#    [ "${_dir:=./}" != "/" ] && _dir="${_dir%?}"
+#    echo "$_dir"
+#
+#}
+#
+#file_getBasename() {
+#
+#    local _name="${1##*/}"
+#    echo "${_name%$2}"
+#
+#}
+
+clean() {
+
+    # usage <exit_status> <dir_to_rm>
+
+    [[ $1 != 0 ]] && rmdir "$2" # remove empty dir if unpacking went wrong
+    [[ $1 == 0 && $verbose && $moveDir ]] && echo "${NAME_}: unpacking " ${dir}/${a}
+    [[ $1 == 0 && $verbose && !$moveDir ]] && echo "${NAME_}: unpacking " "${a}"
+    [[ $rmf ]] && rm -f -- "$a"
+
+}
+
+start_dir=$(pwd)
+
+for a in "$@"; do
+
+    cd "$start_dir"
+    #fname=$(file_getBasename "$a")
+    fname=$(basename "$a")
+    echo "$fname"
+    dir=$(dirname "$a")
+    #dir=$(file_getDirname "$a")
+    echo "dir="
+    echo "$dir"
+    cd "$dir"
+    a="$fname"
+
+    case "$a" in
+
+        # 7z
+        *.[7][zZ])
+            if [ $moveDir ]; then
+               mkdirf "${a/.[7][zZ]/}" "$a"
+               7z x "$a" -o"${a/.[7][zZ]/}"
+            else
+               7z x "$a" 
+            fi
+            clean "$?" "${a/.[7][zZ]/}"
+            ;;
+
+        # a (ar archiver)
+        *.[aA])
+            if [ $moveDir ]; then
+               mkdirf "${a/.[aA]/}" "$a"
+               7z x "$a" -o"${a/.[aA]/}"
+            else
+               7z x "$a" 
+            fi
+            clean "$?" "${a/.[aA]/}"
+            ;;
+
+        # a (android archiver)
+        *.[aA][pP][kK])
+            if [ $moveDir ]; then
+               mkdirf "${a/.[aA][pP][kK]/}" "$a"
+               7z x "$a" -o"${a/.[aA][pP][kK]/}"
+            else
+               7z x "$a" 
+            fi
+            clean "$?" "${a/.[aA][pP][kK]/}"
+            ;;
+
+        # arj
+        *.[aA][rR][jJ])
+            if [ $moveDir ]; then
+               mkdirf "${a/.[aA][rR][jJ]/}" "$a"
+               7z x "$a" -o"${a/.[aA][rR][jJ]/}"
+            else
+               7z x "$a" 
+            fi
+            clean "$?" "${a/.[aA][rR][jJ]/}"
+            ;;
+
+        # tar.bz2
+        *.[tT][aA][rR].[bB][zZ]2)
+            if [ $moveDir ]; then
+              mkdirf "${a/.[tT][aA][rR].[bB][zZ]2/}" "$a"
+              tar -xjf "$a" -C "${a/.[tT][aA][rR].[bB][zZ]2/}"/
+            else
+              tar -xjf "$a"
+            fi
+            clean "$?" "${a/.[tT][aA][rR].[bB][zZ]2/}"
+            ;;
+
+        # bz2
+        *.[bB][zZ]2)
+            if [ $moveDir ]; then
+              mkdirf "${a/.[bB][zZ]2/}" "$a"
+              bzip2 -d -k "$a" -c "${a/.[bB][zZ]2/}/${a/.[bB][zZ]2/}"
+            else
+              bzip2 -d -k "$a"
+            fi
+            clean "$?" "${a/.[bB][zZ]2/}"
+            ;;
+
+         # cab
+        *.[cC][aA][bB])
+            if [ $moveDir ]; then
+               mkdirf "${a/.[cC][aA][bB]/}" "$a"
+               7z x "$a" -o"${a/.[cC][aA][bB]/}"
+            else
+               7z x "$a" 
+            fi
+            clean "$?" "${a/.[cC][aA][bB]/}"
+            ;;
+
+        # cpio
+        *.[cC][pP][iI][oO])
+            if [ $moveDir ]; then
+               mkdirf "${a/.[cC][pP][iI][oO]/}" "$a"
+               7z x "$a" -o"${a/.[cC][pP][iI][oO]/}"
+            else
+               7z x "$a" 
+            fi
+            clean "$?" "${a/.[cC][pP][iI][oO]/}"
+            ;;
+
+        # deb
+        *.[dD][eE][bB])
+            if [ $moveDir ]; then
+               mkdirf "${a/.[dD][eE][bB]/}" "$a"
+               7z x "$a" -o"${a/.[dD][eE][bB]/}"
+            else
+               7z x "$a" 
+            fi
+            clean "$?" "${a/.[dD][eE][bB]/}"
+            ;;
+
+        # tgz
+        *.[tT][gG][zZ])
+            if [ $moveDir ]; then
+              mkdirf "${a/.[tT][gG][zZ]/}" "$a"
+              tar -xzf "$a" -C "${a/.[tT][gG][zZ]/}"
+            else
+              tar -xzf "$a"
+            fi
+            clean "$?" "${a/.[tT][gG][zZ]/}"
+            ;;
+
+        # tar.gz 
+        *.[tT][aA][rR].[gG][zZ])
+            if [ $moveDir ]; then
+              mkdirf "${a/.[tT][aA][rR].[gG][zZ]/}" "$a"
+              tar -xzf "$a" -C "${a/.[tT][aA][rR].[gG][zZ]/}"/
+            else
+              tar -xzf "$a"
+            fi
+            clean "$?" "${a/.[tT][aA][rR].[gG][zZ]/}"
+            ;;
+
+        # iso
+        *.[iI][sS][oO])
+            if [ $moveDir ]; then
+               mkdirf "${a/.[iI][sS][oO]/}" "$a"
+               7z x "$a" -o"${a/.[iI][sS][oO]/}"
+            else
+               7z x "$a" 
+            fi
+            clean "$?" "${a/.[iI][sS][oO]/}"
+            ;;
+
+        # jar
+        *.[jJ][aA][rR])
+            if [ $moveDir ]; then
+               mkdirf "${a/.[jJ][aA][rR]/}" "$a"
+               7z x "$a" -o"${a/.[jJ][aA][rR]/}"
+            else
+               7z x "$a" 
+            fi
+            clean "$?" "${a/.[jJ][aA][rR]/}"
+            ;;
+
+        # lha
+        *.[lL][hH][aA])
+            if [ $moveDir ]; then
+               mkdirf "${a/.[lL][hH][aA]/}" "$a"
+               7z x "$a" -o"${a/.[lL][hH][aA]/}"
+            else
+               7z x "$a" 
+            fi
+            clean "$?" "${a/.[lL][hH][aA]/}"
+            ;;
+
+        # lrzip
+        *.[lL][rR][zZ])
+            if [ $moveDir ]; then
+              mkdirf "${a/.[lL][rR][zZ]/}" "$a"
+              lrzip -d -O "${a/.[lL][rR][zZ]/}" "$a"
+            else
+              lrzip -d "$a"
+            fi
+            clean "$?" "${a/.[lL][rR][zZ]/}"
+            ;;
+
+        # lzh
+        *.[lL][zZ][hH])
+            if [ $moveDir ]; then
+               mkdirf "${a/.[lL][zZ][hH]/}" "$a"
+               7z x "$a" -o"${a/.[lL][zZ][hH]/}"
+            else
+               7z x "$a" 
+            fi
+            clean "$?" "${a/.[lL][zZ][hH]/}"
+            ;;
+
+        # lzma
+        *.[lL][zZ][mM][aA])
+            if [ $moveDir ]; then
+              mkdirf "${a/.[lL][zZ][mM][aA]/}" "$a"
+              lzma -d -c "$a">${a/.[lL][zZ][mM][aA]/}/${a/.[lL][zZ][mM][aA]/}
+              clean "$?" "${a/.[lL][zZ][mM][aA]/}"
+            else
+               if [ $rmf ]; then
+                  lzma -d "$a"
+               else
+                  lzma -d -k "$a"
+               fi
+            fi
+            ;;
+
+        # lzo
+        *.[lL][zZ][oO])
+            if [ $moveDir ]; then
+              mkdirf "${a/.[lL][zZ][oO]/}" "$a"
+              lzop -d -P -p${a/.[lL][zZ][oO]/}
+              clean "$?" "${a/.[lL][zZ][oO]/}"
+            else
+               if [ $rmf ]; then
+                  lzop -d -P -U "$a"
+               else
+                  lzop -d -P "$a"
+               fi
+            fi
+            ;;
+
+        # rar
+        *.[rR][aA][rR])
+            if [ $moveDir ]; then
+               mkdirf "${a/.[rR][aA][rR]/}" "$a"
+               rar x "$a" "${a/.[rR][aA][rR]/}"
+            else
+               rar x "$a"
+            fi
+            clean "$?" "${a/.[rR][aA][rR]/}"
+            ;;
+
+        # rpm
+        *.[rR][pP][mM])
+            if [ $moveDir ]; then
+               mkdirf "${a/.[rR][pP][mM]/}" "$a"
+               7z x "$a" -o"${a/.[rR][pP][mM]/}"
+            else
+               7z x "$a" 
+            fi
+            clean "$?" "${a/.[rR][pP][mM]/}"
+            ;;
+
+        # rzip
+        *.[rR][zZ])
+            if [ $moveDir ]; then
+              mkdirf "${a/.[rR][zZ]/}" "$a"
+              rzip -d -k -o "${a/.[rR][zZ]/}/${a/.[rR][zZ]/}" "$a"
+            else
+              rzip -d -k "$a"
+            fi
+            clean "$?" "${a/.[rR][zZ]/}"
+            ;;
+
+        # tar
+        *.[tT][aA][rR])
+            if [ $moveDir ]; then
+              mkdirf "${a/.[tT][aA][rR]/}" "$a"
+              tar -xf "$a" -C "${a/.[tT][aA][rR]/}"/
+            else
+              tar -xf "$a"
+            fi
+            clean "$?" "${a/.[tT][aA][rR]/}"
+            ;;
+
+        # tar.xz
+        *.[tT][aA][rR].[xX][zZ])
+            if [ $moveDir ]; then
+              mkdirf "${a/.[tT][aA][rR].[xX][zZ]/}" "$a"
+              tar -xJf "$a" -C "${a/.[tT][aA][rR].[xX][zZ]/}"/
+            else
+              tar -xJf "$a"
+            fi
+            clean "$?" "${a/.[tT][aA][rR].[xX][zZ]/}"
+            ;;
+
+        # xz
+        *.[xX][zZ])
+            if [ $moveDir ]; then
+               mkdirf "${a/.[xX][zZ]/}" "$a"
+               7z x "$a" -o"${a/.[xX][zZ]/}"
+            else
+               7z x "$a" 
+            fi
+            clean "$?" "${a/.[xX][zZ]/}"
+            ;;
+
+        # tar.z
+        *.[tT][aA][rR].[zZ])
+            if [ $moveDir ]; then
+              mkdirf "${a/.[tT][aA][rR].[zZ]/}" "$a"
+              tar -xZf "$a" -C "${a/.[tT][aA][rR].[zZ]/}"/
+            else
+              tar -xZf "$a"
+            fi
+            clean "$?" "${a/.[tT][aA][rR].[zZ]/}"
+            ;;
+
+        # zip
+        *.[zZ][iI][pP])
+            if [ $moveDir ]; then
+               mkdirf "${a/.[zZ][iI][pP]/}" "$a"
+               unzip -qq "$a" -d "${a/.[zZ][iI][pP]/}"
+            else
+               unzip -q "$a" 
+            fi
+            clean "$?" "${a/.[zZ][iI][pP]/}"
+            ;;
+
+        # zoo
+        *.[zZ][oO][oO])
+            if [ $moveDir ]; then
+               mkdirf "${a/.[zZ][oO][oO]/}" "$a"
+               mv "$a" "${a/.[zZ][oO][oO]/}"
+               cd "${a/.[zZ][oO][oO]/}"
+               zoo -extract "$a" 
+               mv "$a" ..
+               cd ..
+            else
+               zoo -extract "$a" 
+            fi
+            clean "$?" "${a/.[zZ][oO][oO]/}"
+            ;;
+
+        *) echo "${NAME_}: $a not a compressed file or lacks proper suffix" ;;
+
+    esac
+
+done
