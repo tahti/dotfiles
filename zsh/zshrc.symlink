@@ -3,9 +3,10 @@ export ZSH=$HOME/Private/dotfiles
 
 # your project folder that we can `c [tab]` to
 #export PROJECTS=~/Code
-
-# source every .zsh file in this rep
-for config_file ($ZSH/zsh/**/*.zsh) source $config_file
+autoload -U promptinit
+promptinit
+# source every .zsh file in lib
+for config_file ($ZSH/zsh/lib/*.zsh) source $config_file
 
 # use .localrc for SUPER SECRET CRAP that you don't
 # want in your public, versioned repo.
@@ -39,9 +40,8 @@ for plugin ($plugins); do
 done
 
 # initialize autocomplete here, otherwise functions won't be loaded
-autoload -U compinit promptinit
+autoload -U compinit 
 compinit
-promptinit
 
 # Load all of the plugins that were defined in ~/.zshrc
 for plugin ($plugins); do

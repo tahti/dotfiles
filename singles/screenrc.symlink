@@ -1,0 +1,3 @@
+term rxvt-256color
+markkeys "l=n:j=t:k=c:L=N:J=T:K=C:j=t:J=T:c=j:C=J:t=l:T=L:n=k:N=K"
+defscrollback 8192

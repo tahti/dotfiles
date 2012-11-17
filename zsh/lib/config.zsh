@@ -6,7 +6,7 @@ set bell-style none
 #setopt / unsetopt
 setopt AUTO_CD
 typeset -U path        #ignore doules in path
-
+#ZSH_THEME="random"
 #set history
 HISTSIZE=10000
 SAVEHIST=10000

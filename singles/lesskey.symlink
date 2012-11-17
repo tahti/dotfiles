@@ -1,0 +1,13 @@
+#command
+t	forw-line
+c	back-line
+k	repeat-search
+K 	reverse-search
+\ek	repeat-search-all
+\eK	reverse-search-all
+h	prev-file
+n	next-file
+l 	next-tag
+L 	prev-tag
+#env
+LESS = -i -R

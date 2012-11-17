@@ -1,0 +1,12 @@
+# -- THEME AUTO-WRITTEN BY gtk-theme-switch2 DO NOT EDIT
+include "/home/piotr/.themes/Mac4Lin_GTK_Aqua_v0.3/gtk-2.0/gtkrc"
+
+style "user-font"
+{
+  font_name="DejaVu Sans 9"
+}
+widget_class "*" style "user-font"
+
+include "/home/piotr/.gtkrc-2.0.mine"
+
+# -- THEME AUTO-WRITTEN BY gtk-theme-switch2 DO NOT EDIT

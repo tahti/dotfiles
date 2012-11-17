@@ -1,0 +1,25 @@
+background yes
+
+out_to_console yes
+update_interval 2.0
+total_run_times 0
+
+use_spacer none
+out_to_x no
+short_units yes
+if_up_strictness address
+use_spacer left
+double_buffer yes
+
+TEXT
+^bg(black)${execpi 120 python /home/piotr/bin/gmail.py}^fg(red) |\
+^fg() ^fg(blue)^i(/home/piotr/.i3/icons/cpu.xbm)^fg() ${cpu cpu0}% ^fg(red)|\
+${if_match  ${battery_percent BAT0}!=0}\
+^fg() ^fg(blue)^i(/home/piotr/.i3/icons/battery.xbm)^fg() ${battery_percent BAT0}% ^fg(red)|\
+${endif}\
+${if_match  ${battery_percent BAT1}!=0}\
+^fg() ^fg(blue)^i(/home/piotr/.i3/icons/battery.xbm)^fg() ${battery_percent BAT1}% ^fg(red)|\
+${endif}\
+^fg() ${time %a %d.%m.%y} ^fg(green)${time %H:%M:%S}^fg() ${if_up wlan0}^fg(red)|\
+^fg() ^fg(blue)^i(/home/piotr/.i3/icons/net-wifi.xbm)^fg() ${downspeed wlan0} ${upspeed wlan0}${endif}\
+${if_up eth0} ^fg(red)|^fg()^fg(blue) ^i(/home/piotr/.i3/icons/net-wired2.xbm)^fg() ${downspeed eth0} ${upspeed eth0}${endif}^bg()

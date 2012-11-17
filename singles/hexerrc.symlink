@@ -1,0 +1,27 @@
+map k n
+map K N
+map t gj
+map T J
+map n l
+map N L
+map c k
+map C K
+map j c
+map J C
+map l t
+map L T
+map gg 0G
+vmap k n
+vmap K N
+vmap t gj
+vmap T J
+vmap n l
+vmap N L
+vmap c k
+vmap C K
+vmap j c
+vmap J C
+vmap l t
+vmap L T
+vmap gg 0G
+

@@ -1,0 +1,4 @@
+set bell-style none
+#append / at symlink directories
+#mark-symlinked-directories On
+
