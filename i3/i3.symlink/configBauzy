@@ -39,7 +39,7 @@ exec xset b off
 exec sleep 30;wicd-client -t
 exec sleep 7;fbxkb
 exec gnome-keyring
-exec sleep 2;conky -c /home/piotr/.i3/.conkyrc_i3_bauzy|/home/piotr/bin/dzen2 -bg black -fg white  -fn "-*-terminus-*-r-normal-*-12-*-*-72-c-60-*-*" -w 450  -y 1 -ta l -x 159
+exec sleep 2;conky -c /home/piotr/.i3/conkyrc_i3_bauzy|/home/piotr/bin/dzen2 -bg black -fg white  -fn "-*-terminus-*-r-normal-*-12-*-*-72-c-60-*-*" -w 450  -y 1 -ta l -x 159
 exec sleep 3;conky -c /home/piotr/.i3/conkytodo_plain
 exec sleep 4;xkbset -a #disable slowkeys
 exec sleep 5;conky -c /home/piotr/.i3/conky_i3help

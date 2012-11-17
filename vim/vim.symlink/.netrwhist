@@ -1,8 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_cnt =7
 let g:netrw_dirhist_1='/home/piotr/Private/svn/piotrkordy/dotfiles/viroflay/.vim/bundle/superTab/doc'
 let g:netrw_dirhist_2='/home/piotr/Private/svn/piotrkordy/dotfiles/viroflay/.vim/bundle/syntastic/autoload/syntastic'
 let g:netrw_dirhist_3='/etc/gdm3/Init'
 let g:netrw_dirhist_4='/etc/lightdm'
 let g:netrw_dirhist_5='/usr/share/doc/lightdm-qt-greeter'
 let g:netrw_dirhist_6='/home/piotr/.oh-my-zsh/custom/example'
+let g:netrw_dirhist_7='/home/piotr/Private/dotfiles/.git'
