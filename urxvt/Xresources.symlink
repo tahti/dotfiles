@@ -1,0 +1,187 @@
+Xcursor.theme: Shere_Khan_X
+
+!----------------------------------------------------------------------------------------------------------
+!             rxvt-unicode configuration
+!----------------------------------------------------------------------------------------------------------
+!if not affecting rename to .Xdefaults or do:
+!  xrdb -merge ~/.Xresources
+URxvt*termName: rxvt-256color
+!----------------------------------------------------------------------------------------------------------
+!        Colors
+!----------------------------------------------------------------------------------------------------------
+URxvt*transparent: false
+URxvt*tintColor: Blue
+!URxvt*shading: 40
+URxvt*saveLines: 2000
+!URxvt*foreground: White
+!URxvt.background:   #0e0e0e
+URxvt.background:		#000000
+URxvt.ufBackground:             #090909
+URxvt.foreground:		#eeeeee
+
+URxvt.color0:			#000000
+URxvt.color1:			#bf0000
+URxvt.color2:			#00bf00
+URxvt.color3:			#bfbf00
+URxvt.color4:			#0000bf
+URxvt.color5:			#bf00bf
+URxvt.color6:			#00bfbf
+URxvt.color7:			#ababab
+URxvt.color8:			#5f5f5f
+URxvt.color9:			#f70000
+URxvt.color10:			#00f700
+URxvt.color11:			#f7f700
+URxvt.color12:			#0000f7
+URxvt.color13:			#f700f7
+URxvt.color14:			#00f7f7
+URxvt.color15:			#f7f7f7
+!URxvt*color4: RoyalBlue
+!URxvt*color12: RoyalBlue
+
+! Display bold and underlined text in color, rather than using the terminal
+! attributes. This makes reading man pages a little easier.
+URxvt.colorBD:			#00afaf
+URxvt.colorUL:			#00af00
+!make underlining same colour as background (invisible)
+URxvt.underlineColor:           #0e0e0e
+
+! Display the X selection as highlighted instead of using reverse video.
+URxvt.highlightColor:		#303060
+
+! ---------------------------------- CURSOR ---------------------------------- #
+!
+URxvt.cursorBlink:		false
+URxvt.cursorColor:		#00ff00
+URxvt.cursorColor2:		#000000
+
+!----------------------------------------------------------------------------------------------------------
+!          Font settings
+!----------------------------------------------------------------------------------------------------------
+!fix the font rendering
+URxvt*letterSpace: -1
+!URxvt*font:-*-terminus-medium-*-*-*-12-*-*-*-*-*-*-*
+!URxvt.xftFont:			Liberation Mono:antialias=true:hinting=true
+!URxvt*font: xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hinting=true
+!URxvt*boldFont: xft:DejaVu Sans Mono:bold:pixelsize=12:antialias=true:hinting=true
+!URxvt*font: xft:Liberation Mono:pixelsize=13:antialias=true:hinting=true
+!URxvt*boldFont: xft:Liberation Mono:bold:pixelsize=13:antialias=true:hinting=true
+!URxvt*font: xft:terminus:pixelsize=15
+!URxvt*boldFont: xft:terminus:bold:pixelsize=15
+!URxvt*boldFont:-*-courier-bold-r-normal-*-14-*-*-*-*-*-iso8859-1
+!URxvt*fonts.0: xft:DejaVu Sans Mono:pixelsize=10:antialias=true:hinting=true:autohint=true
+URxvt*fonts.0: xft:DejaVu Sans Mono:pixelsize=8:antialias=true:hinting=true:autohint=true
+URxvt*fonts.1: xft:DejaVu Sans Mono:pixelsize=9:antialias=true:hinting=true:autohint=true
+URxvt*fonts.2: xft:DejaVu Sans Mono:pixelsize=10:antialias=true:hinting=true:autohint=true
+URxvt*fonts.3: xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hinting=true:autohint=true
+URxvt*fonts.4: xft:DejaVu Sans Mono:pixelsize=13:antialias=true:hinting=true:autohint=true
+URxvt*fonts.5: xft:DejaVu Sans Mono:pixelsize=14:antialias=true:hinting=true:autohint=true
+URxvt*fonts.6: xft:DejaVu Sans Mono:pixelsize=15:antialias=true:hinting=true:autohint=true
+URxvt*fonts.7: xft:DejaVu Sans Mono:pixelsize=16:antialias=true:hinting=true:autohint=true
+URxvt*fonts.8: xft:DejaVu Sans Mono:pixelsize=17:antialias=true:hinting=true:autohint=true
+URxvt*fonts.9: xft:DejaVu Sans Mono:pixelsize=18:antialias=true:hinting=true:autohint=true
+URxvt*fonts.10: xft:DejaVu Sans Mono:pixelsize=19:antialias=true:hinting=true:autohint=true
+URxvt*fonts.11: xft:DejaVu Sans Mono:pixelsize=20:antialias=true:hinting=true:autohint=true
+
+URxvt*font: xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hinting=true:autohint=true
+URxvt*boldFont: xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hinting=true
+!----------------------------------------------------------------------------------------------------------
+!            Keyboard bindings
+!----------------------------------------------------------------------------------------------------------
+
+! emulate XTerm for proper recognition of key combinations in Vim
+URxvt.keysym.M-a              : [27~]
+URxvt.keysym.M-h              : [32~]
+URxvt.keysym.M-t              : [29~]
+URxvt.keysym.M-n              : [30~]
+URxvt.keysym.M-c              : [31~]
+URxvt.keysym.M-b              : [32~]
+!URxvt.keysym.Up              : \033[A  !breaks arrow keys in Vim
+!URxvt.keysym.Down            : \033[B  !breaks arrow keys in Vim
+!URxvt.keysym.Right           : \033[C  !breaks arrow keys in Vim
+!URxvt.keysym.Left            : \033[D  !breaks arrow keys in Vim
+!URxvt.keysym.Page_Up         : \033[5~ !breaks scrolling in Rxvt
+!URxvt.keysym.Page_Down       : \033[6~ !breaks scrolling in Rxvt
+!URxvt.keysym.Home            : \033[H  !breaks navigation in Vim
+!URxvt.keysym.End             : \033[F  !breaks navigation in Vim
+!URxvt.keysym.S-Up             : \033[1;2A
+!URxvt.keysym.S-Down           : \033[1;2B
+!URxvt.keysym.S-Right          : \033[1;2C
+!URxvt.keysym.S-Left           : \033[1;2D
+!!URxvt.keysym.S-Page_Up       : captured by terminal for scrolling
+!!URxvt.keysym.S-Page_Down     : captured by terminal for scrolling
+!URxvt.keysym.S-Home           : \033[1;2H
+!URxvt.keysym.S-End            : \033[1;2F
+!URxvt.keysym.M-Up             : \033[1;3A
+!URxvt.keysym.M-Down           : \033[1;3B
+!URxvt.keysym.M-Right          : \033[1;3C
+!URxvt.keysym.M-Left           : \033[1;3D
+!URxvt.keysym.M-Page_Up        : \033[5;3~
+!URxvt.keysym.M-Page_Down      : \033[6;3~
+!URxvt.keysym.M-Home           : \033[1;3H
+!URxvt.keysym.M-End            : \033[1;3F
+!URxvt.keysym.M-S-Up           : \033[1;4A
+!URxvt.keysym.M-S-Down         : \033[1;4B
+!URxvt.keysym.M-S-Right        : \033[1;4C
+!URxvt.keysym.M-S-Left         : \033[1;4D
+!!URxvt.keysym.M-S-Page_Up     : seen as Rxvt.keysym.S-Page_Up
+!!URxvt.keysym.M-S-Page_Down   : seen as Rxvt.keysym.S-Page_Down
+!URxvt.keysym.M-S-Home         : \033[1;4H
+!URxvt.keysym.M-S-End          : \033[1;4F
+!URxvt.keysym.C-Up             : \033[1;5A
+!URxvt.keysym.C-Down           : \033[1;5B
+!URxvt.keysym.C-Right          : \033[1;5C
+!URxvt.keysym.C-Left           : \033[1;5D
+!URxvt.keysym.C-Page_Up        : \033[5;5~
+!URxvt.keysym.C-Page_Down      : \033[6;5~
+!URxvt.keysym.C-Home           : \033[1;5H
+!URxvt.keysym.C-End            : \033[1;5F
+!URxvt.keysym.C-S-Up           : \033[1;6A
+!URxvt.keysym.C-S-Down         : \033[1;6B
+!URxvt.keysym.C-S-Right        : \033[1;6C
+!URxvt.keysym.C-S-Left         : \033[1;6D
+!!URxvt.keysym.C-S-Page_Up     : seen as Rxvt.keysym.S-Page_Up
+!!URxvt.keysym.C-S-Page_Down   : seen as Rxvt.keysym.S-Page_Down
+!URxvt.keysym.C-S-Home         : \033[1;6H
+!URxvt.keysym.C-S-End          : \033[1;6F
+!URxvt.keysym.M-C-Up           : \033[1;7A
+!URxvt.keysym.M-C-Down         : \033[1;7B
+!URxvt.keysym.M-C-Right        : \033[1;7C
+!URxvt.keysym.M-C-Left         : \033[1;7D
+!URxvt.keysym.M-C-Page_Up      : \033[5;7~
+!URxvt.keysym.M-C-Page_Down    : \033[6;7~
+!URxvt.keysym.M-C-Home         : \033[1;7H
+!URxvt.keysym.M-C-End          : \033[1;7F
+!URxvt.keysym.M-C-S-Up         : \033[1;8A
+!URxvt.keysym.M-C-S-Down       : \033[1;8B
+!URxvt.keysym.M-C-S-Right      : \033[1;8C
+!URxvt.keysym.M-C-S-Left       : \033[1;8D
+!!URxvt.keysym.M-C-S-Page_Up   : seen as Rxvt.keysym.S-Page_Up
+!!URxvt.keysym.M-C-S-Page_Down : seen as Rxvt.keysym.S-Page_Down
+!URxvt.keysym.M-C-S-Home       : \033[1;8H
+!URxvt.keysym.M-C-S-End        : \033[1;8F
+!----------------------------------------------------------------------------------------------------------
+!            Extensions and other settings
+!----------------------------------------------------------------------------------------------------------
+!turn off scrollBar
+URxvt.scrollBar:        off
+URxvt*scrollBar_right: true
+URxvt*scrollstyle: rxvt
+
+!tabbed with url launcher
+URxvt.perl-lib: /home/piotr/.urxvt
+URxvt.perl-ext-common:  default,url-select,keyboard-select
+!URxvt.perl-ext-common:  default,tabbed
+URxvt.keysym.M-r:   perl:keyboard-select:copy
+URxvt.keysym.M-v:   perl:keyboard-select:paste
+URxvt.keysym.M-C-v: perl:keyboard-select:paste_escaped
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.keysym.M-f:   perl:url-select:select_next
+URxvt.urlLauncher:      iceweasel -P default
+!mouse button to click to open URLs
+URxvt.urlButton:   1
+!Font resizing
+URxvt.perl-ext: fonts
+
+URxvt.keysym.M-KP_Add:      perl:fonts:plus
+URxvt.keysym.M-KP_Subtract: perl:fonts:minus
+

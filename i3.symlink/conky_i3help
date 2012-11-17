@@ -1,0 +1,188 @@
+# Conky sample configuration
+#
+# the list of variables has been removed from this file in favour
+# of keeping the documentation more maintainable.
+# Check http://conky.sf.net for an up-to-date-list.
+
+# set to yes if you want Conky to be forked in the background
+background yes
+
+# X font when Xft is disabled, you can pick one with program xfontsel
+#font 5x7
+#font 6x10
+#font 7x13
+#font 8x13
+#font 9x15
+#font *mintsmild.se*
+#font -*-*-*-*-*-*-34-*-*-*-*-*-*-*
+
+# Use Xft?
+use_xft yes
+
+# Xft font when Xft is enabled
+xftfont Bitstream Vera Sans Mono:size=9
+
+# Text alpha when using Xft
+xftalpha 0.8
+
+# Print everything to stdout?
+# out_to_console no
+
+# MPD host/port
+# mpd_host localhost
+# mpd_port 6600
+# mpd_password tinker_bell
+
+# Print everything to console?
+# out_to_console no
+
+# mail spool
+mail_spool $MAIL
+
+# Update interval in seconds
+update_interval 30
+
+# This is the number of times Conky will update before quitting.
+# Set to zero to run forever.
+total_run_times 0
+
+# Create own window instead of using desktop (required in nautilus)
+own_window yes
+
+# Use pseudo transparency with own_window?
+own_window_transparent yes
+# If own_window is yes, you may use type normal, desktop or override
+own_window_type override
+
+
+# If own_window_transparent is set to no, you can set the background colour here
+#own_window_colour black
+
+# If own_window is yes, these window manager hints may be used
+own_window_hints undecorated,sticky,skip_pager,below,skip_taskbar
+
+# Use double buffering (reduces flicker, may not work for everyone)
+double_buffer yes
+
+# Minimum size of text area
+minimum_size 28 5
+
+# Size of the standard text buffer (default is 128 bytes).
+text_buffer_size 248
+
+# Draw shades?
+draw_shades yes
+
+# Draw outlines?
+draw_outline no
+
+# Draw borders around text
+#draw_borders yes
+
+# Draw borders around graphs
+draw_graph_borders no
+
+# Stippled borders?
+#stippled_borders 8
+
+# border margins
+border_margin 3
+
+# border width
+border_width 1
+
+# Default colors and also border colors
+default_color white
+default_shade_color black
+default_outline_color red
+
+# Text alignment, other possible values are commented
+#alignment top_left
+#alignment top_right
+#alignment top_middle
+#alignment bottom_left
+alignment bottom_right
+#alignment none
+
+# Gap between borders of screen and text
+# same thing as passing -x at command line
+gap_x 10
+gap_y 40
+
+# Subtract file system buffers from used memory?
+no_buffers yes
+
+# set to yes if you want all text to be in uppercase
+uppercase no
+
+# number of cpu samples to average
+# set to 1 to disable averaging
+cpu_avg_samples 2
+
+# number of net samples to average
+# set to 1 to disable averaging
+net_avg_samples 2
+
+# Force UTF8? note that UTF8 support required XFT
+override_utf8_locale no
+
+# Add spaces to keep things from moving about?  This only affects certain objects.
+use_spacer none
+
+# Shows the maximum value in scaled graphs.
+show_graph_scale no
+
+# Shows the time range covered by a graph.
+show_graph_range no
+
+# Allow each port monitor to track at most this many connections (if 0 or not set, default is 256)
+#max_port_monitor_connections 256
+
+# Maximum number of special things, e.g. fonts, offsets, aligns, etc.
+#max_specials 512
+
+# Maximum size of buffer for user text, i.e. below TEXT line.
+#max_user_text 16384
+
+# Strictness of if_up. One of: up, link or address. The later ones imply the further ones.
+# Defaults to up.
+#if_up_strictness address
+
+# variable is given either in format $variable or in ${variable}. Latter
+# allows characters right after the variable and must be used in network
+# stuff because of an argument
+
+# stuff after 'TEXT' will be formatted on screen
+
+TEXT
+${alignc}${color}${font}HELP 
+${color yellow}Mod+Enter          -${color red} Run terminal
+${color yellow}Mod+w              -${color red} Run www browser
+${color yellow}Mod+l              -${color red} Lock screen
+${color yellow}Mod+h,t,c,n        -${color red} Change focus
+${color yellow}Mod+Shift+h,t,c,n  -${color red} Move windows
+${color yellow}Mod+Ctrl+h,t,c,n   -${color red} Next/prev workspace
+${color yellow}Mod+Tab            -${color red} Next workspace
+${color yellow}Mod+Shift+Tab      -${color red} Prev workspace
+${color yellow}Mod+f              -${color red} Toggle fullscreen
+${color yellow}Mod+u,e,o          -${color red} Different window layouts
+${color yellow}Mod+r              -${color red} Enter resize Mode
+${color yellow}Mod+Shift+;        -${color red} Kill window
+${color yellow}Mod+g              -${color red} Focus parent
+${color yellow}Mod+Shift+g        -${color red} Focus child
+${color yellow}Mod+m              -${color red} Focus tilng
+${color yellow}Mod+Shift+m        -${color red} Focus floating
+${color yellow}Mod+space          -${color red} Toggle floating window focus
+${color yellow}Mod+Shift+space    -${color red} Toggle floating
+${color yellow}Mod+s              -${color red} Split horizontaly
+${color yellow}Mod+v              -${color red} Split vertically
+${color yellow}Mod+b              -${color red} Border toggle
+${color yellow}Mod+num            -${color red} Switch to workspace
+${color yellow}Mod+Shift+num      -${color red} Move to workspace
+${color yellow}Mod+Shift+Ctrl+num -${color red} Move and focus to workspace
+${color yellow}Mod+Shift+r        -${color red} Reload configuration
+${color yellow}Mod+Shift+Ctrl+r   -${color red} Restart i3
+${color yellow}Mod+Ctrl+Del       -${color red} Logout
+${color white}where Mod is a Windows Logo key
+#${alignc}${color}${font}TODO.TXT
+#${color}${font}${execi 60 /home/piotr/bin/todo.sh -p ls}
