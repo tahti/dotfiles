@@ -37,6 +37,18 @@ task :install do
     end
     `ln -s "$PWD/#{linkable}" "#{target}"`
   end
+
+  if File.exists?("#{ENV["HOME"]}/.lesskey")
+    `lesskey`
+  end
+
+  if File.exists?("bin") && !File.exists?("#{ENV["HOME"]}/bin")
+    `ln -s "$PWD/bin" "#{ENV["HOME"]}/bin"`
+  end
+
+  if !File.exists?("usb")
+    `ln -s "#{ENV["HOME"]}/usb" "/media/usb0"`
+  end
 end
 
 task :uninstall do
