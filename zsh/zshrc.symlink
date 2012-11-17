@@ -1,0 +1,71 @@
+# shortcut to this dotfiles path is $ZSH
+export ZSH=$HOME/Private/dotfiles
+
+# your project folder that we can `c [tab]` to
+#export PROJECTS=~/Code
+
+# source every .zsh file in this rep
+for config_file ($ZSH/zsh/**/*.zsh) source $config_file
+
+# use .localrc for SUPER SECRET CRAP that you don't
+# want in your public, versioned repo.
+if [[ -a ~/.localrc ]]
+then
+  source ~/.localrc
+fi
+
+
+# add a function path
+fpath=($ZSH/zsh/functions $ZSH/zsh/completions $fpath)
+
+# load every completion after autocomplete loads
+for config_file ($ZSH/**/completion.zsh) source $config_file
+# Example format: plugins=(rails git textmate ruby lighthouse)
+plugins=(git)
+
+is_plugin() {
+  local base_dir=$1
+  local name=$2
+  test -f $base_dir/plugins/$name/$name.plugin.zsh \
+    || test -f $base_dir/plugins/$name/_$name
+}
+
+# Add all defined plugins to fpath. This must be done
+# before running compinit.
+for plugin ($plugins); do
+  if is_plugin $ZSH/zsh $plugin; then
+    fpath=($ZSH/zsh/plugins/$plugin $fpath)
+  fi
+done
+
+# initialize autocomplete here, otherwise functions won't be loaded
+autoload -U compinit promptinit
+compinit
+promptinit
+
+# Load all of the plugins that were defined in ~/.zshrc
+for plugin ($plugins); do
+  if [ -f $ZSH/zsh/plugins/$plugin/$plugin.plugin.zsh ]; then
+    source $ZSH/zsh/plugins/$plugin/$plugin.plugin.zsh
+  fi
+done
+
+# Load the theme
+if [ "$ZSH_THEME" = "random" ]
+then
+  themes=($ZSH/zsh/themes/*zsh-theme)
+  N=${#themes[@]}
+  ((N=(RANDOM%N)+1))
+  RANDOM_THEME=${themes[$N]}
+  source "$RANDOM_THEME"
+  echo "[oh-my-zsh] Random theme '$RANDOM_THEME' loaded..."
+else
+  if [ ! "$ZSH_THEME" = ""  ]
+  then
+    if [ -f "$ZSH/zsh/themes/$ZSH_THEME.zsh-theme" ]
+    then
+       source "$ZSH/zsh/themes/$ZSH_THEME.zsh-theme"
+    fi
+  fi
+fi
+
