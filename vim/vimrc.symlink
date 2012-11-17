@@ -1,0 +1,436 @@
+" This must be first, because it changes other options as a side effect.
+set nocompatible                " Use Vim settings, rather than Vi settings (much better!).
+set backspace=indent,eol,start  " allow backspacing over everything in insert mode
+set history=500                 " keep 500 lines of command line history
+set wrap                        " disable wrapping of text
+"set number                     " show lines numbers by default
+if $TERM!="linux"
+  set t_Co=256                    " force the terminal to use 256 colors
+endif
+set showcmd                     " display incomplete commands
+set foldlevelstart=99           " by default, open all folds
+set foldmethod=syntax           "set folding method
+set foldnestmax=15
+set mouse=a                     " In many terminal emulators the mouse works just fine, thus enable it.
+set mousehide                   " Hide the mouse pointer while typing
+set mousemodel=popup            " produce pop up for right click
+set list                        " show special chars, such as tab and eol
+set listchars=tab:▷\ ,eol:·,trail:˙,extends:❱,precedes:❰ " chars to show for list
+"set textwidth=79                " break lines 
+set showbreak=┗                 " show char begining after wrap
+set laststatus=2                " tell VIM to always put a status line in, even if there is only one window
+set title                       " set the title
+set ruler                       " show the cursor position all the time
+set splitbelow                  " open a new horizontal window below the current window instead of above
+set scrolloff=8                 " When scrolling keep the cursor 8 lines from the top and 8 lines from the bottom
+set sidescrolloff=3             " minimal number of screen columns to keep next to the cursor
+set sidescroll=5                " horizontally scroll 5 characters, instead of centering the cursor
+set wildmenu                    " Make the command-line completion better
+set wildignorecase              " Make it easier to complete buffers, open files, etc...
+set wildmode=longest,list       " complete mode for wildmenu
+set linebreak                   " only wrap after words, not inside words
+set nocursorline                " Highlight the current line and column
+set nocursorcolumn              " Don't do this - It makes window redraws painfully slow
+set completeopt=menu,longest    "show compleions
+set autoread                    " autoread file whon changed outside of vim
+
+set tabstop=4                   " number of spaces that tab counts for
+set shiftwidth=4                " number of spaces to use for each step of indent
+set softtabstop=4               " number of spaces that a tab counts for while editing
+set shiftround                  " round the indent to a multiple of shiftwidth
+set expandtab                   " expand tabs to spacesset autoindent
+set autoindent                  " automatically indent a new line
+set formatoptions+=r            " automatic formatting: auto insert current comment leader after enter
+set virtualedit=block,onemore   " allow cursor after end of line in visual block mode and
+" Allow the cursor to go in to "invalid" places
+"set virtualedit=all
+set lazyredraw                  " Don't update the display while executing macros
+set showmatch                   " Show matching bracked briefly
+set showmode
+let loaded_matchparen = 1       " Do not highlight matching bracket
+set cmdheight=1                 " set display messages line to the heigth 1
+                                " allow cursor one char after line end
+set display=lastline            " display wrapped lines at bottom instead of @ symbols
+set winwidth=80                 "set minimal window width
+set diffopt+=iwhite             " diff options: ignore whitespace
+"set smartcase                  " Smart case when searching
+set ignorecase                  " Ignore case when searching
+set incsearch                   " while searching, immediately show first match
+"set gdefault                    " replace all occurences in search by default
+set nowritebackup               " don't make a (temporary) backup while saving files
+if v:version > '702'
+      set undofile              " save undo history to an external file
+      set undodir=~/.vim/undo   " set where to store undo files
+      set undolevels=1000       "maximum number of changes that can be undone
+      set undoreload=2000       "maximum number lines to save for undo on a buffer reload      set undodir=~/.vim/sessions " where to save undo history files
+      "set relativenumber        " use relative line numbering
+      set nonumber              " and disable default line numbering
+endif
+set directory=~/.vim/swap       " where to store the swap files
+set backupdir=~/.vim/swap       " where to store the swap files
+set nobackup                    " don't make a (permanent) backup when saving files
+set noswapfile                  " Turn off swapfiles
+
+set autoread                    " Automatically read a file that has changed on disk
+set autowriteall                " Always write modifications to the file
+set hidden                      " hide buffer instead of closing
+
+set sessionoptions=buffers,curdir,folds,help,localoptions,resize,slash,tabpages,winsize
+let sessionman_save_on_exit = 1 " Save the current editing session when exiting vim
+
+set showfulltag                 " When completing by tag, show the whole tag, not just the function name
+
+set magic                       "Set magic on, for regular expressions
+set smartindent
+set smarttab                    " Add and delete spaces in increments of `shiftwidth' for tabs
+set synmaxcol=512               " Syntax coloring lines that are too long just slows down the world
+set shortmess=a                 " display short messages
+set vb
+set t_vb=                    "disable bell both visual and sound
+set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo " These commands open folds
+
+set background=dark             "assume dark background
+colorscheme molokai              "set color scheme
+
+" Switch syntax highlighting on, when the terminal has colors
+" Also switch on highlighting the last used search pattern.
+if &t_Co > 2 || has("gui_running")
+  syntax on
+  set hlsearch
+endif
+
+"if exists('+autochdir')
+"  set autochdir " automatically change to the current directory when loading a file
+"endif
+
+"set encoding related stuff
+if has("multi_byte")
+  if &termencoding == ""
+    let &termencoding = &encoding
+  endif
+  set encoding=utf-8
+  setglobal fileencoding=utf-8
+  "add EF BB BF at start of the file - not recomended
+  "setglobal bomb
+  set fileencodings=ucs-bom,utf-8,latin1
+endif
+
+source ~/.vim/misc/spell-mistakes.vim    "Add correction for spelling mistakes
+source ~/.vim/misc/template-keywords.vim "Add keywords to templates
+source ~/.vim/misc/statusLine.vim        " Set the status line the way i like it
+source ~/.vim/misc/mappings.vim          "Add keybindings
+
+" Use pathogen to easily modify the runtime path to include all
+" plugins under the ~/.vim/bundle directory
+silent! call pathogen#helptags()
+silent! call pathogen#runtime_append_all_bundles()
+
+" wHen started as "evim", evim.vim will already have done these settings.
+if v:progname =~? "evim"
+  finish
+endif
+" Spell Check
+let b:myLang=0
+let g:myLangList=["nospell","en_gb","fr_fr"]
+
+if has("gui_running")
+  set guifont=DejaVu\ Sans\ Mono\ 9
+  "set guifont=Bitstream\ Vera\ Mono\ 9
+  "set guifont=Source\ Code\ Pro\ 9
+" Disable the blinking cursor.
+  set gcr=a:blinkon0
+" GUI is running or is about to start.
+" Maximize GVim window.
+  set lines=37 columns=135
+" remove the menu bar
+  set guioptions-=m
+" and remove the toolbar
+  set guioptions-=T
+" and enable the horizontal scrollbar
+"set guioptions+=b
+" and remove the vertical scrollbar
+  set guioptions-=r
+" no left scrollbar
+  set guioptions-=L
+" but sometimes show the tabline (window otherwise resizes when first showing tabline)
+  set showtabline=1
+  if has("win32") || has("win64")
+      set guifont=Consolas:h10:cANSI
+  endif
+  set cursorline
+endif
+
+" For Win32 GUI : remove t' flag from 'guioptions': no tearoff menu entries
+" let &guioptions = substitute(&guioptions, "t", "", "g")
+
+"-----------------------------------------------------------------------------
+" Perforce Stuff
+"-----------------------------------------------------------------------------
+let g:p4DefaultDiffOptions = '-dwb'
+let g:p4EnableRuler = 1
+let g:p4EnableMenu = 0
+let g:p4EnableActiveStatus = 0
+let g:p4OptimizeActiveStatus = 1
+let g:p4EnableFileChangedShell = 0
+let g:p4DefaultListSize = 1000
+let g:p4UseVimDiff2 = 1
+let g:p4UseVimDiff = 1
+let g:p4Autoread = -1
+let g:p4PromptToCheckout = 0
+let g:no_plugin_maps = 1
+let g:loaded_perforcemenu = 1
+set ttyfast
+"Plugins
+ "Man plugin gives :Man command
+runtime! ftplugin/man.vim
+
+"set looking for file specific options like /*set modelines=10 */
+set modelines=10
+"enable modeline extension FirstModeLine()
+ if !exists('*FirstModeLine')
+    runtime plugin/let-modeline.vim
+    " :Runtime emulates :runtime
+  endif
+  if exists('*FirstModeLine')
+    aug ALL
+    au!
+    " To not interfer with Templates loaders
+    au BufNewFile * :let b:this_is_new_buffer=1
+    " Modeline interpretation
+    au BufEnter * :call FirstModeLine()
+  aug END
+ endif
+
+
+" Only do this part when compiled with support for autocommands.
+if has("autocmd")
+
+  " Enable file type detection.
+  " Use the default filetype settings, so that mail gets 'tw' set to 72,
+  " 'cindent' is on in C files, etc.
+  " Also load indent files, to automatically do language-dependent indenting.
+  filetype plugin indent on
+
+  " Put these in an autocmd group, so that we can delete them easily.
+  augroup vimrcEx
+  au!
+
+  " For all text files set 'textwidth' to 80 characters.
+  autocmd FileType text setlocal textwidth=80
+
+  " When editing a file, always jump to the last known cursor position.
+  " Don't do it when the position is invalid or when inside an event handler
+  " (happens when dropping a file on gvim).
+  " Also don't do it when the mark is in the first line, that is the default
+  " position when opening a file.
+  autocmd BufReadPost *
+    \ if line("'\"") > 1 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
+
+  augroup END
+
+  " Highlight trailing whitespace and lines longer than 80 columns.
+  highlight LongLine ctermbg=130 guibg=#af5f00
+  highlight WhitespaceEOL ctermbg=130 guibg=#af5f00
+  if v:version >= 702
+   " Lines longer than 80 columns.
+    au BufWinEnter *.tex,*.hpp,*.cc,*.h,*.cpp,*.lzz let w:m0=matchadd('LongLine', '\%80c\|%81c', -1)
+
+     " Whitespace at the end of a line. This little dance suppresses
+     " whitespace that has just been typed.
+    au BufWinEnter *.tex,*.hpp,*.cc,*.h,*.cpp,*.lzz let w:m1=matchadd('WhitespaceEOL', '\s\+$', -1)
+    au InsertEnter *.tex,*.hpp,*.cc,*.h,*.cpp,*.lzz call matchdelete(w:m1)
+    au InsertEnter *.tex,*.hpp,*.cc,*.h,*.cpp,*.lzz let w:m2=matchadd('WhitespaceEOL', '\s\+\%#\@<!$', -1)
+    au InsertLeave *.tex,*.hpp,*.cc,*.h,*.cpp,*.lzz call matchdelete(w:m2)
+    au InsertLeave *.tex,*.hpp,*.cc,*.h,*.cpp,*.lzz let w:m1=matchadd('WhitespaceEOL', '\s\+$', -1)
+    "au BufWinEnter *.tex,*.hpp,*.cc,*.h,*.cpp,*.lzz set colorcolumn=80,120    " show a vertical line at these positions
+  else
+    au BufRead,BufNewFile *.tex,*.hpp,*.cc,*.h,*.cpp,*.lzz syntax match LongLine /\%>80v.\+/
+    au InsertEnter *.tex,*.hpp,*.cc,*.h,*.cpp,*.lzz syntax match WhitespaceEOL /\s\+\%#\@<!$/
+    au InsertLeave *.tex,*.hpp,*.cc,*.h,*.cpp,*.lzz syntax match WhitespaceEOL /\s\+$/
+  endif
+
+  "Optional
+  " C/C++ programming helpers
+  augroup csrc
+    au!
+    autocmd FileType *      set nocindent smartindent
+    autocmd FileType c,cpp,lzz  set cindent
+  augroup END
+
+  " Set a few indentation parameters. See the VIM help for cinoptions-values
+  " for details.  These aren't absolute rules; they're just an approximation
+  " of common style in LLVM source.
+  set cinoptions=:0,g0,(0,Ws,l1
+  set shiftwidth=2
+
+  " LLVM Makefiles can have names such as Makefile.rules or
+  " TEST.nightly.Makefile, so it's important to categorize them as such.
+  augroup filetype
+    au! BufRead,BufNewFile *Makefile* set filetype=make
+  augroup END
+
+  " In Makefiles, don't expand tabs to spaces, since we need the actual tabs
+  autocmd FileType make set noexpandtab
+
+  "Add syntax and indentaition for cmake files
+
+  au BufRead,BufNewFile *.cmake,CMakeLists.txt,*.cmake.in runtime! indent/cmake.vim
+  au BufRead,BufNewFile *.cmake,CMakeLists.txt,*.cmake.in setf cmake
+  au BufRead,BufNewFile *.ctest,*.ctest.in setf cmake
+
+  " Remember cursor position
+  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+  " ruby support
+  " ------------
+  autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 colorcolumn=120
+
+  " template language support (SGML / XML too)
+  " ------------------------------------------
+  " and disable taht stupid html rendering (like making stuff bold etc)
+
+  fun! SelectHTML()
+    let n = 1
+    while n < 50 && n < line("$")
+  " check for jinja
+      if getline(n) =~ '{%\s*\(extends\|block\|macro\|set\|if\|for\|include\|trans\)\>'
+        set ft=htmljinja
+        return
+      endif
+  " check for mako
+      if getline(n) =~ '<%\(def\|inherit\)'
+        set ft=mako
+        return
+      endif
+  " check for genshi
+      if getline(n) =~ 'xmlns:py\|py:\(match\|for\|if\|def\|strip\|xmlns\)'
+        set ft=genshi
+        return
+      endif
+      let n = n + 1
+    endwhile
+  " go with html
+    set ft=html
+  endfun
+  " HTML
+  " ---
+  autocmd FileType html,xhtml,xml,htmldjango,htmljinja,eruby,mako setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+  autocmd BufNewFile,BufRead *.rhtml setlocal ft=eruby
+  autocmd BufNewFile,BufRead *.mako setlocal ft=mako
+  autocmd BufNewFile,BufRead *.tmpl setlocal ft=htmljinja
+  autocmd BufNewFile,BufRead *.py_tmpl setlocal ft=python
+  autocmd BufNewFile,BufRead *.html,*.htm call SelectHTML()
+  let html_no_rendering=1
+
+  autocmd FileType html,htmldjango,htmljinja,eruby,mako let b:closetag_html_style=1
+  autocmd FileType html,xhtml,xml,htmldjango,htmljinja,eruby,mako source ~/.vim/bundle/closeTag/closetag.vim
+
+  " CSS
+  " ---
+  autocmd FileType css setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
+
+  " tex
+  " ---
+  autocmd BufNewFile,BufRead *.tex setlocal ft=tex
+  autocmd FileType tex setlocal expandtab shiftwidth=3 tabstop=3 softtabstop=3 
+  \ formatoptions+=nqt textwidth=79
+  " rst
+  " ---
+  autocmd BufNewFile,BufRead *.rst setlocal ft=rst
+  autocmd FileType rst setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4 colorcolumn=120
+  \ formatoptions+=nqt textwidth=74
+
+  " markdown
+  " ---
+  autocmd BufNewFile,BufRead *.txt,*.markdown,*.md setlocal ft=markdown colorcolumn=120
+  autocmd FileType rst setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4 colorcolumn=120
+
+  " vim
+  " ---
+  autocmd FileType vim setlocal expandtab shiftwidth=2 tabstop=8 softtabstop=2
+
+  " Javascript
+  " ----------
+  autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2 colorcolumn=120
+  let javascript_enable_domhtmlcss=1
+
+  else
+endif " has("autocmd")
+"""""""""""""""""""""""
+" Delete trailing whitespace and tabs at the end of each line
+command! DelTrailingWs :%s/\s\+$//
+" Convert all tab characters to two spaces
+command! Untab :%s/\t/  /g
+
+""""""""""""""""""""""""""""""""'''
+" plugin specific
+"
+""""""""""
+" vim-latex
+
+" OPTIONAL: Starting with Vim 7, the filetype of empty .tex files defaults to
+" " 'plaintex' instead of 'tex', which results in vim-latex not being loaded.
+" " The following changes the default filetype back to 'tex':
+  let g:tex_flavor='latex'
+"""""""""""
+" uLTI-SNIP plugin settings ==============================================
+  let g:UltiSnipsExpandTrigger="<tab>"
+  let g:UltiSnipsListSnippets= "<c-tab>"
+
+"let g:UltiSnipsJumpForwardTrigger="<tab>"
+"let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+"Ctrlp plugin settings ==================================================
+  let g:ctrlp_working_path_mode = 0
+  let g:ctrlp_dotfiles=0
+  let g:ctrlp_extensions = ['tag']
+  let g:ctrlp_map = '<leader>o'
+
+"Supertab plugin settings ===============================================
+  let g:SuperTabDefaultCompletionType = "context"
+
+"Gundo plugin settings ==================================================
+  let g:gundo_width = 30
+" "
+"Clang plugin settings ==================================================
+  " change clang compiler for lzz files
+  au BufWinEnter *.lzz let g:clang_exec = 'python ~/bin/clangLzz.py'
+  " automatically select the first entry in the popup menu, but
+  "without inserting it into the code
+  let g:clang_auto_select=1
+  "" autocomplete after -> . ::
+  let g:clang_complete_auto=1
+  ""do not open quickfix window
+  let g:clang_complete_copen = 0
+  ""do HIGHlight errors
+  let g:clang_hl_errors = 1
+  ""do not periodically update quickfix window
+  let g:clang_periodic_quickfix=0
+  ""do some snippets magic after a ( or a , inside function
+  ""call. Not currently fully working
+  let g:clang_snippets=1
+  let g:clang_snippets_engine="clang_complete"
+  ""hide <# and #> which "delimit a snippets.
+  let g:clang_conceal_snippets=1
+  ""no user options
+  let g:clang_user_options=""
+  ""Set sources for user options passed to clang.
+  let g:clang_auto_user_options="path, .clang_complete"
+  ""use libclang
+  let g:clang_use_library=1
+  "set libclang path
+  let g:clang_library_path="/home/piotr/bin/lib/"
+  "how to sort results
+  let g:clang_sort_algo="priority"
+  " allow completing macros
+  let g:clang_complete_macros=1
+  "If clang should complete code patterns, i.e loop constructs etc.
+  let g:clang_complete_patterns=0
+  "Set debug off
+  let g:clang_debug=1
+  "Macros
+  au BufWinEnter *.hpp,*.cc,*.h,*.cpp,*.lzz nnoremap <Leader>q :call g:ClangUpdateQuickFix()<CR>
+  au BufWinEnter *.hpp,*.cc,*.h,*.cpp,*.lzz nnoremap <Leader>r :call ClangGetReferences()<CR>
+  au BufWinEnter *.hpp,*.cc,*.h,*.cpp,*.lzz nnoremap <Leader>d :call ClangGetDeclarations()<CR>
+  au BufWinEnter *.hpp,*.cc,*.h,*.cpp,*.lzz nnoremap <Leader>s :call ClangGetSubclasses()<CR>

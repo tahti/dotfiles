@@ -1,0 +1,334 @@
+extends c
+
+###########################################################################
+#                            TextMate Snippets                            #
+###########################################################################
+snippet beginend "$1.begin(), $1.end() (beginend)"
+${1:v}${1/^.*?(-)?(>)?$/(?2::(?1:>:.))/}begin(), $1${1/^.*?(-)?(>)?$/(?2::(?1:>:.))/}end()
+endsnippet
+
+snippet readfile "read file (readF)"
+std::vector<char> v;
+if (FILE *fp = fopen(${1:"filename"}, "r"))
+{
+	char buf[1024];
+	while(size_t len = fread(buf, 1, sizeof(buf), fp))
+		v.insert(v.end(), buf, buf + len);
+	fclose(fp);
+}
+endsnippet
+
+##################
+# std containers #
+##################
+
+snippet map "std::map (map)"
+std::map<${1:key}, ${2:value}> map$0;
+endsnippet
+
+snippet vector "std::vector (v)"
+std::vector<${1:key}> v$0;
+endsnippet
+
+snippet set "std::set"
+std::set<${1:key}> ${2:set};
+endsnippet
+
+snippet list "std::list"
+std::list<${1:key}> ${2:list};
+endsnippet
+
+#########################
+# templates and classes #
+#########################
+
+snippet cl "class .. (class)"
+class ${1:`!p snip.rv = snip.basename or "name"`}
+{
+public:
+	${1/(\w+).*/$1/} (${2:arguments});
+	virtual ~${1/(\w+).*/$1/} ();
+
+private:
+	${0:/* data */}
+};
+endsnippet
+
+snippet ns "namespace .. (namespace)"
+namespace${1/.+/ /m}${1:`!p snip.rv = snip.basename or "name"`}
+{
+	$0
+}${1/.+/ \/* /m}$1${1/.+/ *\/ /m}
+endsnippet
+snippet templ
+template<class ${1:T}>
+class ${2:`!p snip.rv = snip.basename or "name"`}
+{
+private:
+protected:
+public:
+	${1/(\w+).*/$1/} (${2:arguments});
+	virtual ~${1/(\w+).*/$1/} ();
+}
+endsnippet
+
+snippet tp "template <typename ..> (template)"
+template <typename ${1:_InputIter}>
+endsnippet
+##############
+# try switch #
+##############
+snippet try
+try {
+  ${1:/*code*/}
+}
+catch( const ${2:vwd::exception}& ) {
+}
+catch( const ${3:std::exception}& e ) {
+}
+catch( ${4:...} ) {
+}
+endsnippet
+
+snippet switch
+switch( ${1:/*on*/} )
+{
+        case ${2:/*case*/}:
+                break;
+        case ${3:/*case*/}:
+                break;
+        case ${4:/*case*/}:
+                break;
+        case ${5:/*case*/}:
+                break;
+        default:
+                break;
+}
+endsnippet
+######################
+# operator templates #
+######################
+snippet op<<
+std::ostream& operator<<( std::ostream& out, const ${1:T}& ${2:v} )
+{
+  out << $2.${3}
+  return out;
+}
+endsnippet
+
+snippet op&&
+bool operator&&( const ${1:T}& l, const $1& r )
+{
+  return l.${2:member} && r.$2;
+}
+endsnippet
+
+snippet op||
+bool operator||( const ${1:T}& l, const $1& r )
+{
+  return l.${2:member} || r.$2;
+}
+endsnippet
+
+snippet op^
+bool operator^( const ${1:T}& l, const $1& r )
+{
+  return l.${2:member} ^ r.$2;
+}
+endsnippet
+
+snippet op&
+bool operator&( const ${1:T}& l, const $1& r )
+{
+  return l.${2:member} & r.$2;
+}
+endsnippet
+
+snippet op|
+bool operator|( const ${1:T}& l, const $1& r )
+{
+  return l.${2:member} | r.$2;
+}
+endsnippet
+
+snippet op<
+bool operator<( const ${1:T}& l, const $1& r )
+{
+  return l.${2:member} < r.$2;
+}
+endsnippet
+
+snippet op<=
+bool operator<=( const ${1:T}& l, const $1& r )
+{
+  return l.${2:member} <= r.$2;
+}
+endsnippet
+
+snippet op>
+bool operator>( const ${1:T}& l, const $1& r )
+{
+  return l.${2:member} > r.$2;
+}
+endsnippet
+
+snippet op>=
+bool operator>=( const ${1:T}& l, const $1& r )
+{
+  return l.${2:member} >= r.$2;
+}
+endsnippet
+
+snippet op==
+bool operator==( const ${1:T}& l, const $1& r )
+{
+  return l.${2:member} == l.$2;
+}
+endsnippet
+
+snippet op!=
+bool operator!=( const ${1:T}& l, const $1& r )
+{
+  return l.${2:member} != r.$2;
+}
+endsnippet
+
+
+snippet op+
+$1 operator+( const ${1:T}& l, const $1& r )
+{
+  $1 tmp(l);
+  ${2}tmp += r;
+  return tmp;
+}
+endsnippet
+
+snippet op-
+$1 operator-( const ${1:T}& l, const $1& r )
+{
+  $1 tmp(l);
+  ${2}tmp -= r;
+  return tmp;
+}
+endsnippet
+
+# multiplication operator
+snippet op*
+$1 operator*( const ${1:T}& l, const $1& r )
+{
+  ${2:/*code*/}
+}
+endsnippet
+
+# now comes various member operators, we assume they are also defined inline
+# dereference operator (unary *)
+snippet opd
+${1:T}& operator*( )
+{
+  return ${2}
+}
+endsnippet
+
+snippet op=
+$1& operator=( const ${1:T}& other )
+{
+  ${2:member} = other.$2;
+  return *this;
+}
+endsnippet
+
+snippet op[]
+${1:T}& operator[]( size_t idx )
+{
+  return ${2}[idx];
+}
+endsnippet
+
+snippet op->
+${1:T}* operator->( )
+{
+  return ${2};
+}
+endsnippet
+
+# prefix operator++
+snippet op++
+${1:T}& operator++( )
+{
+  ${2:/*code*/}
+  return *this;
+}
+endsnippet
+
+# postfix operator++
+snippet ++op
+${1:T} operator++( int )
+{
+  T tmp(*this);
+  ${2:/*code*/}
+  return tmp;
+}
+endsnippet
+
+snippet opT
+operator ${1:T} ( )
+{
+  return ${2:/*code*/}
+}
+endsnippet
+
+snippet op()
+${1:T} operator()( ${2:T} ${3:t} )
+{
+  ${4:/*code*/}
+}
+endsnippet
+#################
+# various casts #
+#################
+# some cassts
+snippet scast
+static_cast<${1:T}>(${2}
+endsnippet
+
+snippet rcast
+reinterpret_cast<${1:T}>(${2}
+endsnippet
+
+snippet ccast
+const_cast<${1:T}>(${2}
+endsnippet
+
+snippet pcast
+vwd::poly_cast<${1:T}>(${2}
+endsnippet
+
+snippet ucast
+vwd::union_cast<${1:T}>(${2}
+endsnippet
+
+snippet __PRE
+__PRETTY_FUNCTION__
+endsnippet
+
+snippet rebind
+template<class U>
+struct rebind
+{
+        typedef ${1:templ}<U> other;
+};
+${2}
+endsnippet
+####################################
+# various types definiton snipetts #
+####################################
+
+snippet cstr
+const std::string& ${0}
+endsnippet
+
+snippet str
+std::string ${0}
+endsnippet
+
+# vim:ft=snippets:

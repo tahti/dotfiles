@@ -1,0 +1,2243 @@
+let SessionLoad = 1
+if &cp | set nocp | endif
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+let v:this_session=expand("<sfile>:p")
+silent only
+cd ~/Private/svn/piotrkordy/projects/ADTool/project
+if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
+  let s:wipebuf = bufnr('%')
+endif
+set shortmess=aoO
+badd +1 src/main/java/lu/uni/adtool/Main.java
+badd +1 src/main/java/lu/uni/adtool/adtree/ADTNode.java
+badd +1 src/main/java/lu/uni/adtool/ui/ADToolBar.java
+badd +768 src/main/java/lu/uni/adtool/ui/MainWindow.java
+badd +1 src/main/java/lu/uni/adtool/ui/ToolBarButton.java
+badd +1 src/main/jjtree/adtparser.jjt
+badd +1 src/main/java/lu/uni/adtool/Options.java
+badd +1 src/main/java/lu/uni/adtool/adtree/ADTreeForGui.java
+badd +1 src/main/java/lu/uni/adtool/adtree/ADTreeNode.java
+badd +1 src/main/java/lu/uni/adtool/adtree/ADTreeNodeExtentProvider.java
+badd +1 src/main/java/lu/uni/adtool/ui/ADTreeView.java
+badd +1 src/main/java/lu/uni/adtool/ui/ADTreeCanvas.java
+badd +1 /tmp/FontMetrics.java
+badd +1 /tmp/AbstractTreeForTreeLayout.java
+badd +1 src/main/java/lu/uni/adtool/ui/ADTermView.java
+badd +1 src/main/java/lu/uni/adtool/domains/Domain.java
+badd +1 src/main/java/lu/uni/adtool/domains/Evaluator.java
+badd +1 src/main/java/lu/uni/adtool/domains/ValueAssignement.java
+badd +1 target/generated-sources/jjtree/lu/uni/adtool/adtree/SimpleNode.java
+badd +1 src/main/java/lu/uni/adtool/domains/predefined/BoolOrAnd.java
+badd +1 src/main/java/lu/uni/adtool/ui/DomainCanvas.java
+badd +1 src/main/java/lu/uni/adtool/ui/DomainView.java
+badd +1 src/main/java/lu/uni/adtool/ui/TreeChangeListener.java
+badd +1 src/main/java/lu/uni/adtool/ui/CanvasHandler.java
+badd +1 src/main/java/lu/uni/adtool/ui/ADTreeCanvasHandler.java
+badd +1 .local.vimrc
+badd +1 /tmp/DockingWindow.java
+badd +1 /tmp/View.java
+badd +1 src/main/java/lu/uni/adtool/ui/DomainCanvasHandler.java
+badd +1 /tmp/eclim/java/awt/event/KeyEvent.java
+badd +1 src/main/java/lu/uni/adtool/domains/predefined/RealG0MinSum.java
+badd +1 src/main/java/lu/uni/adtool/domains/rings/RealG0.java
+badd +1 /tmp/eclim/java/util/LinkedList.class
+badd +1 /tmp/eclim/java/util/List.java
+badd +1 ~/Private/svn/piotrkordy/projects/ADTool/experiments/RTED_v1.0/distance/InfoTree.java
+badd +1 ~/Private/svn/piotrkordy/projects/ADTool/experiments/RTED_v1.0/distance/RTED_InfoTree_Opt.java
+badd +1 RTED_InfoTree.java
+badd +1 src/main/java/lu/uni/adtool/adtconverter/RTED_InfoTree.java
+badd +1 src/main/java/lu/uni/adtool/adtconverter/InfoTree.java
+badd +1 ~/svn/piotrkordy/projects/ADTool/project/src/main/java/lu/uni/adtool/adtconverter/util/LabelDictionary.java
+badd +1 src/main/java/lu/uni/adtool/adtconverter/LabelDictionary.java
+badd +1 src/main/java/lu/uni/adtool/adtconverter/LblTree.java
+badd +1 src/main/java/lu/uni/adtool/adtconverter/EditAction.java
+badd +1 src/main/java/lu/uni/adtool/adtconverter/EditPath.java
+badd +1 src/main/java/lu/uni/adtool/adtconverter/enums/PathType.java
+badd +1 src/main/java/lu/uni/adtool/adtconverter/enums/StratType.java
+badd +1 src/main/java/lu/uni/adtool/adtconverter/enums/NodeType.java
+badd +1 target/generated-sources/javacc/lu/uni/adtool/adtree/ADTParser.java
+badd +1 /media/usb0/instalki/Inne/X3_Reunion/info.txt
+badd +1 ~/Private/svn/piotrkordy/dotfiles/morange/.i3/config
+badd +1 /tmp/eclim/java/lang/Error.java
+badd +1 src/main/java/lu/uni/adtool/ui/texts/ButtonTexts.java
+badd +7 Buffers_search_result
+badd +1 /tmp/eclim/java/lang/System.java
+badd +1 /tmp/eclim/java/awt/event/MouseEvent.java
+badd +1 src/main/java/lu/uni/adtool/ui/AbstractCanvasHandler.java
+badd +1 src/main/java/lu/uni/adtool/ui/printview/JPrintPreview.java
+badd +1 src/main/java/lu/uni/adtool/ui/printview/JPrintPreviewPage.java
+badd +1 src/main/java/lu/uni/adtool/ui/printview/PageNumberRenderer.java
+badd +1 src/main/java/lu/uni/adtool/ui/printview/DefaultPageNumberRenderer.java
+badd +1 src/main/java/lu/uni/adtool/ui/printview/JPrintPreviewBorder.java
+badd +1 src/main/java/lu/uni/adtool/ui/printview/JPrintPreviewPane.java
+badd +1 /tmp/eclim/java/awt/print/PrinterJob.java
+badd +1 /tmp/eclim/java/awt/Image.java
+badd +1 src/main/java/lu/uni/adtool/ui/printview/JPrintPreviewDialog.java
+badd +1 /tmp/IOException.java
+badd +1 /tmp/eclim/javax/swing/JCheckBox.java
+badd +1 src/main/java/lu/uni/adtool/domains/DomainFactory.java
+badd +1 /tmp/eclim/java/lang/Class.java
+badd +1 src/main/java/lu/uni/adtool/ui/FileHandler.java
+badd +1 src/main/java/lu/uni/adtool/ui/JWSFileHandler.java
+badd +1 /tmp/RootWindow.java
+badd +1 /tmp/ViewMap.java
+badd +1 /tmp/eclim/java/util/HashMap.java
+badd +1 ~/Private/svn/piotrkordy/projects/ADTool/experiments/treelayout/org.abego.treelayout/src/main/java/org/abego/treelayout/util/AbstractTreeForTreeLayout.java
+badd +1 /tmp/eclim/javax/swing/JComponent.class
+badd +1 src/main/java/lu/uni/adtool/ui/printview/InputPages.java
+badd +43 src/main/java/lu/uni/adtool/ui/AddDomainDialog.java
+badd +1 src/main/java/lu/uni/adtool/domains/predefined/BoolAndOr.java
+badd +1 src/main/java/lu/uni/adtool/domains/predefined/BoolOrAndStar.java
+badd +1 src/main/java/lu/uni/adtool/domains/predefined/RealG0MinSumCost.java
+badd +1 src/main/java/lu/uni/adtool/domains/predefined/RealG0MinSumParrallel.java
+badd +1 src/main/java/lu/uni/adtool/domains/predefined/RealG0MinSumParallel.java
+badd +1 src/main/java/lu/uni/adtool/domains/rings/RealZeroOne.java
+badd +1 src/main/java/lu/uni/adtool/domains/predefined/ProbPlusTimes.java
+badd +209 src/main/java/lu/uni/adtool/ui/InputDialog.java
+badd +1 /tmp/eclim/javax/swing/BoxLayout.java
+badd +1 /tmp/SimplePanel.java
+badd +1 /tmp/eclim/java/text/DecimalFormat.java
+badd +1 src/main/java/lu/uni/adtool/ui/RealG0Dialog.java
+badd +1 src/main/java/lu/uni/adtool/ui/RealZeroOneDialog.java
+badd +1 src/main/java/lu/uni/adtool/domains/predefined/DescriptionGenerator.java
+badd +1 /tmp/eclim/java/awt/Component.java
+badd +1 /tmp/eclim/java/awt/Component.class
+badd +1 ~/Private/svn/piotrkordy/projects/ADTool/experiments/treelayout-read-only/org.abego.treelayout/src/main/java/org/abego/treelayout/util/AbstractTreeForTreeLayout.java
+badd +1 src/main/java/lu/uni/adtool/adtree/ADTLocalTNExtendProvider.java
+badd +1 src/main/java/lu/uni/adtool/domains/rings/Ring.java
+badd +1 src/main/java/lu/uni/adtool/domains/rings/Bool.java
+badd +1 src/main/java/lu/uni/adtool/domains/rings/BoundedInteger.java
+badd +1 src/main/java/lu/uni/adtool/domains/predefined/IntMinSum.java
+badd +1 src/main/java/lu/uni/adtool/domains/predefined/IntMinMax.java
+badd +1 src/main/java/lu/uni/adtool/domains/predefined/IntMinMinMax.java
+badd +107 src/main/java/lu/uni/adtool/ui/BoundedIntegerDialog.java
+badd +1 /tmp/eclim/java/lang/Number.java
+badd +1 /tmp/eclim/javax/swing/JFormattedTextField.java
+badd +1 src/main/java/lu/uni/adtool/domains/predefined/Parametrized.java
+badd +1 /tmp/ObjectOutputStream.java
+badd +1 /tmp/Rectangle.java
+badd +1 src/main/java/lu/uni/adtool/ui/ValuationView.java
+badd +1 src/main/java/lu/uni/adtool/ui/RingModel.java
+badd +1 /tmp/eclim/java/awt/event/MouseListener.java
+badd +1 src/main/java/lu/uni/adtool/ui/DetailsView.java
+badd +1 /tmp/DockingUtil.java
+badd +1 /tmp/eclim/javax/swing/table/TableCellRenderer.java
+badd +1 /tmp/eclim/javax/swing/JTable.java
+badd +1 src/main/java/lu/uni/adtool/ui/LoadExampleDialog.java
+badd +1 target/generated-sources/javacc/lu/uni/adtool/adtree/ParseException.java
+badd +1 target/generated-sources/javacc/lu/uni/adtool/adtree/Token.java
+badd +1 /tmp/FloatingWindow.java
+badd +1 src/main/java/lu/uni/adtool/adtree/ADTLatexExport.java
+badd +1 ~/Private/svn/piotrkordy/projects/ADTool/experiments/treelayout-read-only/org.abego.treelayout/src/main/java/org/abego/treelayout/util/DefaultConfiguration.java
+silent! argdel *
+set lines=84 columns=136
+edit src/main/java/lu/uni/adtool/adtree/ADTLatexExport.java
+set splitbelow splitright
+set nosplitright
+wincmd t
+set winheight=1 winwidth=1
+argglobal
+nnoremap <buffer> <silent>  :JavaSearchContext
+nnoremap <buffer> <silent> ,pc :ProjectClose
+nnoremap <buffer> <silent> ,po :ProjectOpen
+nnoremap <buffer> <silent> ,pl :ProjectList
+nnoremap <buffer> <silent> ,ps :ProjectSettings
+nnoremap <buffer> <silent> ,pr :ProjectRefresh
+nnoremap <buffer> <silent> ,js :JavaSet
+nnoremap <buffer> <silent> ,jg :JavaGet
+nnoremap <buffer> <silent> ,jr :JavaRename 
+nnoremap <buffer> <silent> ,jm :JavaDocComment
+nnoremap <buffer> <silent> ,jl :Checkstyle
+noremap <buffer> <silent> ,jf :JavaFormat
+nnoremap <buffer> <silent> ,jh :JavaHierarchy
+nnoremap <buffer> <silent> ,jd :JavaDelegate
+nnoremap <buffer> <silent> ,jo :JavaImpl
+nnoremap <buffer> <silent> ,jic :JavaImportClean
+nnoremap <buffer> <silent> ,jis :JavaImportSort
+nnoremap <buffer> <silent> ,jim :JavaImportMissing
+nnoremap <buffer> <silent> ,jc :JavaConstructor
+nnoremap <buffer> <silent> ,r :JavaCorrect
+nnoremap <buffer> <silent> ,d :JavaDocSearch -x declarations
+nnoremap <buffer> <silent> ,i :JavaImport
+inoreabbr <buffer> logger logger=eclim#java#logging#LoggingInit("logger")
+inoreabbr <buffer> log log=eclim#java#logging#LoggingInit("log")
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal balloonexpr=
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=j1
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=//%s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=eclim#java#complete#CodeComplete
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal cursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=%A%f:[%l\\,%c]\ %m,%Csymbol%.%#:\ %m,%Zlocation%.%#:\ %m,%AEmbedded\ error:%.%#\ -\ %f:%l:\ %m,%-Z\ %p^,%A%f:%l:\ %m,%-Z\ %p^,%ARunning\ %f,%+ZTests\ run%.%#FAILURE!,%-G%.%#
+setlocal expandtab
+if &filetype != 'java'
+setlocal filetype=java
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=99
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=syntax
+setlocal foldminlines=1
+setlocal foldnestmax=15
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=croql
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=^s*import
+setlocal includeexpr=substitute(v:fname,'\\.','/','g')
+setlocal indentexpr=GetJavaIndent()
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e,0=extends,0=implements
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal linebreak
+setlocal nolisp
+setlocal list
+setlocal makeprg=mvn\ $*
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+setlocal nonumber
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=.,/usr/include,,
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=2
+setlocal noshortname
+setlocal smartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=.java
+setlocal noswapfile
+setlocal synmaxcol=512
+if &syntax != 'java'
+setlocal syntax=java
+endif
+setlocal tabstop=4
+setlocal tags=
+setlocal textwidth=79
+setlocal thesaurus=
+setlocal undofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal nowrap
+setlocal wrapmargin=0
+let s:l = 105 - ((45 * winheight(0) + 40) / 81)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+105
+normal! 01l
+tabedit src/main/java/lu/uni/adtool/adtree/ADTreeForGui.java
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+set nosplitright
+wincmd t
+set winheight=1 winwidth=1
+exe '1resize ' . ((&lines * 68 + 42) / 84)
+exe 'vert 1resize ' . ((&columns * 135 + 68) / 136)
+exe '2resize ' . ((&lines * 68 + 42) / 84)
+argglobal
+nnoremap <buffer> <silent>  :JavaSearchContext
+nnoremap <buffer> <silent> ,i :JavaImport
+nnoremap <buffer> <silent> ,d :JavaDocSearch -x declarations
+nnoremap <buffer> <silent> ,r :JavaCorrect
+nnoremap <buffer> <silent> ,jc :JavaConstructor
+nnoremap <buffer> <silent> ,jim :JavaImportMissing
+nnoremap <buffer> <silent> ,jis :JavaImportSort
+nnoremap <buffer> <silent> ,jic :JavaImportClean
+nnoremap <buffer> <silent> ,jo :JavaImpl
+nnoremap <buffer> <silent> ,jd :JavaDelegate
+nnoremap <buffer> <silent> ,jh :JavaHierarchy
+noremap <buffer> <silent> ,jf :JavaFormat
+nnoremap <buffer> <silent> ,jl :Checkstyle
+nnoremap <buffer> <silent> ,jm :JavaDocComment
+nnoremap <buffer> <silent> ,jr :JavaRename 
+nnoremap <buffer> <silent> ,jg :JavaGet
+nnoremap <buffer> <silent> ,js :JavaSet
+nnoremap <buffer> <silent> ,pr :ProjectRefresh
+nnoremap <buffer> <silent> ,ps :ProjectSettings
+nnoremap <buffer> <silent> ,pl :ProjectList
+nnoremap <buffer> <silent> ,po :ProjectOpen
+nnoremap <buffer> <silent> ,pc :ProjectClose
+inoreabbr <buffer> log log=eclim#java#logging#LoggingInit("log")
+inoreabbr <buffer> logger logger=eclim#java#logging#LoggingInit("logger")
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal balloonexpr=
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=j1
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=//%s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=eclim#java#complete#CodeComplete
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal cursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=%A%f:[%l\\,%c]\ %m,%Csymbol%.%#:\ %m,%Zlocation%.%#:\ %m,%AEmbedded\ error:%.%#\ -\ %f:%l:\ %m,%-Z\ %p^,%A%f:%l:\ %m,%-Z\ %p^,%ARunning\ %f,%+ZTests\ run%.%#FAILURE!,%-G%.%#
+setlocal expandtab
+if &filetype != 'java'
+setlocal filetype=java
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=99
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=syntax
+setlocal foldminlines=1
+setlocal foldnestmax=15
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=croql
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=^s*import
+setlocal includeexpr=substitute(v:fname,'\\.','/','g')
+setlocal indentexpr=GetJavaIndent()
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e,0=extends,0=implements
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal linebreak
+setlocal nolisp
+setlocal list
+setlocal makeprg=mvn\ $*
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+setlocal nonumber
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=.,/usr/include,,
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=2
+setlocal noshortname
+setlocal smartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=.java
+setlocal noswapfile
+setlocal synmaxcol=512
+if &syntax != 'java'
+setlocal syntax=java
+endif
+setlocal tabstop=4
+setlocal tags=
+setlocal textwidth=79
+setlocal thesaurus=
+setlocal undofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal nowrap
+setlocal wrapmargin=0
+let s:l = 660 - ((14 * winheight(0) + 34) / 68)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+660
+normal! 02l
+wincmd w
+argglobal
+edit src/main/java/lu/uni/adtool/ui/DomainView.java
+nnoremap <buffer> <silent>  :JavaSearchContext
+nnoremap <buffer> <silent> ,pc :ProjectClose
+nnoremap <buffer> <silent> ,po :ProjectOpen
+nnoremap <buffer> <silent> ,pl :ProjectList
+nnoremap <buffer> <silent> ,ps :ProjectSettings
+nnoremap <buffer> <silent> ,pr :ProjectRefresh
+nnoremap <buffer> <silent> ,js :JavaSet
+nnoremap <buffer> <silent> ,jg :JavaGet
+nnoremap <buffer> <silent> ,jr :JavaRename 
+nnoremap <buffer> <silent> ,jm :JavaDocComment
+nnoremap <buffer> <silent> ,jl :Checkstyle
+noremap <buffer> <silent> ,jf :JavaFormat
+nnoremap <buffer> <silent> ,jh :JavaHierarchy
+nnoremap <buffer> <silent> ,jd :JavaDelegate
+nnoremap <buffer> <silent> ,jo :JavaImpl
+nnoremap <buffer> <silent> ,jic :JavaImportClean
+nnoremap <buffer> <silent> ,jis :JavaImportSort
+nnoremap <buffer> <silent> ,jim :JavaImportMissing
+nnoremap <buffer> <silent> ,jc :JavaConstructor
+nnoremap <buffer> <silent> ,r :JavaCorrect
+nnoremap <buffer> <silent> ,d :JavaDocSearch -x declarations
+nnoremap <buffer> <silent> ,i :JavaImport
+inoreabbr <buffer> logger logger=eclim#java#logging#LoggingInit("logger")
+inoreabbr <buffer> log log=eclim#java#logging#LoggingInit("log")
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal balloonexpr=
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=j1
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=//%s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=eclim#java#complete#CodeComplete
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal cursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=%A%f:[%l\\,%c]\ %m,%Csymbol%.%#:\ %m,%Zlocation%.%#:\ %m,%AEmbedded\ error:%.%#\ -\ %f:%l:\ %m,%-Z\ %p^,%A%f:%l:\ %m,%-Z\ %p^,%ARunning\ %f,%+ZTests\ run%.%#FAILURE!,%-G%.%#
+setlocal expandtab
+if &filetype != 'java'
+setlocal filetype=java
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=99
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=syntax
+setlocal foldminlines=1
+setlocal foldnestmax=15
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=croql
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=^s*import
+setlocal includeexpr=substitute(v:fname,'\\.','/','g')
+setlocal indentexpr=GetJavaIndent()
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e,0=extends,0=implements
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal linebreak
+setlocal nolisp
+setlocal list
+setlocal makeprg=mvn\ $*
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+setlocal nonumber
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=.,/usr/include,,
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=2
+setlocal noshortname
+setlocal smartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=.java
+setlocal noswapfile
+setlocal synmaxcol=512
+if &syntax != 'java'
+setlocal syntax=java
+endif
+setlocal tabstop=4
+setlocal tags=
+setlocal textwidth=79
+setlocal thesaurus=
+setlocal undofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal nowrap
+setlocal wrapmargin=0
+let s:l = 112 - ((49 * winheight(0) + 34) / 68)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+112
+normal! 012l
+wincmd w
+exe '1resize ' . ((&lines * 68 + 42) / 84)
+exe 'vert 1resize ' . ((&columns * 135 + 68) / 136)
+exe '2resize ' . ((&lines * 68 + 42) / 84)
+tabedit src/main/java/lu/uni/adtool/adtree/ADTreeNode.java
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+set nosplitright
+wincmd t
+set winheight=1 winwidth=1
+exe '1resize ' . ((&lines * 68 + 42) / 84)
+exe 'vert 1resize ' . ((&columns * 135 + 68) / 136)
+exe '2resize ' . ((&lines * 68 + 42) / 84)
+argglobal
+nnoremap <buffer> <silent>  :JavaSearchContext
+nnoremap <buffer> <silent> ,pc :ProjectClose
+nnoremap <buffer> <silent> ,po :ProjectOpen
+nnoremap <buffer> <silent> ,pl :ProjectList
+nnoremap <buffer> <silent> ,ps :ProjectSettings
+nnoremap <buffer> <silent> ,pr :ProjectRefresh
+nnoremap <buffer> <silent> ,js :JavaSet
+nnoremap <buffer> <silent> ,jg :JavaGet
+nnoremap <buffer> <silent> ,jr :JavaRename 
+nnoremap <buffer> <silent> ,jm :JavaDocComment
+nnoremap <buffer> <silent> ,jl :Checkstyle
+noremap <buffer> <silent> ,jf :JavaFormat
+nnoremap <buffer> <silent> ,jh :JavaHierarchy
+nnoremap <buffer> <silent> ,jd :JavaDelegate
+nnoremap <buffer> <silent> ,jo :JavaImpl
+nnoremap <buffer> <silent> ,jic :JavaImportClean
+nnoremap <buffer> <silent> ,jis :JavaImportSort
+nnoremap <buffer> <silent> ,jim :JavaImportMissing
+nnoremap <buffer> <silent> ,jc :JavaConstructor
+nnoremap <buffer> <silent> ,r :JavaCorrect
+nnoremap <buffer> <silent> ,d :JavaDocSearch -x declarations
+nnoremap <buffer> <silent> ,i :JavaImport
+inoreabbr <buffer> logger logger=eclim#java#logging#LoggingInit("logger")
+inoreabbr <buffer> log log=eclim#java#logging#LoggingInit("log")
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal balloonexpr=
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=j1
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=//%s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=eclim#java#complete#CodeComplete
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal cursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=%A%f:[%l\\,%c]\ %m,%Csymbol%.%#:\ %m,%Zlocation%.%#:\ %m,%AEmbedded\ error:%.%#\ -\ %f:%l:\ %m,%-Z\ %p^,%A%f:%l:\ %m,%-Z\ %p^,%ARunning\ %f,%+ZTests\ run%.%#FAILURE!,%-G%.%#
+setlocal expandtab
+if &filetype != 'java'
+setlocal filetype=java
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=99
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=syntax
+setlocal foldminlines=1
+setlocal foldnestmax=15
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=croql
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=^s*import
+setlocal includeexpr=substitute(v:fname,'\\.','/','g')
+setlocal indentexpr=GetJavaIndent()
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e,0=extends,0=implements
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal linebreak
+setlocal nolisp
+setlocal list
+setlocal makeprg=mvn\ $*
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+setlocal nonumber
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=.,/usr/include,,
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=2
+setlocal noshortname
+setlocal smartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=.java
+setlocal noswapfile
+setlocal synmaxcol=512
+if &syntax != 'java'
+setlocal syntax=java
+endif
+setlocal tabstop=4
+setlocal tags=
+setlocal textwidth=79
+setlocal thesaurus=
+setlocal undofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal nowrap
+setlocal wrapmargin=0
+let s:l = 278 - ((8 * winheight(0) + 34) / 68)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+278
+normal! 03l
+wincmd w
+argglobal
+edit src/main/java/lu/uni/adtool/ui/DetailsView.java
+nnoremap <buffer> <silent>  :JavaSearchContext
+nnoremap <buffer> <silent> ,pc :ProjectClose
+nnoremap <buffer> <silent> ,po :ProjectOpen
+nnoremap <buffer> <silent> ,pl :ProjectList
+nnoremap <buffer> <silent> ,ps :ProjectSettings
+nnoremap <buffer> <silent> ,pr :ProjectRefresh
+nnoremap <buffer> <silent> ,js :JavaSet
+nnoremap <buffer> <silent> ,jg :JavaGet
+nnoremap <buffer> <silent> ,jr :JavaRename 
+nnoremap <buffer> <silent> ,jm :JavaDocComment
+nnoremap <buffer> <silent> ,jl :Checkstyle
+noremap <buffer> <silent> ,jf :JavaFormat
+nnoremap <buffer> <silent> ,jh :JavaHierarchy
+nnoremap <buffer> <silent> ,jd :JavaDelegate
+nnoremap <buffer> <silent> ,jo :JavaImpl
+nnoremap <buffer> <silent> ,jic :JavaImportClean
+nnoremap <buffer> <silent> ,jis :JavaImportSort
+nnoremap <buffer> <silent> ,jim :JavaImportMissing
+nnoremap <buffer> <silent> ,jc :JavaConstructor
+nnoremap <buffer> <silent> ,r :JavaCorrect
+nnoremap <buffer> <silent> ,d :JavaDocSearch -x declarations
+nnoremap <buffer> <silent> ,i :JavaImport
+inoreabbr <buffer> logger logger=eclim#java#logging#LoggingInit("logger")
+inoreabbr <buffer> log log=eclim#java#logging#LoggingInit("log")
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal balloonexpr=
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=j1
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=//%s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=eclim#java#complete#CodeComplete
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal cursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=%A%f:[%l\\,%c]\ %m,%Csymbol%.%#:\ %m,%Zlocation%.%#:\ %m,%AEmbedded\ error:%.%#\ -\ %f:%l:\ %m,%-Z\ %p^,%A%f:%l:\ %m,%-Z\ %p^,%ARunning\ %f,%+ZTests\ run%.%#FAILURE!,%-G%.%#
+setlocal expandtab
+if &filetype != 'java'
+setlocal filetype=java
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=99
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=syntax
+setlocal foldminlines=1
+setlocal foldnestmax=15
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=croql
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=^s*import
+setlocal includeexpr=substitute(v:fname,'\\.','/','g')
+setlocal indentexpr=GetJavaIndent()
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e,0=extends,0=implements
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal linebreak
+setlocal nolisp
+setlocal list
+setlocal makeprg=mvn\ $*
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+setlocal nonumber
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=.,/usr/include,,
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=2
+setlocal noshortname
+setlocal smartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=.java
+setlocal noswapfile
+setlocal synmaxcol=512
+if &syntax != 'java'
+setlocal syntax=java
+endif
+setlocal tabstop=4
+setlocal tags=
+setlocal textwidth=79
+setlocal thesaurus=
+setlocal undofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal nowrap
+setlocal wrapmargin=0
+let s:l = 1 - ((0 * winheight(0) + 34) / 68)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+1
+normal! 0
+wincmd w
+exe '1resize ' . ((&lines * 68 + 42) / 84)
+exe 'vert 1resize ' . ((&columns * 135 + 68) / 136)
+exe '2resize ' . ((&lines * 68 + 42) / 84)
+tabedit src/main/java/lu/uni/adtool/adtree/ADTreeNodeExtentProvider.java
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+set nosplitright
+wincmd t
+set winheight=1 winwidth=1
+exe '1resize ' . ((&lines * 68 + 42) / 84)
+exe 'vert 1resize ' . ((&columns * 135 + 68) / 136)
+exe '2resize ' . ((&lines * 68 + 42) / 84)
+argglobal
+nnoremap <buffer> <silent>  :JavaSearchContext
+nnoremap <buffer> <silent> ,pc :ProjectClose
+nnoremap <buffer> <silent> ,po :ProjectOpen
+nnoremap <buffer> <silent> ,pl :ProjectList
+nnoremap <buffer> <silent> ,ps :ProjectSettings
+nnoremap <buffer> <silent> ,pr :ProjectRefresh
+nnoremap <buffer> <silent> ,js :JavaSet
+nnoremap <buffer> <silent> ,jg :JavaGet
+nnoremap <buffer> <silent> ,jr :JavaRename 
+nnoremap <buffer> <silent> ,jm :JavaDocComment
+nnoremap <buffer> <silent> ,jl :Checkstyle
+noremap <buffer> <silent> ,jf :JavaFormat
+nnoremap <buffer> <silent> ,jh :JavaHierarchy
+nnoremap <buffer> <silent> ,jd :JavaDelegate
+nnoremap <buffer> <silent> ,jo :JavaImpl
+nnoremap <buffer> <silent> ,jic :JavaImportClean
+nnoremap <buffer> <silent> ,jis :JavaImportSort
+nnoremap <buffer> <silent> ,jim :JavaImportMissing
+nnoremap <buffer> <silent> ,jc :JavaConstructor
+nnoremap <buffer> <silent> ,r :JavaCorrect
+nnoremap <buffer> <silent> ,d :JavaDocSearch -x declarations
+nnoremap <buffer> <silent> ,i :JavaImport
+inoreabbr <buffer> logger logger=eclim#java#logging#LoggingInit("logger")
+inoreabbr <buffer> log log=eclim#java#logging#LoggingInit("log")
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal balloonexpr=
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=j1
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=//%s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=eclim#java#complete#CodeComplete
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal cursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=%A%f:[%l\\,%c]\ %m,%Csymbol%.%#:\ %m,%Zlocation%.%#:\ %m,%AEmbedded\ error:%.%#\ -\ %f:%l:\ %m,%-Z\ %p^,%A%f:%l:\ %m,%-Z\ %p^,%ARunning\ %f,%+ZTests\ run%.%#FAILURE!,%-G%.%#
+setlocal expandtab
+if &filetype != 'java'
+setlocal filetype=java
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=99
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=syntax
+setlocal foldminlines=1
+setlocal foldnestmax=15
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=croql
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=^s*import
+setlocal includeexpr=substitute(v:fname,'\\.','/','g')
+setlocal indentexpr=GetJavaIndent()
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e,0=extends,0=implements
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal linebreak
+setlocal nolisp
+setlocal list
+setlocal makeprg=mvn\ $*
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+setlocal nonumber
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=.,/usr/include,,
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=2
+setlocal noshortname
+setlocal smartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=.java
+setlocal noswapfile
+setlocal synmaxcol=512
+if &syntax != 'java'
+setlocal syntax=java
+endif
+setlocal tabstop=4
+setlocal tags=
+setlocal textwidth=79
+setlocal thesaurus=
+setlocal undofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal nowrap
+setlocal wrapmargin=0
+let s:l = 147 - ((66 * winheight(0) + 34) / 68)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+147
+normal! 0
+wincmd w
+argglobal
+edit src/main/java/lu/uni/adtool/Options.java
+nnoremap <buffer> <silent>  :JavaSearchContext
+nnoremap <buffer> <silent> ,pc :ProjectClose
+nnoremap <buffer> <silent> ,po :ProjectOpen
+nnoremap <buffer> <silent> ,pl :ProjectList
+nnoremap <buffer> <silent> ,ps :ProjectSettings
+nnoremap <buffer> <silent> ,pr :ProjectRefresh
+nnoremap <buffer> <silent> ,js :JavaSet
+nnoremap <buffer> <silent> ,jg :JavaGet
+nnoremap <buffer> <silent> ,jr :JavaRename 
+nnoremap <buffer> <silent> ,jm :JavaDocComment
+nnoremap <buffer> <silent> ,jl :Checkstyle
+noremap <buffer> <silent> ,jf :JavaFormat
+nnoremap <buffer> <silent> ,jh :JavaHierarchy
+nnoremap <buffer> <silent> ,jd :JavaDelegate
+nnoremap <buffer> <silent> ,jo :JavaImpl
+nnoremap <buffer> <silent> ,jic :JavaImportClean
+nnoremap <buffer> <silent> ,jis :JavaImportSort
+nnoremap <buffer> <silent> ,jim :JavaImportMissing
+nnoremap <buffer> <silent> ,jc :JavaConstructor
+nnoremap <buffer> <silent> ,r :JavaCorrect
+nnoremap <buffer> <silent> ,d :JavaDocSearch -x declarations
+nnoremap <buffer> <silent> ,i :JavaImport
+inoreabbr <buffer> logger logger=eclim#java#logging#LoggingInit("logger")
+inoreabbr <buffer> log log=eclim#java#logging#LoggingInit("log")
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal balloonexpr=
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=j1
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=//%s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=eclim#java#complete#CodeComplete
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal cursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=%A%f:[%l\\,%c]\ %m,%Csymbol%.%#:\ %m,%Zlocation%.%#:\ %m,%AEmbedded\ error:%.%#\ -\ %f:%l:\ %m,%-Z\ %p^,%A%f:%l:\ %m,%-Z\ %p^,%ARunning\ %f,%+ZTests\ run%.%#FAILURE!,%-G%.%#
+setlocal expandtab
+if &filetype != 'java'
+setlocal filetype=java
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=99
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=syntax
+setlocal foldminlines=1
+setlocal foldnestmax=15
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=croql
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=^s*import
+setlocal includeexpr=substitute(v:fname,'\\.','/','g')
+setlocal indentexpr=GetJavaIndent()
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e,0=extends,0=implements
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal linebreak
+setlocal nolisp
+setlocal list
+setlocal makeprg=mvn\ $*
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+setlocal nonumber
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=.,/usr/include,,
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=2
+setlocal noshortname
+setlocal smartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=.java
+setlocal noswapfile
+setlocal synmaxcol=512
+if &syntax != 'java'
+setlocal syntax=java
+endif
+setlocal tabstop=4
+setlocal tags=
+setlocal textwidth=79
+setlocal thesaurus=
+setlocal undofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal nowrap
+setlocal wrapmargin=0
+let s:l = 45 - ((30 * winheight(0) + 34) / 68)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+45
+normal! 0
+wincmd w
+exe '1resize ' . ((&lines * 68 + 42) / 84)
+exe 'vert 1resize ' . ((&columns * 135 + 68) / 136)
+exe '2resize ' . ((&lines * 68 + 42) / 84)
+tabedit src/main/java/lu/uni/adtool/adtconverter/RTED_InfoTree.java
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+set nosplitright
+wincmd t
+set winheight=1 winwidth=1
+exe '1resize ' . ((&lines * 68 + 42) / 84)
+exe 'vert 1resize ' . ((&columns * 133 + 68) / 136)
+exe '2resize ' . ((&lines * 68 + 42) / 84)
+argglobal
+nnoremap <buffer> <silent>  :JavaSearchContext
+nnoremap <buffer> <silent> ,i :JavaImport
+nnoremap <buffer> <silent> ,d :JavaDocSearch -x declarations
+nnoremap <buffer> <silent> ,r :JavaCorrect
+nnoremap <buffer> <silent> ,jc :JavaConstructor
+nnoremap <buffer> <silent> ,jim :JavaImportMissing
+nnoremap <buffer> <silent> ,jis :JavaImportSort
+nnoremap <buffer> <silent> ,jic :JavaImportClean
+nnoremap <buffer> <silent> ,jo :JavaImpl
+nnoremap <buffer> <silent> ,jd :JavaDelegate
+nnoremap <buffer> <silent> ,jh :JavaHierarchy
+noremap <buffer> <silent> ,jf :JavaFormat
+nnoremap <buffer> <silent> ,jl :Checkstyle
+nnoremap <buffer> <silent> ,jm :JavaDocComment
+nnoremap <buffer> <silent> ,jr :JavaRename 
+nnoremap <buffer> <silent> ,jg :JavaGet
+nnoremap <buffer> <silent> ,js :JavaSet
+nnoremap <buffer> <silent> ,pr :ProjectRefresh
+nnoremap <buffer> <silent> ,ps :ProjectSettings
+nnoremap <buffer> <silent> ,pl :ProjectList
+nnoremap <buffer> <silent> ,po :ProjectOpen
+nnoremap <buffer> <silent> ,pc :ProjectClose
+inoreabbr <buffer> log log=eclim#java#logging#LoggingInit("log")
+inoreabbr <buffer> logger logger=eclim#java#logging#LoggingInit("logger")
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal balloonexpr=
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=j1
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=//%s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=eclim#java#complete#CodeComplete
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal cursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=%A%f:[%l\\,%c]\ %m,%Csymbol%.%#:\ %m,%Zlocation%.%#:\ %m,%AEmbedded\ error:%.%#\ -\ %f:%l:\ %m,%-Z\ %p^,%A%f:%l:\ %m,%-Z\ %p^,%ARunning\ %f,%+ZTests\ run%.%#FAILURE!,%-G%.%#
+setlocal expandtab
+if &filetype != 'java'
+setlocal filetype=java
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=99
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=syntax
+setlocal foldminlines=1
+setlocal foldnestmax=15
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=croql
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=^s*import
+setlocal includeexpr=substitute(v:fname,'\\.','/','g')
+setlocal indentexpr=GetJavaIndent()
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e,0=extends,0=implements
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal linebreak
+setlocal nolisp
+setlocal list
+setlocal makeprg=mvn\ $*
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+setlocal nonumber
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=.,/usr/include,,
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=2
+setlocal noshortname
+setlocal smartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=.java
+setlocal noswapfile
+setlocal synmaxcol=512
+if &syntax != 'java'
+setlocal syntax=java
+endif
+setlocal tabstop=4
+setlocal tags=
+setlocal textwidth=79
+setlocal thesaurus=
+setlocal undofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal nowrap
+setlocal wrapmargin=0
+let s:l = 277 - ((34 * winheight(0) + 34) / 68)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+277
+normal! 04l
+wincmd w
+argglobal
+edit src/main/java/lu/uni/adtool/adtconverter/enums/PathType.java
+nnoremap <buffer> <silent>  :JavaSearchContext
+nnoremap <buffer> <silent> ,i :JavaImport
+nnoremap <buffer> <silent> ,d :JavaDocSearch -x declarations
+nnoremap <buffer> <silent> ,r :JavaCorrect
+nnoremap <buffer> <silent> ,jc :JavaConstructor
+nnoremap <buffer> <silent> ,jim :JavaImportMissing
+nnoremap <buffer> <silent> ,jis :JavaImportSort
+nnoremap <buffer> <silent> ,jic :JavaImportClean
+nnoremap <buffer> <silent> ,jo :JavaImpl
+nnoremap <buffer> <silent> ,jd :JavaDelegate
+nnoremap <buffer> <silent> ,jh :JavaHierarchy
+noremap <buffer> <silent> ,jf :JavaFormat
+nnoremap <buffer> <silent> ,jl :Checkstyle
+nnoremap <buffer> <silent> ,jm :JavaDocComment
+nnoremap <buffer> <silent> ,jr :JavaRename 
+nnoremap <buffer> <silent> ,jg :JavaGet
+nnoremap <buffer> <silent> ,js :JavaSet
+nnoremap <buffer> <silent> ,pr :ProjectRefresh
+nnoremap <buffer> <silent> ,ps :ProjectSettings
+nnoremap <buffer> <silent> ,pl :ProjectList
+nnoremap <buffer> <silent> ,po :ProjectOpen
+nnoremap <buffer> <silent> ,pc :ProjectClose
+inoreabbr <buffer> log log=eclim#java#logging#LoggingInit("log")
+inoreabbr <buffer> logger logger=eclim#java#logging#LoggingInit("logger")
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal balloonexpr=
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=j1
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=//%s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=eclim#java#complete#CodeComplete
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal cursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=%A%f:[%l\\,%c]\ %m,%Csymbol%.%#:\ %m,%Zlocation%.%#:\ %m,%AEmbedded\ error:%.%#\ -\ %f:%l:\ %m,%-Z\ %p^,%A%f:%l:\ %m,%-Z\ %p^,%ARunning\ %f,%+ZTests\ run%.%#FAILURE!,%-G%.%#
+setlocal expandtab
+if &filetype != 'java'
+setlocal filetype=java
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=99
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=syntax
+setlocal foldminlines=1
+setlocal foldnestmax=15
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=croql
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=^s*import
+setlocal includeexpr=substitute(v:fname,'\\.','/','g')
+setlocal indentexpr=GetJavaIndent()
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e,0=extends,0=implements
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal linebreak
+setlocal nolisp
+setlocal list
+setlocal makeprg=mvn\ $*
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+setlocal nonumber
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=.,/usr/include,,
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=2
+setlocal noshortname
+setlocal smartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=.java
+setlocal noswapfile
+setlocal synmaxcol=512
+if &syntax != 'java'
+setlocal syntax=java
+endif
+setlocal tabstop=4
+setlocal tags=
+setlocal textwidth=79
+setlocal thesaurus=
+setlocal undofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal nowrap
+setlocal wrapmargin=0
+let s:l = 30 - ((28 * winheight(0) + 34) / 68)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+30
+normal! 09l
+wincmd w
+exe '1resize ' . ((&lines * 68 + 42) / 84)
+exe 'vert 1resize ' . ((&columns * 133 + 68) / 136)
+exe '2resize ' . ((&lines * 68 + 42) / 84)
+tabedit src/main/java/lu/uni/adtool/adtree/ADTNode.java
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+set nosplitright
+wincmd t
+set winheight=1 winwidth=1
+exe '1resize ' . ((&lines * 68 + 42) / 84)
+exe 'vert 1resize ' . ((&columns * 135 + 68) / 136)
+exe '2resize ' . ((&lines * 68 + 42) / 84)
+argglobal
+nnoremap <buffer> <silent>  :JavaSearchContext
+nnoremap <buffer> <silent> ,i :JavaImport
+nnoremap <buffer> <silent> ,d :JavaDocSearch -x declarations
+nnoremap <buffer> <silent> ,r :JavaCorrect
+nnoremap <buffer> <silent> ,jc :JavaConstructor
+nnoremap <buffer> <silent> ,jim :JavaImportMissing
+nnoremap <buffer> <silent> ,jis :JavaImportSort
+nnoremap <buffer> <silent> ,jic :JavaImportClean
+nnoremap <buffer> <silent> ,jo :JavaImpl
+nnoremap <buffer> <silent> ,jd :JavaDelegate
+nnoremap <buffer> <silent> ,jh :JavaHierarchy
+noremap <buffer> <silent> ,jf :JavaFormat
+nnoremap <buffer> <silent> ,jl :Checkstyle
+nnoremap <buffer> <silent> ,jm :JavaDocComment
+nnoremap <buffer> <silent> ,jr :JavaRename 
+nnoremap <buffer> <silent> ,jg :JavaGet
+nnoremap <buffer> <silent> ,js :JavaSet
+nnoremap <buffer> <silent> ,pr :ProjectRefresh
+nnoremap <buffer> <silent> ,ps :ProjectSettings
+nnoremap <buffer> <silent> ,pl :ProjectList
+nnoremap <buffer> <silent> ,po :ProjectOpen
+nnoremap <buffer> <silent> ,pc :ProjectClose
+inoreabbr <buffer> log log=eclim#java#logging#LoggingInit("log")
+inoreabbr <buffer> logger logger=eclim#java#logging#LoggingInit("logger")
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal balloonexpr=
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=j1
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=//%s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=eclim#java#complete#CodeComplete
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal cursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=%A%f:[%l\\,%c]\ %m,%Csymbol%.%#:\ %m,%Zlocation%.%#:\ %m,%AEmbedded\ error:%.%#\ -\ %f:%l:\ %m,%-Z\ %p^,%A%f:%l:\ %m,%-Z\ %p^,%ARunning\ %f,%+ZTests\ run%.%#FAILURE!,%-G%.%#
+setlocal expandtab
+if &filetype != 'java'
+setlocal filetype=java
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=99
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=syntax
+setlocal foldminlines=1
+setlocal foldnestmax=15
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=croql
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=^s*import
+setlocal includeexpr=substitute(v:fname,'\\.','/','g')
+setlocal indentexpr=GetJavaIndent()
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e,0=extends,0=implements
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal linebreak
+setlocal nolisp
+setlocal list
+setlocal makeprg=mvn\ $*
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+setlocal nonumber
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=.,/usr/include,,
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=2
+setlocal noshortname
+setlocal smartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=.java
+setlocal noswapfile
+setlocal synmaxcol=512
+if &syntax != 'java'
+setlocal syntax=java
+endif
+setlocal tabstop=4
+setlocal tags=
+setlocal textwidth=79
+setlocal thesaurus=
+setlocal undofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal nowrap
+setlocal wrapmargin=0
+let s:l = 26 - ((24 * winheight(0) + 34) / 68)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+26
+normal! 022l
+wincmd w
+argglobal
+edit src/main/java/lu/uni/adtool/ui/ADTermView.java
+nnoremap <buffer> <silent>  :JavaSearchContext
+nnoremap <buffer> <silent> ,i :JavaImport
+nnoremap <buffer> <silent> ,d :JavaDocSearch -x declarations
+nnoremap <buffer> <silent> ,r :JavaCorrect
+nnoremap <buffer> <silent> ,jc :JavaConstructor
+nnoremap <buffer> <silent> ,jim :JavaImportMissing
+nnoremap <buffer> <silent> ,jis :JavaImportSort
+nnoremap <buffer> <silent> ,jic :JavaImportClean
+nnoremap <buffer> <silent> ,jo :JavaImpl
+nnoremap <buffer> <silent> ,jd :JavaDelegate
+nnoremap <buffer> <silent> ,jh :JavaHierarchy
+noremap <buffer> <silent> ,jf :JavaFormat
+nnoremap <buffer> <silent> ,jl :Checkstyle
+nnoremap <buffer> <silent> ,jm :JavaDocComment
+nnoremap <buffer> <silent> ,jr :JavaRename 
+nnoremap <buffer> <silent> ,jg :JavaGet
+nnoremap <buffer> <silent> ,js :JavaSet
+nnoremap <buffer> <silent> ,pr :ProjectRefresh
+nnoremap <buffer> <silent> ,ps :ProjectSettings
+nnoremap <buffer> <silent> ,pl :ProjectList
+nnoremap <buffer> <silent> ,po :ProjectOpen
+nnoremap <buffer> <silent> ,pc :ProjectClose
+inoreabbr <buffer> log log=eclim#java#logging#LoggingInit("log")
+inoreabbr <buffer> logger logger=eclim#java#logging#LoggingInit("logger")
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal balloonexpr=
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=j1
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=//%s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=eclim#java#complete#CodeComplete
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal cursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=%A%f:[%l\\,%c]\ %m,%Csymbol%.%#:\ %m,%Zlocation%.%#:\ %m,%AEmbedded\ error:%.%#\ -\ %f:%l:\ %m,%-Z\ %p^,%A%f:%l:\ %m,%-Z\ %p^,%ARunning\ %f,%+ZTests\ run%.%#FAILURE!,%-G%.%#
+setlocal expandtab
+if &filetype != 'java'
+setlocal filetype=java
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=99
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=syntax
+setlocal foldminlines=1
+setlocal foldnestmax=15
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=croql
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=^s*import
+setlocal includeexpr=substitute(v:fname,'\\.','/','g')
+setlocal indentexpr=GetJavaIndent()
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e,0=extends,0=implements
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal linebreak
+setlocal nolisp
+setlocal list
+setlocal makeprg=mvn\ $*
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+setlocal nonumber
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=.,/usr/include,,
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=2
+setlocal noshortname
+setlocal smartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=.java
+setlocal noswapfile
+setlocal synmaxcol=512
+if &syntax != 'java'
+setlocal syntax=java
+endif
+setlocal tabstop=4
+setlocal tags=
+setlocal textwidth=79
+setlocal thesaurus=
+setlocal undofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal nowrap
+setlocal wrapmargin=0
+let s:l = 218 - ((53 * winheight(0) + 34) / 68)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+218
+normal! 051l
+wincmd w
+exe '1resize ' . ((&lines * 68 + 42) / 84)
+exe 'vert 1resize ' . ((&columns * 135 + 68) / 136)
+exe '2resize ' . ((&lines * 68 + 42) / 84)
+tabedit src/main/java/lu/uni/adtool/adtconverter/EditPath.java
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+set nosplitright
+wincmd t
+set winheight=1 winwidth=1
+exe '1resize ' . ((&lines * 68 + 42) / 84)
+exe 'vert 1resize ' . ((&columns * 133 + 68) / 136)
+exe '2resize ' . ((&lines * 68 + 42) / 84)
+argglobal
+nnoremap <buffer> <silent>  :JavaSearchContext
+nnoremap <buffer> <silent> ,i :JavaImport
+nnoremap <buffer> <silent> ,d :JavaDocSearch -x declarations
+nnoremap <buffer> <silent> ,r :JavaCorrect
+nnoremap <buffer> <silent> ,jc :JavaConstructor
+nnoremap <buffer> <silent> ,jim :JavaImportMissing
+nnoremap <buffer> <silent> ,jis :JavaImportSort
+nnoremap <buffer> <silent> ,jic :JavaImportClean
+nnoremap <buffer> <silent> ,jo :JavaImpl
+nnoremap <buffer> <silent> ,jd :JavaDelegate
+nnoremap <buffer> <silent> ,jh :JavaHierarchy
+noremap <buffer> <silent> ,jf :JavaFormat
+nnoremap <buffer> <silent> ,jl :Checkstyle
+nnoremap <buffer> <silent> ,jm :JavaDocComment
+nnoremap <buffer> <silent> ,jr :JavaRename 
+nnoremap <buffer> <silent> ,jg :JavaGet
+nnoremap <buffer> <silent> ,js :JavaSet
+nnoremap <buffer> <silent> ,pr :ProjectRefresh
+nnoremap <buffer> <silent> ,ps :ProjectSettings
+nnoremap <buffer> <silent> ,pl :ProjectList
+nnoremap <buffer> <silent> ,po :ProjectOpen
+nnoremap <buffer> <silent> ,pc :ProjectClose
+inoreabbr <buffer> log log=eclim#java#logging#LoggingInit("log")
+inoreabbr <buffer> logger logger=eclim#java#logging#LoggingInit("logger")
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal balloonexpr=
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=j1
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=//%s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=eclim#java#complete#CodeComplete
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal cursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=%A%f:[%l\\,%c]\ %m,%Csymbol%.%#:\ %m,%Zlocation%.%#:\ %m,%AEmbedded\ error:%.%#\ -\ %f:%l:\ %m,%-Z\ %p^,%A%f:%l:\ %m,%-Z\ %p^,%ARunning\ %f,%+ZTests\ run%.%#FAILURE!,%-G%.%#
+setlocal expandtab
+if &filetype != 'java'
+setlocal filetype=java
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=99
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=syntax
+setlocal foldminlines=1
+setlocal foldnestmax=15
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=croql
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=^s*import
+setlocal includeexpr=substitute(v:fname,'\\.','/','g')
+setlocal indentexpr=GetJavaIndent()
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e,0=extends,0=implements
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal linebreak
+setlocal nolisp
+setlocal list
+setlocal makeprg=mvn\ $*
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+setlocal nonumber
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=.,/usr/include,,
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=2
+setlocal noshortname
+setlocal smartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=.java
+setlocal noswapfile
+setlocal synmaxcol=512
+if &syntax != 'java'
+setlocal syntax=java
+endif
+setlocal tabstop=4
+setlocal tags=
+setlocal textwidth=79
+setlocal thesaurus=
+setlocal undofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal nowrap
+setlocal wrapmargin=0
+let s:l = 20 - ((18 * winheight(0) + 34) / 68)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+20
+normal! 028l
+wincmd w
+argglobal
+edit src/main/java/lu/uni/adtool/adtconverter/EditAction.java
+nnoremap <buffer> <silent>  :JavaSearchContext
+nnoremap <buffer> <silent> ,i :JavaImport
+nnoremap <buffer> <silent> ,d :JavaDocSearch -x declarations
+nnoremap <buffer> <silent> ,r :JavaCorrect
+nnoremap <buffer> <silent> ,jc :JavaConstructor
+nnoremap <buffer> <silent> ,jim :JavaImportMissing
+nnoremap <buffer> <silent> ,jis :JavaImportSort
+nnoremap <buffer> <silent> ,jic :JavaImportClean
+nnoremap <buffer> <silent> ,jo :JavaImpl
+nnoremap <buffer> <silent> ,jd :JavaDelegate
+nnoremap <buffer> <silent> ,jh :JavaHierarchy
+noremap <buffer> <silent> ,jf :JavaFormat
+nnoremap <buffer> <silent> ,jl :Checkstyle
+nnoremap <buffer> <silent> ,jm :JavaDocComment
+nnoremap <buffer> <silent> ,jr :JavaRename 
+nnoremap <buffer> <silent> ,jg :JavaGet
+nnoremap <buffer> <silent> ,js :JavaSet
+nnoremap <buffer> <silent> ,pr :ProjectRefresh
+nnoremap <buffer> <silent> ,ps :ProjectSettings
+nnoremap <buffer> <silent> ,pl :ProjectList
+nnoremap <buffer> <silent> ,po :ProjectOpen
+nnoremap <buffer> <silent> ,pc :ProjectClose
+inoreabbr <buffer> log log=eclim#java#logging#LoggingInit("log")
+inoreabbr <buffer> logger logger=eclim#java#logging#LoggingInit("logger")
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal balloonexpr=
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=j1
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=//%s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=eclim#java#complete#CodeComplete
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal cursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=%A%f:[%l\\,%c]\ %m,%Csymbol%.%#:\ %m,%Zlocation%.%#:\ %m,%AEmbedded\ error:%.%#\ -\ %f:%l:\ %m,%-Z\ %p^,%A%f:%l:\ %m,%-Z\ %p^,%ARunning\ %f,%+ZTests\ run%.%#FAILURE!,%-G%.%#
+setlocal expandtab
+if &filetype != 'java'
+setlocal filetype=java
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=99
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=syntax
+setlocal foldminlines=1
+setlocal foldnestmax=15
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=croql
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=^s*import
+setlocal includeexpr=substitute(v:fname,'\\.','/','g')
+setlocal indentexpr=GetJavaIndent()
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e,0=extends,0=implements
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal linebreak
+setlocal nolisp
+setlocal list
+setlocal makeprg=mvn\ $*
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+setlocal nonumber
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=.,/usr/include,,
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=2
+setlocal noshortname
+setlocal smartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=.java
+setlocal noswapfile
+setlocal synmaxcol=512
+if &syntax != 'java'
+setlocal syntax=java
+endif
+setlocal tabstop=4
+setlocal tags=
+setlocal textwidth=79
+setlocal thesaurus=
+setlocal undofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal nowrap
+setlocal wrapmargin=0
+let s:l = 31 - ((29 * winheight(0) + 34) / 68)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+31
+normal! 017l
+wincmd w
+exe '1resize ' . ((&lines * 68 + 42) / 84)
+exe 'vert 1resize ' . ((&columns * 133 + 68) / 136)
+exe '2resize ' . ((&lines * 68 + 42) / 84)
+tabedit src/main/java/lu/uni/adtool/adtconverter/LabelDictionary.java
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+set nosplitright
+wincmd t
+set winheight=1 winwidth=1
+exe '1resize ' . ((&lines * 68 + 42) / 84)
+exe 'vert 1resize ' . ((&columns * 135 + 68) / 136)
+exe '2resize ' . ((&lines * 68 + 42) / 84)
+argglobal
+nnoremap <buffer> <silent>  :JavaSearchContext
+nnoremap <buffer> <silent> ,i :JavaImport
+nnoremap <buffer> <silent> ,d :JavaDocSearch -x declarations
+nnoremap <buffer> <silent> ,r :JavaCorrect
+nnoremap <buffer> <silent> ,jc :JavaConstructor
+nnoremap <buffer> <silent> ,jim :JavaImportMissing
+nnoremap <buffer> <silent> ,jis :JavaImportSort
+nnoremap <buffer> <silent> ,jic :JavaImportClean
+nnoremap <buffer> <silent> ,jo :JavaImpl
+nnoremap <buffer> <silent> ,jd :JavaDelegate
+nnoremap <buffer> <silent> ,jh :JavaHierarchy
+noremap <buffer> <silent> ,jf :JavaFormat
+nnoremap <buffer> <silent> ,jl :Checkstyle
+nnoremap <buffer> <silent> ,jm :JavaDocComment
+nnoremap <buffer> <silent> ,jr :JavaRename 
+nnoremap <buffer> <silent> ,jg :JavaGet
+nnoremap <buffer> <silent> ,js :JavaSet
+nnoremap <buffer> <silent> ,pr :ProjectRefresh
+nnoremap <buffer> <silent> ,ps :ProjectSettings
+nnoremap <buffer> <silent> ,pl :ProjectList
+nnoremap <buffer> <silent> ,po :ProjectOpen
+nnoremap <buffer> <silent> ,pc :ProjectClose
+inoreabbr <buffer> log log=eclim#java#logging#LoggingInit("log")
+inoreabbr <buffer> logger logger=eclim#java#logging#LoggingInit("logger")
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal balloonexpr=
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=j1
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=//%s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=eclim#java#complete#CodeComplete
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal cursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=%A%f:[%l\\,%c]\ %m,%Csymbol%.%#:\ %m,%Zlocation%.%#:\ %m,%AEmbedded\ error:%.%#\ -\ %f:%l:\ %m,%-Z\ %p^,%A%f:%l:\ %m,%-Z\ %p^,%ARunning\ %f,%+ZTests\ run%.%#FAILURE!,%-G%.%#
+setlocal expandtab
+if &filetype != 'java'
+setlocal filetype=java
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=99
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=syntax
+setlocal foldminlines=1
+setlocal foldnestmax=15
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=croql
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=^s*import
+setlocal includeexpr=substitute(v:fname,'\\.','/','g')
+setlocal indentexpr=GetJavaIndent()
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e,0=extends,0=implements
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal linebreak
+setlocal nolisp
+setlocal list
+setlocal makeprg=mvn\ $*
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+setlocal nonumber
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=.,/usr/include,,
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=2
+setlocal noshortname
+setlocal smartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=.java
+setlocal noswapfile
+setlocal synmaxcol=512
+if &syntax != 'java'
+setlocal syntax=java
+endif
+setlocal tabstop=4
+setlocal tags=
+setlocal textwidth=79
+setlocal thesaurus=
+setlocal undofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal nowrap
+setlocal wrapmargin=0
+let s:l = 50 - ((46 * winheight(0) + 34) / 68)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+50
+normal! 030l
+wincmd w
+argglobal
+edit src/main/java/lu/uni/adtool/adtconverter/InfoTree.java
+nnoremap <buffer> <silent>  :JavaSearchContext
+nnoremap <buffer> <silent> ,i :JavaImport
+nnoremap <buffer> <silent> ,d :JavaDocSearch -x declarations
+nnoremap <buffer> <silent> ,r :JavaCorrect
+nnoremap <buffer> <silent> ,jc :JavaConstructor
+nnoremap <buffer> <silent> ,jim :JavaImportMissing
+nnoremap <buffer> <silent> ,jis :JavaImportSort
+nnoremap <buffer> <silent> ,jic :JavaImportClean
+nnoremap <buffer> <silent> ,jo :JavaImpl
+nnoremap <buffer> <silent> ,jd :JavaDelegate
+nnoremap <buffer> <silent> ,jh :JavaHierarchy
+noremap <buffer> <silent> ,jf :JavaFormat
+nnoremap <buffer> <silent> ,jl :Checkstyle
+nnoremap <buffer> <silent> ,jm :JavaDocComment
+nnoremap <buffer> <silent> ,jr :JavaRename 
+nnoremap <buffer> <silent> ,jg :JavaGet
+nnoremap <buffer> <silent> ,js :JavaSet
+nnoremap <buffer> <silent> ,pr :ProjectRefresh
+nnoremap <buffer> <silent> ,ps :ProjectSettings
+nnoremap <buffer> <silent> ,pl :ProjectList
+nnoremap <buffer> <silent> ,po :ProjectOpen
+nnoremap <buffer> <silent> ,pc :ProjectClose
+inoreabbr <buffer> log log=eclim#java#logging#LoggingInit("log")
+inoreabbr <buffer> logger logger=eclim#java#logging#LoggingInit("logger")
+setlocal keymap=
+setlocal noarabic
+setlocal autoindent
+setlocal balloonexpr=
+setlocal nobinary
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=j1
+setlocal cinwords=if,else,while,do,for,switch
+setlocal colorcolumn=
+setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://,b:#,:%,:XCOMM,n:>,fb:-
+setlocal commentstring=//%s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=eclim#java#complete#CodeComplete
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+setlocal cursorline
+setlocal define=
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=%A%f:[%l\\,%c]\ %m,%Csymbol%.%#:\ %m,%Zlocation%.%#:\ %m,%AEmbedded\ error:%.%#\ -\ %f:%l:\ %m,%-Z\ %p^,%A%f:%l:\ %m,%-Z\ %p^,%ARunning\ %f,%+ZTests\ run%.%#FAILURE!,%-G%.%#
+setlocal expandtab
+if &filetype != 'java'
+setlocal filetype=java
+endif
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=99
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=syntax
+setlocal foldminlines=1
+setlocal foldnestmax=15
+setlocal foldtext=foldtext()
+setlocal formatexpr=
+setlocal formatoptions=croql
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=^s*import
+setlocal includeexpr=substitute(v:fname,'\\.','/','g')
+setlocal indentexpr=GetJavaIndent()
+setlocal indentkeys=0{,0},:,0#,!^F,o,O,e,0=extends,0=implements
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255
+setlocal keywordprg=
+setlocal linebreak
+setlocal nolisp
+setlocal list
+setlocal makeprg=mvn\ $*
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=octal,hex
+setlocal nonumber
+setlocal numberwidth=4
+setlocal omnifunc=
+setlocal path=.,/usr/include,,
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=2
+setlocal noshortname
+setlocal smartindent
+setlocal softtabstop=4
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en
+setlocal statusline=
+setlocal suffixesadd=.java
+setlocal noswapfile
+setlocal synmaxcol=512
+if &syntax != 'java'
+setlocal syntax=java
+endif
+setlocal tabstop=4
+setlocal tags=
+setlocal textwidth=79
+setlocal thesaurus=
+setlocal undofile
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal nowrap
+setlocal wrapmargin=0
+let s:l = 1 - ((0 * winheight(0) + 34) / 68)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+1
+normal! 035l
+wincmd w
+exe '1resize ' . ((&lines * 68 + 42) / 84)
+exe 'vert 1resize ' . ((&columns * 135 + 68) / 136)
+exe '2resize ' . ((&lines * 68 + 42) / 84)
+tabnext 1
+if exists('s:wipebuf')
+  silent exe 'bwipe ' . s:wipebuf
+endif
+unlet! s:wipebuf
+set winheight=1 winwidth=3 shortmess=a
+let s:sx = expand("<sfile>:p:r")."x.vim"
+if file_readable(s:sx)
+  exe "source " . fnameescape(s:sx)
+endif
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+unlet SessionLoad
+" vim: set ft=vim :

@@ -1,0 +1,172 @@
+###########################################################################
+#                            TextMate Snippets                            #
+###########################################################################
+
+########################
+# preprocesor snippets #
+########################
+
+snippet once "Include header once only guard"
+#ifndef ${1:`!p
+if not snip.c:
+	import random, string
+	name = re.sub(r'[^A-Za-z0-9]+','_', snip.fn).upper()
+	rand = ''.join(random.sample(string.ascii_letters+string.digits, 8))
+	snip.rv = ('%s_%s' % (name,rand)).upper()
+else:
+    snip.rv = snip.c`}
+#define $1
+
+${0}
+
+#endif /* end of include guard: $1 */
+
+endsnippet
+
+snippet Def "#ifndef ... #define ... #endif"
+#ifndef ${1/([A-Za-z0-9_]+).*/$1/}
+#define ${1:SYMBOL} ${2:value}
+#endif
+endsnippet
+
+snippet def "#define"
+#define
+endsnippet
+
+snippet ifdef "#ifdef"
+#ifdef ${1:FOO}
+        ${2:#define }
+#endif
+endsnippet
+
+snippet #if
+#if ${1:FOO}
+        ${2}
+#endif
+endsnippet
+
+snippet inc "#include local header (inc)"
+#include "${1:`!p snip.rv = snip.basename + '.h'`}"
+endsnippet
+
+snippet Inc "#include <> (Inc)"
+#include <${1:.h}>
+endsnippet
+
+snippet mark "#pragma mark (mark)"
+#if 0
+${1:#pragma mark -
+}#pragma mark $2
+#endif
+
+$0
+endsnippet
+
+#####################
+# funtions snippets #
+#####################
+
+snippet printf "printf .. (printf)"
+printf("${1:%s}\n"${1/([^%]|%%)*(%.)?.*/(?2:, :\);)/}$2${1/([^%]|%%)*(%.)?.*/(?2:\);)/}
+endsnippet
+
+snippet main "main() (main)"
+int main(int argc, char const *argv[])
+{
+  ${0:/* code */}
+  return 0;
+}
+endsnippet
+
+snippet fprintf "fprintf ..."
+fprintf(${1:stderr}, "${2:%s}\n"${2/([^%]|%%)*(%.)?.*/(?2:, :\);)/}$3${2/([^%]|%%)*(%.)?.*/(?2:\);)/}
+endsnippet
+
+# Function
+snippet fun
+${1:void} ${2:function_name}(${3})
+{
+        ${4:/* code */}
+}
+endsnippet
+
+#####################
+# idioms and others #
+#####################
+
+snippet enum "Enumeration"
+enum ${1:name} { $0 };
+endsnippet
+
+snippet td "Typedef"
+typedef ${1:int} ${2:t$1};
+endsnippet
+
+# Typdef enum
+snippet tde
+typedef enum {
+        ${1:/* data */}
+} ${2:foo};
+endsnippet
+
+# Typdef enum
+snippet tdv "typedef vector"
+typedef std::vector<${1:int}> ${2:v$1};
+endsnippet
+
+# Typedef struct
+snippet tds
+typedef struct ${2:_$1 }{
+        ${3:/* data */}
+} ${1:`Filename('$1_t', 'name')`};
+endsnippet
+
+#Struct
+snippet st "Struct"
+struct ${1:`!p snip.rv = (snip.basename or "name") + "_t"`}
+{
+	${0:/* data */}
+};
+endsnippet
+
+######################
+# statement snippets #
+######################
+
+snippet fori "for int loop (fori)"
+for (${4:size_t} ${2:i} = 0; $2 < ${1:count}; ${3:++$2}) {
+  ${0:/* code */}
+}
+endsnippet
+
+snippet fora
+for( auto ${1:it} = ${2:container}.begin(); $1 != $2.end(); ++$1 ) {
+        ${3:/* code */}
+}
+endsnippet
+
+snippet else
+else {
+  ${1}
+}
+endsnippet
+
+snippet el
+else {
+  ${1}
+}
+endsnippet
+
+snippet do "do...while loop (do)"
+do {
+  ${0:/* code */}
+} while(${1:/* condition */});
+endsnippet
+
+snippet if "if .. (if)"
+if (${1:/* condition */}) {
+	${0:/* code */}
+}
+endsnippet
+
+# vim:ft=snippets:
