@@ -3,11 +3,15 @@ require 'rake'
 desc "Hook our dotfiles into system-standard positions."
 task :install do
   switch_to_zsh
+  move_to_private("history")
+  move_to_private("bash_history")
+  move_dir_to_private("purple")
+  move_dir_to_private("mozilla")
   linkables = Dir.glob('*/**{.symlink}')
 
   skip_all = false
   overwrite_all = false
-  backup_all = false
+  backup_all = true
 
   linkables.each do |linkable|
     overwrite = false
@@ -56,6 +60,28 @@ task :uninstall do
 end
 
 task :default => 'install'
+
+def move_dir_to_private (file)
+  target = "#{ENV["HOME"]}/.#{file}"
+  if !File.directory?(target)
+   `mkdir #{target}`
+  end
+  move_to_private(file)
+end
+
+def move_to_private (file)
+  target = "#{ENV["HOME"]}/.#{file}"
+  dest = "$HOME/Private/.#{file}"
+  `touch "#{target}"`
+  if !File.symlink?(target)
+    if File.exists?(dest) || File.directory?(dest) 
+      `mv "#{target}" "#{dest}.Backup"`
+    else
+      `mv "#{target}" "#{dest}"`
+    end
+    `ln -s "#{dest}" "#{target}"`
+  end
+end
 
 def switch_to_zsh
   if ENV["SHELL"] =~ /zsh/

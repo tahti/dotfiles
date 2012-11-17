@@ -1,0 +1,153 @@
+"" {{{ Style
+colorscheme molokai
+"highlight WarningMsg display:none;
+"" }}}
+
+"" {{{ Bookmarklet
+nmap -builtin <Leader>b :bml-
+"nmap -builtin <Leader>s :bml-subscribe<CR>
+command bml-readable -description "Bookmarklet: Make webpage readable" open javascript:(function(){_readableOptions={'text_font':'Vollkorn','text_font_monospace':'quote(Courier%20New),%20Courier,%20monospace','text_font_header':'quote(Palatino%20Linotype),%20Palatino,%20quote(Book%20Antigua),%20Georgia,%20serif','text_size':'20px','text_line_height':'1.5','box_width':'35em','color_text':'#282828','color_background':'#E5DED6','color_links':'#EE4545','text_align':'normal','base':'blueprint','custom_css':''};if(document.getElementsByTagName('body').length>0);else{return;}if(window.$readable){if(window.$readable.bookmarkletTimer){return;}}else{window.$readable={};}window.$readable.bookmarkletTimer=true;window.$readable.options=_readableOptions;if(window.$readable.bookmarkletClicked){window.$readable.bookmarkletClicked();return;}_readableScript=document.createElement('script');_readableScript.setAttribute('src','http://readable-static.tastefulwords.com/target.js?rand='+encodeURIComponent(Math.random()));document.getElementsByTagName('body')[0].appendChild(_readableScript);})()
+command bml-readability -description "Bookmarklet: Make webpage readable using readability" open javascript:(%28function%28%29%7Bwindow.baseUrl%3D%27http%3A//www.readability.com%27%3Bwindow.readabilityToken%3D%27%27%3Bvar%20s%3Ddocument.createElement%28%27script%27%29%3Bs.setAttribute%28%27type%27%2C%27text/javascript%27%29%3Bs.setAttribute%28%27charset%27%2C%27UTF-8%27%29%3Bs.setAttribute%28%27src%27%2CbaseUrl%2B%27/bookmarklet/read.js%27%29%3Bdocument.documentElement.appendChild%28s%29%3B%7D%29%28%29)
+command bml-download-video -description "Bookmarklet: Download Youtube video" open javascript:(function(){url='http://deturl.com/download-video.js';document.body.appendChild(document.createElement('script')).src=url+'?'+new%20Date().getTime();})();
+"" }}}
+
+"" Invert colors:
+nmap -builtin <A-c> :set! browser.display.use_document_colors=true<CR>:set! browser.display.background_color=#f0f0f0<CR>:set! browser.display.foreground_color=#000000<CR>
+nmap -builtin <A-t> :set! browser.display.use_document_colors=false<CR>:set! browser.display.background_color=#202020<CR>:set! browser.display.foreground_color=#c0c0c0<CR>
+
+
+loadplugins '\.(js|penta)$'
+group user
+"" prev selected tab
+nmap -builtin x <C-^>
+
+"" back/forward
+nmap -builtin h <C-o>
+nmap -builtin l <C-i>
+
+"" viewsource in new tab
+nmap -builtin gf :tab viewsource<CR>
+
+"" prev selected tab
+nmap -builtin x <C-^>
+"" toggle menubar
+nmap -builtin gm :set guioptions!=m<CR>
+map -modes=n,v,i,t,c <A-Down> :set guioptions!=m<CR>
+map -modes=n,v,i,t,c <A-Up> :toolbartoggle<Space>Navigation<Space>Toolbar<Return>
+
+"" tabgroup
+if config.OS.isMacOSX
+  nmap -builtin <Leader>e <S-M-e>
+else
+  nmap -builtin <Leader>e <S-C-e>
+end
+
+
+"" disable smooth scroll
+set scrollsteps=1
+set scrolltime=0
+"" }}}
+
+"" {{{ Command
+"" smart reload
+command smartReload -js <<EOF
+if (buffer.URL.spec.indexOf('#') >= 0) {
+    dactyl.execute("reload");
+} else {
+    dactyl.open(buffer.URL.spec);
+}
+EOF
+nmap -builtin r :smartReload<CR>
+
+
+"" open using external browser
+command! openEx -nargs=? -js <<EOF
+var url = args.length ? args : buffer.URL.spec;
+if (config.OS.isMacOSX) {
+    io.system("open -a Safari '" + url + "'");
+} else {
+    dactyl.execute("tabopen " + url);
+}
+EOF
+nmap -builtin ge :openEx<CR>
+"" jumping at hint mode, see http://code.google.com/p/dactyl/issues/detail?id=158
+map -modes hints <C-c> -ex normal! 5j
+map -modes hints <C-t> -ex normal! 5k
+map -modes hints <C-f> -ex normal! <C-f>
+map -modes hints <C-b> -ex normal! <C-b>
+"map -modes hints gg -ex normal! gg
+"map -modes hints G -ex normal! G
+
+" move around the tabs
+map -modes=n,v,i,t,c <A-h> -builtin <C-S-Tab>
+map -modes=n,v,i,t,c <A-Left> -builtin <C-S-Tab>
+map -modes=n,v,i,t,c <A-n> -builtin <C-Tab>
+map -modes=n,v,i,t,c <A-Right> -builtin <C-Tab>
+"map -count -modes=m <A-h> -builtin <count><count><count><count><count><count><count><C-S-Tab>
+"default seach keyword
+set defsearch=g
+
+map -count -modes=n,v '\' -builtin <count><count><count><count><count><count><count><count><count><count><count><count><count><C-v>
+
+map -count -modes=n,v c -builtin <count><count><count><count><count><count><count>4k
+map -count -modes=n,v '<C-\>' -builtin <count><count><count><count><count><count><count><count><count><count><count><count><count><C-z>
+map -modes=n,v,i,t,c <C-Left> -builtin :tabmove!<Space>-1<Return>
+map -modes=n,v,i,t,c <C-Right> -builtin :tabmove!<Space>+1<Return>
+map -count -modes=n,v <C-S-S> -builtin <count><count><count><count><count><count><count><count><count><count><count><count><count><count><count><C-c>
+map -count -modes=n,v D -builtin <count><count><count><count><count><C-v><C-S-W>
+
+
+map -count -modes=n,v j -builtin <count><count><count><count><count><count><count>c
+map -count -modes=n,v k -builtin <count><count><count><count><count><count><count>n
+map -count -modes=n,v K -builtin <count><count><count><count><count><count><count>N
+map -count -modes=n,v l -builtin <count><count><count><count><count><count><count>t
+map -count -modes=n,v L -builtin <count><count><count><count><count><count><count>T
+map -count -modes=n,v n -builtin <count><count><count><count><count><count><count>L
+map -count -modes=n,v N -builtin <count><count><count><count><count><count><count>l
+map -count -modes=n,v t -builtin <count><count><count><count><count><count><count>4j
+map -count -modes=n,v T -builtin <count>j
+map -count -modes=n,v U -builtin <count><count><count><count><C-v><C-S-N>
+map -count -modes=n,v C -builtin <count>k
+map -modes=n,v,i,t,c <A-r> -builtin <C-v><C-c>
+map -modes=n,v,i,t,c <A-v> -builtin <C-v><C-v>
+com -nargs=0 ipa javascript (function(d){var z=d.createElement('scr'+'ipt'),b=d.body;try{if(!b)throw(0);d.title='(Saving...)'+d.title;z.setAttribute('src','http://www.instapaper.com/j/ORpMS202J9no');b.appendChild(z);}catch(e){alert('Please wait until the page has loaded.');}void(0)})(content.document)
+set guioptions=bCrsmMn
+set hintkeys=baoeuidhtns;,.pyfgcrlqjkmwvz
+
+
+" vim: set ft=pentadactyl:
+
+"" set <Leader>
+map , <Leader>
+
+"" open addons manager
+nmap -builtin <Leader>a :dialog addons<CR>
+
+"" rehash
+nmap -builtin <Leader>R :rehash<CR>
+
+"" private mode
+nmap -builtin <Leader>p :set private!<CR>
+
+"" fullscreen
+nmap -builtin <Leader>F :set fullscreen!<CR>
+
+"" display download
+nmap -builtin <Leader>d :downloads<CR>
+
+"" about:config
+nmap -builtin <Leader>c :tabopen about:config<CR>
+
+"" only show the tab bar when there are multiple tabs
+set showtabline=multitab
+
+"" only follow hints when press enter
+"set followhints=1
+
+"" show link when hover links
+"set showstatuslinks=command
+
+" disable annoying auto focus
+set strictfocus^=tao123.com:despotic
+
+
