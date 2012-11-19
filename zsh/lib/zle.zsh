@@ -44,7 +44,9 @@ bindkey -M viins '^f' i-next-word
 
 # setup key accordingly
 [[ -n "${key[Home]}"    ]]  && bindkey -M vicmd "${key[Home]}"    beginning-of-line
+bindkey -M vicmd "^a"     beginning-of-line
 [[ -n "${key[End]}"     ]]  && bindkey -M vicmd "${key[End]}"     end-of-line
+bindkey -M vicmd "^e"     end-of-line
 [[ -n "${key[Insert]}"  ]]  && bindkey -M vicmd "${key[Insert]}"  overwrite-mode
 [[ -n "${key[Delete]}"  ]]  && bindkey -M vicmd "${key[Delete]}"  delete-char
 [[ -n "${key[Up]}"      ]]  && bindkey -M vicmd "${key[Up]}"      up-line-or-history
@@ -54,7 +56,9 @@ bindkey -M viins '^f' i-next-word
 
 # setup key accordingly
 [[ -n "${key[Home]}"    ]]  && bindkey -M viins "${key[Home]}"    beginning-of-line
+bindkey -M viins "^a"     beginning-of-line
 [[ -n "${key[End]}"     ]]  && bindkey -M viins "${key[End]}"     end-of-line
+bindkey -M viins "^e"     end-of-line
 [[ -n "${key[Insert]}"  ]]  && bindkey -M viins "${key[Insert]}"  overwrite-mode
 [[ -n "${key[Delete]}"  ]]  && bindkey -M viins "${key[Delete]}"  delete-char
 [[ -n "${key[Up]}"      ]]  && bindkey -M viins "${key[Up]}"      up-line-or-history
@@ -62,3 +66,8 @@ bindkey -M viins '^f' i-next-word
 [[ -n "${key[Left]}"    ]]  && bindkey -M viins "${key[Left]}"    backward-char
 [[ -n "${key[Right]}"   ]]  && bindkey -M viins "${key[Right]}"   forward-char
 
+zmodload zsh/complist
+[[ -n "${key[Backspace]}"   ]]  && bindkey -M menuselect "${key[Backspace]}" undo
+bindkey -M menuselect '\e' undo
+bindkey -M menuselect '^m' .accept-line
+bindkey -M menuselect " " accept-and-menu-complete
