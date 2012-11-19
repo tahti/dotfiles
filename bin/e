@@ -1,0 +1,11 @@
+#!/bin/bash
+if [ -z $DISPLAY ] ; then
+OPT="-t"
+else
+OPT="-c"
+fi
+
+emacsclient24 $OPT "$*" 2>/dev/null || (
+(emacs24 --daemon)
+sleep 2
+emacsclient24 $OPT "$*")
