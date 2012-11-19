@@ -1,3 +1,5 @@
 *.pyc
 vim/vim.symlink/undo/*
+config/config.symlink/kupfer/*
+pentadactyl/pentadactyl.symlink/info/default/local-marks
 .svn
