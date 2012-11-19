@@ -4,8 +4,14 @@ OPT="-t"
 else
 OPT="-c"
 fi
-
-emacsclient24 $OPT "$*" 2>/dev/null || (
-(emacs24 --daemon)
-sleep 2
-emacsclient24 $OPT "$*")
+if [ -z $1 ] ; then
+  emacsclient.emacs24 $OPT 2>/dev/null || (
+  (emacs24 --daemon)
+  sleep 2
+  emacsclient.emacs24 $OPT)
+else
+  emacsclient.emacs24 $OPT "$*" 2>/dev/null || (
+  (emacs24 --daemon)
+  sleep 2
+  emacsclient.emacs24 $OPT "$*")
+fi
