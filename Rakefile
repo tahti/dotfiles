@@ -13,7 +13,7 @@ task :install do
   skip_all = false
   overwrite_all = false
   backup_all = true
-
+  hostname = `hostname`
   linkables.each do |linkable|
     overwrite = false
     backup = false
@@ -49,6 +49,12 @@ task :install do
 
   if !File.exists?("#{ENV["HOME"]}/usb")
     `ln -s "#{ENV["HOME"]}/usb" "/media/usb0"`
+  end
+#create link to configuration of i3 based on hostname 
+  conf_name = "config-#{hostname}"
+  puts "#{conf_name}"
+  if !File.exists?("i3/i3.symlink/#{conf_name}")
+  `ln -s "#{conf_name}" "i3/i3.symlink/config"`
   end
 end
 
