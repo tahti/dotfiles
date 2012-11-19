@@ -1,6 +1,10 @@
 setopt no_beep         #turn off bell
 setopt HIST_IGNORE_DUPS
 setopt NO_LIST_BEEP
+setopt hist_expire_dups_first
+setopt hist_ignore_space
+setopt share_history # share command history data
+setopt hist_verify
 
 set bell-style none
 #setopt / unsetopt
@@ -11,10 +15,6 @@ typeset -U path        #ignore doules in path
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.history
-setopt hist_expire_dups_first
-setopt hist_ignore_space
-setopt share_history # share command history data
-setopt hist_verify
 
 
 if [ "$TERM" = "linux" ]

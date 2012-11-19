@@ -5,6 +5,7 @@ task :install do
   switch_to_zsh
   move_to_private("history")
   move_to_private("bash_history")
+  move_to_private("recently-used")
   move_dir_to_private("purple")
   move_dir_to_private("mozilla")
   linkables = Dir.glob('*/**{.symlink}')

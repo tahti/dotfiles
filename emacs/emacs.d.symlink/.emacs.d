@@ -1,1 +1,0 @@
-/home/piotr/svn/dotfiles/emacs/emacs.d.symlink
