@@ -293,7 +293,8 @@ inoremap ;; <End>;
 " enter to the previous line
 imap <S-CR> <C-O>O
 
-" Show syntax highlighting groups for word under cursor
+" Show syntax highlighting groups for word under cursor - useful together with
+" :sy list groupName
 nmap <Leader>ssg :call <SID>SynStack()<CR>
 function! <SID>SynStack()
   if !exists("*synstack")
