@@ -31,7 +31,7 @@ bar {
 }
 exec fbxkb
 exec gnome-keyring
-exec conky -c /home/piotr/.i3/.conkyrc_i3|/home/piotr/bin/dzen2 -bg black -fg white -fn Terminus-9 -w 450 -x 159 -y 0 -ta l
+exec conky -c /home/piotr/.i3/conkyrc_i3|/home/piotr/bin/dzen2 -bg black -fg white -fn Terminus-9 -w 450 -x 159 -y 0 -ta l
 exec conky -c /home/piotr/.i3/conky_i3help
 exec conky -c /home/piotr/.i3/conkytodo_plain
 exec numlockx on
@@ -40,7 +40,7 @@ exec sleep 2&&kupfer --no-splash
 exec kmix
 exec pidgin
 exec --no-startup-id eval $(cat ~/.fehbg) #setting up background
-#exec conky -c .i3/.conkyrc_i3|dzen2 -bg black -fg white -fn Terminus-9 -w 450 -x 9 -y 0 -ta l
+#exec conky -c .i3/conkyrc_i3|dzen2 -bg black -fg white -fn Terminus-9 -w 450 -x 9 -y 0 -ta l
 exec /usr/bin/parcellite
 
 focus_follows_mouse no
