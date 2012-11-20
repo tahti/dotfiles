@@ -31,7 +31,7 @@ hi Boolean         guifg=#AF87D7
 hi Character       guifg=#E6DB74
 hi Number          guifg=#AF87D7
 hi String          guifg=#AFAF5F
-hi Conditional     guifg=#F92672
+hi Conditional     guifg=#d7005f
 hi Constant        guifg=#AF87D7
 hi Conceal         guifg=#AF87D7 guibg=#000000
 hi Cursor          guifg=#000000 guibg=#F8F8F0
@@ -79,8 +79,8 @@ hi Search          guifg=#FFFFFF guibg=#455354
 " marks column
 hi SignColumn      guifg=#A6E22E guibg=#232526
 hi SpecialChar     guifg=#F92672
-hi SpecialComment  guifg=#75718E
-"hi SpecialComment  guifg=#465457
+hi SpecialComment  guifg=#8a8a8a
+"hi SpecialComment  guifg=#5f5f5f
 hi Special         guifg=#66D9EF guibg=bg      gui=italic
 hi SpecialKey      guifg=#888A85               gui=italic
 if has("spell")
@@ -110,14 +110,14 @@ hi WildMenu        guifg=#66D9EF guibg=#000000
 
 if s:molokai_original == 1
    hi Normal          guifg=#F8F8F2 guibg=#272822
-   hi Comment         guifg=#75718E
+   hi Comment         guifg=#5f5f5f
    hi CursorLine                    guibg=#3E3D32
    hi CursorColumn                  guibg=#3E3D32
    hi LineNr          guifg=#BCBCBC guibg=#3B3A32
    hi NonText         guifg=#BCBCBC guibg=#3B3A32
 else
    hi Normal          guifg=#D0D0D0 guibg=#080808
-   hi Comment         guifg=#75718E
+   hi Comment         guifg=#5f5f5f
    "hi Comment         guifg=#465457
    hi CursorLine                    guibg=#1C1C1C
    hi CursorColumn                  guibg=#293739
