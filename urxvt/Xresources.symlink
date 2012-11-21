@@ -12,7 +12,7 @@ URxvt*termName: rxvt-256color
 URxvt*transparent: false
 URxvt*tintColor: Blue
 !URxvt*shading: 40
-URxvt*saveLines: 2000
+URxvt*saveLines: 10000
 !URxvt*foreground: White
 !URxvt.background:   #0e0e0e
 URxvt.background:		#000000
@@ -47,6 +47,12 @@ URxvt.underlineColor:           #0e0e0e
 
 ! Display the X selection as highlighted instead of using reverse video.
 URxvt.highlightColor:		#303060
+URxvt.borderLess: false
+URxvt.transparent: false
+URxvt.depth: 32
+URxvt.scrollTtyOutput: False
+URxvt.scrollWithBuffer: True
+URxvt.scrollTtyKeypress: True
 
 ! ---------------------------------- CURSOR ---------------------------------- #
 !
@@ -69,6 +75,7 @@ URxvt*letterSpace: -1
 !URxvt*boldFont: xft:terminus:bold:pixelsize=15
 !URxvt*boldFont:-*-courier-bold-r-normal-*-14-*-*-*-*-*-iso8859-1
 !URxvt*fonts.0: xft:DejaVu Sans Mono:pixelsize=10:antialias=true:hinting=true:autohint=true
+!
 URxvt*fonts.0: xft:DejaVu Sans Mono:pixelsize=8:antialias=true:hinting=true:autohint=true
 URxvt*fonts.1: xft:DejaVu Sans Mono:pixelsize=9:antialias=true:hinting=true:autohint=true
 URxvt*fonts.2: xft:DejaVu Sans Mono:pixelsize=10:antialias=true:hinting=true:autohint=true
@@ -82,10 +89,14 @@ URxvt*fonts.9: xft:DejaVu Sans Mono:pixelsize=18:antialias=true:hinting=true:aut
 URxvt*fonts.10: xft:DejaVu Sans Mono:pixelsize=19:antialias=true:hinting=true:autohint=true
 URxvt*fonts.11: xft:DejaVu Sans Mono:pixelsize=20:antialias=true:hinting=true:autohint=true
 
-URxvt*font: xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hinting=true:autohint=true
-URxvt*boldFont: xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hinting=true
-!12 pixel in height
-Emacs.font: DejaVu Sans Mono-9
+URxvt.xftAntialias:     true
+!URxvt*font: xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hinting=true:autohint=true
+!URxvt*boldFont: xft:DejaVu Sans Mono:pixelsize=12:antialias=true:hinting=true
+URxvt.font: xft:inconsolata:pixelsize=13:antialias=true:hinting=true, xft:dejavu sans mono:pixelsize=13:antialias=true,hinting=true
+URxvt.boldFont: xft:inconsolata:pixelsize=13:antialias=true:hinting=true, xft:dejavu sans mono:pixelsize=13:antialias=true,hinting=true
+URxvt.italicFont: xft:inconsolata:pixelsize=13:antialias=true:hinting=true, xft:dejavu sans mono:pixelsize=13:antialias=true,hinting=true
+URxvt.bolditalicFont: xft:inconsolata:pixelsize=13:antialias=true:hinting=true, xft:dejavu sans mono:pixelsize=13:antialias=true,hinting=true
+
 !----------------------------------------------------------------------------------------------------------
 !            Keyboard bindings
 !----------------------------------------------------------------------------------------------------------
@@ -187,3 +198,7 @@ URxvt.perl-ext: fonts
 URxvt.keysym.M-KP_Add:      perl:fonts:plus
 URxvt.keysym.M-KP_Subtract: perl:fonts:minus
 
+!12 pixel in height
+Emacs.font: DejaVu Sans Mono-9
+
+Xft.hinting:    1
