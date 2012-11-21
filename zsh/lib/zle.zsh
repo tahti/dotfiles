@@ -70,4 +70,4 @@ zmodload zsh/complist
 [[ -n "${key[Backspace]}"   ]]  && bindkey -M menuselect "${key[Backspace]}" undo
 bindkey -M menuselect '\e' undo
 bindkey -M menuselect '^m' .accept-line
-bindkey -M menuselect " " accept-and-menu-complete
+#bindkey -M menuselect " " accept-and-menu-complete
