@@ -1,0 +1,94 @@
+[user]
+    name = Piotr Kordy
+    email = pkordy@googlemail.com
+[core]
+    whitespace = fix,-indent-with-non-tab,trailing-space
+[apply]
+    whitespace = fix
+[branch]
+    autosetupmerge = true
+[color]
+    status = auto
+    diff = auto
+    branch = auto
+    interactive = auto
+    ui = auto
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+[color "status"]
+    added = green
+    changed = yellow
+    untracked = cyan
+[color "interactive"]
+    error = cyan
+    header = yellow
+[mergetool "ediff-windowed"]
+    cmd = emacsclient -c --eval \"(ediff-git-merge-emacsclient \\\"$LOCAL\\\" \\\"$REMOTE\\\" \\\"$BASE\\\" \\\"$MERGED\\\" t)\"
+    trustExitCode = true
+[mergetool "ediff-term"]
+    cmd = emacsclient -nw --eval \"(ediff-git-merge-emacsclient \\\"$LOCAL\\\" \\\"$REMOTE\\\" \\\"$BASE\\\" \\\"$MERGED\\\" t)\"
+    trustExitCode = true
+[merge]
+    tool = ediff-windowed
+    stat = true
+[diff]
+    tool = gvimdiff
+    renames = copy
+    mnemonicprefix = true
+[alias]
+    # abbrevs
+    ad = add
+    ci = commit
+    br = branch
+    co = checkout
+    pl = pull
+    pr = pull --rebase
+    ps = push
+    fe = fetch
+    df = diff
+    gdf = difftool
+    gdfc = difftool --cached
+    mg = merge
+    gmg = mergetool
+    st = status
+    lp = log -p
+
+    # adding
+    ap = add -p
+    ai = add -i
+
+    # status
+    bl = branch -av
+    vu = ls-files -u #view unmerged files
+    ls-ignored = ls-files --exclude-standard --ignored --others
+
+    # diffing
+    d1 = diff HEAD^1..
+    dfc = diff --cached
+    wd1 = diff --word-diff=color HEAD^1.. #word-diff from last commit
+    wdf = diff --word-diff=color #word-diff
+    wdfc = diff --word-diff=color --cached # word-diff cached
+
+    # logs
+    l1 = log --max-count=1 # last commit
+    l5 = log --max-count=5 # last 5 commits
+    l5o = log --pretty=oneline --max-count=5 # last 5 commits onelined
+    slog = log --pretty=format:'%Cred%h%Creset %C(yellow)%d%Creset | %s %Cgreen%cr%Creset %C(bold blue)[%an]%Creset' --date=relative --no-merges --abbrev-commit
+    stats = shortlog -s -n -e --no-merges
+    tree = log --graph --pretty=oneline --decorate --color --abbrev-commit
+    tree-all = log --graph --pretty=oneline --decorate --color --abbrev-commit --all
+    pc = log -p HEAD@{1}.. # pulled changes
+
+    # new commands
+    in = incoming
+    out = outgoing
+    addr = addremove
+    zip = !git archive -o $(basename $(readlink -e .)).zip HEAD
+
+    # amending
+    amend = commit --amend -C HEAD
+    amendc = commit --amend
+
+
