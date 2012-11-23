@@ -51,6 +51,22 @@
   (let ((default-directory (cdr (assoc alias tahti-aliases))))
     (helm-find-files nil)))
 
+(defun tahti-indent-buffer ()
+  "Indents the entire buffer."
+  (interactive)
+  (indent-region (point-min) (point-max)))
+
+(defun tahti-untabify-buffer ()
+  (interactive)
+  (untabify (point-min) (point-max)))
+
+(defun tahti-cleanup-buffer ()
+  "Perform a bunch of operations on the whitespace content of a buffer."
+  (interactive)
+  (tahti-indent-buffer)
+  (tahti-untabify-buffer)
+  (whitespace-cleanup))
+
 ;; Taken from http://www.emacswiki.org/emacs/ArtistMode
 (defun artist-ido-select-operation (type)
   "Use ido to select a drawing operation in artist-mode"

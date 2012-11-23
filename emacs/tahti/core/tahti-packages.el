@@ -70,8 +70,8 @@
 (defvar tahti/standard-settings '(
                                  tahti-color
                                  ;tahti-autoloads
-                                 ;tahti-helm
-                                 ;tahti-buffer
+                                 tahti-helm
+                                 tahti-buffer
                                  ;tahti-calendar
                                  ;tahti-desktop
                                  ;tahti-ediff
@@ -79,18 +79,18 @@
                                  ;tahti-elisp
                                  ;tahti-erc
                                  ;tahti-files
-                                 ;tahti-keys
+                                 tahti-keys
                                  ;tahti-mail
                                  ;tahti-project
                                  tahti-snippets
-                                 ;tahti-ui
+                                 tahti-ui
                                  ;tahti-modeline
                                  ;tahti-org
                                  ;tahti-vcs
                                  ;tahti-shell
                                  ;tahti-workgroups
                                  ;tahti-write
-                                 ;tahti-completion
+                                 tahti-completion
                                  ))
 
 (mapc #'require tahti/standard-settings)

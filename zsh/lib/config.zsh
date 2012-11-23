@@ -3,12 +3,12 @@ setopt HIST_IGNORE_DUPS
 setopt NO_LIST_BEEP
 setopt hist_expire_dups_first
 setopt hist_ignore_space
-setopt share_history # share command history data
+#setopt share_history # share command history data
 setopt hist_verify
 
 set bell-style none
 #setopt / unsetopt
-setopt AUTO_CD
+#setopt AUTO_CD
 typeset -U path        #ignore doules in path
 #ZSH_THEME="random"
 #set history
