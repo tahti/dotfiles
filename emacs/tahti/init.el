@@ -5,14 +5,9 @@
 ;; This file is not part of GNU Emacs.
 ;;
 (message "Evil emacs is powering up... Be patient, Master %s!" (getenv "USER"))
+(add-to-list 'load-path (file-name-directory load-file-name))
 (require 'tahti-dirs)
 
-(unless (file-exists-p tahti-var-dir)
-  (make-directory snippets-var-dir))
-(unless (file-exists-p tahti-snippets-dir)
-  (make-directory tahti-snippets-dir))
-(unless (file-exists-p tahti-savefile-dir)
-  (make-directory tahti-savefile-dir))
 
 (add-to-list 'load-path tahti-vendor-dir)
 (add-to-list 'load-path tahti-config-dir)
@@ -20,9 +15,7 @@
 (add-to-list 'load-path (expand-file-name  "modes" tahti-config-dir))
 
 ;; the core stuff
-(require 'tahti-util)
 (require 'tahti-packages)
-;(require 'tahti-ui)
 
 ;; OSX specific settings
 (when (eq system-type 'darwin)

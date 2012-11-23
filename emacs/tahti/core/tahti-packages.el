@@ -1,5 +1,5 @@
 (require 'cl)
-(require 'tahti-utils)
+;(require 'tahti-utils)
 (require 'package)
 
 (add-to-list 'package-archives

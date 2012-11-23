@@ -1,3 +1,0 @@
-[submodule "emacs/prelude"]
-	path = emacs/prelude
-	url = git@github.com:tahti/prelude
