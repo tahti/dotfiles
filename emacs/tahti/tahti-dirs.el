@@ -16,13 +16,22 @@ changes in this directory. All Emacs Lisp (*.el) files there are loaded automati
 (defvar tahti-themes-dir   (expand-file-name "themes"   tahti-config-dir)
   "Place where addittional themes are stored")
 
-;; set default directory to $HOME
-(setq default-directory               (expand-file-name "~/"))
-(setq ido-save-directory-list-file    (expand-file-name "ido"     tahti-var-dir ))
-(setq eshell-directory-name           (expand-file-name "eshell"     tahti-var-dir ))
-(setq semanticdb-default-save-directory (expand-file-name "semanticdb" tahti-var-dir))
-(setq backup-directory                (expand-file-name  "backups" tahti-var-dir))
-(setq backup-directory-alist `(("" . ,backup-directory)))
+(setq default-directory               (expand-file-name "~/")
+      eshell-directory-name           (expand-file-name "eshell"     tahti-var-dir )
+      semanticdb-default-save-directory (expand-file-name "semanticdb" tahti-var-dir)
+      backup-directory                (expand-file-name  "backups" tahti-var-dir)
+      autosave-directory              (expand-file-name  "autosave" tahti-var-dir)
+      backup-directory-alist       `(("" . ,backup-directory))
+      desktop-path                 `(,(expand-file-name "desktop" tahti-var-dir))
+      desktop-dirname                 (expand-file-name "desktop" tahti-var-dir)
+      desktop-base-file-name                            "desktop"
+      desktop-menu-path            `(,(expand-file-name "desktop/menu" tahti-var-dir))
+      desktop-menu-directory          (expand-file-name "desktop/menu" tahti-var-dir)
+      desktop-menu-list-file                            "menu"
+      desktop-menu-base-filename                        "menu-desktop"
+  )
+
+
 ;;Files
 
 (defconst tahti-alias-file  (expand-file-name "diralias"  tahti-config-dir)
@@ -33,6 +42,7 @@ Neither dir nor alias may contain spaces.")
 (setq bookmark-default-file  (expand-file-name "bookmarks"   tahti-var-dir))
 (setq bc-bookmark-file       (expand-file-name "breadcrumb"  tahti-var-dir))
 (setq tramp-persistency-file-name (expand-file-name "tramp"  tahti-var-dir))
+(setq ido-save-directory-list-file (expand-file-name "ido"   tahti-var-dir))
 (setq save-place-file        (expand-file-name "saveplace"   tahti-var-dir))  ;file to store positions in files
 (setq-default woman-cache-filename (expand-file-name "woman-cache" tahti-var-dir))
 (setq savehist-file          (expand-file-name "savehist"    tahti-var-dir))
@@ -43,12 +53,12 @@ Neither dir nor alias may contain spaces.")
   (make-directory tahti-snippets-dir))
 (unless (file-exists-p tahti-personal-dir )
   (make-directory tahti-personal-dir ))
-(unless (file-exists-p ido-save-directory-list-file)
-  (make-directory ido-save-directory-list-file))
 (unless (file-exists-p backup-directory)
   (make-directory backup-directory))
 (unless (file-exists-p eshell-directory-name )
   (make-directory eshell-directory-name ))
 (unless (file-exists-p semanticdb-default-save-directory)
   (make-directory semanticdb-default-save-directory))
+(unless (file-exists-p autosave-directory)
+  (make-directory autosave-directory))
 (provide 'tahti-dirs)

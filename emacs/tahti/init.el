@@ -33,7 +33,7 @@
 
 (add-hook 'emacs-startup-hook (lambda ()
                                 (message "Time needed to load: %s seconds."
-                                         (emacs-uptime "%s")))
+                                         (emacs-uptime "%s"))))
 
 (add-hook 'after-save-hook 'byte-compile-config-on-save)
 

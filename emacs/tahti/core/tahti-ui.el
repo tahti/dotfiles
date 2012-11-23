@@ -12,8 +12,10 @@
 ;; make a shell script executable automatically on save
 (add-hook 'after-save-hook
           'executable-make-buffer-file-executable-if-script-p)
+(setq auto-save-file-name-transforms
+          `((".*" ,autosave-directory t)))
 
-;;; recent files ====================
+;;; recent files ===================================
 (setq recentf-auto-cleanup 'never)
 (setq recentf-max-saved-items 200)
 (require-and-exec 'recentf
@@ -37,6 +39,9 @@
 ;;; saveplace ========================================
 (setq-default save-place t)
 (require 'saveplace)
+;;;; vimvars =========================================
+(require 'vimvars)
+(add-hook 'find-file-hook 'vimvars-obey-vim-modeline)
 ;;; savehist  ========================================
 (setq savehist-additional-variables
       ;; search entries
@@ -49,7 +54,16 @@
 (defalias 'ack-same 'ack-and-a-half-same)
 (defalias 'ack-find-file 'ack-and-a-half-find-file)
 (defalias 'ack-find-file-same 'ack-and-a-half-find-file-same)
-
+;;; ido-mode =========================================
+(ido-mode 'files)
+(ido-everywhere 1)
+(add-to-list 'ido-ignore-directories "target")
+(add-to-list 'ido-ignore-directories "node_modules")
+;;; w3m ==============================================
+;;;
+(setq browse-url-browser-function 'w3m-browse-url)
+(autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
+ ;; optional keyboard short-cut
 ;;; pretty-mode ======================================
 (setq pp^L-^L-string (concat (make-string 30 ? ) "⁂" (make-string 30 ? ))
       pp^L-^L-string-pre "")
@@ -177,8 +191,6 @@ indent yanked text (with prefix arg don't indent)."
 
 ;; Always rescan buffer for imenu
 (set-default 'imenu-auto-rescan t)
-(add-to-list 'ido-ignore-directories "target")
-(add-to-list 'ido-ignore-directories "node_modules")
 
 ;; indentation and tab stops
 (setq-default tab-stop-list (range 2 160 2)
@@ -221,4 +233,4 @@ Intended as `kill-buffer-query-functions' fun."
 (setq multi-term-dedicated-select-after-open-p t)
 
 (provide 'tahti-ui)
-
+;;; tahit-ui.el ends here

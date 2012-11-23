@@ -91,5 +91,40 @@ See `pour-mappings-to'."
      (interactive)
      ,@code))
 
+(defun range (end-or-start &optional end step)
+  "Range of numbers from `START' to (including) `END' with stepwidth `STEP'.
+If only one argument is supplied it will be the end, 0 will be start.
+Mimicks Python's `range'"
+  (let ((step (or step 1))
+        (start (if end
+                   end-or-start
+                 0))
+        (end (if end
+                 end
+               end-or-start)))
+    (loop for i from start to end by step
+          collect i)))
+
+(defun touch (filename)
+     "updates mtime on the file for the current buffer"
+     (interactive)
+     (shell-command (concat "touch " (shell-quote-argument filename)))
+     (clear-visited-file-modtime))
+
+(defun tahti-eval-after-init (form)
+  "Add `(lambda () FORM)' to `after-init-hook'.
+
+    If Emacs has already finished initialization, also eval FORM immediately."
+  (let ((func (list 'lambda nil form)))
+    (add-hook 'after-init-hook func)
+    (when after-init-time
+      (eval form))))
+
+(defun byte-compile-config-on-save ()
+  "Compile elisp files in the emacs.d dir unless they are themes."
+  (let ((fname (buffer-file-name)))
+    (when (string-match "emacs\\.d/core/.*\\.el$" fname)
+      (byte-compile-file fname))))
+
 (provide 'tahti-util)
 

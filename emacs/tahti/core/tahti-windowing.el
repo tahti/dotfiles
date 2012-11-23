@@ -1,5 +1,5 @@
 ;; -*- lexical-binding: t -*-
-
+(require 'cl)
 (setq windmove-wrap-around t)
 (autoload 'windmove-find-other-window "windmove")
 (defun swap-window (direction)
@@ -74,7 +74,7 @@
   (let* ((buffers nil)
 	 (alive
           ;; Possibly update `winner-point-alist'
-	  (cl-loop for buf in (mapcar 'cdr (cdr conf))
+	  (loop for buf in (mapcar 'cdr (cdr conf))
                    for pos = (winner-get-point buf nil)
                    if (and pos (not (memq buf buffers)))
                    do (push buf buffers)
@@ -98,7 +98,7 @@
 
       ;; Restore marks
       (save-current-buffer
-	(cl-loop for buf in buffers
+	(loop for buf in buffers
                  for entry = (cadr (assq buf winner-point-alist))
                  do (progn (set-buffer buf)
                            (set-mark (car entry))

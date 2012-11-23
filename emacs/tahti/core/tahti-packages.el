@@ -8,7 +8,15 @@
              '("marmelade" . "http://marmalade-repo.org/packages/") t)
 
 (load-file "~/.emacs.d/vendor/cedet/cedet-devel-load.el")
-(add-to-list 'load-path "~/.emacs.d/vendor/cedet/contrib/")
+
+(defun add-to-load-path (&rest dirs)
+  (dolist (dir dirs load-path)
+    (add-to-list 'load-path (expand-file-name dir) nil #'string=)))
+
+(add-to-load-path "~/.emacs.d/vendor/cedet/contrib/"
+                  "~/.emacs.d/vendor/vimvars"
+                  "~/.emacs.d/vendor/desktop-menu"
+)
 (add-to-list 'Info-directory-list "~/.emacs.d/vendor/cedet/doc/info")
 
 (defvar tahti/hostname (car (split-string system-name "\\." t)))
@@ -26,15 +34,18 @@
            evil-numbers
            evil-leader
            ;gist 
-           helm helm-projectile 
+           helm
            magit 
            ;magithub 
            markdown-mode
            melpa
+           lacarte
+           queue
            rainbow-mode 
            surround
            ;volatile-highlights 
            yasnippet 
+           w3m
          )
          "A list of packages to ensure are installed at launch.")
 
@@ -73,7 +84,7 @@
                                  tahti-helm
                                  tahti-buffer
                                  ;tahti-calendar
-                                 ;tahti-desktop
+                                 tahti-desktop
                                  ;tahti-ediff
                                  tahti-evil
                                  ;tahti-elisp

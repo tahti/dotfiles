@@ -1,0 +1,12 @@
+[submodule "emacs/tahti/vendor/cedet"]
+	path = emacs/tahti/vendor/cedet
+	url = git@github.com:tahti/cedet.git
+[submodule "emacs/tahti/vendor/vimvars"]
+	path = emacs/tahti/vendor/vimvars
+	url = https://github.com/emacsmirror/vimvars.git
+[submodule "emacs/tahti/vendor/policy-switch"]
+	path = emacs/tahti/vendor/policy-switch
+	url = https://github.com/emacsmirror/policy-switch.git
+[submodule "emacs/tahti/vendor/desktop-menu"]
+	path = emacs/tahti/vendor/desktop-menu
+	url = https://github.com/emacsmirror/desktop-menu

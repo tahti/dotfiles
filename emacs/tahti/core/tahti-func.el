@@ -1,4 +1,5 @@
 (require 'tahti-dirs)
+(require 'tahti-util)
 
 (defun what-face (pos)
   (interactive "d")
@@ -11,6 +12,9 @@
   (kill-buffer (current-buffer)))
 
 ;; ---------------- Aliases --------------------------------------------
+(unless (file-exists-p tahti-alias-file)
+  (touch tahti-alias-file))
+
 (defconst tahti-aliases
   (with-temp-buffer
     (insert-file-contents tahti-alias-file)

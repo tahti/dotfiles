@@ -1,12 +1,12 @@
 (require 'tahti-dirs)
 (setq yas-prompt-functions '(yas-ido-prompt
                              yas-completing-prompt))
-(setq yas-snippet-dirs '(tahti-snippets-dir))
 (setq yas-also-auto-indent-first-line nil)
 (setq yas-indent-line 'fixed)
 (setq yas-triggers-in-field t)
 (setq yas-verbosity 2)
 (require-and-exec 'yasnippet
+  (add-to-list 'yas-snippet-dirs tahti-snippets-dir)
   (yas-global-mode 1))
 
 (define-key yas-minor-mode-map "\C-c&" nil)

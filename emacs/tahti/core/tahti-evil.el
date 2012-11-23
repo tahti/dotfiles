@@ -50,160 +50,21 @@
   ;(bar . WIDTH)    display a vertical bar cursor with width WIDTH
   ;(hbar . HEIGHT)  display a horizontal bar cursor with height HEIGHT
   ;If the state does not specify a cursor, ‘evil-default-cursor’ is used.
-  (setq evil-default-cursor        '("white" box))
-  ;The default cursor.
+  (setq evil-default-cursor        '("white" box)) ;The default cursor.
   (setq evil-normal-state-cursor   '("white" box))
-  ;The cursor for Normal state.
   (setq evil-insert-state-cursor   '("yellow" bar))
-  ;The cursor for Insert state.
   (setq evil-visual-state-cursor   '("purple" box))
-  ;The cursor for Visual state.
   (setq evil-replace-state-cursor  '("red" box))
-  ;The cursor for Replace state.
   (setq evil-operator-state-cursor '("#FFDD00" hollow))
-  ;The cursor for Operator-Pending state.
   (setq evil-motion-state-cursor   '("blue" (hbar . 7)))
-  ;The cursor for Motion state.
   (setq evil-emacs-state-cursor    '("green" box))
-  ;The cursor for Emacs state.
 
-;Keymaps
-  ;Redefine direction keys:
-    ;l -> n
-    (define-key evil-motion-state-map "n" 'evil-forward-char)
-    (define-key evil-motion-state-map "N" 'evil-window-bottom)
-    (define-key evil-motion-state-map (kbd "M-n") 'evil-window-right)
-    (define-key evil-motion-state-map (kbd "M-N") 'evil-window-move-far-right)
-    ;(define-key evil-motion-state-map "N" 'evil-window-bottom)
-    (define-key evil-window-map       "n" 'evil-window-right)
-    (define-key evil-window-map       "L" nil)
-    (define-key evil-window-map       "N" 'evil-window-move-far-right)
-    ;n -> k
-    (define-key evil-motion-state-map "k" 'evil-search-next)
-    (define-key evil-motion-state-map "K" 'evil-search-previous)
-    (define-key evil-window-map       "k" 'delete-window)
-    ;k -> c
-    (define-key evil-motion-state-map "c" 'evil-previous-line)
-    (define-key evil-motion-state-map "C" 'evil-lookup)
-    (define-key evil-window-map       "c" 'evil-window-up)
-    (define-key evil-motion-state-map (kbd "M-c") 'evil-window-up)
-    (define-key evil-motion-state-map (kbd "M-C") 'evil-window-move-very-top)
-    (define-key evil-window-map       "C" 'evil-window-move-very-top)
-    ;c -> j
-    (define-key evil-normal-state-map "c" nil) ;otherwise c is still 'evil-change
-    (define-key evil-normal-state-map "C" nil)
-    (define-key evil-normal-state-map "j" 'evil-change)
-    (define-key evil-normal-state-map "J" 'evil-change-line)
-    (define-key evil-window-map       "j" 'evil-window-new)
-    ;j -> t
-    (define-key evil-motion-state-map "j" nil)
-    (define-key evil-normal-state-map "J" nil)
-    (define-key evil-motion-state-map "t" 'evil-next-line)
-    (define-key evil-normal-state-map "T" 'evil-join)
-    (define-key evil-window-map       "t" 'evil-window-down)
-    (define-key evil-motion-state-map (kbd "M-t") 'evil-window-down)
-    (define-key evil-motion-state-map (kbd "M-T") 'evil-window-move-very-bottom)
-    (define-key evil-window-map       "J" nil)
-    (define-key evil-window-map       "T" 'evil-window-move-very-bottom)
-    ;t -> l
-    (define-key evil-motion-state-map       "l" 'evil-find-char-to)
-    (define-key evil-motion-state-map       "L" 'evil-find-char-to-backward)
-    (define-key evil-outer-text-objects-map "l" 'evil-a-tag)
-    (define-key evil-inner-text-objects-map "l" 'evil-inner-tag)
-    (define-key evil-window-map             "l" 'evil-window-top-left)
-
-
-   ;fix enter behaviour
-    (evil-declare-key 'motion completion-list-mode-map (kbd "<return>") 'choose-completion)
-    (evil-declare-key 'motion completion-list-mode-map (kbd "RET") 'choose-completion)
-    (evil-declare-key 'motion browse-kill-ring-mode-map (kbd "<return>") 'browse-kill-ring-insert-and-quit)
-    (evil-declare-key 'motion browse-kill-ring-mode-map (kbd "RET") 'browse-kill-ring-insert-and-quit)
-    (evil-declare-key 'motion occur-mode-map (kbd "<return>") 'occur-mode-goto-occurrence)
-    (evil-declare-key 'motion occur-mode-map (kbd "RET") 'occur-mode-goto-occurrence);
-    ;fix ZZ ZQ bindings
-    (define-key evil-motion-state-map "ZZ" 'evil-save-modified-and-close)
-    (define-key evil-motion-state-map "ZQ" 'evil-quit)
-;evil-leader settings
-   (defalias 'tahti/file (f-alt 'helm-find-files 'ido-find-file))
-   (defalias 'tahti/file-alternate (f-alt 'ido-find-file 'helm-find-files))
-   (defalias 'tahti/buffer (f-alt 'tahti/helm-buffers 'ido-switch-buffer))
-   (defalias 'tahti/buffer-alternate (f-alt 'ido-switch-buffer 'tahti/helm-buffers))
-   ;Keybindings
-   (evil-leader/set-key
-       "b" 'tahti/buffer
-       "B" 'tahti/buffer-alternate
-       "e" 'tahti/file
-       "E" 'tahti/file-alternate
-       "." 'evil-ex
-       "o" 'piotr-find-at-alias
-       "O" 'piotr-find-helm-at-alias
-       "w" 'save-buffer
-       "W" 'save-some-buffers
-       "k" 'kill-current-buffer
-       "K" 'kill-buffer-and-window
-       "<" 'piotr-cd-alias
-       "d" 'dired-jump
-       "D" 'piotr-dired-alias
-       ;"h" 'monky-status
-       "n" 'split-window-horizontally
-       ;"c" 'delete-window
-       "g" 'magit-status
-       "m" 'compile)
-
-   ;   "N" 'make-frame-command
-   ;   "C" 'delete-frame
-
-
-   ;   "s" 'piotr/switch-file
-   ;   ";" 'piotr/end-prog-line
-
-   ;(define-key evil-motion-state-map ":" 'smex-major-mode-commands)
-    (define-key evil-motion-state-map (kbd "M-h") 'evil-window-left)
-    (define-key evil-motion-state-map (kbd "M-H") 'evil-window-move-far-left)
-    (fill-keymap evil-window-map
-        "C-h" nil
-        "d" 'piotr/window-toggle-dedicate
-        ;; Splitting
-        "s" 'piotr/smart-split
-        "\\" 'split-window-vertically
-        "|" 'split-window-horizontally
-        "/" 'piotr/multi-split
-
-        ;; Deleting
-        "D"   'delete-window
-        "C-d" 'delete-window
-        "1"   'delete-other-windows
-
-        ;; Sizing
-        "RET" 'enlarge-window
-        "-"   'shrink-window-horizontally
-        "+"   'enlarge-window-horizontally
-
-        ;; Moving
-        "<left>"  'evil-window-left
-        "<down>"  'evil-window-down
-        "<up>"    'evil-window-up
-        "<right>" 'evil-window-right
-
-        ;; Swapping
-        "M-h"       'swap-with-left
-        "M-t"       'swap-with-down
-        "M-c"       'swap-with-up
-        "M-n"       'swap-with-right
-        "S-<left>"  'swap-with-left
-        "S-<down>"  'swap-with-down
-        "S-<up>"    'swap-with-up
-        "S-<right>" 'swap-with-right
-        "SPC"       'swap-window
-
-        "g" 'piotr/goto-window
-
-        ;; winner-mode
-        "u" 'winner-undo
-        "C-r" 'winner-redo
-        ;; shadow rotating in evil-window-map
-        "C-R" 'winner-redo)
+(defalias 'tahti/file (f-alt 'helm-find-files 'ido-find-file))
+(defalias 'tahti/file-alternate (f-alt 'ido-find-file 'helm-find-files))
+(defalias 'tahti/buffer (f-alt 'tahti/helm-buffers 'ido-switch-buffer))
+(defalias 'tahti/buffer-alternate (f-alt 'ido-switch-buffer 'tahti/helm-buffers))
 
 (evil-mode 1)
 
 (provide 'tahti-evil)
+;;;; tahti-evil.el ends here

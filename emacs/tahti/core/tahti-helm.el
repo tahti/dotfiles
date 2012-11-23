@@ -1,4 +1,4 @@
-(require tahti-config-dirs)
+(require 'tahti-dirs)
 (setq helm-c-boring-file-regexp
       (rx (or
            ;; directories
@@ -38,11 +38,11 @@
 (on-full-instance
  (run-with-timer 10 1800  #'start-process "updatedb" "*updatedb*" 
                                           "updatedb" "-U" (expand-file-name "~")
-                                                     "-o" tahti-locate-filename
+                                                     "-o" tahti-locate-file
                                                      "-l" "no" 
                                                      "--prunepaths" (expand-file-name "~/workspace/.metadata/ ~/.Private/")))
 
-(setq helm-c-locate-command (format "locate -d %s -i -r %%s" tahti-locate-filename))
+(setq helm-c-locate-command (format "locate -d %s -i -r %%s" tahti-locate-file))
 
 (setq helm-c-default-info-index-list '("ansicl" "elisp" "cl" "org" "gnus" "tramp"
                                        "zsh" "coreutils" "find" "libc"
