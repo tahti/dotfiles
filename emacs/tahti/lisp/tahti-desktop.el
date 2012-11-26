@@ -19,8 +19,8 @@ Also returns nil if pid is nil."
   (when (not (emacs-process-p ad-return-value))
     (setq ad-return-value nil)))
 
-(require-and-exec 'desktop
-  (require 'desktop-menu))
+;(require-and-exec 'desktop
+  ;(require 'desktop-menu))
 
 ;; File/path settings are set up in in ~/.emacs.d/tahti-dirs.el
 

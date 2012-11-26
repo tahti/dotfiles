@@ -1,6 +1,6 @@
 ;;; tahit-util.el --- Based on cofi-util.el
+;(push 'queue el-get-packages)
 (require 'cl)
-(require 'queue)
 
 (defvar tahti/full-emacs t "Load all settings not just minimal.")
 (defvar tahti/mail-instance nil "This is an email instance.")

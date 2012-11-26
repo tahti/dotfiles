@@ -7,10 +7,13 @@
 ;; ==================================================
 ;;
 ;;;extended help mode ===============================
-(require 'help-mode+)
-(require 'help+)
-(require 'help-fns+)
-(eval-after-load "menu-bar" '(require 'menu-bar+))
+(push 'help-mode+ el-get-packages)
+(push 'help-fns+ el-get-packages)
+(push 'help+ el-get-packages)
+(push 'menu-bar+ el-get-packages)
+;(require 'help+)
+;(require 'help-fns+)
+;(eval-after-load "menu-bar" '(require 'menu-bar+))
 
 ;;; backups & autosave===============================
 (add-hook 'find-file-hook 'auto-save-mode)
@@ -42,9 +45,6 @@
 (add-hook 'write-file-hooks 'time-stamp) ; update when saving
 ;;; tramp ============================================
 (setq tramp-default-method "ssh")
-;;;; vimvars =========================================
-(require 'vimvars)
-(add-hook 'find-file-hook 'vimvars-obey-vim-modeline)
 ;;; savehist  ========================================
 (setq savehist-additional-variables
       ;; search entries
@@ -234,6 +234,7 @@ Intended as `kill-buffer-query-functions' fun."
 ;;; ==============================
 
 (setq multi-term-dedicated-select-after-open-p t)
-
+(defun tahti-el-get-after-deft ()
+  (message "deft after"))
 (provide 'tahti-ui)
 ;;; tahit-ui.el ends here

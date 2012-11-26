@@ -1,13 +1,19 @@
 (require 'tahti-dirs)
+(require 'tahti-keys)
+
+(push 'yasnippet el-get-packages)
+(defun iy-el-get-after-yasnippet ()
+  (yas-global-mode 1)
+  (add-to-list 'yas-snippet-dirs tahti-snippets-dir)
+  (tahti-yas-keys )
+)
+
 (setq yas-prompt-functions '(yas-ido-prompt
                              yas-completing-prompt))
 (setq yas-also-auto-indent-first-line nil)
 (setq yas-indent-line 'fixed)
 (setq yas-triggers-in-field t)
 (setq yas-verbosity 2)
-(require-and-exec 'yasnippet
-  (add-to-list 'yas-snippet-dirs tahti-snippets-dir)
-  (yas-global-mode 1))
 
 (defun yas-org-very-safe-expand ()
   (let ((yas-fallback-behavior 'return-nil)) (yas-expand)))

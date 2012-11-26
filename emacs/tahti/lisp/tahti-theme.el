@@ -29,4 +29,4 @@
 
 (tahti/colorscheme 'tahti-dark)
 
-(provide 'tahti-color)
+(provide 'tahti-theme)

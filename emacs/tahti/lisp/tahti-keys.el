@@ -1,12 +1,12 @@
 (require 'tahti-util)
 (require 'tahti-helm)
-(require 'tahti-snippets)
 (require 'tahti-windowing)
-(require 'tahti-evil)
-(require 'tahti-autoloads)
+;(require 'tahti-evil)
 ;;;; Keys used by evil =======================================
 ; we change default motion keys for covninient dvorak navigation: 
 ; l->n n->k  k->c  c->j  j->t  t->l, h stays h
+
+(defun tahti-evil-keys ()
     (fill-keymap evil-normal-state-map
        "c"    nil ;otherwise c is still 'evil-change
        "C"    nil
@@ -128,14 +128,16 @@
     (evil-declare-key 'motion browse-kill-ring-mode-map (kbd "RET") 'browse-kill-ring-insert-and-quit)
     (evil-declare-key 'motion occur-mode-map (kbd "<return>") 'occur-mode-goto-occurrence)
     (evil-declare-key 'motion occur-mode-map (kbd "RET") 'occur-mode-goto-occurrence);
-
+)
+(defun tahti-yas-keys ()
+  (define-key yas-minor-mode-map "\C-c&" nil)
+)
 
 ;;;; Rest of the keys ========================================
 ;; use shift + arrow keys to switch between visible buffers
-(require 'windmove)
+;(require 'windmove)
 (windmove-default-keybindings)
 
-;(define-key yas-minor-mode-map "\C-c&" nil)
 
 ;; A complementary binding to the apropos-command (C-h a)
 (define-key 'help-command "A" 'apropos)
@@ -149,10 +151,7 @@
   "M-n"   'evil-window-right
   "M-c"   'evil-window-up
   "M-t"   'evil-window-down
-  )
-
-(define-key yas-minor-mode-map "\C-c&" nil)
-
+)
 
 (provide 'tahti-keys)
 ;;;; tahti-keys ends here
