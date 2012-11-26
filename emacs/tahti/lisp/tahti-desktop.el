@@ -1,4 +1,10 @@
 (require 'tahti-dirs)
+;;; saveplace ========================================
+(setq-default save-place t)
+(require 'saveplace)
+(setq desktop-save 'if-exists)
+;(desktop-save-mode 1)
+
 (defun emacs-process-p (pid)
   "Returns t if command of pid is emacs.
 Also returns nil if pid is nil."

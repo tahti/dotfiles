@@ -1,4 +1,13 @@
+;documentation for helm - https://github.com/emacs-helm/helm/wiki 
 (require 'tahti-dirs)
+
+(eval-when-compile (require 'cl))
+
+(defalias 'tahti/file (f-alt 'helm-find-files 'ido-find-file))
+(defalias 'tahti/file-alternate (f-alt 'ido-find-file 'helm-find-files))
+(defalias 'tahti/buffer (f-alt 'tahti/helm-buffers 'ido-switch-buffer))
+(defalias 'tahti/buffer-alternate (f-alt 'ido-switch-buffer 'tahti/helm-buffers))
+
 (setq helm-c-boring-file-regexp
       (rx (or
            ;; directories
@@ -26,10 +35,8 @@
 (setq helm-idle-delay 0.3
       helm-input-idle-delay 0
       helm-quick-update t
-      helm-candidate-number-limit nil
-      helm-su-or-sudo "sudo"
-      helm-allow-skipping-current-buffer nil
-      helm-enable-shortcuts t)
+      helm-candidate-number-limit 99
+      helm-su-or-sudo "sudo")
 ;;if show only the basename in helm-find-files
 (setq helm-ff-transformer-show-only-basename nil)
 
@@ -42,7 +49,13 @@
                                                      "-l" "no" 
                                                      "--prunepaths" (expand-file-name "~/workspace/.metadata/ ~/.Private/")))
 
-(setq helm-c-locate-command (format "locate -d %s -i -r %%s" tahti-locate-file))
+;(setq helm-c-locate-command (format "locate -d %s -i -r %%s" tahti-locate-file))
+(setq helm-c-locate-command
+      (case system-type
+        ('gnu/linux "locate -i -r %s")
+        ('berkeley-unix "locate -i %s")
+        ('windows-nt "es -i -r %s")
+        (t "locate %s")))
 
 (setq helm-c-default-info-index-list '("ansicl" "elisp" "cl" "org" "gnus" "tramp"
                                        "zsh" "coreutils" "find" "libc"

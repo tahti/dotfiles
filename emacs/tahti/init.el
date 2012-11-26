@@ -5,41 +5,16 @@
 ;; This file is not part of GNU Emacs.
 ;;
 (message "Evil emacs is powering up... Be patient, Master %s!" (getenv "USER"))
-(add-to-list 'load-path (file-name-directory load-file-name))
-(require 'tahti-dirs)
-
-
-(add-to-list 'load-path tahti-vendor-dir)
-(add-to-list 'load-path tahti-config-dir)
-(add-to-list 'load-path tahti-core-dir)
-(add-to-list 'load-path (expand-file-name  "modes" tahti-config-dir))
-
-;; the core stuff
-(require 'tahti-packages)
-
-;; OSX specific settings
-(when (eq system-type 'darwin)
-  (require 'tahti-osx))
-;; Windows specific settings
-(when (eq system-type 'windows-nt)
-  (require 'tahti-cygwin))
-
-;; config changes made through the customize UI will be store here
-(setq custom-file (expand-file-name "custom.el" tahti-personal-dir))
-
-;; load the personal settings (this includes `custom-file')
-(when (file-exists-p tahti-personal-dir)
-  (mapc 'load (directory-files tahti-personal-dir 't "^[^#].*el$")))
-
+(setq load-path (cons (concat user-emacs-directory "lisp") load-path))
+(require 'tahti-init)
 (add-hook 'emacs-startup-hook (lambda ()
                                 (message "Time needed to load: %s seconds."
                                          (emacs-uptime "%s"))))
+(defun byte-compile-config-on-save ()
+  "Compile elisp files in the emacs.d dir unless they are themes."
+  (let ((fname (buffer-file-name)))
+    (when (string-match "emacs\\.d/lisp/.*\\.el$" fname)
+      (byte-compile-file fname))))
 
 (add-hook 'after-save-hook 'byte-compile-config-on-save)
-
-(require 'tahti-tips)
-(tahti-eval-after-init
- ;; greet the user with some useful tip
- (run-at-time 5 nil 'tahti-tip-of-the-day))
-
 ;;; init.el ends here

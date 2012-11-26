@@ -10,3 +10,15 @@
 [submodule "emacs/tahti/vendor/desktop-menu"]
 	path = emacs/tahti/vendor/desktop-menu
 	url = https://github.com/emacsmirror/desktop-menu
+[submodule "emacs/tahti/vendor/help-mode-plus"]
+	path = emacs/tahti/vendor/help-mode-plus
+	url = https://github.com/emacsmirror/help-mode-plus.git
+[submodule "emacs/tahti/vendor/help-fns-plus"]
+	path = emacs/tahti/vendor/help-fns-plus
+	url = https://github.com/emacsmirror/help-fns-plus.git
+[submodule "emacs/tahti/vendor/help-plus"]
+	path = emacs/tahti/vendor/help-plus
+	url = https://github.com/emacsmirror/help-plus.git
+[submodule "emacs/tahti/vendor/menu-bar-plus"]
+	path = emacs/tahti/vendor/menu-bar-plus
+	url = https://github.com/emacsmirror/menu-bar-plus.git

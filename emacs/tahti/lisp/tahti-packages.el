@@ -1,23 +1,23 @@
 (require 'cl)
-;(require 'tahti-utils)
 (require 'package)
+(require 'tahti-cedet) ; we need to load cedet first
 
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (add-to-list 'package-archives
              '("marmelade" . "http://marmalade-repo.org/packages/") t)
 
-(load-file "~/.emacs.d/vendor/cedet/cedet-devel-load.el")
-
 (defun add-to-load-path (&rest dirs)
   (dolist (dir dirs load-path)
     (add-to-list 'load-path (expand-file-name dir) nil #'string=)))
 
-(add-to-load-path "~/.emacs.d/vendor/cedet/contrib/"
-                  "~/.emacs.d/vendor/vimvars"
-                  "~/.emacs.d/vendor/desktop-menu"
+(add-to-load-path (expand-file-name "vimvars" tahti-vendor-dir)
+                  (expand-file-name "desktop-menu" tahti-vendor-dir)
+                  (expand-file-name "help-mode-plus" tahti-vendor-dir)
+                  (expand-file-name "help-fns-plus" tahti-vendor-dir)
+                  (expand-file-name "help-plus" tahti-vendor-dir)
+                  (expand-file-name "menu-bar-plus" tahti-vendor-dir)
 )
-(add-to-list 'Info-directory-list "~/.emacs.d/vendor/cedet/doc/info")
 
 (defvar tahti/hostname (car (split-string system-name "\\." t)))
 
@@ -30,11 +30,12 @@
            ;ack-and-a-half 
            ;exec-path-from-shell 
            ;expand-region
+           ;
            evil
            evil-numbers
            evil-leader
            ;gist 
-           helm
+           ;helm
            magit 
            ;magithub 
            markdown-mode
@@ -90,6 +91,7 @@
                                  ;tahti-elisp
                                  ;tahti-erc
                                  ;tahti-files
+                                 ;tahti-icicles
                                  tahti-keys
                                  ;tahti-mail
                                  ;tahti-project
@@ -101,7 +103,6 @@
                                  ;tahti-shell
                                  ;tahti-workgroups
                                  ;tahti-write
-                                 tahti-completion
                                  ))
 
 (mapc #'require tahti/standard-settings)

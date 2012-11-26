@@ -59,11 +59,6 @@
   (setq evil-motion-state-cursor   '("blue" (hbar . 7)))
   (setq evil-emacs-state-cursor    '("green" box))
 
-(defalias 'tahti/file (f-alt 'helm-find-files 'ido-find-file))
-(defalias 'tahti/file-alternate (f-alt 'ido-find-file 'helm-find-files))
-(defalias 'tahti/buffer (f-alt 'tahti/helm-buffers 'ido-switch-buffer))
-(defalias 'tahti/buffer-alternate (f-alt 'ido-switch-buffer 'tahti/helm-buffers))
-
 (evil-mode 1)
 
 (provide 'tahti-evil)

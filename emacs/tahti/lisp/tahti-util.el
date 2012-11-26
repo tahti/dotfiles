@@ -111,20 +111,5 @@ Mimicks Python's `range'"
      (shell-command (concat "touch " (shell-quote-argument filename)))
      (clear-visited-file-modtime))
 
-(defun tahti-eval-after-init (form)
-  "Add `(lambda () FORM)' to `after-init-hook'.
-
-    If Emacs has already finished initialization, also eval FORM immediately."
-  (let ((func (list 'lambda nil form)))
-    (add-hook 'after-init-hook func)
-    (when after-init-time
-      (eval form))))
-
-(defun byte-compile-config-on-save ()
-  "Compile elisp files in the emacs.d dir unless they are themes."
-  (let ((fname (buffer-file-name)))
-    (when (string-match "emacs\\.d/core/.*\\.el$" fname)
-      (byte-compile-file fname))))
-
 (provide 'tahti-util)
 

@@ -9,8 +9,6 @@
   (add-to-list 'yas-snippet-dirs tahti-snippets-dir)
   (yas-global-mode 1))
 
-(define-key yas-minor-mode-map "\C-c&" nil)
-
 (defun yas-org-very-safe-expand ()
   (let ((yas-fallback-behavior 'return-nil)) (yas-expand)))
 (add-hook 'org-mode-hook

@@ -1,5 +1,6 @@
 (require 'tahti-util)
 (require 'tahti-helm)
+(require 'tahti-snippets)
 (require 'tahti-windowing)
 (require 'tahti-evil)
 (require 'tahti-autoloads)
@@ -149,6 +150,8 @@
   "M-c"   'evil-window-up
   "M-t"   'evil-window-down
   )
+
+(define-key yas-minor-mode-map "\C-c&" nil)
 
 
 (provide 'tahti-keys)

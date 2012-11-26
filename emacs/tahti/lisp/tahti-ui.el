@@ -5,7 +5,13 @@
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (when (fboundp 'blink-cursor-mode) (blink-cursor-mode -1))
 ;; ==================================================
-;;; 
+;;
+;;;extended help mode ===============================
+(require 'help-mode+)
+(require 'help+)
+(require 'help-fns+)
+(eval-after-load "menu-bar" '(require 'menu-bar+))
+
 ;;; backups & autosave===============================
 (add-hook 'find-file-hook 'auto-save-mode)
 (setq auto-save-timeout 20)
@@ -36,9 +42,6 @@
 (add-hook 'write-file-hooks 'time-stamp) ; update when saving
 ;;; tramp ============================================
 (setq tramp-default-method "ssh")
-;;; saveplace ========================================
-(setq-default save-place t)
-(require 'saveplace)
 ;;;; vimvars =========================================
 (require 'vimvars)
 (add-hook 'find-file-hook 'vimvars-obey-vim-modeline)

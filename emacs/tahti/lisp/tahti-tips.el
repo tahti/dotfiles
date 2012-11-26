@@ -14,5 +14,17 @@
   (message
    (concat "The tip: " (nth (random (length prelude-tips)) tahti-tips))))
 
+(defun tahti-eval-after-init (form)
+  "Add `(lambda () FORM)' to `after-init-hook'.
+
+    If Emacs has already finished initialization, also eval FORM immediately."
+  (let ((func (list 'lambda nil form)))
+    (add-hook 'after-init-hook func)
+    (when after-init-time
+      (eval form))))
+
+(tahti-eval-after-init
+ ;; greet the user with some useful tip
+ (run-at-time 5 nil 'tahti-tip-of-the-day))
 (provide 'tahti-tips)
 
