@@ -129,8 +129,18 @@
     (evil-declare-key 'motion occur-mode-map (kbd "<return>") 'occur-mode-goto-occurrence)
     (evil-declare-key 'motion occur-mode-map (kbd "RET") 'occur-mode-goto-occurrence);
 )
+
 (defun tahti-yas-keys ()
   (define-key yas-minor-mode-map "\C-c&" nil)
+)
+
+(defun tahti-helm-keys ()
+    (fill-keymap helm-map
+       "C-t"  'helm-next-line
+       "C-c"  'helm-previous-line
+    )
+  (define-key 'help-command "A" 'apropos)
+
 )
 
 ;;;; Rest of the keys ========================================
@@ -140,9 +150,8 @@
 
 
 ;; A complementary binding to the apropos-command (C-h a)
-(define-key 'help-command "A" 'apropos)
 
-
+(define-key global-map "\C-c"  nil)
 (fill-keymap 'global
   "C-x g" 'magit-status
   "C-+"   'text-scale-increase  ;;increase font
@@ -151,6 +160,13 @@
   "M-n"   'evil-window-right
   "M-c"   'evil-window-up
   "M-t"   'evil-window-down
+  "C-t"   'next-line           ;traspose-chars can be done in normal mode with xp
+  "C-c"   'previous-line
+  "C-h"   'backward-char
+  "C-n"   'forward-char
+  "C-g"   mode-specific-map ;C-c -> C-g (old keyboard-quit)
+  "C-<escape>" 'ESC-prefix
+  "<escape>"   'keyboard-escape-quit
 )
 
 (provide 'tahti-keys)

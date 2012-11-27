@@ -19,10 +19,12 @@
  )
 
 ;;; Libraries
-(push 'helm el-get-packages)
-(push 'lacarte el-get-packages)
+(push 'helm           el-get-packages)
+(push 'helm-descbinds el-get-packages)
+(push 'lacarte        el-get-packages)
 
-(defun tahti-el-get-after-helm ()
+(defun tahti-after-helm ()
+  (helm-descbinds-install) ;replace descbinds
   (require 'helm-match-plugin)
   (require 'helm-misc)
   (require 'helm-config)
@@ -62,7 +64,7 @@
         (helm-show-kill-ring)
       (barf-if-buffer-read-only)
       ad-do-it))
-
+  (tahti-helm-keys) 
 )
 
 
@@ -91,11 +93,6 @@
            ;"*Customize"
            ;"*Messages*")))
 
-;(setq helm-idle-delay 0.3
-      ;helm-input-idle-delay 0
-      ;helm-quick-update t
-      ;helm-candidate-number-limit 99
-      ;helm-su-or-sudo "sudo")
 ;;if show only the basename in helm-find-files
 
 ;(on-full-instance

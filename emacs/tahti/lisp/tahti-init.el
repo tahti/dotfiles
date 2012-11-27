@@ -2,7 +2,6 @@
 
 ;;; eval me to compile the dir
 ;; (byte-recompile-directory "~/.emacs.d/lisp" 0 nil)
-
 (defcustom tahti-blacklist
   nil
   "Files in black list are not loaded"
@@ -42,10 +41,8 @@
 
 (defun tahti-init-load-modules (&optional before-modules after-modules)
   "Emacs load modules"
-
   (dolist (feature before-modules)
     (tahti-init-load-module feature))
-
   ;; load modules in lisp directory
   (dolist (file (nconc (file-expand-wildcards (concat tahti-lisp-dir "tahti-*.el"))
                        (file-expand-wildcards (concat tahti-lisp-dir "modes/tahti-*.el"))))
@@ -85,7 +82,6 @@
        "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
     (goto-char (point-max))
     (eval-print-last-sexp)))
-
 (tahti-init)
 
 (provide 'tahti-init)
