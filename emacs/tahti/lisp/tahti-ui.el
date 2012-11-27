@@ -234,7 +234,5 @@ Intended as `kill-buffer-query-functions' fun."
 ;;; ==============================
 
 (setq multi-term-dedicated-select-after-open-p t)
-(defun tahti-el-get-after-deft ()
-  (message "deft after"))
 (provide 'tahti-ui)
 ;;; tahit-ui.el ends here

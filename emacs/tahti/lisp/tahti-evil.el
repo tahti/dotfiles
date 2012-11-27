@@ -31,7 +31,7 @@
 (require 'tahti-windowing)
 
  ;(require 'smex)
-(defun tahti-el-get-after-evil-leader ()
+(defun tahti-after-evil ()
   (message "Evil loading")
   ;Indicator settings
      (setq evil-normal-state-tag (propertize "N" 'face '((:background "white"   :foreground "black")))

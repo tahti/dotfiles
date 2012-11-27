@@ -1,18 +1,21 @@
 (require 'tahti-dirs)
-;(setq cedet-root-path (file-name-as-directory (expand-file-name "cedet" tahti-vendor-dir)))
 
 (push 'cedet el-get-packages)
 
-;(unless (file-exists-p (expand-file-name "doc/info" cedet-root-path) )
-  ;(message "Compiling cedet - please wait....")
-  ;(shell-command (concat "make -C " cedet-root-path))
-  ;)
 
 ;(add-to-list 'load-path (expand-file-name "contrib" cedet-root-path))
 ;(load-file (expand-file-name "cedet-devel-load.el" cedet-root-path))
 ;(add-to-list 'Info-directory-list(expand-file-name "doc/info" cedet-root-path))
-(defun tahi-el-get-after-cedet ()
-
+(defun tahti-after-cedet ()
+  (setq cedet-root-path (el-get-package-directory "cedet"))
+  (unless (file-exists-p (expand-file-name "doc/info" cedet-root-path))
+    (message "[tahti-cedet] Compiling cedet - please wait....")
+    (shell-command (concat "make -C " cedet-root-path)))
+  (unless (featurep 'cedet-devel-load)
+    (message "[tahti-cedet] Loading Cedet..")
+    (load (expand-file-name "cedet-devel-load.el" cedet-root-path)))
+  (add-to-list 'load-path (expand-file-name "contrib" cedet-root-path))
+  (add-to-list 'Info-directory-list (expand-file-name "doc/info" cedet-root-path))
   (add-to-list 'semantic-default-submodes 'global-semanticdb-minor-mode)      ;enable semanticsdb
   (add-to-list 'semantic-default-submodes 'global-semantic-mru-bookmark-mode) ;enable jumping back
   (add-to-list 'semantic-default-submodes 'global-semantic-highlight-func-mode)

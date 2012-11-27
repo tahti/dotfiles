@@ -14,8 +14,8 @@
 
 ;;;; vimvars =========================================
 (push 'vimvars el-get-packages)
-(defun tahti-el-get-after-vimvars ()
-                    (add-hook 'find-file-hook 'vimvars-obey-vim-modeline))
+(defun tahti-after-vimvars ()
+  (add-hook 'find-file-hook 'vimvars-obey-vim-modeline))
 
 (provide 'tahti-editor)
 

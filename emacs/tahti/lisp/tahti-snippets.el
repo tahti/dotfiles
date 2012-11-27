@@ -2,7 +2,7 @@
 (require 'tahti-keys)
 
 (push 'yasnippet el-get-packages)
-(defun iy-el-get-after-yasnippet ()
+(defun tahti-after-yasnippet ()
   (yas-global-mode 1)
   (add-to-list 'yas-snippet-dirs tahti-snippets-dir)
   (tahti-yas-keys )

@@ -58,30 +58,14 @@
   (dolist (feature after-modules)
     (tahti-init-load-module feature)))
 
-(defun tahti-run-func (function-name)
-  (if (fboundd function-name)
-    (message "Defined")
-    (message "Not defined")
-  )
-  (function-name))
-
-;(defun tahti-run-after-func ()
-  ;"Runs after functions if defined"
-
-  ;(dolist (module-name (reverse el-get-packages))
-    ;(tahti-run-func (intern (concat module-name "after"))
-
-  ;;; load modules in lisp directory
-  ;(dolist (file (nconc (file-expand-wildcards (concat tahti-lisp-dir "tahti-*.el"))
-                       ;(file-expand-wildcards (concat tahti-lisp-dir "modes/tahti-*.el"))))
-    ;(let ((feature (file-name-nondirectory (file-name-sans-extension file)))
-          ;(exclude (append '(tahti-init) before-modules after-modules)))
-      ;(if (memq (intern feature) tahti-blacklist)
-          ;(message "[tahti-init] %s is in black list" feature)
-        ;(unless (memq (intern feature) exclude)
-          ;(tahti-run-func (intern feature))))))
-  ;(dolist (feature after-modules)
-    ;(tahti-run-func feature)))
+(defun tahti-run-after-modules (modules)
+  "Looks for funcitons named \"tahti-after-*\" for each module name. If funciton is found it is executed."
+  (dolist (module-name modules)
+    (let* ((name (symbol-name module-name))
+           (func (intern (concat "tahti-after-" name ))))
+      (when (fboundp func)
+          (message "[tahti-init] run tahti-after-%s" name) 
+          (funcall func)))))
 
 (defun tahti-init ()
   "Emacs start entry"
@@ -92,7 +76,7 @@
 
   (tahti-init-load-modules '(tahti-cedet tahti-theme) '(tahti-el-get))
   (el-get 'sync (reverse el-get-packages))
-  ;(tahti-run-after-func '(tahti-cedet tahti-theme))
+  (tahti-run-after-modules (reverse el-get-packages))
 )
 
 (unless (require 'el-get nil 'noerror)
