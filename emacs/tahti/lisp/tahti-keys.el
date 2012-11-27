@@ -151,7 +151,6 @@
 
 ;; A complementary binding to the apropos-command (C-h a)
 
-(define-key global-map "\C-c"  nil)
 (fill-keymap 'global
   "C-x g" 'magit-status
   "C-+"   'text-scale-increase  ;;increase font
