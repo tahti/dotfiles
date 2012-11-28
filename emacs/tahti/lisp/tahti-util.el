@@ -9,12 +9,6 @@
   `(when tahti/full-emacs
      ,@body))
 
-(defun f-alt (&rest alternatives)
-  "Test functions in `alternatives' and return first bound."
-  (catch 'found
-    (dolist (f alternatives)
-      (if (functionp f)
-          (throw 'found f)))))
 
 (defun add-to-hooks (fun hooks)
   "Add function to hooks"

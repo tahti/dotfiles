@@ -3,10 +3,14 @@
 
 (eval-when-compile (require 'cl))
 
-(defalias 'tahti/file (f-alt 'helm-find-files 'ido-find-file))
-(defalias 'tahti/file-alternate (f-alt 'ido-find-file 'helm-find-files))
-(defalias 'tahti/buffer (f-alt 'tahti/helm-buffers 'ido-switch-buffer))
-(defalias 'tahti/buffer-alternate (f-alt 'ido-switch-buffer 'tahti/helm-buffers))
+(defun f-alt (&rest alternatives)
+  "Test functions in `alternatives' and return first bound."
+  (catch 'found
+    (dolist (f alternatives)
+      (if (functionp f)
+          (throw 'found f)))))
+
+
 (custom-set-variables
  '(helm-c-adaptive-history-file (expand-file-name "helm-c-adaptive-history" tahti-var-dir ))
  '(helm-idle-delay 0.3)
@@ -22,6 +26,7 @@
 (push 'helm           el-get-packages)
 (push 'helm-descbinds el-get-packages)
 (push 'lacarte        el-get-packages)
+
 
 (defun tahti-after-helm ()
   ;(helm-descbinds-install) ;replace descbinds
@@ -40,31 +45,41 @@
           ('windows-nt "es -i -r %s")
           (t "locate %s")))
   (helm-mode 1)
+  ;;; ido-mode =========================================
+  (ido-mode 'files)
+  (ido-everywhere 1)
+  (add-to-list 'ido-ignore-directories "target")
+  (add-to-list 'ido-ignore-directories "node_modules")
+  (setq ido-enable-flex-matching t)
+
+  (defalias 'tahti/file (f-alt 'helm-find-files 'ido-find-file))
+  (defalias 'tahti/file-alternate (f-alt 'ido-find-file 'helm-find-files))
+  (defalias 'tahti/buffer (f-alt 'helm-buffers-list 'ido-switch-buffer))
+  (defalias 'tahti/buffer-alternate (f-alt 'ido-switch-buffer 'helm-buffers-list))
   ;; helm for ffap behaves broken
-  (push  '(find-file-at-point . ido-completing-read) helm-completing-read-handlers-alist)
-  (tahti/set-key 'global "M-x" 'helm-M-x)
-  ;; From browse-kill-ring.el
-  (defadvice yank-pop (around kill-ring-browse-maybe (arg) activate)
-    "If last action was not a yank, run `browse-kill-ring' instead."
+  ;(push  '(find-file-at-point . ido-completing-read) helm-completing-read-handlers-alist)
+  ;(tahti/set-key 'global "M-x" 'helm-M-x)
+  ;;; From browse-kill-ring.el
+  ;(defadvice yank-pop (around kill-ring-browse-maybe (arg) activate)
+    ;"If last action was not a yank, run `browse-kill-ring' instead."
     ;; yank-pop has an (interactive "*p") form which does not allow
     ;; it to run in a read-only buffer.  We want browse-kill-ring to
     ;; be allowed to run in a read only buffer, so we change the
     ;; interactive form here.  In that case, we need to
     ;; barf-if-buffer-read-only if we're going to call yank-pop with
     ;; ad-do-it
-    (interactive "p")
-    (if (not (eq last-command 'yank))
-        (helm-show-kill-ring)
-      (barf-if-buffer-read-only)
-      ad-do-it))
+    ;(interactive "p")
+    ;(if (not (eq last-command 'yank))
+        ;(helm-show-kill-ring)
+      ;(barf-if-buffer-read-only)
+      ;ad-do-it))
 
-  (defadvice evil-paste-pop (around evil-browse-kill-ring (arg) activate)
-    (interactive "p")
-    (if (not (memq last-command '(yank evil-paste-before evil-paste-pop evil-paste-after)))
-        (helm-show-kill-ring)
-      (barf-if-buffer-read-only)
-      ad-do-it))
-  (tahti-helm-keys) 
+  ;(defadvice evil-paste-pop (around evil-browse-kill-ring (arg) activate)
+    ;(interactive "p")
+    ;(if (not (memq last-command '(yank evil-paste-before evil-paste-pop evil-paste-after)))
+        ;(helm-show-kill-ring)
+      ;(barf-if-buffer-read-only)
+      ;ad-do-it))
 )
 
 

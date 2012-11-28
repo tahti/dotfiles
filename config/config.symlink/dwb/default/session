@@ -1,14 +1,17 @@
 g:default
--12 https://startpage.com/do/search?query=gmail gmail
--11 https://accounts.google.com/ServiceLogin?service=mail&passive=true&rm=false&continue=https://mail.google.com/mail/&ss=1&scc=1&ltmpl=default&ltmplcache=2 Gmail:
--10 https://mail.google.com/mail/u/0/?shva=1 Gmail
--9 https://mail.google.com/mail/u/0/?shva=1#inbox Inbox
--8 https://mail.google.com/mail/u/0/?shva=1#label/UniLu%2Fsvn_commit "UniLu/svn_commit"
--7 https://mail.google.com/mail/u/0/?shva=1#inbox Inbox
--6 https://mail.google.com/mail/u/0/?shva=1#inbox Gmail
--5 https://mail.google.com/mail/u/0/h/flu26og5hxw5/?zy=e&f=1 Gmail
--4 https://mail.google.com/mail/u/0/h/1g1se4x8c4pra/?&v=c&th=13adf6d211123a21 Gmail
--3 https://mail.google.com/mail/u/0/h/fr2w8xirne4n/?& Gmail
--2 https://mail.google.com/mail/u/0/h/1qo8lby9il2c1/?&s=d Gmail
--1 https://accounts.google.com/ServiceLogin?service=mail&passive=true&rm=false&continue=https://mail.google.com/mail/h/1jyjsedjxe23/&ss=1&scc=1&ltmpl=default&ltmplcache=2 Gmail:
-0|0 https://startpage.com/do/search?query=satoss satoss - Startpage Web Search
+-15 https://startpage.com/do/search?query=gmail gmail
+-14 https://accounts.google.com/ServiceLogin?service=mail&passive=true&rm=false&continue=https://mail.google.com/mail/&ss=1&scc=1&ltmpl=default&ltmplcache=2 Gmail:
+-13 https://mail.google.com/mail/u/0/?shva=1 Gmail
+-12 https://mail.google.com/mail/u/0/?shva=1#inbox Inbox
+-11 https://mail.google.com/mail/u/0/?shva=1#label/UniLu%2Fsvn_commit "UniLu/svn_commit"
+-10 https://mail.google.com/mail/u/0/?shva=1#inbox Inbox
+-9 https://mail.google.com/mail/u/0/?shva=1#inbox Gmail
+-8 https://mail.google.com/mail/u/0/h/flu26og5hxw5/?zy=e&f=1 Gmail
+-7 https://mail.google.com/mail/u/0/h/1g1se4x8c4pra/?&v=c&th=13adf6d211123a21 Gmail
+-6 https://mail.google.com/mail/u/0/h/fr2w8xirne4n/?& Gmail
+-5 https://mail.google.com/mail/u/0/h/1qo8lby9il2c1/?&s=d Gmail
+-4 https://accounts.google.com/ServiceLogin?service=mail&passive=true&rm=false&continue=https://mail.google.com/mail/h/1jyjsedjxe23/&ss=1&scc=1&ltmpl=default&ltmplcache=2 Gmail:
+-3 https://startpage.com/do/search?query=satoss satoss - Startpage Web Search
+-2 https://bitbucket.org/lyro/evil/issues/new lyro / evil / issues / new — Bitbucket
+-1 https://bitbucket.org/lyro/evil/issue/233/not-possible-to-switch-back-from lyro / evil / issues / #233 - Not possible to switch back from visual<->emacs mode to normal mode — Bitbucket
+0|0 https://bitbucket.org/lyro/evil/issue/233/not-possible-to-switch-back-from#nrm lyro / evil / issues / #233 - Not possible to switch back from visual<->emacs mode to normal mode — Bitbucket

@@ -1,30 +1,31 @@
 (require 'tahti-util)
 (require 'tahti-helm)
+(require 'tahti-evil)
 (require 'tahti-windowing)
 ;(require 'tahti-evil)
 ;;;; Keys used by evil =======================================
 ; we change default motion keys for covninient dvorak navigation: 
 ; l->n n->k  k->c  c->j  j->t  t->l, h stays h
-(defun close-and-kill-this-pane ()
-  "Close this pane and kill the buffer in it also."
+(defun kill-current-buffer ()
   (interactive)
-  (close-current-buffer)
-  (delete-window)
-)
+  (kill-buffer (current-buffer)))
 
-(defun my-esc (prompt)
-     "Functionality for escaping generally.  Includes exiting Evil insert state and C-g binding. "
+(defun tahti-esc()
+  "Functionality for escaping generally. Closes help buffer."
+  (interactive)
      (cond
-      ;; If we're in one of the Evil states that defines [escape] key, return [escape] so as
-      ;; Key Lookup will use it.
-      ((or (evil-insert-state-p) (evil-normal-state-p) (evil-replace-state-p) (evil-visual-state-p)) [escape])
-      ;((help-mode-p) 'close-and-kill-this-pane)
-      ;; This is the best way I could infer for now to have C-c work during evil-read-key.
-      ;; Note: As long as I return [escape] in normal-state, I don't need this.
-      ;;((eq overriding-terminal-local-map evil-read-key-map) (keyboard-quit) (kbd ""))
-      (t (kbd "C-g"))))
+      ((or (equal 'help-mode major-mode)
+           (equal 'apropos-mode major-mode)) 
+       (kill-buffer-and-window))
+      (t (keyboard-escape-quit))))
 
 (defun tahti-evil-keys ()
+    (fill-keymap evil-visual-state-map
+       "<escape>" 'evil-normal-state ;we do not want previous state but normal state
+    )
+    (fill-keymap evil-emacs-state-map
+       "<escape>" 'evil-normal-state ;we do not want previous state but normal state
+    )
     (fill-keymap evil-normal-state-map
        "c"    nil ;otherwise c is still 'evil-change
        "C"    nil
@@ -32,6 +33,7 @@
        "J"    'evil-change-line
        "T"    'evil-join
        "C-,"   evil-leader/map
+       "<escape>" 'keyboard-escape-quit
     )
     (fill-keymap evil-motion-state-map
        "n"    'evil-forward-char
@@ -47,6 +49,8 @@
        "M-T"  'evil-window-move-very-bottom
        "l"    'evil-find-char-to
        "L"    'evil-find-char-to-backward
+       "'"    'evil-goto-mark
+       "`"    'evil-goto-mark-line
        "M-H"  'evil-window-move-far-left
        "ZZ"   'evil-save-modified-and-close ;allow quiting from help files
        "ZQ"   'evil-quit                    ;allow quiting from help files
@@ -128,7 +132,9 @@
        ;"h" 'monky-status
        "n" 'split-window-horizontally
        ;"c" 'delete-window
-       "g" 'magit-status
+       "rg" 'magit-status
+       "gn" 'next-buffer
+       "gp" 'previous-buffer
        "," 'evil-repeat-find-char-reverse
        "m" 'compile)
 
@@ -160,18 +166,41 @@
 )
 
 (defun tahti-helm-keys ()
+    (fill-keymap helm-find-files-map
+     "C-f"      'helm-execute-persistent-action
+     "C-b"      'helm-find-files-down-one-level
+    )
     (fill-keymap helm-map
-       ;"C-t"  'helm-next-line
-       ;"<F1>b"  'descbinds
-       ;"C-c"  'helm-previous-line
-       ;"C-g"   mode-specific-map ;C-c -> C-g (old keyboard-quit)
+       "C-f"     'helm-next-source
+       "C-b"     'helm-previous-source
+       "C-d"     'delete-backward-char
+       "C-S-d"   'delete-forward-char
+       "<left>"  'backward-char
+       "<right>" 'forward-char
     )
   (define-key 'help-command "A" 'apropos)
 
 )
+(defun tahti-comint-keys()
+  (fill-keymap comint-mode-map
+               "C-M-t" 'comint-next-input
+               "C-M-c" 'comint-previous-input
+               "M-p" nil
+               "M-n" nil)
+)
+
+(defun tahti-isearch-keys()
+  (define-key isearch-mode-map [escape] 'isearch-cancel) ;help
+)
+
 (defun tahti-global-keys()
+  (add-hook 'comint-mode-hook 'tahti-comint-keys)
+  (add-hook 'helm-mode-hook   'tahti-helm-keys)
+  (add-hook 'isearch-mode-hook 'tahti-isearch-keys)
+  (add-hook 'evil-mode-hook 'tahti-evil-keys)
+
   (define-key key-translation-map "\C-f" "\C-g") ;keyboard quit
-  (define-key key-translation-map "\C-g" "\C-c")
+  (define-key key-translation-map "\C-g" "\C-c") ;go
   (define-key key-translation-map "\C-c" "\C-p") ;up
   (define-key key-translation-map "\C-p" "\C-t") ;transpose
   (define-key key-translation-map "\C-t" "\C-n") ;down
@@ -189,23 +218,17 @@
     "M-c"   'evil-window-up
     "M-t"   'evil-window-down
     "C-<escape>" 'ESC-prefix
-    "<escape>"   'my-esc
+    "<escape>" 'tahti-esc
   )
   ;(fill-keymap minibuffer-local-map
     ;"C-c"   'previous-line
     ;"C-g"   mode-specific-map ;C-c -> C-g (old keyboard-quit)
   ;)
-
-)
 ;;;; Rest of the keys ========================================
 ;; use shift + arrow keys to switch between visible buffers
 ;(require 'windmove)
-(windmove-default-keybindings)
-
-
-;; A complementary binding to the apropos-command (C-h a)
-;(define-key minibuffer-local-map "\C-c" 'previous-line)
-
+  (windmove-default-keybindings)
+)
 
 (provide 'tahti-keys)
 ;;;; tahti-keys ends here

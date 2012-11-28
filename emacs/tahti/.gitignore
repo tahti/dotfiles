@@ -1,3 +1,5 @@
 el-get
 elpa
 var
+custom.el
+secrets.el

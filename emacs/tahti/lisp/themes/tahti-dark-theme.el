@@ -40,20 +40,14 @@
 
 (defun create-tahti-theme (variant theme-name &optional childtheme)
   (let* ((class '((class color) (min-colors 89)))
-         ;; tahti palette
-         (base03    "#080808")
-         (base02    "#403d3d")
-         ;; emphasized content
-         (base01    "#5f5f5f")
          ;; primary content
-         (base00    "#657b83")
-         (base0     "#D0D0D0")
+         (tahti-fg        "#D0D0D0")
+         (tahti-bg        "#080808")
+         (tahti-hl        "#403d3d")
          ;; comments
-         (base1     "#93a1a1")
-         ;; background highlight light
-         (base2     "#eee8d5")
-         ;; background light
-         (base3     "#fdf6e3")
+         (tahti-comments  "#5f5f5f")
+         ;; emphasized content
+         (tahti-emph      "#93a1a1")
 
          ;; tahti accented colors
          (yellow    "#afaf5f")
@@ -67,51 +61,28 @@
          (chartreusel "#A6E22E")
          (grey      "#8F8F8F")
          (purple    "#Ae81ff")
+         (black     "#000000")
 
          ;; Darker and lighter accented colors
          ;; Only use these in exceptional circumstances!
-         (yellow-d  "#7B6000")
-         (yellow-l  "#DEB542")
-         (orange-d  "#AA501A")
-         (orange-l  "#F2804F")
-         (red-d     "#960050")
-         (red-l     "#FF6E64")
-         (magenta-d "#93115C")
-         (magenta-l "#F771AC")
-         (violet-d  "#3F4D91")
-         (violet-l  "#9EA0E5")
-         (blue-d    "#00629D")
-         (blue-l    "#5fd7ff")
-         (cyan-d    "#00736F")
-         (cyan-l    "#69CABF")
-         (green-d   "#546E00")
-         (green-l   "#A6E22E")
-         (purple-l  "#AF87D7")
+         (yellow-lc  "#7B6000")
+         (yellow-l   "#DEB542")
+         (orange-lc  "#AA501A")
+         (orange-hc  "#F2804F")
+         (red-lc     "#960050")
+         (red-hc     "#FF6E64")
+         (magenta-lc "#93115C")
+         (magenta-hc "#F771AC")
+         (violet-lc  "#3F4D91")
+         (violet-hc  "#9EA0E5")
+         (blue-lc    "#00629D")
+         (blue-hc    "#5fd7ff")
+         (cyan-lc    "#00736F")
+         (cyan-hc    "#69CABF")
+         (green-lc   "#546E00")
+         (green-hc   "#A6E22E")
+         (purple-lc  "#AF87D7"))
 
-         ;; Light/Dark adaptive tahti colors
-         (tahti-fg base0)
-         (tahti-bg base03)
-         (tahti-hl base02)
-         (tahti-emph base1)
-         (tahti-comments base01)
-
-         ;; Light/Dark adaptive higher/lower contrast accented colors
-         ;; Only use these in exceptional cirmumstances!
-         (yellow-lc yellow-d)
-         (orange-hc orange-l)
-         (orange-lc orange-d)
-         (red-hc red-l)
-         (red-lc red-d)
-         (magenta-hc magenta-l)
-         (magenta-lc magenta-d)
-         (violet-hc violet-l)
-         (violet-lc violet-d)
-         (blue-hc blue-l)
-         (blue-lc blue-d)
-         (cyan-hc cyan-l)
-         (cyan-lc cyan-d)
-         (green-hc green-l)
-         (green-lc green-d))
     (custom-theme-set-faces
      theme-name
      '(button ((t (:underline t))))
@@ -130,15 +101,15 @@
      `(link ((,class (:foreground ,yellow :underline t :weight bold))))
      `(link-visited ((,class (:foreground ,yellow :underline t :weight normal))))
      `(success ((,class (:foreground ,green ))))
-     `(warning ((,class (:foreground ,orange-d ))))
-     `(error ((,class (:foreground ,red-d))))
+     `(warning ((,class (:foreground ,orange-lc))))
+     `(error ((,class (:foreground ,red-lc))))
      `(lazy-highlight ((,class (:foreground ,tahti-emph :background ,tahti-hl :bold t))))
      `(escape-glyph ((,class (:foreground ,violet))))
 
      ;; compilation
      `(compilation-column-face ((,class (:foreground ,yellow))))
      `(compilation-enter-directory-face ((,class (:foreground ,green))))
-     `(compilation-error-face ((,class (:foreground ,red-d :weight bold :underline t))))
+     `(compilation-error-face ((,class (:foreground ,red-lc :weight bold :underline t))))
      `(compilation-face ((,class (:foreground ,tahti-fg))))
      `(compilation-info-face ((,class (:foreground ,blue))))
      `(compilation-info ((,class (:foreground ,green :underline t))))
@@ -186,14 +157,18 @@
      `(menu ((,class (:foreground ,tahti-fg :background ,tahti-bg))))
      `(minibuffer-prompt ((,class (:foreground ,tahti-emph))))
      `(mode-line
-       ((,class (:foreground ,tahti-fg
-                             :background ,tahti-hl
+       ((,class (:foreground ,black
+                             :background ,yellow
                              :box (:line-width -1 :style released-button)))))
-     `(mode-line-buffer-id ((,class (:foreground ,tahti-emph :weight bold))))
+     `(mode-line-buffer-id ((,class (:foreground ,tahti-fg :background ,tahti-bg))))
      `(mode-line-inactive
        ((,class (:foreground ,tahti-fg
                              :background ,tahti-bg
                              :box (:line-width -1 :style released-button)))))
+     `(powerline-inactive1 ((,class (:foreground ,tahti-fg :background "grey11"))))
+     `(powerline-inactive2 ((,class (:foreground ,tahti-fg :background "grey18"))))
+     `(powerline-active1 ((,class (:foreground ,black :background "grey30"))))
+     `(powerline-active2 ((,class (:foreground ,black :background "grey51"))))
      `(region ((,class (:foreground ,tahti-bg :background ,tahti-emph))))
      `(secondary-selection ((,class (:background ,tahti-bg))))
      `(trailing-whitespace ((,class (:background ,red))))
@@ -204,16 +179,16 @@
      `(font-lock-comment-delimiter-face ((,class (:foreground ,tahti-comments))))
      `(font-lock--delimiter-face ((,class (:foreground ,grey))))
      `(font-lock-comment-face ((,class (:foreground ,tahti-comments))))
-     `(font-lock-constant-face ((,class (:foreground ,orange-d :weight bold))))
+     `(font-lock-constant-face ((,class (:foreground ,orange-lc :weight bold))))
      `(font-lock-number-face ((,class (:foreground , purple))))
      `(font-lock-doc-face ((,class (:foreground ,cyan :slant italic))))
      `(font-lock-doc-string-face ((,class (:foreground ,blue))))
      `(font-lock-function-name-face ((,class (:foreground ,chartreusel))))
      `(font-lock-keyword-face ((,class (:foreground ,red :weight bold))))
      `(font-lock-negation-char-face ((,class (:foreground ,tahti-fg))))
-     `(font-lock-preprocessor-face ((,class (:foreground ,green-l))))
+     `(font-lock-preprocessor-face ((,class (:foreground ,green-hc))))
      `(font-lock-string-face ((,class (:foreground ,yellow))))
-     `(font-lock-type-face ((,class (:foreground ,blue-l))))
+     `(font-lock-type-face ((,class (:foreground ,blue-hc))))
      `(font-lock-variable-name-face ((,class (:foreground ,orange))))
      `(font-lock-warning-face ((,class (:foreground ,orange :weight bold :underline t))))
 
@@ -404,7 +379,7 @@
      `(helm-buffer-saved-out ((,class (:foreground ,red :background ,tahti-bg
                                                    :inverse-video t))))
      `(helm-buffer-size ((,class (:foreground ,tahti-comments))))
-     `(helm-candidate-number ((,class (:background ,tahti-hl :foreground ,tahti-emph
+     `(helm-candidate-number ((,class (:background ,tahti-bg :foreground ,grey
                                                    :bold t))))
      `(helm-ff-directory ((,class (:background ,tahti-bg  :foreground ,blue))))
      `(helm-ff-executable ((,class (:foreground ,green))))
@@ -419,7 +394,7 @@
      `(helm-grep-match ((,class (:inherit match))))
      `(helm-grep-running ((,class (:foreground ,red))))
      `(helm-header ((,class (:inherit header-line))))
-     `(helm-lisp-completion-info ((,class (:foreground ,tahti-fg))))
+     `(helm-lisp-completion-info ((,class (:foreground ,tahti-bg))))
      `(helm-lisp-show-completion ((,class (:foreground ,yellow  :background ,tahti-hl
                                                        :bold t))))
      `(helm-M-x-key ((,class (:foreground ,orange :underline t))))
@@ -789,9 +764,9 @@
      ;; w3m
      `(w3m-anchor ((,class (:inherit link))))
      `(w3m-arrived-anchor ((,class (:inherit link-visited))))
-     `(w3m-form ((,class (:background ,base03 :foreground ,tahti-fg))))
-     `(w3m-header-line-location-title ((,class (:background ,base02 :foreground ,yellow))))
-     `(w3m-header-line-location-content ((,class (:background ,base02 :foreground ,tahti-fg))))
+     `(w3m-form ((,class (:background ,tahti-bg :foreground ,tahti-fg))))
+     `(w3m-header-line-location-title ((,class (:background ,tahti-bg :foreground ,yellow))))
+     `(w3m-header-line-location-content ((,class (:background ,tahti-bg :foreground ,tahti-fg))))
      `(w3m-bold ((,class (:foreground ,tahti-emph :weight bold))))
      `(w3m-image-anchor ((,class (:background ,tahti-bg :foreground ,cyan :inherit link))))
      `(w3m-image ((,class (:background ,tahti-bg :foreground ,cyan))))
@@ -869,7 +844,7 @@
      theme-name
      `(ansi-color-names-vector [,tahti-bg ,red ,green ,yellow
                                              ,blue ,magenta ,cyan ,tahti-fg])
-     `(ansi-term-color-vector [unspecific ,base01 ,red ,green ,yellow ,blue ,magenta ,cyan ,base03])
+     `(ansi-term-color-vector [unspecific ,tahti-fg ,red ,green ,yellow ,blue ,magenta ,cyan ,tahti-bg])
      ;; fill-column-indicator
      `(fci-rule-color ,tahti-hl)
 

@@ -7,9 +7,7 @@
                   (get-char-property (point) 'face))))
     (if face (message "Face: %s" face) (message "No face at %d" pos))))
 
-(defun kill-current-buffer ()
-  (interactive)
-  (kill-buffer (current-buffer)))
+
 
 ;; ---------------- Aliases --------------------------------------------
 (unless (file-exists-p tahti-alias-file)

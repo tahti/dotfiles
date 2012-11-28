@@ -31,10 +31,11 @@
            :url "https://github.com/emacsmirror/vimvars.git"
            :features "vimvars"
     )
-    (:name menu-bar+
-       :description "Separation of Local and Global Menus"
-       :type emacswiki
-       :features "menu-bar+"
+    (:name powerline
+           :description "Emacs version of the Vim powerline."
+           :type git
+           :url "https://github.com/milkypostman/powerline.git"
+           :features "powerline"
     )
     ;;uncomment if you want to add as submodule in vendor directory
     ;(:name helm

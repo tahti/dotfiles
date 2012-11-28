@@ -4,113 +4,16 @@
 (when (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (when (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (when (fboundp 'blink-cursor-mode) (blink-cursor-mode -1))
-;; ==================================================
-;;
-;;;extended help mode ===============================
-(push 'help-mode+ el-get-packages)
-(push 'help-fns+ el-get-packages)
-(push 'help+ el-get-packages)
+;; menu bar==========================================
 (push 'menu-bar+ el-get-packages)
-;(require 'help+)
-;(require 'help-fns+)
-;(eval-after-load "menu-bar" '(require 'menu-bar+))
-
-;;; backups & autosave===============================
-(add-hook 'find-file-hook 'auto-save-mode)
-(setq auto-save-timeout 20)
-;; make a shell script executable automatically on save
-(add-hook 'after-save-hook
-          'executable-make-buffer-file-executable-if-script-p)
-(setq auto-save-file-name-transforms
-          `((".*" ,autosave-directory t)))
-
-;;; recent files ===================================
-(setq recentf-auto-cleanup 'never)
-(setq recentf-max-saved-items 200)
-(require-and-exec 'recentf
-   (recentf-mode 1)
-   (setq recentf-exclude '(
-                           "\\.recentf"
-                           "\\.ido\\.last"
-                           "\\.keychain/.*?-sh\\(-gpg\\)?"
-                           ))
-   (add-hook 'kill-emacs-hook #'recentf-cleanup)
-   )
-;;; timestamps =======================================
-;; when there's "Time-stamp: <>" in the first 10 lines of the file
-(setq time-stamp-active t
-      ;; check first 10 buffer lines for Time-stamp: <>
-      time-stamp-line-limit 10
-      time-stamp-format "%04y-%02m-%02d %02H:%02M:%02S (%u)") ; date format
-(add-hook 'write-file-hooks 'time-stamp) ; update when saving
-;;; tramp ============================================
-(setq tramp-default-method "ssh")
-;;; savehist  ========================================
-(setq savehist-additional-variables
-      ;; search entries
-      '(search ring regexp-search-ring)
-      ;; save every three minutes
-      savehist-autosave-interval 180)
-(savehist-mode t)
-;;ack-and-a-half ====================================
-(defalias 'ack 'ack-and-a-half)
-(defalias 'ack-same 'ack-and-a-half-same)
-(defalias 'ack-find-file 'ack-and-a-half-find-file)
-(defalias 'ack-find-file-same 'ack-and-a-half-find-file-same)
-;;; ido-mode =========================================
-(ido-mode 'files)
-(ido-everywhere 1)
-(add-to-list 'ido-ignore-directories "target")
-(add-to-list 'ido-ignore-directories "node_modules")
-;;; w3m ==============================================
-;;;
-(setq browse-url-browser-function 'w3m-browse-url)
-(autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
- ;; optional keyboard short-cut
-;;; pretty-mode ======================================
-(setq pp^L-^L-string (concat (make-string 30 ? ) "⁂" (make-string 30 ? ))
-      pp^L-^L-string-pre "")
-(when (fboundp 'pretty-control-l-mode)
-  (pretty-control-l-mode 1))
-(require-and-exec 'pretty-mode
-  (dolist (mode '(python-mode c-mode java-mode cpp-mode))
-          (pretty-add-keywords mode '(("="  . "←")
-                                      ("==" . "≡"))))
-  (global-pretty-mode 1))
-;;; woman - help files ===============================
-(setq-default woman-use-own-frame nil
-              woman-use-topic-at-point t
-              woman-imenu t)
-;;; keychain-mode ====================================
-;(require-and-exec 'keychain-environment
-  ;(run-with-timer 100 (* 5 60) 'keychain/refresh))
-;;uniquify - naming same buffers =========================
-(require-and-exec 'uniquify
-                  (setq uniquify-buffer-name-style 'post-forward
-                        uniquify-separator "/"
-                        uniquify-after-kill-buffer-p t       ; rename after killing uniquified 
-                        uniquify-ignore-buffers-re "^\\*"))  ; don't muck with special buffers 
-;;; eldoc ============================================
-(require-and-exec 'eldoc
-  (add-to-hooks 'turn-on-eldoc-mode 
-                    '(python-mode-hook
-                      emacs-lisp-mode-hook
-                      lisp-interaction-mode-hook
-                      ielm-mode-hook
-                      ))
-  (eldoc-add-command 'autopair-insert-opening))
-;;; fringe ===========================================
-;; make the fringe (gutter) smaller
-;; the argument is a width in pixels (the default is 8)
-(if (fboundp 'fringe-mode)
-    (fringe-mode 4))
-(setq visual-line-fringe-indicators '(left-curly-arrow right-curly-arrow))
-;;; rebuilder ========================================
-;;; Use string syntax for re-builder
-(require 're-builder)
-(setq reb-re-syntax 'string)
-;;; ==========================================================
+(push 'rainbow-mode el-get-packages)
+;;; fringes - vertical border margins==================
+;; make the fringe (gutter) smaller the argument is a width in pixels for left and right(the default is 8)
+(when (fboundp 'fringe-mode)
+    (fringe-mode '(0 . 4)))
+(setq visual-line-fringe-indicators '(nil right-curly-arrow))
 ;; automatically indenting yanked text if in programming-modes
+
 (defvar yank-indent-modes '(python-mode LaTeX-mode TeX-mode)
   "Modes in which to indent regions that are yanked (or yank-popped). Only
 modes that don't derive from `prog-mode' should be listed here.")
@@ -150,6 +53,10 @@ indent yanked text (with prefix arg don't indent)."
 ;; mode line settings
 (line-number-mode t)
 (column-number-mode t)
+(setq-default major-mode 'text-mode)
+(setq-default cursor-type 'bar)
+(setq-default cursor-in-non-selected-windows nil)
+
 (size-indication-mode t)
 ;autoinsert paired bracket
 (electric-pair-mode t)
@@ -184,12 +91,6 @@ indent yanked text (with prefix arg don't indent)."
 (setq scroll-preserve-screen-position nil)
 (scroll-bar-mode -1)
 
-;; use utf-8 environment as default
-(set-language-environment 'UTF-8)
-(set-locale-environment "UTF-8")
-(set-terminal-coding-system 'utf-8)
-(set-keyboard-coding-system 'utf-8)
-(prefer-coding-system 'utf-8)
 
 
 ;; Always rescan buffer for imenu
@@ -212,8 +113,6 @@ indent yanked text (with prefix arg don't indent)."
       glasses-uncapitalize-p t
       glasses-uncapitalize-regexp "[a-zA-Z]")
 
-(setq-default major-mode 'text-mode)
-(setq-default cursor-type 'bar)
 
 (setq font-lock-verbose nil)
 ;; enable functions ========================================
@@ -223,16 +122,6 @@ indent yanked text (with prefix arg don't indent)."
 (put 'dired-find-alternate-file 'disabled nil)
 (put 'set-goal-column 'disabled nil)
 (fset 'yes-or-no-p 'y-or-n-p)
-;; ==================================================
-;;; scratch ====================
-(defun save-a-scratch ()
-  "Prevent *scratch* buffer from being killed.
-Intended as `kill-buffer-query-functions' fun."
-  (not (string= "*scratch*" (buffer-name))))
 
-(push #'save-a-scratch kill-buffer-query-functions)
-;;; ==============================
-
-(setq multi-term-dedicated-select-after-open-p t)
 (provide 'tahti-ui)
 ;;; tahit-ui.el ends here

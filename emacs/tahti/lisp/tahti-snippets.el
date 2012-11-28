@@ -30,7 +30,7 @@
       (insert (make-string count ? )))))
 
 (defun tahti/no-yas ()
-  (setq yas--dont-activate t))
+  (setq yas/dont-activate t))
 
 (add-to-hooks 'tahti/no-yas '(magit-mode-hook
                             calc-mode-hook))

@@ -25,13 +25,10 @@
 (push 'evil-numbers el-get-packages)
 (push 'evil el-get-packages)
 
-(require 'tahti-keys)
-(require 'tahti-util)
-(require 'tahti-func)
-(require 'tahti-windowing)
 
  ;(require 'smex)
 (defun tahti-after-evil ()
+  (undo-tree-mode 1)
   (message "Evil loading")
   ;Indicator settings
      (setq evil-normal-state-tag (propertize "N" 'face '((:background "white"   :foreground "black")))
@@ -58,11 +55,9 @@
     (setq evil-visual-state-cursor   '("purple" box))
     (setq evil-replace-state-cursor  '("red" box))
     (setq evil-operator-state-cursor '("#FFDD00" hollow))
-    (setq evil-motion-state-cursor   '("blue" (hbar . 7)))
+    (setq evil-motion-state-cursor   '("blue" box))
     (setq evil-emacs-state-cursor    '("green" box))
-
   (evil-mode 1)
-  (tahti-evil-keys)
 )
 (provide 'tahti-evil)
 ;;;; tahti-evil.el ends here
