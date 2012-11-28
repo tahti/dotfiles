@@ -24,7 +24,7 @@
 (push 'lacarte        el-get-packages)
 
 (defun tahti-after-helm ()
-  (helm-descbinds-install) ;replace descbinds
+  ;(helm-descbinds-install) ;replace descbinds
   (require 'helm-match-plugin)
   (require 'helm-misc)
   (require 'helm-config)

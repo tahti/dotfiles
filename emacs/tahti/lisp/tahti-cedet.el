@@ -8,7 +8,7 @@
 ;(add-to-list 'Info-directory-list(expand-file-name "doc/info" cedet-root-path))
 (defun tahti-after-cedet ()
   (setq cedet-root-path (el-get-package-directory "cedet"))
-  (unless (file-exists-p (expand-file-name "doc/info" cedet-root-path))
+  (unless (file-exists-p (expand-file-name "lisp/cedet/loaddefs.el" cedet-root-path))
     (message "[tahti-cedet] Compiling cedet - please wait....")
     (shell-command (concat "make -C " cedet-root-path)))
   (unless (featurep 'cedet-devel-load)
@@ -87,5 +87,6 @@
                                  ;"C-c c t" 'semantic-analyze-proto-impl-toggle
                                  ;"C-c c s" 'semantic-ia-show-summary
                                  ;"C-c c c" 'semantic-ia-describe-class))
+  (tahti-cedet-keys)
 )
 (provide 'tahti-cedet)

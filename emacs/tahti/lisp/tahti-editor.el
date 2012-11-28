@@ -16,6 +16,7 @@
 (push 'vimvars el-get-packages)
 (defun tahti-after-vimvars ()
   (add-hook 'find-file-hook 'vimvars-obey-vim-modeline))
+  (tahti-global-keys) ;run at the last package
 
 (provide 'tahti-editor)
 

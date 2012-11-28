@@ -5,6 +5,24 @@
 ;;;; Keys used by evil =======================================
 ; we change default motion keys for covninient dvorak navigation: 
 ; l->n n->k  k->c  c->j  j->t  t->l, h stays h
+(defun close-and-kill-this-pane ()
+  "Close this pane and kill the buffer in it also."
+  (interactive)
+  (close-current-buffer)
+  (delete-window)
+)
+
+(defun my-esc (prompt)
+     "Functionality for escaping generally.  Includes exiting Evil insert state and C-g binding. "
+     (cond
+      ;; If we're in one of the Evil states that defines [escape] key, return [escape] so as
+      ;; Key Lookup will use it.
+      ((or (evil-insert-state-p) (evil-normal-state-p) (evil-replace-state-p) (evil-visual-state-p)) [escape])
+      ;((help-mode-p) 'close-and-kill-this-pane)
+      ;; This is the best way I could infer for now to have C-c work during evil-read-key.
+      ;; Note: As long as I return [escape] in normal-state, I don't need this.
+      ;;((eq overriding-terminal-local-map evil-read-key-map) (keyboard-quit) (kbd ""))
+      (t (kbd "C-g"))))
 
 (defun tahti-evil-keys ()
     (fill-keymap evil-normal-state-map
@@ -134,15 +152,51 @@
   (define-key yas-minor-mode-map "\C-c&" nil)
 )
 
+(defun tahti-cedet-keys ()
+  (fill-keymap semantic-mode-map
+    ;"C-c"   'previous-line
+    ;"C-g"   mode-specific-map ;C-c -> C-g (old keyboard-quit)
+  )
+)
+
 (defun tahti-helm-keys ()
     (fill-keymap helm-map
-       "C-t"  'helm-next-line
-       "C-c"  'helm-previous-line
+       ;"C-t"  'helm-next-line
+       ;"<F1>b"  'descbinds
+       ;"C-c"  'helm-previous-line
+       ;"C-g"   mode-specific-map ;C-c -> C-g (old keyboard-quit)
     )
   (define-key 'help-command "A" 'apropos)
 
 )
+(defun tahti-global-keys()
+  (define-key key-translation-map "\C-f" "\C-g") ;keyboard quit
+  (define-key key-translation-map "\C-g" "\C-c")
+  (define-key key-translation-map "\C-c" "\C-p") ;up
+  (define-key key-translation-map "\C-p" "\C-t") ;transpose
+  (define-key key-translation-map "\C-t" "\C-n") ;down
+  (define-key key-translation-map "\C-n" "\C-f") ;left
 
+  (define-key key-translation-map "\C-h" "\C-b") ;right
+  (define-key key-translation-map "\C-b" "\C-h") ;help
+
+  (fill-keymap 'global
+    "C-x g" 'magit-status
+    "C-+"   'text-scale-increase  ;;increase font
+    "C--"   'text-scale-decrease  ;;decrease font
+    "M-h"   'evil-window-left
+    "M-n"   'evil-window-right
+    "M-c"   'evil-window-up
+    "M-t"   'evil-window-down
+    "C-<escape>" 'ESC-prefix
+    "<escape>"   'my-esc
+  )
+  ;(fill-keymap minibuffer-local-map
+    ;"C-c"   'previous-line
+    ;"C-g"   mode-specific-map ;C-c -> C-g (old keyboard-quit)
+  ;)
+
+)
 ;;;; Rest of the keys ========================================
 ;; use shift + arrow keys to switch between visible buffers
 ;(require 'windmove)
@@ -150,23 +204,8 @@
 
 
 ;; A complementary binding to the apropos-command (C-h a)
+;(define-key minibuffer-local-map "\C-c" 'previous-line)
 
-(fill-keymap 'global
-  "C-x g" 'magit-status
-  "C-+"   'text-scale-increase  ;;increase font
-  "C--"   'text-scale-decrease  ;;decrease font
-  "M-h"   'evil-window-left
-  "M-n"   'evil-window-right
-  "M-c"   'evil-window-up
-  "M-t"   'evil-window-down
-  "C-t"   'next-line           ;traspose-chars can be done in normal mode with xp
-  "C-c"   'previous-line
-  "C-h"   'backward-char
-  "C-n"   'forward-char
-  "C-g"   mode-specific-map ;C-c -> C-g (old keyboard-quit)
-  "C-<escape>" 'ESC-prefix
-  "<escape>"   'keyboard-escape-quit
-)
 
 (provide 'tahti-keys)
 ;;;; tahti-keys ends here

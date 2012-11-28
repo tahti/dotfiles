@@ -1,9 +1,7 @@
-
 (defun tahti-filter-el-get-sources (recipe)
   (let* ((name (symbol-name (plist-get recipe :name)))
          ;(func (intern (concat "tahti-el-get-after-" name)))
          (url (plist-get recipe :url)))
-
     ;; use iy-el-get-after-* as after function if defined
     ;(when (fboundp func)
       ;(plist-put recipe :after (list func)))
@@ -31,12 +29,14 @@
            :description "Provide support for VI-style mode lines in Emacs."
            :type git
            :url "https://github.com/emacsmirror/vimvars.git"
+           :features "vimvars"
     )
     (:name menu-bar+
        :description "Separation of Local and Global Menus"
-       :type emacswiki)
+       :type emacswiki
+       :features "menu-bar+"
+    )
     ;;uncomment if you want to add as submodule in vendor directory
-    (:name evil)
     ;(:name helm
            ;:website "https://github.com/emacs-helm/helm"
            ;:description "Emacs incremental completion and selection narrowing framework"
