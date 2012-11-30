@@ -22,7 +22,7 @@
                   (powerline-buffer-id nil 'l)
                   " "
                   (if (buffer-modified-p)
-                     (propertize "%*" 'face 'tahti/modified)
+                     (propertize "+" 'face 'tahti/modified)
                      "%*")
 
                   (powerline-raw " ")

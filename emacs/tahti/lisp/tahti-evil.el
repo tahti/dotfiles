@@ -24,11 +24,13 @@
 (push 'evil-leader el-get-packages)
 (push 'evil-numbers el-get-packages)
 (push 'evil el-get-packages)
+(push 'undo-tree el-get-packages)
 
 
  ;(require 'smex)
 (defun tahti-after-evil ()
-  (undo-tree-mode 1)
+  ;(require 'undo-tree)
+  (global-undo-tree-mode 1)
   (message "Evil loading")
   ;Indicator settings
      (setq evil-normal-state-tag (propertize "N" 'face '((:background "white"   :foreground "black")))

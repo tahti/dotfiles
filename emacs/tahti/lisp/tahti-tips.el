@@ -1,18 +1,16 @@
 (defvar tahti-tips
-  '("Press <C-c o> to open a file with external program."
-    "Press <C-c p f> to navigate a project's files with ido."
-    "Press <C-c h> to navigate a project in Helm."
+  '(
+    "Press <C-x C-h> see keys starting with C-x"
+    "Press <C-c C-h> see keys starting with C-c"
+    "Press <, c SPC> to toggle comment of a region or a line"
     "Press <C-x => to display info about character"
-    "Press <C-c r> to rename the current buffer and file it's visiting."
-    "Press <C-c t> to open a terminal in Emacs."
     "Explore the Prelude menu to find out about some of Prelude extensions to Emacs."
-    "Access the official Emacs manual by pressing <C-h r>."
-    "Visit WikEmacs at http://wikemacs.org to find out even more about Emacs."))
+    "Access the official Emacs manual by pressing <C-h r>."))
 
 (defun tahti-tip-of-the-day ()
   (interactive)
   (message
-   (concat "The tip: " (nth (random (length prelude-tips)) tahti-tips))))
+   (concat "The tip: " (nth (random (length tahti-tips)) tahti-tips))))
 
 (defun tahti-eval-after-init (form)
   "Add `(lambda () FORM)' to `after-init-hook'.
@@ -23,8 +21,7 @@
     (when after-init-time
       (eval form))))
 
-(tahti-eval-after-init
- ;; greet the user with some useful tip
- (run-at-time 5 nil 'tahti-tip-of-the-day))
+(tahti-eval-after-init (run-at-time 10 nil 'tahti-tip-of-the-day))
+
 (provide 'tahti-tips)
 

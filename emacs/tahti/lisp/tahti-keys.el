@@ -10,22 +10,32 @@
   (interactive)
   (kill-buffer (current-buffer)))
 
+(defun tahti-toggle-comment ()
+  (interactive)
+  (if mark-active (call-interactively 'comment-or-uncomment-region)
+                  (comment-or-uncomment-region(line-beginning-position)(line-end-position)))
+)
+
+
 (defun tahti-esc()
   "Functionality for escaping generally. Closes help buffer."
   (interactive)
      (cond
+      ;(and (boundp 'some-mode) some-mode)
+      ;(evil-visual-state-p) (evil-normal-state)
       ((or (equal 'help-mode major-mode)
            (equal 'apropos-mode major-mode)) 
        (kill-buffer-and-window))
+      ((equal 'undo-tree-visualizer-mode major-mode) (undo-tree-visualizer-quit))
       (t (keyboard-escape-quit))))
 
 (defun tahti-evil-keys ()
-    (fill-keymap evil-visual-state-map
-       "<escape>" 'evil-normal-state ;we do not want previous state but normal state
-    )
-    (fill-keymap evil-emacs-state-map
-       "<escape>" 'evil-normal-state ;we do not want previous state but normal state
-    )
+    ;(fill-keymap evil-visual-state-map
+       ;"<escape>" 'tahti-esc ;we do not want previous state but normal state
+    ;)
+    ;(fill-keymap evil-emacs-state-map
+       ;"<escape>" 'evil-normal-state ;we do not want previous state but normal state
+    ;)
     (fill-keymap evil-normal-state-map
        "c"    nil ;otherwise c is still 'evil-change
        "C"    nil
@@ -33,7 +43,7 @@
        "J"    'evil-change-line
        "T"    'evil-join
        "C-,"   evil-leader/map
-       "<escape>" 'keyboard-escape-quit
+       ;"<escape>" 'tahti-esc
     )
     (fill-keymap evil-motion-state-map
        "n"    'evil-forward-char
@@ -115,10 +125,14 @@
     )
 ;; evil leader is set in tahti-evil.el to ","
    (evil-leader/set-key
-       "b" 'tahti/buffer
+       "c SPC" 'tahti-toggle-comment
+       "u" 'undo-tree-visualize
+       "b" 'switch-to-buffer
        "B" 'tahti/buffer-alternate
-       "e" 'tahti/file
-       "E" 'tahti/file-alternate
+       "ff" 'tahti/file
+       "fF" 'tahti/file-alternate
+       "FF" 'tahti/file-alternate
+       "Ff" 'tahti/file-alternate
        "." 'evil-ex
        "o" 'tahti-find-at-alias
        "O" 'tahti-find-helm-at-alias
@@ -132,9 +146,9 @@
        ;"h" 'monky-status
        "n" 'split-window-horizontally
        ;"c" 'delete-window
-       "rg" 'magit-status
+       "vg" 'magit-status
        "gn" 'next-buffer
-       "gp" 'previous-buffer
+       "gh" 'previous-buffer
        "," 'evil-repeat-find-char-reverse
        "m" 'compile)
 
@@ -190,7 +204,7 @@
 )
 
 (defun tahti-isearch-keys()
-  (define-key isearch-mode-map [escape] 'isearch-cancel) ;help
+  ;(define-key isearch-mode-map [escape] 'isearch-cancel) ;help
 )
 
 (defun tahti-global-keys()

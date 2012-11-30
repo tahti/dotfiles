@@ -20,7 +20,8 @@
            :url "https://github.com/emacs-helm/helm-descbinds.git"
            )
     (:name undo-tree :url "https://github.com/emacsmirror/undo-tree.git") ;original url is too slow...
-    (:name evil :type elpa) ;original stopped working on 27-11-2012
+    (:name evil 
+           :url "git://gitorious.org/evil/evil.git") ;original stopped working on 27-11-2012 
     (:name cedet  ;original url does not work behind firewall
            :type git
            :url "https://github.com/emacsmirror/cedet.git"

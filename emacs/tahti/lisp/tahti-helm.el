@@ -2,6 +2,11 @@
 (require 'tahti-dirs)
 
 (eval-when-compile (require 'cl))
+ (run-with-timer 10 1800  #'start-process "updatedb" "*updatedb*"
+                                          "updatedb" "-U" (expand-file-name "~")
+                                                     "-o" tahti-locate-file
+                                                     "-l" "no"
+                                                     "--prunepaths" (expand-file-name "~/workspace/.metadata/ ~/.Private/"))
 
 (defun f-alt (&rest alternatives)
   "Test functions in `alternatives' and return first bound."
@@ -38,13 +43,54 @@
   (require 'helm-files)
   (require 'helm-locate)
   (require 'helm-w3m)
+  (setq helm-c-boring-file-regexp
+        (rx (or
+             ;; directories
+             (and "/"
+                (or ".svn" "CVS" "_darcs" ".git" ".hg" "auto" "_region_" ".prv" "__pycache__")
+                (or "/" eol))
+             ;; files
+             (and line-start  (or ".#" "."))
+             (and (or ".class" ".la" ".o" "~" ".pyc") eol)))
+
+        helm-c-boring-buffer-regexp
+        (rx (or
+             (and line-start  " ")
+             ;; helm-buffer
+             "*helm"
+             "*ac-mode-"
+             "Map_Sym.txt"
+             "*Ibuffer*"
+             "*Help*"
+             "*Pp Eval Output*"
+             "*Completions*"
+             "*Customize"
+             "*Messages*")))
   (setq helm-c-locate-command
         (case system-type
-          ('gnu/linux "locate -i -r %s")
+          ('gnu/linux (format "locate -i -d %s -r %%s" tahti-locate-file))
           ('berkeley-unix "locate -i %s")
           ('windows-nt "es -i -r %s")
           (t "locate %s")))
+  ;;; Sources
+  (setq helm-file-sources
+        (list
+         'helm-c-source-ffap-line
+         'helm-c-source-ffap-guesser
+         'helm-c-source-files-in-current-dir
+         'helm-c-source-file-cache
+         'helm-c-source-recentf
+         'helm-c-source-file-name-history
+         'helm-c-source-locate
+         'helm-c-source-bookmarks))
+         ;'helm-c-source-w3m-bookmarks))
   (helm-mode 1)
+
+(defun tahti-helm-files ()
+  "Preconfigured `helm' to find fiels"
+  (interactive)
+  (helm-other-buffer helm-file-sources "*helm*"))
+
   ;;; ido-mode =========================================
   (ido-mode 'files)
   (ido-everywhere 1)
@@ -52,70 +98,12 @@
   (add-to-list 'ido-ignore-directories "node_modules")
   (setq ido-enable-flex-matching t)
 
-  (defalias 'tahti/file (f-alt 'helm-find-files 'ido-find-file))
+  (defalias 'tahti/file (f-alt 'tahti-helm-files 'ido-find-file))
   (defalias 'tahti/file-alternate (f-alt 'ido-find-file 'helm-find-files))
   (defalias 'tahti/buffer (f-alt 'helm-buffers-list 'ido-switch-buffer))
   (defalias 'tahti/buffer-alternate (f-alt 'ido-switch-buffer 'helm-buffers-list))
-  ;; helm for ffap behaves broken
-  ;(push  '(find-file-at-point . ido-completing-read) helm-completing-read-handlers-alist)
-  ;(tahti/set-key 'global "M-x" 'helm-M-x)
-  ;;; From browse-kill-ring.el
-  ;(defadvice yank-pop (around kill-ring-browse-maybe (arg) activate)
-    ;"If last action was not a yank, run `browse-kill-ring' instead."
-    ;; yank-pop has an (interactive "*p") form which does not allow
-    ;; it to run in a read-only buffer.  We want browse-kill-ring to
-    ;; be allowed to run in a read only buffer, so we change the
-    ;; interactive form here.  In that case, we need to
-    ;; barf-if-buffer-read-only if we're going to call yank-pop with
-    ;; ad-do-it
-    ;(interactive "p")
-    ;(if (not (eq last-command 'yank))
-        ;(helm-show-kill-ring)
-      ;(barf-if-buffer-read-only)
-      ;ad-do-it))
-
-  ;(defadvice evil-paste-pop (around evil-browse-kill-ring (arg) activate)
-    ;(interactive "p")
-    ;(if (not (memq last-command '(yank evil-paste-before evil-paste-pop evil-paste-after)))
-        ;(helm-show-kill-ring)
-      ;(barf-if-buffer-read-only)
-      ;ad-do-it))
 )
 
-
-
-;(setq helm-c-boring-file-regexp
-      ;(rx (or
-           ;;; directories
-           ;(and "/"
-              ;(or ".svn" "CVS" "_darcs" ".git" ".hg" "auto" "_region_" ".prv" "__pycache__")
-              ;(or "/" eol))
-           ;;; files
-           ;(and line-start  (or ".#" "."))
-           ;(and (or ".class" ".la" ".o" "~" ".pyc") eol)))
-
-      ;helm-c-boring-buffer-regexp
-      ;(rx (or
-           ;(and line-start  " ")
-           ;;; helm-buffer
-           ;"*helm"
-           ;"*ac-mode-"
-           ;"Map_Sym.txt"
-           ;"*Ibuffer*"
-           ;"*Help*"
-           ;"*Pp Eval Output*"
-           ;"*Completions*"
-           ;"*Customize"
-           ;"*Messages*")))
-
-;;if show only the basename in helm-find-files
-
-;(on-full-instance
- ;(run-with-timer 10 1800  #'start-process "updatedb" "*updatedb*"
-                                          ;"updatedb" "-U" (expand-file-name "~")
-                                                     ;"-o" tahti-locate-file
-                                                     ;"-l" "no"
-                                                     ;"--prunepaths" (expand-file-name "~/workspace/.metadata/ ~/.Private/")))
 
 ;(setq helm-c-locate-command (format "locate -d %s -i -r %%s" tahti-locate-file))
 ;; --------------------------------------------------
