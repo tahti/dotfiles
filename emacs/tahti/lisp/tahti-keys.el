@@ -127,8 +127,13 @@
    (evil-leader/set-key
        "c SPC" 'tahti-toggle-comment
        "u" 'undo-tree-visualize
-       "b" 'switch-to-buffer
+       "b" 'tahti/buffer
        "B" 'tahti/buffer-alternate
+       "fo" 'helm-for-files       ;open file
+       "fi" 'helm-insert-file
+       "fw" 'helm-write-file      ;save as dialog
+       "fh" 'tahti/helm-history-files
+       "fc" 'tahti/config-files
        "ff" 'tahti/file
        "fF" 'tahti/file-alternate
        "FF" 'tahti/file-alternate
@@ -180,17 +185,17 @@
 )
 
 (defun tahti-helm-keys ()
-    (fill-keymap helm-find-files-map
-     "C-f"      'helm-execute-persistent-action
-     "C-b"      'helm-find-files-down-one-level
-    )
     (fill-keymap helm-map
-       "C-f"     'helm-next-source
-       "C-b"     'helm-previous-source
-       "C-d"     'delete-backward-char
-       "C-S-d"   'delete-forward-char
-       "<left>"  'backward-char
-       "<right>" 'forward-char
+       "C-f"      'helm-execute-persistent-action
+       "C-b"      'helm-find-files-down-one-level
+       "C-S-n"    'helm-next-source
+       "C-S-h"    'helm-previous-source
+       "C-d"      'delete-backward-char
+       "C-S-d"    'delete-forward-char
+       "<left>"   'backward-char
+       "<right>"  'forward-char
+       "C-c C-g"  'helm-follow-mode
+       "C-z"      nil
     )
   (define-key 'help-command "A" 'apropos)
 
@@ -231,6 +236,7 @@
     "M-n"   'evil-window-right
     "M-c"   'evil-window-up
     "M-t"   'evil-window-down
+    ;"<f10>" 'tahti/helm-lacarte
     "C-<escape>" 'ESC-prefix
     "<escape>" 'tahti-esc
   )

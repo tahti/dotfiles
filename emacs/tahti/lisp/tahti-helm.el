@@ -1,5 +1,6 @@
 ;documentation for helm - https://github.com/emacs-helm/helm/wiki
 (require 'tahti-dirs)
+(require 'tahti-util)
 
 (eval-when-compile (require 'cl))
  (run-with-timer 10 1800  #'start-process "updatedb" "*updatedb*"
@@ -34,7 +35,7 @@
 
 
 (defun tahti-after-helm ()
-  ;(helm-descbinds-install) ;replace descbinds
+  (helm-descbinds-install) ;replace descbinds
   (require 'helm-match-plugin)
   (require 'helm-misc)
   (require 'helm-config)
@@ -43,6 +44,12 @@
   (require 'helm-files)
   (require 'helm-locate)
   (require 'helm-w3m)
+  ;; helm for ffap behaves broken
+  (push  '(find-file-at-point . ido-completing-read) helm-completing-read-handlers-alist)
+  ;; helm for lacarte is broken
+  (push  '(menu-bar-open . nil) helm-completing-read-handlers-alist)
+  (push  '(tmm-shortcut . nil) helm-completing-read-handlers-alist)
+
   (setq helm-c-boring-file-regexp
         (rx (or
              ;; directories
@@ -73,23 +80,91 @@
           ('windows-nt "es -i -r %s")
           (t "locate %s")))
   ;;; Sources
-  (setq helm-file-sources
-        (list
-         'helm-c-source-ffap-line
-         'helm-c-source-ffap-guesser
-         'helm-c-source-files-in-current-dir
-         'helm-c-source-file-cache
-         'helm-c-source-recentf
-         'helm-c-source-file-name-history
-         'helm-c-source-locate
-         'helm-c-source-bookmarks))
-         ;'helm-c-source-w3m-bookmarks))
-  (helm-mode 1)
+  (defun tahti/helm-dir-deep (source-name dir &optional dotfiles fmatch dmatch)
+    "Returns an helm source for a particular directory."
+    `((name . ,(concat source-name))
+      (candidates . ,(ls-files-deep dir dotfiles fmatch dmatch))
+      (action . (("Open" . find-file)))
+      (type . file)))
+  (defun tahti/helm-dir-flat (source-name dir &optional dotfiles fmatch dmatch)
+    "Returns an helm source for a particular directory."
+    `((name . ,(concat source-name))
+      (candidates . ,(ls-files-deep-1 dir dotfiles fmatch dmatch))
+      (action . (("Open" . find-file)))
+      (type . file)))
+  (defun tahti/helm-dir (source-name dir &optional dotfiles match)
+    "Returns an helm source for a particular directory."
+    `((name . ,(concat source-name))
+      (candidates . ,(ls-files dir dotfiles match))
+      (action . (("Open" . find-file)))
+      (type . file)))
+  ;; --------------------------------------------------
+  ;; disable y-n question for inserting a file 
+    (defadvice helm-insert-file(around stfu compile activate)
+      (flet ((yes-or-no-p (&rest args) t)
+             (y-or-n-p (&rest args) t))
+        ad-do-it))
 
-(defun tahti-helm-files ()
-  "Preconfigured `helm' to find fiels"
-  (interactive)
-  (helm-other-buffer helm-file-sources "*helm*"))
+
+
+
+  (helm-mode 1)
+  (setq enable-recursive-minibuffers t)
+  (defvar tahti/helm-config-sources '())
+  (setq helm-ff-auto-update-initial-value nil) ;disable autoupdating when one candidate left
+  (defun tahti/update-helm-sources ()
+    (interactive)
+    (setq tahti/helm-config-sources
+          `(
+            ,(tahti/helm-dir-flat "Emacs" (file-truename tahti-config-dir)  t ".el$")
+            ,(tahti/helm-dir-deep "Snippets" (file-truename tahti-snippets-dir) t)
+            ,(tahti/helm-dir-deep "Zsh" (expand-file-name "../../zsh" (file-truename tahti-config-dir)) t)
+            ,(tahti/helm-dir-deep "Vim" (expand-file-name "../../vim/" (file-truename tahti-config-dir)) t)
+            ,(tahti/helm-dir-deep "Urxvt" (expand-file-name  "../../urxvt/" (file-truename tahti-config-dir)) t)
+            ((name . "Dot")
+             (candidates . ,(append (ls-files "~/.i3/" t)
+                                    (ls-files "~/bin" t)
+                                    (ls-files (expand-file-name "../../singles/"(file-truename  tahti-config-dir)) t)))
+             (action . (("Open" . find-file)))
+             (persistent-action . helm-find-files-persistent-action)
+             (type . file))
+            ))
+    )
+
+  (run-with-timer 0 3600 #'tahti/update-helm-sources)
+
+  ;(setq tahti/file-sources
+                  ;`( ,helm-c-source-ffap-line
+                     ;,helm-c-source-ffap-guesser
+                     ;,helm-c-source-find-files
+                     ;,helm-c-source-recentf
+                     ;,helm-c-source-file-cache
+                     ;,helm-c-source-file-name-history
+                     ;,helm-c-source-files-in-all-dired
+                     ;))
+
+
+  (defun tahti/config-files ()
+    (interactive)
+    (helm :sources tahti/helm-config-sources
+          :buffer "*helm config files*"
+          :keymap helm-find-files-map))
+
+  (defun tahti/helm-history-files (&optional preselect)
+    (interactive)
+    (helm-find-files 1))
+
+  (defun tahti/helm-files (&optional preselect)
+    (interactive)
+    (helm-find-files nil))
+    ;(helm :sources tahti/file-sources
+          ;:prompt "Find Files: "
+          ;;:input fname
+          ;:preselect preselect
+          ;:case-fold-search helm-file-name-case-fold-search
+          ;:buffer "*helm with files*"
+          ;:keymap helm-find-files-map))
+
 
   ;;; ido-mode =========================================
   (ido-mode 'files)
@@ -98,176 +173,11 @@
   (add-to-list 'ido-ignore-directories "node_modules")
   (setq ido-enable-flex-matching t)
 
-  (defalias 'tahti/file (f-alt 'tahti-helm-files 'ido-find-file))
-  (defalias 'tahti/file-alternate (f-alt 'ido-find-file 'helm-find-files))
+  (defalias 'tahti/file (f-alt 'tahti/helm-files 'ido-find-file))
+  (defalias 'tahti/file-alternate (f-alt 'ido-find-file 'tahti/helm-files))
   (defalias 'tahti/buffer (f-alt 'helm-buffers-list 'ido-switch-buffer))
   (defalias 'tahti/buffer-alternate (f-alt 'ido-switch-buffer 'helm-buffers-list))
 )
 
-
-;(setq helm-c-locate-command (format "locate -d %s -i -r %%s" tahti-locate-file))
-;; --------------------------------------------------
-;(require-and-exec 'helm
-
-
-  ;;; From browse-kill-ring.el
-  ;(defadvice yank-pop (around kill-ring-browse-maybe (arg) activate)
-    ;"If last action was not a yank, run `browse-kill-ring' instead."
-    ;;; yank-pop has an (interactive "*p") form which does not allow
-    ;;; it to run in a read-only buffer.  We want browse-kill-ring to
-    ;;; be allowed to run in a read only buffer, so we change the
-    ;;; interactive form here.  In that case, we need to
-    ;;; barf-if-buffer-read-only if we're going to call yank-pop with
-    ;;; ad-do-it
-    ;(interactive "p")
-    ;(if (not (eq last-command 'yank))
-        ;(helm-show-kill-ring)
-      ;(barf-if-buffer-read-only)
-      ;ad-do-it))
-
-  ;(defadvice evil-paste-pop (around evil-browse-kill-ring (arg) activate)
-    ;(interactive "p")
-    ;(if (not (memq last-command '(yank evil-paste-before evil-paste-pop evil-paste-after)))
-        ;(helm-show-kill-ring)
-      ;(barf-if-buffer-read-only)
-      ;ad-do-it))
-
-  ;(require-and-exec 'helm-descbinds
-    ;(helm-descbinds-install))
-  ;;; Sources ----------------------------------------
-  ;(defun tahti/helm-dir-deep (source-name dir &optional dotfiles fmatch dmatch)
-    ;"Returns an helm source for a particular directory."
-    ;`((name . ,(concat source-name))
-      ;(candidates . ,(ls-files-deep dir dotfiles fmatch dmatch))
-      ;(action . (("Open" . find-file)))
-      ;(type . file)))
-  ;(defun tahti/helm-dir-flat (source-name dir &optional dotfiles fmatch dmatch)
-    ;"Returns an helm source for a particular directory."
-    ;`((name . ,(concat source-name))
-      ;(candidates . ,(ls-files-deep-1 dir dotfiles fmatch dmatch))
-      ;(action . (("Open" . find-file)))
-      ;(type . file)))
-  ;(defun tahti/helm-dir (source-name dir &optional dotfiles match)
-    ;"Returns an helm source for a particular directory."
-    ;`((name . ,(concat source-name))
-      ;(candidates . ,(ls-files dir dotfiles match))
-      ;(action . (("Open" . find-file)))
-      ;(type . file)))
-  ;;; --------------------------------------------------
-  ;;; helms ----------------------------------------
-  ;(defun tahti/helm-buffers ()
-    ;(interactive)
-    ;;(funcall (if (string= (frame-parameter nil 'name) "ERC")
-                 ;;'tahti/erc-buffer
-               ;;'helm-buffers-list)))
-    ;(funcall ( helm-buffers-list)))
-
-  ;(defun tahti/helm-files ()
-    ;(interactive)
-    ;(helm :sources '( helm-c-source-recentf
-                      ;helm-c-source-file-cache
-                      ;helm-c-source-files-in-current-dir
-                      ;helm-c-source-files-in-all-dired
-                      ;helm-c-source-locate)
-          ;:buffer "*helm with files*"
-          ;:keymap helm-find-files-map))
-
-  ;(defvar tahti/helm-uni-sources '())
-  ;(defvar tahti/helm-config-sources '())
-  ;(defun tahti/update-helm-sources ()
-    ;(interactive)
-    ;(setq tahti/helm-config-sources
-          ;`(
-            ;,(tahti/helm-dir-flat "Emacs" tahti-config-dir t ".el$")
-            ;,(tahti/helm-dir-deep "Snippets" tahti-snippets-dir t)
-            ;,(tahti/helm-dir-deep "Zsh" "~/svn/dotfiles/zsh/" t)
-            ;((name . "Dot")
-             ;(candidates . ,(append (ls-files "~/svn/dotfiles/" t)
-                                    ;(ls-files "~/svn/dotfiles/bin" t)))
-             ;(action . (("Open" . find-file)))
-             ;(type . file))
-            ;))
-    ;)
-
-  ;(run-with-timer 0 1200 #'tahti/update-helm-sources)
-
-  ;(defvar helm-makefile-path nil)
-  ;(defvar helm-makefile-targets
-    ;`((name . "Make")
-      ;(init . (lambda () (setq helm-makefile-path (find-makefile default-directory))))
-      ;(candidates . (lambda () (makefile-targets (concat helm-makefile-path "Makefile"))))
-      ;(volatile)
-      ;(action . (("Make target" . (lambda (candidate)
-                                    ;(compile (concat "cd " helm-makefile-path
-                                                     ;" && make " candidate))))))))
-
-  ;(defun tahti/helm-config ()
-    ;(interactive)
-    ;(helm :sources tahti/helm-config-sources
-          ;:buffer "*helm config*"
-          ;:keymap helm-find-files-map))
-  ;(defun tahti/helm-make ()
-    ;(interactive)
-    ;(helm :sources helm-makefile-targets
-          ;:buffer "*helm make*"))
-
-  ;(defun tahti/helm-lacarte ()
-    ;(interactive)
-    ;(helm :sources helm-c-source-lacarte
-          ;:buffer "*helm lacarte*"))
-  ;(tahti/set-key 'global "<f10>" 'tahti/helm-lacarte)
-
-  ;(defun tahti/helm-flyspell-correct ()
-    ;"Use helm for flyspell correction.
-;Adapted from `flyspell-correct-word-before-point'."
-    ;(interactive)
-    ;;; use the correct dictionary
-    ;(flyspell-accept-buffer-local-defs)
-    ;(let ((cursor-location (point))
-          ;(word (flyspell-get-word))
-          ;(opoint (point)))
-      ;(if (consp word)
-          ;(let ((start (car (cdr word)))
-                ;(end (car (cdr (cdr word))))
-                ;(word (car word))
-                ;poss ispell-filter)
-            ;;; now check spelling of word.
-            ;(ispell-send-string "%\n")	;put in verbose mode
-            ;(ispell-send-string (concat "^" word "\n"))
-            ;;; wait until ispell has processed word
-            ;(while (progn
-                     ;(accept-process-output ispell-process)
-                     ;(not (string= "" (car ispell-filter)))))
-            ;;; Remove leading empty element
-            ;(setq ispell-filter (cdr ispell-filter))
-            ;;; ispell process should return something after word is sent.
-            ;;; Tag word as valid (i.e., skip) otherwise
-            ;(or ispell-filter
-               ;(setq ispell-filter '(*)))
-            ;(if (consp ispell-filter)
-                ;(setq poss (ispell-parse-output (car ispell-filter))))
-            ;(cond
-             ;((or (eq poss t) (stringp poss))
-              ;;; don't correct word
-              ;t)
-             ;((null poss)
-              ;;; ispell error
-              ;(error "Ispell: error in Ispell process"))
-             ;(t
-              ;;; The word is incorrect, we have to propose a replacement.
-              ;(flyspell-do-correct (helm-comp-read "Correction: "
-                                                   ;(append
-                                                    ;(third poss)
-                                                    ;'(("Save word"        . save)
-                                                      ;("Accept (session)" . session)
-                                                      ;("Accept (buffer)"  . buffer)))
-                                                   ;:name (format "%s [%s]" word (or ispell-local-dictionary
-                                                                                   ;ispell-dictionary
-                                                                                   ;"Default"))
-                                                   ;:must-match t)
-
-                                   ;poss word cursor-location start end opoint)))
-            ;(ispell-pdict-save t)))))
-  ;)
 (provide 'tahti-helm)
 

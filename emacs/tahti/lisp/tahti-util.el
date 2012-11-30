@@ -1,6 +1,7 @@
 ;;; tahit-util.el --- Based on cofi-util.el
-;(push 'queue el-get-packages)
+(push 'queue el-get-packages)
 (require 'cl)
+;(require 'queue)
 
 (defvar tahti/full-emacs t "Load all settings not just minimal.")
 (defvar tahti/mail-instance nil "This is an email instance.")
@@ -36,13 +37,6 @@ A `spec' can be a `read-kbd-macro'-readable string or a vector."
   `(if (require ,feature nil 'noerror)
         (progn ,@body)
     (message (format "%s not loaded" ,feature))))
-
-(defmacro load-and-exec (file &optional &rest body)
-  "Load the file and execute body if it was successfull loaded."
-  (declare (indent 1))
-  `(if (load ,file t)
-        (progn ,@body)
-    (message (format "%s not loaded" ,file))))
 
 (defun fill-keymap (keymap &rest mappings)
   "Fill `KEYMAP' with `MAPPINGS'.
@@ -98,6 +92,60 @@ Mimicks Python's `range'"
                end-or-start)))
     (loop for i from start to end by step
           collect i)))
+
+(defun dot? (fname &optional dotfiles)
+  "Determines if `FNAME' is a dot or dotfile if `DOTFILES' is non-nil."
+  (let ((f (file-name-nondirectory fname)))
+     (if dotfiles
+         (string-prefix-p "." f)
+       (or (string= "." f) (string= ".." f)))))
+
+(defun ls-no-dots (directory &optional full dotfiles match)
+  "Returns files in `directory' without `.' and `..'.
+`full', `match' and `nosort' act as in `directory-files'"
+    (remove-if (lambda (f) (dot? f dotfiles))
+               (directory-files directory full match)))
+
+(defun enqueue-all (queue l)
+  "Enqueues in `QUEUE' all entries of `L'."
+  (mapc (lambda (e) (queue-enqueue queue e))
+        l))
+
+(defun ls-dirs (directory &optional dotfiles match)
+  "Returns all dirs in `DIR'.
+`DOTFILES' -- if non-nil don't include dirs starting with a `.'
+`MATCH' -- if non-nil only include dirs matching the regexp"
+  (remove-if-not #'file-directory-p
+                 (ls-no-dots directory t dotfiles match)))
+
+(defun ls-files (directory &optional dotfiles match)
+  "Returns all files in `DIR'.
+`DOTFILES' -- if non-nil don't include files starting with a `.'
+`MATCH' -- if non-nil only include files matching the regexp"
+  (remove-if #'file-directory-p
+             (ls-no-dots directory t dotfiles match)))
+
+(defun ls-files-deep (dir &optional dotfiles fmatch dmatch)
+  "Returns all files within `DIR'.
+`DOTFILES' -- if non-nil don't include files and dirs starting with a `.'
+`FMATCH' -- if non-nil only include files matching the regexp
+`DMATCH' -- if non-nil only include files in dirs matching the regexp; if parent
+            dir failed its dirs will not be searched."
+  (let ((dirs (queue-create)))
+    (queue-enqueue dirs dir)
+    (loop while (> (queue-length dirs) 0)
+          nconc (let ((d (queue-dequeue dirs)))
+                  (enqueue-all dirs (ls-dirs d dotfiles dmatch))
+                  (ls-files d dotfiles fmatch)))))
+
+(defun ls-files-deep-1 (dir &optional dotfiles fmatch dmatch)
+  "Returns all files within `DIR' descending one level.
+`DOTFILES' -- if non-nil don't include files and dirs starting with a `.'
+`FMATCH' -- if non-nil only include files matching the regexp
+`DMATCH' -- if non-nil only include and search dirs matching the regexp"
+  (let ((dirs (cons dir (ls-dirs dir dotfiles dmatch))))
+    (loop for d in dirs
+          nconc (ls-files d dotfiles fmatch))))
 
 (defun touch (filename)
      "updates mtime on the file for the current buffer"

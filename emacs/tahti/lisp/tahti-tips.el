@@ -4,7 +4,6 @@
     "Press <C-c C-h> see keys starting with C-c"
     "Press <, c SPC> to toggle comment of a region or a line"
     "Press <C-x => to display info about character"
-    "Explore the Prelude menu to find out about some of Prelude extensions to Emacs."
     "Access the official Emacs manual by pressing <C-h r>."))
 
 (defun tahti-tip-of-the-day ()

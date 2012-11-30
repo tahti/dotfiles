@@ -20,8 +20,6 @@
            :url "https://github.com/emacs-helm/helm-descbinds.git"
            )
     (:name undo-tree :url "https://github.com/emacsmirror/undo-tree.git") ;original url is too slow...
-    (:name evil 
-           :url "git://gitorious.org/evil/evil.git") ;original stopped working on 27-11-2012 
     (:name cedet  ;original url does not work behind firewall
            :type git
            :url "https://github.com/emacsmirror/cedet.git"
@@ -32,7 +30,13 @@
            :url "https://github.com/emacsmirror/vimvars.git"
            :features "vimvars"
     )
-    (:name powerline
+    (:name queue
+           :description "A queue can be used as both a first-in last-out and a first-in first-out stack, i.e. elements can be added to and removed from either end of the queue."
+           :type http
+           :url "http://www.dr-qubit.org/predictive/queue.el"
+           :features "queue"
+    )
+    (:name powerline  ;use extended version of powerline
            :description "Emacs version of the Vim powerline."
            :type git
            :url "https://github.com/milkypostman/powerline.git"

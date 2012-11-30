@@ -1,3 +1,4 @@
+
 ;;Directories
 (defvar tahti-config-dir (file-name-as-directory user-emacs-directory)
   "The root dir of the Emacs configuration.")
