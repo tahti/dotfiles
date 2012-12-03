@@ -276,9 +276,13 @@ noremap J C
 noremap l t
 noremap L T
 " escaping of html characters
-nmap <C-h> <Plug>(operator-html-escape)
+"nmap <C-h> <Plug>(operator-html-escape)
+nmap <C-h> <C-b>
+nmap <C-n> <C-f>
+vmap <C-h> <C-b>
+vmap <C-n> <C-f>
 nmap <C-c> <Plug>(operator-html-unescape)
-vmap <C-h> <Plug>(operator-html-escape)
+"vmap <C-h> <Plug>(operator-html-escape)
 vmap <C-c> <Plug>(operator-html-unescape)
 "noremap ; :
 "noremap : ;
