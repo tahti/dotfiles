@@ -1,4 +1,5 @@
 (require 'tahti-util)
+(require 'tahti-func)
 (require 'tahti-helm)
 (require 'tahti-evil)
 (require 'tahti-windowing)
@@ -141,7 +142,7 @@
        "." 'evil-ex
        "o" 'tahti-find-at-alias
        "O" 'tahti-find-helm-at-alias
-       "w" 'save-buffer
+       "w" 'save-buffer-always
        "W" 'save-some-buffers
        "k" 'kill-current-buffer
        "K" 'kill-buffer-and-window
@@ -154,8 +155,10 @@
        "vg" 'magit-status
        "gn" 'next-buffer
        "gh" 'previous-buffer
+       "gq" 'fill-paragraph
        "," 'evil-repeat-find-char-reverse
        "m" 'compile)
+   (evil-ex-define-cmd "w[rite]" 'save-buffer-always)
 
    ;   "N" 'make-frame-command
    ;   "C" 'delete-frame
@@ -171,6 +174,25 @@
     (evil-declare-key 'motion browse-kill-ring-mode-map (kbd "RET") 'browse-kill-ring-insert-and-quit)
     (evil-declare-key 'motion occur-mode-map (kbd "<return>") 'occur-mode-goto-occurrence)
     (evil-declare-key 'motion occur-mode-map (kbd "RET") 'occur-mode-goto-occurrence);
+)
+
+(defun tahti-latex-keys()
+   (evil-leader/set-key
+       "ie" 'LaTeX-environment
+       "im" 'TeX-insert-macro
+       "is" 'LaTeX-section
+       "ifb" '(lambda () (interactive)(TeX-font nil ?\C-b)) ;insert bold
+       "ifc" '(lambda () (interactive)(TeX-font nil ?\C-c)) ;
+       "ife" '(lambda () (interactive)(TeX-font nil ?\C-e))
+       "ifi" '(lambda () (interactive)(TeX-font nil ?\C-i))
+       "ifr" '(lambda () (interactive)(TeX-font nil ?\C-r))
+       "ifs" '(lambda () (interactive)(TeX-font nil ?\C-s))
+       "ift" '(lambda () (interactive)(TeX-font nil ?\C-t)) 
+       "ifd" '(lambda () (interactive)(TeX-font nil ?\C-d)) ;delete font
+       "fd"  '(lambda () (interactive)(TeX-font nil ?\C-d)) ;delete font
+       "cr" 'TeX-comment-or-uncomment-paragraph
+   )
+  ;(define-key isearch-mode-map [escape] 'isearch-cancel) ;help
 )
 
 (defun tahti-yas-keys ()
@@ -211,6 +233,7 @@
 (defun tahti-isearch-keys()
   ;(define-key isearch-mode-map [escape] 'isearch-cancel) ;help
 )
+
 
 (defun tahti-global-keys()
   (add-hook 'comint-mode-hook 'tahti-comint-keys)

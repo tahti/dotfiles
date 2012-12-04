@@ -29,6 +29,11 @@
 
  ;(require 'smex)
 (defun tahti-after-evil ()
+  (evil-add-command-properties 
+    'evil-goto-mark :jump t)
+  (evil-remove-command-properties 
+    'evil-forward-section-begin '(:jump))
+
   ;(require 'undo-tree)
   (global-undo-tree-mode 1)
   (message "Evil loading")
