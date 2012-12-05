@@ -149,12 +149,6 @@ bindcode $myModC+$wC exec --no-startup-id i3-msg 'exec /usr/bin/sensible-browser
 # quit 
 bindcode $myModC+$colonC exec --no-startup-id python /home/piotr/bin/doCommand.py quit
 
-# start dmenu (a program launcher)
-bindcode $myModC+$dC exec ~/bin/ogimenu.sh
-
-#internal i3 commands
-bind $myModC+$iC exec ~/bin/dmenu_i3.sh
-
 # lock the screen
 bind $myModC+$lC exec /home/piotr/bin/lock
 

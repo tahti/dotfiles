@@ -23,6 +23,7 @@
  )
 (push 'evil-leader el-get-packages)
 (push 'evil-numbers el-get-packages)
+(push 'evil-surround el-get-packages)
 (push 'evil el-get-packages)
 (push 'undo-tree el-get-packages)
 

@@ -181,6 +181,7 @@
        "ie" 'LaTeX-environment
        "im" 'TeX-insert-macro
        "is" 'LaTeX-section
+       "ii" 'LaTeX-insert-item  ;insert \item
        "ifb" '(lambda () (interactive)(TeX-font nil ?\C-b)) ;insert bold
        "ifc" '(lambda () (interactive)(TeX-font nil ?\C-c)) ;
        "ife" '(lambda () (interactive)(TeX-font nil ?\C-e))
@@ -191,6 +192,40 @@
        "ifd" '(lambda () (interactive)(TeX-font nil ?\C-d)) ;delete font
        "fd"  '(lambda () (interactive)(TeX-font nil ?\C-d)) ;delete font
        "cr" 'TeX-comment-or-uncomment-paragraph
+       "tm" 'LaTeX-math-mode
+       "gq" '(lambda () (interactive)(fill-paragraph t t))
+       "qp" 'LaTeX-fill-paragraph
+       "qe" 'LaTeX-fill-evironment
+       "qs" 'LaTeX-fill-section
+       "qr" '(lambda () (interactive)(progn (call-interactively 'LaTeX-fill-region) (call-interactively 'evil-normal-state)))
+       "zz" 'TeX-fold-dwim
+       "zb" 'TeX-fold-buffer
+       "zB" 'TeX-fold-clearout-buffer
+       "zr" 'TeX-fold-region
+       "zR" 'TeX-fold-clearout-region
+       "zp" 'TeX-fold-paragraph
+       "zP" 'TeX-fold-clearout-paragraph
+       "zm" 'TeX-fold-macro
+       "zM" 'TeX-fold-clearout-item
+       "ze" 'TeX-fold-env
+       "zE" 'TeX-fold-clearout-item
+       "zx" 'TeX-fold-math
+       "zX" 'TeX-fold-clearout-item
+       "zc" 'TeX-fold-comment
+       "zu" 'TeX-fold-clearout-item
+       "pd" 'preview-document
+       "pD" 'preview-clearout-document
+       "pb" 'preview-buffer
+       "pB" 'preview-clearout-buffer
+       "pe" 'preview-environment
+       "ps" 'preview-section
+       "pS" 'preview-clearout-section
+       "pr" 'preview-region
+       "pR" 'preview-clearout
+       "pp" 'preview-at-point
+       "pu" 'preview-clearout-at-point
+       "pf" 'preview-cache-preamble
+       "pF" 'preview-cache-preamble-off
    )
   ;(define-key isearch-mode-map [escape] 'isearch-cancel) ;help
 )
