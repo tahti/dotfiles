@@ -1,0 +1,26 @@
+(require 'tahti-dirs)
+(push 'predictive el-get-packages)
+
+(defun tahti-after-predictive ()
+  (setq predictive-root-path (el-get-package-directory "predictive"))
+  (message tahti-dictionaries-dir)
+  (message (concat "make -C " predictive-root-path " install DESTDIR=" predictive-root-path "DICTDIR= " tahti-dictionaries-dir))
+  (unless (file-exists-p (expand-file-name  tahti-dictionaries-dir))
+    (message "[tahti-predictive] Compiling predictive - please wait....")
+    (setq tahti-temp-path (getenv "PATH"))
+    ;(setenv "PATH" "/usr/local/bin:/usr/bin:/bin:/usr/bin/X11:/usr/games")
+    ;(setq exec-path (delete "." exec-path))
+    (shell-command (concat "PATH=/usr/local/bin:/usr/bin:/bin:/usr/bin/;make -C " predictive-root-path " install DESTDIR=" predictive-root-path " DICTDIR=" tahti-dictionaries-dir))
+    (setenv "PATH" tahti-temp-path)
+    )
+  ;dictionaries locations
+  (add-to-list 'load-path tahti-dictionaries-dir)
+  (add-to-list 'load-path (expand-file-name "latex" tahti-dictionaries-dir))
+  (add-to-list 'load-path (expand-file-name "html" tahti-dictionaries-dir))
+  (add-to-list 'load-path (expand-file-name "texinfo" tahti-dictionaries-dir))
+  (require 'predictive)
+  (predictive-mode)
+
+)
+(provide 'tahti-predictive)
+

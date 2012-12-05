@@ -1,3 +1,4 @@
+(require 'tahti-dirs)
 (defun tahti-filter-el-get-sources (recipe)
   (let* ((name (symbol-name (plist-get recipe :name)))
          ;(func (intern (concat "tahti-el-get-after-" name)))
@@ -20,6 +21,11 @@
            :url "https://github.com/emacs-helm/helm-descbinds.git"
            )
     (:name undo-tree :url "https://github.com/emacsmirror/undo-tree.git") ;original url is too slow...
+    (:name predictive 
+           :type http-tar
+           :url "http://www.dr-qubit.org/download.php?file=predictive/predictive-0.23.13.tar.gz"
+           :options ("xzf")
+           ) ;uncomment if original recipe is too slow
     (:name cedet  ;original url does not work behind firewall
            :type git
            :url "https://github.com/emacsmirror/cedet.git"
@@ -41,8 +47,7 @@
            :type git
            :url "https://github.com/milkypostman/powerline.git"
            :features "powerline"
-    )
-    ;;uncomment if you want to add as submodule in vendor directory
+    )    ;;uncomment if you want to add as submodule in vendor directory
     ;(:name helm
            ;:website "https://github.com/emacs-helm/helm"
            ;:description "Emacs incremental completion and selection narrowing framework"

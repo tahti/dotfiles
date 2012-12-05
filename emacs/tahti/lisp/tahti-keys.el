@@ -1,5 +1,6 @@
 (require 'tahti-util)
 (require 'tahti-func)
+(require 'tahti-predictive)
 (require 'tahti-helm)
 (require 'tahti-evil)
 (require 'tahti-windowing)
@@ -168,13 +169,20 @@
    ;   ";" 'tahti/end-prog-line
 
    ;fix enter behaviour
-    (evil-declare-key 'motion completion-list-mode-map (kbd "<return>") 'choose-completion)
-    (evil-declare-key 'motion completion-list-mode-map (kbd "RET") 'choose-completion)
-    (evil-declare-key 'motion browse-kill-ring-mode-map (kbd "<return>") 'browse-kill-ring-insert-and-quit)
-    (evil-declare-key 'motion browse-kill-ring-mode-map (kbd "RET") 'browse-kill-ring-insert-and-quit)
-    (evil-declare-key 'motion occur-mode-map (kbd "<return>") 'occur-mode-goto-occurrence)
-    (evil-declare-key 'motion occur-mode-map (kbd "RET") 'occur-mode-goto-occurrence);
+    (evil-define-key 'motion completion-list-mode-map (kbd "<return>") 'choose-completion)
+    (evil-define-key 'motion completion-list-mode-map (kbd "RET") 'choose-completion)
+    (evil-define-key 'motion browse-kill-ring-mode-map (kbd "<return>") 'browse-kill-ring-insert-and-quit)
+    (evil-define-key 'motion browse-kill-ring-mode-map (kbd "RET") 'browse-kill-ring-insert-and-quit)
+    (evil-define-key 'motion occur-mode-map (kbd "<return>") 'occur-mode-goto-occurrence)
+    (evil-define-key 'motion occur-mode-map (kbd "RET") 'occur-mode-goto-occurrence);
 )
+(defun tahti-jump ()
+  (interactive)
+;(memq (followin-char(point)) '("(" ")" "[" "]" "}" "{"))
+  (if (string-match "\\s\)\\|\\s\(" (string (following-char)))
+    (call-interactively 'evil-jump-item)
+    (call-interactively 'predictive-latex-jump-to-matching-delimiter)
+    ))
 
 (defun tahti-latex-keys()
    (evil-leader/set-key
@@ -195,7 +203,7 @@
        "tm" 'LaTeX-math-mode
        "gq" '(lambda () (interactive)(fill-paragraph t t))
        "qp" 'LaTeX-fill-paragraph
-       "qe" 'LaTeX-fill-evironment
+       "qe" 'LaTeX-fill-environment
        "qs" 'LaTeX-fill-section
        "qr" '(lambda () (interactive)(progn (call-interactively 'LaTeX-fill-region) (call-interactively 'evil-normal-state)))
        "zz" 'TeX-fold-dwim
@@ -227,6 +235,8 @@
        "pf" 'preview-cache-preamble
        "pF" 'preview-cache-preamble-off
    )
+   (evil-define-key 'normal predictive-latex-map "%" 'tahti-jump)
+   (evil-define-key 'visual predictive-latex-map "%" 'tahti-jump)
   ;(define-key isearch-mode-map [escape] 'isearch-cancel) ;help
 )
 
