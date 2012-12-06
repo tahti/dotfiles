@@ -43,6 +43,8 @@
        "j"    'evil-change
        "J"    'evil-change-line
        "T"    'evil-join
+       "p"    'evil-paste-before  ;p<->P when pasting
+       "P"    'evil-paste-after
        "C-,"   evil-leader/map
        ;"<escape>" 'tahti-esc
     )
