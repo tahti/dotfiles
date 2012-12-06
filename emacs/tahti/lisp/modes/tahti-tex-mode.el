@@ -3,7 +3,7 @@
 (push 'reftex el-get-packages)
 (push 'cdlatex-mode el-get-packages)
 
-(setq TeX-auto-save t)
+(setq TeX-auto-save t) ;create auto directory for multiple documents
 (setq TeX-parse-self t)
 (setq-default TeX-master nil)
 (setq reftex-plug-into-AUCTeX t)
