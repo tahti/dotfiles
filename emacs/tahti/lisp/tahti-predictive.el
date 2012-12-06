@@ -1,4 +1,4 @@
-(require 'tahti-dirs)
+(require 'tahti-dirrs)
 (push 'predictive el-get-packages)
 
 (defun tahti-after-predictive ()
@@ -19,7 +19,7 @@
   (add-to-list 'load-path (expand-file-name "html" tahti-dictionaries-dir))
   (add-to-list 'load-path (expand-file-name "texinfo" tahti-dictionaries-dir))
   (require 'predictive)
-  (predictive-mode)
+  ;(predictive-mode 1)
 
 )
 (provide 'tahti-predictive)

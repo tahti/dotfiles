@@ -58,10 +58,6 @@ indent yanked text (with prefix arg don't indent)."
 (setq-default cursor-in-non-selected-windows nil)
 
 (size-indication-mode t)
-;autoinsert paired bracket
-(electric-pair-mode t)
-;; enable subword-mode that lets you move by camelCase
-(global-subword-mode 1)
 ;; revert buffers automatically when underlying files are changed externally
 (global-auto-revert-mode t)
 (setq doc-view-continuous t)

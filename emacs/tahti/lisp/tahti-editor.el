@@ -108,8 +108,11 @@ Intended as `kill-buffer-query-functions' fun."
   (not (string= "*scratch*" (buffer-name))))
 
 (push #'save-a-scratch kill-buffer-query-functions)
+
 ;;; ==============================
 (setq multi-term-dedicated-select-after-open-p t)
+;; enable subword-mode that lets you move by camelCase
+(global-subword-mode 1)
 
 (provide 'tahti-editor)
 ;;; tahit-ui.el ends here

@@ -1,8 +1,13 @@
 (require 'tahti-keys)
 (push 'auctex el-get-packages)
+(push 'reftex el-get-packages)
+(push 'cdlatex-mode el-get-packages)
+
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
 (setq-default TeX-master nil)
+(setq reftex-plug-into-AUCTeX t)
+
 ;set AucTeX options
 (custom-set-variables
   '(LaTeX-equation-label "eqn") ;prefix label for equations
@@ -10,7 +15,7 @@
   '(LaTeX-table-label    "tab") ;prefix label for tables
   '(LaTeX-float          "htbp") ;default float position
   '(LaTeX-default-position  "htbp") ;default tabular position
-  '(LaTeX-math-abbrev-prefix "'")   ;prefix key for inserting math
+  '(LaTeX-math-abbrev-prefix "\"")   ;prefix key for inserting math
   '(LaTeX-indent-level 2)
   '(TeX-newline-function  'reindent-then-newline-and-indent) ;indent on enter
 )
@@ -33,9 +38,8 @@
 ;;          ))))
 
 (defun tahti-tex-mode-init ()
-  ;; (turn-on-cdlatex)
+  (turn-on-cdlatex)
   (turn-on-reftex)
-  (predictive-mode 1)
   (turn-on-auto-fill)     ;auto break the lines to fit 80 columns
   (LaTeX-math-mode)
   (TeX-fold-mode 1)
