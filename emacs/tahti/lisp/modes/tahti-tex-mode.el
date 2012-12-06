@@ -1,6 +1,6 @@
 (require 'tahti-keys)
 (push 'auctex el-get-packages)
-(setq TeX-auto-save t)
+(setq TeX-auto-save t) ;create auto directory for multiple documents
 (setq TeX-parse-self t)
 (setq-default TeX-master nil)
 ;set AucTeX options
@@ -35,7 +35,6 @@
 (defun tahti-tex-mode-init ()
   ;; (turn-on-cdlatex)
   (turn-on-reftex)
-  (predictive-mode 1)
   (turn-on-auto-fill)     ;auto break the lines to fit 80 columns
   (LaTeX-math-mode)
   (TeX-fold-mode 1)

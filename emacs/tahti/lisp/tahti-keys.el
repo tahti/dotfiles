@@ -1,6 +1,5 @@
 (require 'tahti-util)
 (require 'tahti-func)
-(require 'tahti-predictive)
 (require 'tahti-helm)
 (require 'tahti-evil)
 (require 'tahti-windowing)
@@ -176,13 +175,13 @@
     (evil-define-key 'motion occur-mode-map (kbd "<return>") 'occur-mode-goto-occurrence)
     (evil-define-key 'motion occur-mode-map (kbd "RET") 'occur-mode-goto-occurrence);
 )
-(defun tahti-jump ()
-  (interactive)
-;(memq (followin-char(point)) '("(" ")" "[" "]" "}" "{"))
-  (if (string-match "\\s\)\\|\\s\(" (string (following-char)))
-    (call-interactively 'evil-jump-item)
-    (call-interactively 'predictive-latex-jump-to-matching-delimiter)
-    ))
+;(defun tahti-jump ()
+  ;(interactive)
+;;(memq (followin-char(point)) '("(" ")" "[" "]" "}" "{"))
+  ;(if (string-match "\\s\)\\|\\s\(" (string (following-char)))
+    ;(call-interactively 'evil-jump-item)
+    ;(call-interactively 'predictive-latex-jump-to-matching-delimiter)
+    ;))
 
 (defun tahti-latex-keys()
    (evil-leader/set-key
@@ -235,8 +234,8 @@
        "pf" 'preview-cache-preamble
        "pF" 'preview-cache-preamble-off
    )
-   (evil-define-key 'normal predictive-latex-map "%" 'tahti-jump)
-   (evil-define-key 'visual predictive-latex-map "%" 'tahti-jump)
+   ;(evil-define-key 'normal predictive-latex-map "%" 'tahti-jump)
+   ;(evil-define-key 'visual predictive-latex-map "%" 'tahti-jump)
   ;(define-key isearch-mode-map [escape] 'isearch-cancel) ;help
 )
 
