@@ -3,11 +3,11 @@
 (require 'tahti-util)
 
 (eval-when-compile (require 'cl))
- (run-with-timer 10 1800  #'start-process "updatedb" "*updatedb*"
-                                          "updatedb" "-U" (expand-file-name "~")
-                                                     "-o" tahti-locate-file
-                                                     "-l" "no"
-                                                     "--prunepaths" (expand-file-name "~/workspace/.metadata/ ~/.Private/"))
+ ;(run-with-timer 10 1800  #'start-process "updatedb" "*updatedb*"
+                                          ;"updatedb" "-U" (expand-file-name "~")
+                                                     ;"-o" tahti-locate-file
+                                                     ;"-l" "no"
+                                                     ;"--prunepaths" (expand-file-name "~/workspace/.metadata/ ~/.Private/"))
 
 (defun f-alt (&rest alternatives)
   "Test functions in `alternatives' and return first bound."
@@ -42,7 +42,7 @@
   (require 'helm-mode)
   (require 'helm-buffers)
   (require 'helm-files)
-  (require 'helm-locate)
+  ;(require 'helm-locate)
   (require 'helm-w3m)
   ;; helm for ffap behaves broken
   (push  '(find-file-at-point . ido-completing-read) helm-completing-read-handlers-alist)
@@ -73,12 +73,12 @@
              "*Completions*"
              "*Customize"
              "*Messages*")))
-  (setq helm-c-locate-command
-        (case system-type
-          ('gnu/linux (format "locate -i -d %s -r %%s" tahti-locate-file))
-          ('berkeley-unix "locate -i %s")
-          ('windows-nt "es -i -r %s")
-          (t "locate %s")))
+  ;(setq helm-c-locate-command
+        ;(case system-type
+          ;('gnu/linux (format "locate -i -d %s -r %%s" tahti-locate-file))
+          ;('berkeley-unix "locate -i %s")
+          ;('windows-nt "es -i -r %s")
+          ;(t "locate %s")))
   ;;; Sources
   (defun tahti/helm-dir-deep (source-name dir &optional dotfiles fmatch dmatch)
     "Returns an helm source for a particular directory."

@@ -3,11 +3,7 @@
 ;;; eval me to compile the dir
 ;; (byte-recompile-directory "~/.emacs.d/lisp" 0 nil)
 (defcustom tahti-blacklist
-<<<<<<< HEAD
   '(tahti-predictive tahti-tips)
-=======
-  '(tahti-predictive tahti-hints)
->>>>>>> 732eb8754a1b97700627d441e485936553cdc90d
   "Files in black list are not loaded"
   :group 'tahti-config
   :type '(repeat symbol))
