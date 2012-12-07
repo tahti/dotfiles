@@ -195,10 +195,10 @@ bindcode $myModC+$slashC move output DVI-0
 bindcode $myModC+$amperstandC move output DVI-1
 
 # change focus to next window
-bindcode $myModC+$hC focus left
-bindcode $myModC+$tC focus down
-bindcode $myModC+$cC focus up
-bindcode $myModC+$nC focus right
+bindcode $myModC+$hC focus left;exec /home/piotr/bin/banishRat
+bindcode $myModC+$tC focus down;exec /home/piotr/bin/banishRat
+bindcode $myModC+$cC focus up;exec /home/piotr/bin/banishRat
+bindcode $myModC+$nC focus right;exec /home/piotr/bin/banishRat
 # alternatively, you can use the cursor keys:
 bindcode $myModC+$leftC focus left
 bindcode $myModC+$downC focus down
@@ -222,10 +222,10 @@ bindcode $myModC+Control+$tC workspace prev;workspace prev
 bindcode $myModC+Control+$cC workspace next;workspace next
 bindcode $myModC+Control+$nC workspace next
 # alternatively, you can use the cursor keys:
-bindcode $myModC+Control+$leftC workspace prev
-bindcode $myModC+Control+$downC  workspace prev;workspace prev
-bindcode $myModC+Control+$upC workspace next;workspace next
-bindcode $myModC+Control+$rightC workspace next
+bindcode $myModC+Control+$leftC workspace prev;exec /home/piotr/bin/banishRat
+bindcode $myModC+Control+$downC  workspace prev;workspace prev;exec /home/piotr/bin/banishRat
+bindcode $myModC+Control+$upC workspace next;workspace next;exec /home/piotr/bin/banishRat
+bindcode $myModC+Control+$rightC workspace next;exec /home/piotr/bin/banishRat
 
 # Change focus to next parent
 bindcode $myModC+Control+Shift+$hC focus parent;focus left;focus child
@@ -274,19 +274,19 @@ workspace 10 output DVI-0
 workspace 12 output DVI-0
 
 # switch to workspace
-bindcode $myModC+$oneC workspace 1
-bindcode $myModC+$twoC workspace 2
-bindcode $myModC+$threeC workspace 3
-bindcode $myModC+$fourC workspace 4
-bindcode $myModC+$fiveC workspace 5
-bindcode $myModC+$sixC workspace 6
-bindcode $myModC+$sevenC workspace 7
-bindcode $myModC+$eightC workspace 8
-bindcode $myModC+$nineC workspace 9
-bindcode $myModC+$zeroC workspace 10
-bindcode $myModC+$ampC workspace 11
-bindcode $myModC+$hashC	workspace 12
-bindcode $myModC+$dollarC workspace 13
+bindcode $myModC+$oneC workspace 1;exec /home/piotr/bin/banishRat
+bindcode $myModC+$twoC workspace 2;exec /home/piotr/bin/banishRat
+bindcode $myModC+$threeC workspace 3;exec /home/piotr/bin/banishRat
+bindcode $myModC+$fourC workspace 4;exec /home/piotr/bin/banishRat
+bindcode $myModC+$fiveC workspace 5;exec /home/piotr/bin/banishRat
+bindcode $myModC+$sixC workspace 6;exec /home/piotr/bin/banishRat
+bindcode $myModC+$sevenC workspace 7;exec /home/piotr/bin/banishRat
+bindcode $myModC+$eightC workspace 8;exec /home/piotr/bin/banishRat
+bindcode $myModC+$nineC workspace 9;exec /home/piotr/bin/banishRat
+bindcode $myModC+$zeroC workspace 10;exec /home/piotr/bin/banishRat
+bindcode $myModC+$ampC workspace 11;exec /home/piotr/bin/banishRat
+bindcode $myModC+$hashC	workspace 12;exec /home/piotr/bin/banishRat
+bindcode $myModC+$dollarC workspace 13;exec /home/piotr/bin/banishRat
 
 
 # move focused container to workspace
