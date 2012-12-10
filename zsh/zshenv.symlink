@@ -1,5 +1,5 @@
 export LD_LIBRARY_PATH=/usr/lib/jni
 eval "$(lesspipe.sh)"
-path=($path ~/bin . /sbin /usr/sbin /usr/local/sbin) 
+path=(~/bin $path . /sbin /usr/sbin /usr/local/sbin) 
 LESS=(-r)
 

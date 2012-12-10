@@ -47,6 +47,8 @@ Neither dir nor alias may contain spaces.")
 (setq-default woman-cache-filename (expand-file-name "woman-cache" tahti-var-dir))
 (setq savehist-file          (expand-file-name "savehist"    tahti-var-dir))
 (setq srecode-map-save-file  (expand-file-name "srecode-map" tahti-var-dir))
+(setq TeX-auto-local  "auto")
+
 (unless (file-exists-p tahti-var-dir)
   (make-directory tahti-var-dir))
 (unless (file-exists-p tahti-snippets-dir)
