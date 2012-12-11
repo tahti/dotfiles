@@ -19,9 +19,9 @@ new_window 1pixel
 #
 
 exec xrandr --output DVI-0 --auto --mode 1920x1200 --right-of DVI-1
-exec xset b off
+exec sleep 1;xset b off
+exec sleep 2;xset r rate 250 80
 exec setxkbmap -layout "pl,pl" -variant "dvp," -option "caps:swapescape,grp:sclk_toggle"
-exec xset r rate 250 80
 # Start i3bar to display a workspace bar 
 bar {
     #mode hide
