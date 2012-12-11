@@ -51,8 +51,8 @@
   (setq semantic-idle-breadcrumbs-format-tag-list-function #'semantic-idle-breadcrumbs--format-innermost-first)
   (global-semantic-idle-breadcrumbs-mode 1)
   ;; Enable EDE (Project Management) features
-  (global-ede-mode 1)
-  (ede-enable-generic-projects)
+  ;(global-ede-mode 1)
+  ;(ede-enable-generic-projects)
 
   ;; SRecode for templates
   (global-srecode-minor-mode 1)

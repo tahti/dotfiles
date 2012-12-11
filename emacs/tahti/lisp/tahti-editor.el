@@ -38,12 +38,14 @@
 ;
 ;;; backups & autosave===============================
 (add-hook 'find-file-hook 'auto-save-mode)
-(setq auto-save-timeout 20)
+(setq auto-save-timeout 20
+      delete-auto-save-files t
+      auto-save-file-name-transforms `((".*" ,autosave-directory t))
+      auto-save-list-file-prefix nil   ;do not list saved files
+      )
 ;; make a shell script executable automatically on save
 (add-hook 'after-save-hook
           'executable-make-buffer-file-executable-if-script-p)
-(setq auto-save-file-name-transforms
-          `((".*" ,autosave-directory t)))
 
 ;;; recent files ===================================
 (setq recentf-auto-cleanup 'never)
@@ -65,27 +67,6 @@
   (tahti-global-keys) ;run at the last package
 
 (provide 'tahti-editor)
-;;; backups & autosave===============================
-(add-hook 'find-file-hook 'auto-save-mode)
-(setq auto-save-timeout 20)
-;; make a shell script executable automatically on save
-(add-hook 'after-save-hook
-          'executable-make-buffer-file-executable-if-script-p)
-(setq auto-save-file-name-transforms
-          `((".*" ,autosave-directory t)))
-
-;;; recent files ===================================
-(setq recentf-auto-cleanup 'never)
-(setq recentf-max-saved-items 200)
-(require-and-exec 'recentf
-   (recentf-mode 1)
-   (setq recentf-exclude '(
-                           "\\.recentf"
-                           "\\.ido\\.last"
-                           "\\.keychain/.*?-sh\\(-gpg\\)?"
-                           ))
-   (add-hook 'kill-emacs-hook #'recentf-cleanup)
-   )
 
 ;;; pretty-mode ======================================
 (setq pp^L-^L-string (concat (make-string 30 ? ) "⁂" (make-string 30 ? ))
