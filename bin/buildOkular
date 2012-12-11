@@ -1,0 +1,8 @@
+#!/bin/sh
+cd ~/temp
+apt-get source okular
+cd okular*
+patch ui/pageview.cpp ~/bin/customPackages/okular.patch
+dpkg-source --commit . custom
+debuild -us -uc
+cd ..
