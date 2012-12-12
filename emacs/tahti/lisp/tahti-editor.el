@@ -36,17 +36,6 @@
               woman-use-topic-at-point t
               woman-imenu t)
 ;
-;;; backups & autosave===============================
-(add-hook 'find-file-hook 'auto-save-mode)
-(setq auto-save-timeout 20
-      delete-auto-save-files t
-      auto-save-file-name-transforms `((".*" ,autosave-directory t))
-      auto-save-list-file-prefix nil   ;do not list saved files
-      )
-;; make a shell script executable automatically on save
-(add-hook 'after-save-hook
-          'executable-make-buffer-file-executable-if-script-p)
-
 ;;; recent files ===================================
 (setq recentf-auto-cleanup 'never)
 (setq recentf-max-saved-items 200)
