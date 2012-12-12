@@ -71,7 +71,8 @@
   (add-to-list 'package-archives
              '("marmelade" . "http://marmalade-repo.org/packages/") t)
 
-  (tahti-init-load-modules '(tahti-cedet tahti-theme) '(tahti-el-get))
+  ;(tahti-init-load-modules '(tahti-cedet tahti-theme) '(tahti-el-get))
+  (tahti-init-load-modules '(tahti-theme) '(tahti-el-get))
   (el-get 'sync (reverse el-get-packages))
   (tahti-run-after-modules (reverse el-get-packages))
 )

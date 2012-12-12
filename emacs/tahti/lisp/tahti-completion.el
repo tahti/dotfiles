@@ -1,7 +1,11 @@
 (push 'pos-tip el-get-packages)
 (push 'popup el-get-packages)
-;;{{{ Autocomplate
 
+;;{{{ Autocomplate
+(push 'auto-complete el-get-packages)
+(defun tahti-after-auto-complete ()
+  (require 'auto-complete)
+)
 
 
 ;;{{{ Hippie Exapnd

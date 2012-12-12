@@ -1,6 +1,5 @@
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/Private/dotfiles
-echo ,
 # your project folder that we can `c [tab]` to
 #export PROJECTS=~/Code
 autoload -U promptinit
@@ -18,13 +17,13 @@ fi
 
 # add a function path
 fpath=($ZSH/zsh/functions $ZSH/zsh/completions $fpath)
-echo ,,,,
+# disabling as it is too slow
+# load every completion after autocomplete loads 
+#for config_file ($ZSH/zsh/**/completion.zsh) source $config_file 
+source $ZSH/zsh/lib/completion.zsh
 
-# load every completion after autocomplete loads
-for config_file ($ZSH/**/completion.zsh) source $config_file
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git)
-echo ,,,
 
 is_plugin() {
   local base_dir=$1
@@ -32,7 +31,6 @@ is_plugin() {
   test -f $base_dir/plugins/$name/$name.plugin.zsh \
     || test -f $base_dir/plugins/$name/_$name
 }
-echo ,,
 
 # Add all defined plugins to fpath. This must be done
 # before running compinit.
@@ -52,7 +50,6 @@ for plugin ($plugins); do
     source $ZSH/zsh/plugins/$plugin/$plugin.plugin.zsh
   fi
 done
-echo ,,,
 
 # Load the theme
 if [ "$ZSH_THEME" = "random" ]
@@ -63,7 +60,6 @@ then
   RANDOM_THEME=${themes[$N]}
   source "$RANDOM_THEME"
   echo "[oh-my-zsh] Random theme '$RANDOM_THEME' loaded..."
-else
   if [ ! "$ZSH_THEME" = ""  ]
   then
     if [ -f "$ZSH/zsh/themes/$ZSH_THEME.zsh-theme" ]

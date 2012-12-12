@@ -54,6 +54,8 @@
        "p"    'evil-paste-before  ;p<->P when pasting
        "P"    'evil-paste-after
        "C-,"   evil-leader/map
+       "+"    'evil-numbers/inc-at-pt
+       "-"    'evil-numbers/dec-at-pt
        ;"<escape>" 'tahti-esc
     )
     (fill-keymap evil-motion-state-map
@@ -250,6 +252,16 @@
        "pf" 'preview-cache-preamble
        "pF" 'preview-cache-preamble-off
    )
+   ;undefine some of cdlatex keys
+  (fill-keymap cdlatex-mode-map
+       "$" nil
+       "(" nil
+       "{" nil
+       "[" nil
+       "|" nil
+       "<" nil
+   )
+
    ;(evil-define-key 'normal predictive-latex-map "%" 'tahti-jump)
    ;(evil-define-key 'visual predictive-latex-map "%" 'tahti-jump)
   ;(define-key isearch-mode-map [escape] 'isearch-cancel) ;help

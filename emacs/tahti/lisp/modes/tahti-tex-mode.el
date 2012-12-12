@@ -20,10 +20,10 @@
   '(LaTeX-table-label    "tab") ;prefix label for tables
   '(LaTeX-float          "htbp") ;default float position
   '(LaTeX-default-position  "htbp") ;default tabular position
-  '(LaTeX-math-abbrev-prefix "\"")   ;prefix key for inserting math
+  ;'(LaTeX-math-abbrev-prefix "\"")   ;prefix key for inserting math
   '(LaTeX-indent-level 2)
   '(TeX-interactive-mode nil)
-  '(TeX-newline-function  'reindent-then-newline-and-indent) ;indent on enter
+  '(TeX-newline-function  'newline-and-indent) ;indent on enter
   '(TeX-auto-untabify t)   ;remove tabs befor saving
 
 )
