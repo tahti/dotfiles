@@ -1,3 +1,4 @@
+(require 'tahti-dirs)
 ;;; backups & autosave===============================
 (custom-set-variables
  '(save-place-file save-place-file) 

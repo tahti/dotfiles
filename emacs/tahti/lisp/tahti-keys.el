@@ -311,6 +311,7 @@
     "M-n"   'evil-window-right
     "M-c"   'evil-window-up
     "M-t"   'evil-window-down
+    "M-/"   'tahti-ido-hippie-expand
     ;"<f10>" 'tahti/helm-lacarte
     "C-<escape>" 'ESC-prefix
     "<escape>" 'tahti-esc
