@@ -31,6 +31,9 @@
 (setq browse-url-browser-function 'w3m-browse-url)
 (autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
  ;; optional keyboard short-cut
+;;;expand selection region ==========================
+(push 'expand-region el-get-packages)
+
 ;;; woman - help files ===============================
 (setq-default woman-use-own-frame nil
               woman-use-topic-at-point t

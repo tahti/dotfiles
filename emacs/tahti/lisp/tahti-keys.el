@@ -31,9 +31,17 @@
       (t (keyboard-escape-quit))))
 
 (defun tahti-evil-keys ()
-    ;(fill-keymap evil-visual-state-map
-       ;"<escape>" 'tahti-esc ;we do not want previous state but normal state
-    ;)
+    (fill-keymap evil-visual-state-map
+      "+"  'er/expand-region
+      "-"  'er/contract-region
+      "ac"  'er/mark-comment
+      "aa"  'mark-whole-buffer
+      "an"  'narrow-to-region
+      "ah"  'widen
+      "a|"  (lambda ()(interactive)
+                     (setq current-prefix-arg '(4)) ;C-u
+                     (call-interactively 'shell-command-on-region))
+    )
     ;(fill-keymap evil-emacs-state-map
        ;"<escape>" 'evil-normal-state ;we do not want previous state but normal state
     ;)
@@ -311,7 +319,7 @@
     "M-n"   'evil-window-right
     "M-c"   'evil-window-up
     "M-t"   'evil-window-down
-    "M-/"   'tahti-ido-hippie-expand
+    "M-/"   'hippie-expand
     ;"<f10>" 'tahti/helm-lacarte
     "C-<escape>" 'ESC-prefix
     "<escape>" 'tahti-esc
