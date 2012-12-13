@@ -27,7 +27,33 @@
 (push 'evil el-get-packages)
 (push 'undo-tree el-get-packages)
 
+(defun tahti-search-selection-backward (beg end)
+  "search for selected text in backward direction"
+  (interactive "r")
+  (when (evil-visual-state-p)
+    (let (
+          (selection (buffer-substring-no-properties beg end))
+         )
+      (evil-exit-visual-state)
+      (setq isearch-forward nil)
+      (evil-search (regexp-quote selection) nil t)
+    )
+  )
+)
 
+(defun tahti-search-selection-forward (beg end)
+  "search for selected text in forward direction"
+  (interactive "r")
+  (when (evil-visual-state-p)
+    (let (
+          (selection (buffer-substring-no-properties beg end))
+         )
+      (evil-exit-visual-state)
+      (setq isearch-forward t)
+      (evil-search (regexp-quote selection) t t)
+    )
+  )
+)
  ;(require 'smex)
 (defun tahti-after-evil ()
   (evil-add-command-properties 

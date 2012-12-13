@@ -32,6 +32,8 @@
 
 (defun tahti-evil-keys ()
     (fill-keymap evil-visual-state-map
+      "*"  'tahti-search-selection-forward
+      "#"  'tahti-search-selection-backward
       "+"  'er/expand-region
       "-"  'er/contract-region
       "ac"  'er/mark-comment
