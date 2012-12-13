@@ -21,9 +21,9 @@ group user
 "" prev selected tab
 nmap -builtin x <C-^>
 
-"" back/forward
-nmap -builtin h <C-o>
-nmap -builtin l <C-i>
+"" back/forward in jumpstack
+map -count -modes=n,v H -builtin <count><count><count><count><count><count><count><C-o>
+map -count -modes=n,v N -builtin <count><count><count><count><count><count><count><C-i>
 
 "" viewsource in new tab
 nmap -builtin gf :tab viewsource<CR>
@@ -102,8 +102,10 @@ map -count -modes=n,v k -builtin <count><count><count><count><count><count><coun
 map -count -modes=n,v K -builtin <count><count><count><count><count><count><count>N
 map -count -modes=n,v l -builtin <count><count><count><count><count><count><count>t
 map -count -modes=n,v L -builtin <count><count><count><count><count><count><count>T
+""" back/forward in history
+map -count -modes=n,v h -builtin <count><count><count><count><count><count><count>H
 map -count -modes=n,v n -builtin <count><count><count><count><count><count><count>L
-map -count -modes=n,v N -builtin <count><count><count><count><count><count><count>l
+""" 
 map -count -modes=n,v t -builtin <count><count><count><count><count><count><count>4j
 map -count -modes=n,v T -builtin <count>j
 map -count -modes=n,v U -builtin <count><count><count><count><C-v><C-S-N>
@@ -150,4 +152,27 @@ set showtabline=multitab
 " disable annoying auto focus
 set strictfocus^=tao123.com:despotic
 
-
+map -modes=n,v <C-h> -js PageUpOrHistBack();
+map -modes=n,v <C-n> -js PageDownThenNextPage();
+js <<EOF
+function PageUpOrHistBack(){
+    if(buffer.scrollYPercent>0){
+        buffer.scrollVertical("pages", -1);
+        return;
+    }
+    history.stepTo(-1);
+}
+function PageDownThenNextPage(){
+    if(buffer.scrollYPercent<100){
+        buffer.scrollVertical("pages", 1);
+        return;
+    }
+    let sh =window.getWebNavigation().sessionHistory;
+    let max = sh.count - 1;
+    if(sh.index < max){
+      history.stepTo(1);
+      return;
+    }
+    buffer.findLink("next", options["nextpattern"], 0, true);
+}
+EOF
