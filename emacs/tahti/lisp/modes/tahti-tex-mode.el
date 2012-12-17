@@ -44,7 +44,7 @@
   '(font-latex-match-variable-keywords '(("newcount") ("def") ("edef") ("gdef")
      ("advance") ("if") ("else") ("fi") ("ifx")("ifnum") ("relax") ("foreach")
      ("pgfmathresult") ("pgfmathparse") ("mscset" "{")("pgfkeys" "{")
-     ("tikzset" "{") ("\pgfutil@ifundefined" "{")
+     ("tikzset" "{") ("\pgfutil@ifundefined" "{") ("equal" "{{") ("or")
    ))
 )
 ;; customize viewer
