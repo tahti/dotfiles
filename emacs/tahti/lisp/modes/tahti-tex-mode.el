@@ -25,7 +25,27 @@
   '(TeX-interactive-mode nil)
   '(TeX-newline-function  'newline-and-indent) ;indent on enter
   '(TeX-auto-untabify t)   ;remove tabs befor saving
-
+  '(Tex-install-font-lock font-latex-setup) ;different syntax highlight
+  '(font-latex-match-slide-title-keywords '(("frametitle" "{")))
+  '(font-latex-match-warning-keywords '("hline" "pause" "and" "hfill"))
+  '(font-latex-match-function-keywords
+    '(("titlepage" "") ("maketitle" "") ("frame" "") ("tableofcontents" "")
+     ("noindent" "") ("usetheme" "{") ("usecolortheme" "{") ("institute" "[{")
+     ("includegraphics" "[{") ("title" "[{") ("href" "{{") ("url" "{") ("hypersetup" "{")
+     ("useoutertheme" "{") ("useinnertheme" "{") ("setbeamercolor" "{{")
+     ("setbeamertemplate" "{{") ("setdescription" "{") ("lstset" "{") ("lstinputlisting" "[{")
+     ("textcolor" "{") ("verbatiminput" "{") ("graphicspath" "{")
+     ("fancyhead" "[{") ("fancyfoot" "[{") ("fontsize" "{{") ("doublespacing" "")
+     ("declinst" "[{{{") ("nextlevel" "[") ("NeedsTeXFormat" "{[")
+     ("ProvidesPackage" "{[") ("RequirePackage" "{") ("usetikzlibrary" "{")
+     ("usepgflibrary" "{") ("typeout" "{") ("PackageError" "{{{")  ("pgfkeysvalueof" "{")
+     ("pgfkeysifdefined" "{")
+   ))
+  '(font-latex-match-variable-keywords '(("newcount") ("def") ("edef") ("gdef")
+     ("advance") ("if") ("else") ("fi") ("ifx")("ifnum") ("relax") ("foreach")
+     ("pgfmathresult") ("pgfmathparse") ("mscset" "{")("pgfkeys" "{")
+     ("tikzset" "{") ("\pgfutil@ifundefined" "{")
+   ))
 )
 ;; customize viewer
 (setq TeX-view-program-list (quote (("okular" "okular -unique %u"))))
@@ -54,7 +74,7 @@
 ;   (flyspell-mode 1)
   (tahti-latex-keys)
 )
-
+;; Some macros
     (defun guess-TeX-master (filename)
       "Guess the master file for FILENAME from currently open .tex files."
       (let ((candidate nil)

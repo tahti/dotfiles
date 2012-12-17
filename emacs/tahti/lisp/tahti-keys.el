@@ -171,6 +171,13 @@
        "gh" 'previous-buffer
        "gq" 'fill-paragraph
        "," 'evil-repeat-find-char-reverse
+       "?f" 'what-face
+       "?c" 'what-cursor-position
+       "?w" 'count-words
+       "?a" 'display-prefix
+       "tl" 'hl-line-mode
+       "t SPC" 'tahti-whitespace-toggle
+       "tr" 'rainbow-mode
        "m" 'compile)
    (evil-ex-define-cmd "w[rite]" 'save-buffer-always)
 

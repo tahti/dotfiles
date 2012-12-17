@@ -27,6 +27,36 @@
  '(fill-column 80)
  '(set-mark-command-repeat-pop t)
 )
+;;; whitespace-mode
+
+(custom-set-variables
+;(face tabs spaces trailing lines space-before-tab newline indentation empty space-after-tab space-mark tab-mark newline-mark)
+  '(whitespace-style'(face trailing indentation:space tab-mark newline-mark) )
+  '(whitespace-display-mappings
+          '((space-mark   ?\    [?\xB7] )	; space
+            (space-mark   ?\xA0 )	; hard space
+            (newline-mark ?\n  [?\xA4 ?\n])	; end-of-line
+            (tab-mark   ?\t   [?\xBB ?\t])
+           )
+  )
+)
+(push 'column-marker el-get-packages)
+(defun tahti-after-column-marker()
+  (custom-set-variables
+    '(column-marker-1-face '((t (:background "#AA501A"))))
+    '(column-marker-2-face '((t (:background "#960050"))))
+  )
+)
+(defun tahti-whitespace-toggle()
+  (interactive)
+  (call-interactively 'whitespace-mode)
+  (if whitespace-mode 
+    (progn (column-marker-1 80)
+           (column-marker-2 120))
+    (progn (column-marker-1 (16))
+           (column-marker-2 (16)))
+  )
+)
 ;;; w3m ==============================================
 (setq browse-url-browser-function 'w3m-browse-url)
 (autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)

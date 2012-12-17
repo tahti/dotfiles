@@ -65,7 +65,12 @@ indent yanked text (with prefix arg don't indent)."
       icon-title-format "emacs %b")
 ;; no, my sentences don't end with two instead of one space
 (setq sentence-end-double-space nil)
+;; mouse scroll
 (mouse-avoidance-mode 'cat-and-mouse)
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 5) ((control)))) ;scroll by 1 line or by 5 with shif or by screen
+(setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
+(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+(setq scroll-step 1) ;; keyboard scroll one line at a time
 (setq comment-style 'align)
 (setq x-select-enable-primary t)
 (setq use-dialog-box nil)

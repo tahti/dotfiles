@@ -106,6 +106,10 @@
      `(lazy-highlight ((,class (:foreground ,tahti-emph :background ,tahti-hl :bold t))))
      `(escape-glyph ((,class (:foreground ,violet))))
 
+     ;;column-markers
+     `(tahti-column-marker-1-face ((,class (:foreground ,orange-lc))))
+     `(tahti-column-marker-2-face ((,class (:foreground ,red-lc))))
+
      ;; compilation
      `(compilation-column-face ((,class (:foreground ,yellow))))
      `(compilation-enter-directory-face ((,class (:foreground ,green))))
@@ -782,7 +786,7 @@
      `(whitespace-tab ((,class (:background ,tahti-bg :foreground ,orange-lc
                                             :inverse-video t))))
      `(whitespace-newline ((,class (:foreground ,tahti-comments))))
-     `(whitespace-trailing ((,class (:foreground ,blue-lc :background ,tahti-bg
+     `(whitespace-trailing ((,class (:foreground ,orange-lc :background ,tahti-bg
                                                  :inverse-video t))))
                                         ; removing inverse video on this
      `(whitespace-line ((,class (:background ,tahti-bg :foreground ,magenta
