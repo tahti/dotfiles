@@ -56,10 +56,16 @@
 )
  ;(require 'smex)
 (defun tahti-after-evil ()
-  (evil-add-command-properties 
-    'evil-goto-mark :jump t)
-  (evil-remove-command-properties 
-    'evil-forward-section-begin '(:jump))
+  (evil-add-command-properties 'evil-goto-mark :jump t)
+  (evil-remove-command-properties 'evil-forward-section-begin :jump)
+  (evil-remove-command-properties 'evil-find-char :jump)
+  (evil-remove-command-properties 'evil-find-char-to :jump)
+  (evil-remove-command-properties 'evil-find-char-backward :jump)
+  (evil-remove-command-properties 'evil-find-char-to-backward :jump)
+  (evil-remove-command-properties 'evil-repeat-find-char :jump)
+  (evil-remove-command-properties 'evil-repeat-find-reverse :jump)
+  (evil-remove-command-properties 'evil-forward-sentence :jump)
+  (evil-remove-command-properties 'evil-backward-sentence :jump)
 
   ;(require 'undo-tree)
   (global-undo-tree-mode 1)
