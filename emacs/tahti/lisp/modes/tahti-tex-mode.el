@@ -43,7 +43,7 @@
    ))
   '(font-latex-match-variable-keywords '(("newcount") ("def") ("edef") ("xdef") ("gdef")
      ("advance") ("if") ("else") ("fi") ("ifx")("ifnum") ("relax") ("foreach")
-     ("pgfmathresult") ("pgfmathparse") ("mscset" "{")("pgfkeys" "{")
+     ("pgfmathresult") ("pgfmathparse") ("mscset" "{")("mscget" "{") ("pgfkeys" "{")
      ("tikzset" "{") ("\pgfutil@ifundefined" "{") ("equal" "{{") ("or")
      ("draw" "[")
    ))
