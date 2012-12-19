@@ -273,7 +273,7 @@
 
    ;(evil-define-key 'normal predictive-latex-map "%" 'tahti-jump)
    ;(evil-define-key 'visual predictive-latex-map "%" 'tahti-jump)
-  ;(define-key isearch-mode-map [escape] 'isearch-cancel) ;help
+  (define-key isearch-mode-map [escape] 'isearch-cancel) ;help
 )
 
 (defun tahti-yas-keys ()
