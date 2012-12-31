@@ -1,0 +1,2 @@
+#!/bin/sh
+mplayer -cdrom-device /dev/cdrom cdda://
