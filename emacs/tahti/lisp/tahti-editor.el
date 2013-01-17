@@ -1,4 +1,6 @@
 (require 'tahti-keys)
+;;do not lock the files using symbolic links - works for emacs 24.3 from trunk
+(setq create-lockfiles nil)
 ;;comment empty lines
 (setq comment-empty-lines 'eol)
  ;; use utf-8 environment as default dammit
