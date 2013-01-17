@@ -5,7 +5,7 @@
 
 ;(setq TeX-auto-save t) ;create auto directory for multiple documents
 (setq TeX-parse-self t
-      TeX-electric-escape t
+      TeX-electric-escape nil
       reftex-plug-into-AUCTeX t
       TeX-insert-braces nil
       TeX-source-correlate-method 'synctex
