@@ -5,7 +5,7 @@
 
 ;(setq TeX-auto-save t) ;create auto directory for multiple documents
 (setq TeX-parse-self t
-      TeX-electric-escape nil
+      TeX-electric-escape nil ;do not call TeX-electric-macro when \ is typed
       reftex-plug-into-AUCTeX t
       TeX-insert-braces nil
       TeX-source-correlate-method 'synctex
