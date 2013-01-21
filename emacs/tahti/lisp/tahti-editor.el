@@ -16,11 +16,13 @@
 (push 'help-mode+ el-get-packages)
 (push 'help-fns+ el-get-packages)
 (push 'help+ el-get-packages)
+(push 'color-moccur el-get-packages)
 (defun tahti-after-help+ ()
   (require 'info+)
   (require 'help-mode+)
   (require 'help-fns+)
   (require 'help+)
+  (require 'color-moccur)
 )
 (custom-set-variables
  '(tab-width 2)

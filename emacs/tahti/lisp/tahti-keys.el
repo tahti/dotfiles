@@ -154,6 +154,7 @@
        "FF" 'tahti/file-alternate
        "Ff" 'tahti/file-alternate
        "." 'evil-ex
+       "/" 'moccur
        "o" 'tahti-find-at-alias
        "O" 'tahti-find-helm-at-alias
        "w" 'save-buffer-always
