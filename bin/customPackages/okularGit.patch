@@ -1,0 +1,40 @@
+--- pageview.cpp	2013-01-31 13:28:15.792542249 +0100
++++ pageviewNew.cpp	2013-01-31 13:29:13.424542239 +0100
+@@ -1618,8 +1618,8 @@
+     // move/scroll page by using keys
+     switch ( e->key() )
+     {
+-        case Qt::Key_J:
+-        case Qt::Key_K:
++        case Qt::Key_T:
++        case Qt::Key_C:
+         case Qt::Key_Down:
+         case Qt::Key_PageDown:
+         case Qt::Key_Up:
+@@ -1627,14 +1627,14 @@
+         case Qt::Key_Backspace:
+             if ( e->key() == Qt::Key_Down
+                  || e->key() == Qt::Key_PageDown
+-                 || e->key() == Qt::Key_J )
++                 || e->key() == Qt::Key_T )
+             {
+-                bool singleStep = e->key() == Qt::Key_Down || e->key() == Qt::Key_J;
++                bool singleStep = e->key() == Qt::Key_Down || e->key() == Qt::Key_T;
+                 slotScrollDown( singleStep );
+             }
+             else
+             {
+-                bool singleStep = e->key() == Qt::Key_Up || e->key() == Qt::Key_K;
++                bool singleStep = e->key() == Qt::Key_Up || e->key() == Qt::Key_C;
+                 slotScrollUp( singleStep );
+             }
+             break;
+@@ -1650,7 +1650,7 @@
+                 horizontalScrollBar()->triggerAction( QScrollBar::SliderSingleStepSub );
+             break;
+         case Qt::Key_Right:
+-        case Qt::Key_L:
++        case Qt::Key_N:
+             if ( horizontalScrollBar()->maximum() == 0 )
+             {
+                 //if we cannot scroll we advance the page vertically
