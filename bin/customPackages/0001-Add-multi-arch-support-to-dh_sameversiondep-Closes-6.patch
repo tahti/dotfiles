@@ -1,0 +1,74 @@
+From 2d3f6698b0392bb6e098265e0877ace581783620 Mon Sep 17 00:00:00 2001
+From: Cyril Brulebois <kibi@debian.org>
+Date: Tue, 25 Sep 2012 14:42:03 +0200
+Subject: [PATCH] Add multi-arch support to dh_sameversiondep (Closes:
+ #676833).
+
+---
+ debian/changelog  |   10 ++++++++++
+ dh_sameversiondep |   17 +++++++++++++++--
+ 2 files changed, 25 insertions(+), 2 deletions(-)
+
+diff --git a/debian/changelog b/debian/changelog
+index 27fb5ce..bbb4763 100644
+--- a/debian/changelog
++++ b/debian/changelog
+@@ -1,3 +1,13 @@
++pkg-kde-tools (0.15.3+nmu1) UNRELEASED; urgency=low
++
++  * Non-maintainer upload.
++  * Add multi-arch support to dh_sameversiondep: if a multi-arch aware
++    dpkg is detected, use architecture qualifiers for the dpkg-query -s
++    call. Use DEB_HOST_ARCH is defined, falling back to calling
++    dpkg-architecture -qDEB_HOST_ARCH if it isn't. (Closes: #676833)
++
++ -- Cyril Brulebois <kibi@debian.org>  Tue, 25 Sep 2012 14:25:26 +0200
++
+ pkg-kde-tools (0.15.3) unstable; urgency=low
+ 
+   * Reupload without cruft.
+diff --git a/dh_sameversiondep b/dh_sameversiondep
+index 82b4324..4afa6c3 100755
+--- a/dh_sameversiondep
++++ b/dh_sameversiondep
+@@ -52,7 +52,9 @@ name and I<dependency type> (either Depends or Recommends etc.) are determined.
+ =item *
+ 
+ All dependencies of the requested I<type> are collected for the I<dependency
+-package> based on the I<dpkg-query --status> output.
++package> based on the I<dpkg-query --status> output. If a multi-arch aware dpkg
++is detected, this query is architecture-qualified, using DEB_HOST_ARCH if
++defined, and querying dpkg-architecture for that variable if undefined.
+ 
+ =item *
+ 
+@@ -239,6 +241,17 @@ sub Shlibsvars::get_dep_package_names {
+     return extract_package_names($val);
+ }
+ 
++sub arch_qualify {
++    my $ret = system('dpkg', '--assert-multi-arch');
++    if ($ret == 0) {
++        my $arch = $ENV{DEB_HOST_ARCH} || `dpkg-architecture -qDEB_HOST_ARCH`;
++        chomp $arch;
++        return map { "$_:$arch" } @_;
++    } else {
++        return @_;
++    }
++}
++
+ sub get_package_dpkg_status {
+     my $binpkgs = shift;
+     my $fields = shift;
+@@ -253,7 +266,7 @@ sub get_package_dpkg_status {
+         close STDERR;
+         open STDERR, ">", "/dev/null";
+         $ENV{LC_ALL} = "C";
+-        exec("dpkg-query", "--status", "--", @$binpkgs) or error("cannot exec dpkg-query");
++        exec("dpkg-query", "--status", "--", arch_qualify(@$binpkgs)) or error("cannot exec dpkg-query");
+     }
+     my $curpkg;
+     while (defined($_ = <DPKG>)) {
+-- 
+1.7.10.4
+
