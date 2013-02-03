@@ -58,6 +58,7 @@
        "C-,"   evil-leader/map
        "+"    'evil-numbers/inc-at-pt
        "-"    'evil-numbers/dec-at-pt
+       "'"    'tahti-goto-mark
        ;"<escape>" 'tahti-esc
     )
     (fill-keymap evil-motion-state-map
