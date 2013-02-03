@@ -5,13 +5,13 @@ else
 OPT="-c"
 fi
 if [ -z $1 ] ; then
-  emacsclient.emacs24 $OPT 2>/dev/null || (
-  (emacs24 --daemon)
+  emacsclient emacs $OPT 2>/dev/null || (
+  (emacs --daemon)
   sleep 2
-  emacsclient.emacs24 $OPT)
+  emacsclient emacs $OPT)
 else
-  emacsclient.emacs24 $OPT "$*" 2>/dev/null || (
-  (emacs24 --daemon)
+  emacsclient emacs $OPT "$*" 2>/dev/null || (
+  (emacs --daemon)
   sleep 2
-  emacsclient.emacs24 $OPT "$*")
+  emacsclient emacs $OPT "$*")
 fi
