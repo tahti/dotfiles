@@ -1,17 +1,17 @@
 #!/bin/bash
 if [ -z $DISPLAY ] ; then
-OPT="-t"
+OPT="-s edit -t"
 else
-OPT="-c"
+OPT="-s edit -c"
 fi
 if [ -z $1 ] ; then
-  emacsclient emacs $OPT 2>/dev/null || (
-  (emacs --daemon)
+  emacsclient $OPT 1>/dev/null || (
+  (emacs-24.3.50 --daemon=edit)
   sleep 2
-  emacsclient emacs $OPT)
+  emacsclient  $OPT)
 else
-  emacsclient emacs $OPT "$*" 2>/dev/null || (
-  (emacs --daemon)
+  emacsclient $OPT $@ 2>/dev/null || (
+  (emacs-24.3.50 --daemon=edit)
   sleep 2
-  emacsclient emacs $OPT "$*")
+  emacsclient $OPT $@)
 fi
