@@ -3,6 +3,8 @@
 (setq create-lockfiles nil)
 ;;comment empty lines
 (setq comment-empty-lines 'eol)
+;;reuse existing buffers
+(setq ns-pop-up-frames nil)
  ;; use utf-8 environment as default dammit
 (setq locale-coding-system 'utf-8)
 (set-language-environment 'UTF-8)
