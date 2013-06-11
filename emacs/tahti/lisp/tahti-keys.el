@@ -154,6 +154,7 @@
        "fF" 'tahti/file-alternate
        "FF" 'tahti/file-alternate
        "Ff" 'tahti/file-alternate
+       "fr" 'rename-file-and-buffer
        "." 'evil-ex
        "/" 'moccur
        "o" 'tahti-find-at-alias
