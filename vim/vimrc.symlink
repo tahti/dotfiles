@@ -68,8 +68,8 @@ if v:version > '702'
 endif
 set directory=~/.vim/swap       " where to store the swap files
 set backupdir=~/.vim/swap       " where to store the swap files
-set nobackup                    " don't make a (permanent) backup when saving files
-set noswapfile                  " Turn off swapfiles
+"set nobackup                    " don't make a (permanent) backup when saving files
+"set noswapfile                  " Turn off swapfiles
 
 set autoread                    " Automatically read a file that has changed on disk
 set autowriteall                " Always write modifications to the file
@@ -316,6 +316,8 @@ if has("autocmd")
   " HTML
   " ---
   autocmd FileType html,xhtml,xml,htmldjango,htmljinja,eruby,mako setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+  let g:xml_syntax_folding=1
+  au FileType xml setlocal foldmethod=syntax
   autocmd BufNewFile,BufRead *.rhtml setlocal ft=eruby
   autocmd BufNewFile,BufRead *.mako setlocal ft=mako
   autocmd BufNewFile,BufRead *.tmpl setlocal ft=htmljinja
