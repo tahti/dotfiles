@@ -55,7 +55,7 @@
        "T"    'evil-join
        "p"    'evil-paste-before  ;p<->P when pasting
        "P"    'evil-paste-after
-       "C-,"   evil-leader/map
+       "C-,"   evil-leader--default-map
        "+"    'evil-numbers/inc-at-pt
        "-"    'evil-numbers/dec-at-pt
        "'"    'tahti-goto-mark
@@ -80,7 +80,7 @@
        "M-H"  'evil-window-move-far-left
        "ZZ"   'evil-save-modified-and-close ;allow quiting from help files
        "ZQ"   'evil-quit                    ;allow quiting from help files
-       evil-leader/leader evil-leader/map   ;make leader work in motion mode
+       evil-leader/leader evil-leader--default-map   ;make leader work in motion mode
     )
     (define-key evil-outer-text-objects-map "l" 'evil-a-tag)
     (define-key evil-inner-text-objects-map "l" 'evil-inner-tag)
