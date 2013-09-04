@@ -3,6 +3,7 @@ alias md='mkdir -p'
 alias rm='rm -v'
 alias df='df -h'
 
+alias search='find . |grep -i'
 alias web='iceweasel'
 alias gvim='gvim --servername gvim'
 alias v='gvim --remote'

@@ -80,7 +80,7 @@
         evil-insert-state-tag    (propertize "I" 'face '((:background "yellow"  :foreground "black")))
         evil-visual-state-tag    (propertize "V" 'face '((:background "purple"  :foreground "black")))
         evil-replace-state-tag   (propertize "R" 'face '((:background "red")))
-        evil-operator-state-tag  (propertize "O" 'face '((:background "#FFDD000":foreground "black")))
+        evil-operator-state-tag  (propertize "O" 'face '((:background "#FFDD00":foreground "black")))
         evil-motion-state-tag    (propertize "M" 'face '((:background "blue")))
         evil-emacs-state-tag     (propertize "E" 'face '((:background "green"    :foreground "black")))
   )
