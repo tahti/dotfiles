@@ -9,7 +9,6 @@
   (setq c-comment-start-regexp "(@|/(/|[*][*]?))")
   (modify-syntax-entry ?@ "< b" java-mode-syntax-table)
   (local-set-key (kbd "RET") 'newline-and-indent)) ; indent on enter
-)
 (add-hook 'java-mode-hook 'tahti-java-mode-init)
 (provide 'tahti-java-mode)
 
