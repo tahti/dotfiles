@@ -3,8 +3,9 @@
 
 (push 'yasnippet el-get-packages)
 (defun tahti-after-yasnippet ()
-  (yas-global-mode 1)
+  (setq yas-snippet-dirs '("/home/piotr/.emacs.d/el-get/yasnippet/snippets"))
   (add-to-list 'yas-snippet-dirs tahti-snippets-dir)
+  (yas-global-mode 1)
   (tahti-yas-keys )
 )
 

@@ -18,7 +18,7 @@ new_window 1pixel
 ##
 #
 
-exec setxkbmap -layout "pl,pl" -variant "dvp," -option "caps:swapescape,grp:sclk_toggle"
+#exec setxkbmap -layout "pl,pl" -variant "dvp,basic" -option "caps:swapescape,grp:sclk_toggle"
 #exec sleep 1;bluetooth-applet
 exec sleep 21;kmix
 #exec sleep 21;volumeicon
