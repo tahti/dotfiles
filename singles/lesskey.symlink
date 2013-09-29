@@ -9,5 +9,7 @@ h	prev-file
 n	next-file
 l 	next-tag
 L 	prev-tag
+^n	forw-scroll
+^h	back-scroll
 #env
 LESS = -i -R
