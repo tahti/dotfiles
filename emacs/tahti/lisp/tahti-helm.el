@@ -35,7 +35,8 @@
 
 
 (defun tahti-after-helm ()
-  (helm-descbinds-install) ;replace descbinds
+  (require 'helm-descbinds)
+  (helm-descbinds-mode) ;replace descbinds
   (require 'helm-match-plugin)
   (require 'helm-misc)
   (require 'helm-config)
@@ -156,7 +157,7 @@
 
   (defun tahti/helm-files (&optional preselect)
     (interactive)
-    (helm-find-files nil))
+    (sunrise-cd))
     ;(helm :sources tahti/file-sources
           ;:prompt "Find Files: "
           ;;:input fname

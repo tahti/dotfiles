@@ -144,6 +144,7 @@
        "c SPC" 'tahti-toggle-comment
        "u" 'undo-tree-visualize
        "b" 'tahti/buffer
+       "s" 'sunrise-cd
        "B" 'tahti/buffer-alternate
        "fo" 'helm-for-files       ;open file
        "fi" 'helm-insert-file
@@ -306,6 +307,16 @@
   (define-key 'help-command "A" 'apropos)
 
 )
+(defun tahti-sr-keys ()
+  (define-key sr-mode-map "\M-n"        'sr-change-window)
+  (define-key sr-mode-map "\M-h"        'sr-change-window)
+  (define-key sr-mode-map "\M-t"        'evil-window-down) ;was 'sr-traspose-panes
+  (define-key sr-mode-map "t"           'dired-next-line)
+  (define-key sr-mode-map "c"           'dired-previous-line)
+  (define-key sr-mode-map "h"           'sr-dired-prev-subdir)
+  (define-key sr-mode-map "n"           'sr-advertised-find-file)
+  (define-key sr-mode-map ","           evil-leader--default-map) 
+)
 (defun tahti-comint-keys()
   (fill-keymap comint-mode-map
                "C-M-t" 'comint-next-input
@@ -324,6 +335,7 @@
   (add-hook 'helm-mode-hook   'tahti-helm-keys)
   (add-hook 'isearch-mode-hook 'tahti-isearch-keys)
   (add-hook 'evil-mode-hook 'tahti-evil-keys)
+  (add-hook 'sr-mode-hook 'tahti-sr-keys)
 
   (define-key key-translation-map "\C-f" "\C-g") ;keyboard quit
   (define-key key-translation-map "\C-g" "\C-c") ;go
