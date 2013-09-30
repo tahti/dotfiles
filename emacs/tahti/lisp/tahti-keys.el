@@ -329,6 +329,10 @@
   ;(define-key isearch-mode-map [escape] 'isearch-cancel) ;help
 )
 
+(defun tahti-arc-keys()
+  (define-key archive-mode-map ","       evil-leader--default-map) 
+)
+
 
 (defun tahti-global-keys()
   (add-hook 'comint-mode-hook 'tahti-comint-keys)
@@ -336,6 +340,7 @@
   (add-hook 'isearch-mode-hook 'tahti-isearch-keys)
   (add-hook 'evil-mode-hook 'tahti-evil-keys)
   (add-hook 'sr-mode-hook 'tahti-sr-keys)
+  (add-hook 'arcchive-mode-hook 'tahti-arc-keys)
 
   (define-key key-translation-map "\C-f" "\C-g") ;keyboard quit
   (define-key key-translation-map "\C-g" "\C-c") ;go

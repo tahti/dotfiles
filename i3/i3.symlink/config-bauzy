@@ -20,10 +20,10 @@ new_window 1pixel
 
 #exec setxkbmap -layout "pl,pl" -variant "dvp,basic" -option "caps:swapescape,grp:sclk_toggle"
 #exec sleep 1;bluetooth-applet
-exec sleep 21;kmix
+exec kmix
 #exec sleep 21;volumeicon
 exec numlockx on
-exec sleep 2&&kupfer --no-splash
+exec kupfer --no-splash
 exec xset r rate 250 80
 #disable bluetooth
 exec sleep 11;rfkill block 1
@@ -37,16 +37,17 @@ bar {
 exec xset b off
 #exec pidgin
 #exec sleep 26;nm-applet
-exec sleep 30;wicd-client -t
-exec sleep 7;fbxkb
+exec wicd-client -t
+exec fbxkb
 exec gnome-keyring
-exec sleep 2;conky -c /home/piotr/.i3/conkyrc_i3_bauzy|/home/piotr/bin/dzen2 -bg black -fg white  -fn "-*-terminus-*-r-normal-*-12-*-*-72-c-60-*-*" -w 450  -y 1 -ta l -x 159
-exec sleep 3;conky -c /home/piotr/.i3/conkytodo_plain
-exec sleep 4;xkbset -a #disable slowkeys
-exec sleep 5;conky -c /home/piotr/.i3/conky_i3help
-exec sleep 1;eval $(cat ~/.fehbg) #setting up background
-exec sleep 16;rfkill block 1
-exec sleep 35 /usr/bin/parcellite
+exec conky -c /home/piotr/.i3/conkyrc_i3_bauzy|/home/piotr/bin/dzen2 -bg black -fg white  -fn "-*-terminus-*-r-normal-*-12-*-*-72-c-60-*-*" -w 450  -y 1 -ta l -x 159
+exec conky -c /home/piotr/.i3/conkytodo_plain
+exec xkbset -a #disable slowkeys
+exec conky -c /home/piotr/.i3/conky_i3help
+exec eval $(cat ~/.fehbg) #setting up background
+exec rfkill block 1
+exec /usr/bin/parcellite
+exec mountavs
 #refresh rate
 #exec xrandr -r 51  
 exec xrandr --output DP-5 --auto --mode 1680x1050 --left-of DP-4
