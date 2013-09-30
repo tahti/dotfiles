@@ -316,6 +316,7 @@
   (define-key sr-mode-map "h"           'sr-dired-prev-subdir)
   (define-key sr-mode-map "n"           'sr-advertised-find-file)
   (define-key sr-mode-map ","           evil-leader--default-map) 
+  (define-key sr-mode-map ":"           'evil-ex) 
 )
 (defun tahti-comint-keys()
   (fill-keymap comint-mode-map
