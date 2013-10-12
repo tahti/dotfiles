@@ -3,8 +3,15 @@
 
 ;;{{{ Autocomplate
 (push 'auto-complete el-get-packages)
+(push 'auto-complete-yasnippet el-get-packages)
 (defun tahti-after-auto-complete ()
   (require 'auto-complete)
+  (require 'auto-complete-config)
+  (require 'auto-complete-yasnippet)
+  (ac-config-default)
+  ;; add the emacs-eclim source
+  (require 'ac-emacs-eclim-source)
+  (ac-emacs-eclim-config)
 )
 
 

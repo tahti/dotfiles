@@ -25,6 +25,11 @@
       ;(and (boundp 'some-mode) some-mode)
       ;(evil-visual-state-p) (evil-normal-state)
       ((or (equal 'help-mode major-mode)
+           (equal 'eclim-problems-mode major-mode)
+           (equal 'compilation-mode major-mode) 
+           (equal 'grep-mode major-mode) 
+           (equal 'completion-list-mode major-mode) 
+           (equal 'special-mode major-mode) 
            (equal 'apropos-mode major-mode)) 
        (kill-buffer-and-window))
       ((equal 'undo-tree-visualizer-mode major-mode) (undo-tree-visualizer-quit))
@@ -182,7 +187,11 @@
        "tl" 'hl-line-mode
        "t SPC" 'tahti-whitespace-toggle
        "tr" 'rainbow-mode
+       "h" 'display-local-help
        "m" 'compile)
+   ;use the non-prefixed <leader> in magit’s and gnus’ modes:
+   (setq evil-leader/no-prefix-mode-rx '("magit-.*-mode" "gnus-.*-mode" "comp.*-mode" "grep-mode" "special-mode"))
+
    (evil-ex-define-cmd "w[rite]" 'save-buffer-always)
 
    ;   "N" 'make-frame-command
@@ -334,6 +343,66 @@
   (define-key archive-mode-map ","       evil-leader--default-map) 
 )
 
+(defun tahti-eclim-problems-keys()
+  ;(define-key eclim-problems-mode-map  "a" 'eclim-problems-show-all)
+  ;(define-key eclim-problems-mode-map "e" 'eclim-problems-show-errors)
+  (define-key eclim-problems-mode-map "r" 'eclim-problems-buffer-refresh)
+  ;(define-key eclim-problems-mode-map "q" 'eclim-quit-window)
+  ;(define-key eclim-problems-mode-map "w" 'eclim-problems-show-warnings)
+  (define-key eclim-problems-mode-map "l" 'eclim-problems-toggle-filefilter)
+  (define-key eclim-problems-mode-map "f" 'eclim-problems-correct)
+  (define-key eclim-problems-mode-map "n" 'eclim-problems-open-current)
+  (define-key eclim-problems-mode-map "t" 'next-line)
+  (define-key eclim-problems-mode-map "c" 'previous-line)
+  (define-key eclim-problems-mode-map ","  evil-leader--default-map)
+
+)
+(defun tahti-completion-list-mode-keys()
+ "Add keybindings to `completion-list-mode-map'.\n
+  Binds `next-line to \"t\".\n
+  Binds `previos-line to \"c\".\n"
+  (define-key completion-list-mode-map "t"          'next-line)
+  (define-key completion-list-mode-map "c"          'previous-line)
+  (define-key completion-list-mode-map "n"          'choose-completion)
+)
+
+(defvar eclim-java-show-documentation-map
+  (let ((map (make-keymap)))
+    (suppress-keymap map)
+    (define-key map (kbd "<tab>") 'forward-button)
+    (define-key map (kbd "S-<tab>") 'backward-button)
+    (define-key map (kbd "q") 'eclim-quit-window)
+    (define-key map (kbd "<escape>") 'eclim-quit-window)
+    (define-key map (kbd "t") 'next-line)
+    (define-key map (kbd "c") 'previous-line)
+    (define-key map (kbd "n") 'forward-button)
+    (define-key map (kbd "h") 'backward-button)
+    map))
+
+(defun tahti-eclim-mode-keys()
+   (evil-leader/set-key
+       "m"  'eclim-maven-lifecycle-phase-run
+       "pg" 'eclim-project-goto
+       "pm" 'eclim-manage-projects
+       "ee" 'tahti-problems-open
+       "ep" 'eclim-problems
+       "eh" 'eclim-java-hierarchy
+       "es" 'start-eclimd
+       "ek" 'stop-eclimd
+       "gd" 'eclim-java-find-declaration
+       "gr" 'eclim-java-find-references
+       "gt" 'eclim-java-find-type
+       "gg" 'eclim-java-find-generic
+       "cr" 'eclim-java-refactor-rename-symbol-at-point
+       "ci" 'eclim-java-import-organize
+       "cf" 'eclim-java-implement
+       "cd" 'eclim-java-doc-comment
+       "cq" 'eclim-java-format
+       "cg" 'eclim-java-generate-getter-and-setter
+       "cc" 'eclim-problems-correct
+       "gh" 'tahti-javadoc
+       )
+)
 
 (defun tahti-global-keys()
   (add-hook 'comint-mode-hook 'tahti-comint-keys)
@@ -342,6 +411,10 @@
   (add-hook 'evil-mode-hook 'tahti-evil-keys)
   (add-hook 'sr-mode-hook 'tahti-sr-keys)
   (add-hook 'arcchive-mode-hook 'tahti-arc-keys)
+  (add-hook 'eclim-problems-mode-hook 'tahti-eclim-problems-keys)
+  (add-hook 'eclim-problems-mode-hook 'evil-emacs-state)
+  (add-hook 'eclim-mode-hook 'tahti-eclim-mode-keys)
+  (add-hook 'completion-list-mode-hook 'tahti-completion-list-mode-keys)
 
   (define-key key-translation-map "\C-f" "\C-g") ;keyboard quit
   (define-key key-translation-map "\C-g" "\C-c") ;go
@@ -354,6 +427,7 @@
   (define-key key-translation-map "\C-b" "\C-h") ;help
 
   (fill-keymap 'global
+    "C-h y" 'yas/describe-tables  ;;help for yasnippets
     "C-x g" 'magit-status
     "C-+"   'text-scale-increase  ;;increase font
     "C--"   'text-scale-decrease  ;;decrease font
