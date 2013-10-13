@@ -26,6 +26,7 @@
       ;(evil-visual-state-p) (evil-normal-state)
       ((or (equal 'help-mode major-mode)
            (equal 'eclim-problems-mode major-mode)
+           (equal 'info-mode major-mode)
            (equal 'compilation-mode major-mode) 
            (equal 'grep-mode major-mode) 
            (equal 'completion-list-mode major-mode) 
@@ -190,7 +191,7 @@
        "h" 'display-local-help
        "m" 'compile)
    ;use the non-prefixed <leader> in magit’s and gnus’ modes:
-   (setq evil-leader/no-prefix-mode-rx '("magit-.*-mode" "gnus-.*-mode" "comp.*-mode" "grep-mode" "special-mode"))
+   (setq evil-leader/no-prefix-mode-rx '("magit-.*-mode" "gnus-.*-mode" "comp.*-mode" "grep-mode" "special-mode" "info-mode"))
 
    (evil-ex-define-cmd "w[rite]" 'save-buffer-always)
 
@@ -355,6 +356,13 @@
   (define-key eclim-problems-mode-map "t" 'next-line)
   (define-key eclim-problems-mode-map "c" 'previous-line)
   (define-key eclim-problems-mode-map ","  evil-leader--default-map)
+  (define-key eclim-problems-mode-map "/" 'evil-search-forward)
+  (define-key eclim-problems-mode-map "K" 'evil-search-previous)
+  (define-key eclim-problems-mode-map "k" 'evil-search-next)
+  (define-key eclim-problems-mode-map "G" 'end-of-buffer)
+  (define-key eclim-problems-mode-map "gg" 'beggining-of-buffer)
+  (define-key eclim-problems-mode-map "\C-n" 'scroll-up-command)
+  (define-key eclim-problems-mode-map "\C-h" 'scroll-down-command)
 
 )
 (defun tahti-completion-list-mode-keys()
