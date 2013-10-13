@@ -360,7 +360,7 @@
   (define-key eclim-problems-mode-map "K" 'evil-search-previous)
   (define-key eclim-problems-mode-map "k" 'evil-search-next)
   (define-key eclim-problems-mode-map "G" 'end-of-buffer)
-  (define-key eclim-problems-mode-map "gg" 'beggining-of-buffer)
+  ;(define-key eclim-problems-mode-map "gg" 'beggining-of-buffer)
   (define-key eclim-problems-mode-map "\C-n" 'scroll-up-command)
   (define-key eclim-problems-mode-map "\C-h" 'scroll-down-command)
 
@@ -412,6 +412,10 @@
        )
 )
 
+(defun tahti-nxml-mode-keys()
+  (define-key nxml-mode-map "\M-h"          'evil-window-left)
+)
+
 (defun tahti-global-keys()
   (add-hook 'comint-mode-hook 'tahti-comint-keys)
   (add-hook 'helm-mode-hook   'tahti-helm-keys)
@@ -423,6 +427,7 @@
   (add-hook 'eclim-problems-mode-hook 'evil-emacs-state)
   (add-hook 'eclim-mode-hook 'tahti-eclim-mode-keys)
   (add-hook 'completion-list-mode-hook 'tahti-completion-list-mode-keys)
+  (add-hook 'nxml-mode-hook 'tahti-nxml-mode-keys)
 
   (define-key key-translation-map "\C-f" "\C-g") ;keyboard quit
   (define-key key-translation-map "\C-g" "\C-c") ;go
