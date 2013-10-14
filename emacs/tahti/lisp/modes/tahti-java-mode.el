@@ -4,8 +4,6 @@
   (require 'eclim)
   (require 'eclimd)
   (require 'javacc-mode)
-  ;; setup files ending in “.jjt” to open in javacc-mode
-  (add-to-list 'auto-mode-alist '("\\.jjt\\'" . javacc-mode))
   (setq c-basic-offset 2) ;;set the indentation to 2 spaces
   (setq eclim-auto-save t) ;; autosave is very important
   (global-eclim-mode)
@@ -33,5 +31,7 @@
 )
 
 (add-hook 'java-mode-hook 'tahti-java-mode-init)
+;; setup files ending in “.jjt” to open in javacc-mode
+(add-to-list 'auto-mode-alist '("\\.jjt\\'" . javacc-mode))
 (provide 'tahti-java-mode)
 
