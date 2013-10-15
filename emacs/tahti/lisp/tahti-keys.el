@@ -317,6 +317,7 @@
   (define-key 'help-command "A" 'apropos)
 
 )
+;keys for sunrise commander
 (defun tahti-sr-keys ()
   (define-key sr-mode-map "\M-n"        'sr-change-window)
   (define-key sr-mode-map "\M-h"        'sr-change-window)
@@ -325,6 +326,10 @@
   (define-key sr-mode-map "c"           'dired-previous-line)
   (define-key sr-mode-map "h"           'sr-dired-prev-subdir)
   (define-key sr-mode-map "n"           'sr-advertised-find-file)
+  (define-key sr-mode-map [M-tab]       'sr-synchronize-panes)
+  (define-key sr-mode-map "/"           'sr-fuzzy-narrow)
+  (define-key sr-mode-map "C-/"         'sr-find-grep)
+  ; "g" removes fuzzy filter
   (define-key sr-mode-map ","           evil-leader--default-map) 
   (define-key sr-mode-map ":"           'evil-ex) 
 )
