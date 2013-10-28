@@ -19,14 +19,13 @@ new_window 1pixel
 #
 
 #exec setxkbmap -layout "pl,pl" -variant "dvp,basic" -option "caps:swapescape,grp:sclk_toggle"
-#exec sleep 1;bluetooth-applet
-exec kmix
-#exec sleep 21;volumeicon
+#exec bluetooth-applet
+exec --no-startup-id kmix
+#exec volumeicon
 exec numlockx on
-exec kupfer --no-splash
 exec xset r rate 250 80
 #disable bluetooth
-exec sleep 11;rfkill block 1
+exec rfkill block 1
 # Start i3bar to display a workspace bar 
 bar {
     #mode hide
@@ -36,7 +35,7 @@ bar {
 }
 exec xset b off
 #exec pidgin
-#exec sleep 26;nm-applet
+#exec nm-applet
 exec wicd-client -t
 exec fbxkb
 exec gnome-keyring
@@ -51,6 +50,7 @@ exec mountavs
 #refresh rate
 #exec xrandr -r 51  
 exec xrandr --output DP-5 --auto --mode 1680x1050 --left-of DP-4
+exec --no-startup-id kupfer
 
 #exec wicd-client
 
@@ -114,6 +114,7 @@ set $upC 111
 set $leftC 113
 set $rightC 114
 set $downC 116
+set $spaceC 65
 
 # font for window titles. ISO 10646 = Unicode
 #font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -130,6 +131,7 @@ floating_modifier $myModC
 
 # banish mouse
 bindcode $myModC+$minusC exec /home/piotr/bin/banishRat
+#bindcode $ctrlC+$spaceC exec kupfer
 # scratchpad
 # Make the currently focused window a scratchpad
 bindcode $myModC+$comaC move scratchpad

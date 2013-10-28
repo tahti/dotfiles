@@ -1,5 +1,6 @@
 export LD_LIBRARY_PATH=/usr/lib/jni
 export http_proxy=http://localhost:8123
+export https_proxy=http://localhost:8123
 export CPATH=/usr/local/uppaal/include
 eval "$(lesspipe.sh)"
 path=(~/bin $path . /sbin /usr/sbin /usr/local/sbin) 
