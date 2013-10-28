@@ -50,10 +50,15 @@ window.gmFunction = function() {
 	newElement.setAttribute('name','gm_elem');
 	var newLink = document.createElement('a');
   var linkText = document.createTextNode("Calendar");
+  var spaceText = document.createTextNode("\xA0\xA0");
   newLink.appendChild(linkText);
   newLink.title = "Calendar";
   newLink.href = "http://www.google.com/calendar?hl=en-GB";
   newLink.target = "_blank";
+  var nobr=document.getElementById("gbar").firstChild;
+  nobr.insertBefore(spaceText.cloneNode(true),nobr.firstChild);  
+  nobr.insertBefore(newLink.cloneNode(true),nobr.firstChild);
+
 	
 	
 	//Find all the refresh
@@ -61,9 +66,9 @@ window.gmFunction = function() {
 		if(anchors[i].innerHTML.search(/Refresh/) >= 0) {
 			anchors[i].parentNode.insertBefore(newElement.cloneNode(true),anchors[i].nextSibling);
 		}
-		if(anchors[i].innerHTML.search(/Search/) >= 0) {
-			anchors[i].parentNode.insertBefore(newLink.cloneNode(true),anchors[i].nextSibling);
-		}
+		//if(anchors[i].innerHTML.search(/Search/) >= 0) {
+			//anchors[i].parentNode.insertBefore(newLink.cloneNode(true),anchors[i].nextSibling);
+		//}
 	}
 	
 	

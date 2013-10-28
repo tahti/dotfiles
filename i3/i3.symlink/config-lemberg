@@ -19,8 +19,8 @@ new_window 1pixel
 #
 
 #exec xrandr --output mon0 --auto --mode 1920x1200 --right-of mon1
-exec sleep 1;xset b off
-exec sleep 2;xset r rate 210 120
+exec xset b off
+exec xset r rate 210 100
 #exec setxkbmap -layout "pl,pl" -variant "dvp," -option "caps:swapescape,grp:sclk_toggle"
 # Start i3bar to display a workspace bar 
 bar {
@@ -35,13 +35,13 @@ exec conky -c /home/piotr/.i3/conkyrc_i3|/home/piotr/bin/dzen2 -bg black -fg whi
 exec conky -c /home/piotr/.i3/conky_i3help
 exec conky -c /home/piotr/.i3/conkytodo_plain
 exec numlockx on
-exec sleep 2&&kupfer --no-splash
 #exec xhost +
-exec kmix
-exec pidgin
+exec --no-startup-id kmix
+exec --no-startup-id pidgin
+exec --no-startup-id kupfer --no-splash
 exec --no-startup-id eval $(cat ~/.fehbg) #setting up background
 #exec conky -c .i3/conkyrc_i3|dzen2 -bg black -fg white -fn Terminus-9 -w 450 -x 9 -y 0 -ta l
-exec /usr/bin/parcellite
+exec --no-startup-id /usr/bin/parcellite
 
 focus_follows_mouse no
 
@@ -141,7 +141,8 @@ bindcode $myModC+Shift+$colonC kill
 bindsym $myModC+Return exec /home/piotr/bin/vt 
 #launch new terminal with current directory
 bindsym $myModC+Shift+Return exec /home/piotr/bin/urxvt-cwd 
-
+#run j4-dmenu-desktop
+bindcode $myModC+$dC exec /home/piotr/bin/j4-dmenu-desktop 
 # quit 
 # bindcode Ctrl+$colonC exec --no-startup-id python /home/piotr/bin/doCommand.py quit
 bindcode $myModC+$colonC exec python /home/piotr/bin/doCommand.py quit

@@ -50,7 +50,7 @@ exec mountavs
 #refresh rate
 #exec xrandr -r 51  
 exec xrandr --output DP-5 --auto --mode 1680x1050 --left-of DP-4
-exec --no-startup-id kupfer
+exec --no-startup-id kupfer --no-splash
 
 #exec wicd-client
 
@@ -145,6 +145,8 @@ bindcode $myModC+Shift+$colonC kill
 bindsym $myModC+Return exec /home/piotr/bin/vt
 #launch new terminal with current directory
 bindsym $myModC+Shift+Return exec /home/piotr/bin/urxvt-cwd 
+#laurch j4-dmenu-desktop
+bindcode $myModC+$dC exec /home/piotr/bin/j4-dmenu-desktop 
 
 # start a browser
 bindcode $myModC+$wC exec --no-startup-id i3-msg 'exec /usr/bin/sensible-browser'

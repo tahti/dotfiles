@@ -20,9 +20,9 @@ new_window 1pixel
 
 exec setxkbmap -layout "pl,pl" -variant "dvp," -option "caps:swapescape,grp:sclk_toggle"
 #exec sleep 1;bluetooth-applet
-exec sleep 21;kmix --nofork
-exec sleep 22;exec numlockx on
-exec sleep 11;rfkill unblock 0
+exec --no-startup-id kmix
+exec --no-startup-id exec numlockx on
+exec rfkill unblock 0
 # Start i3bar to display a workspace bar 
 bar {
     #mode hide
@@ -33,15 +33,17 @@ bar {
 exec xset b off
 #exec pidgin
 #exec sleep 26;nm-applet
-exec sleep 30;wicd-client -t
-exec sleep 7;fbxkb
+exec wicd-client -t
+exec fbxkb
 exec gnome-keyring
-exec sleep 2;conky -c /home/piotr/.i3/.conkyrc_i3|/home/piotr/bin/dzen2 -bg black -fg white  -fn "-*-terminus-*-r-normal-*-12-*-*-72-c-60-*-*" -w 450  -y 1 -ta l -x 159
-exec sleep 3;conky -c /home/piotr/.i3/conkytodo_plain
-exec sleep 5;conky -c /home/piotr/.i3/conky_i3help
-exec sleep 1;eval $(cat ~/.fehbg) #setting up background
-exec sleep 16;rfkill block 1
-exec sleep 35 /usr/bin/parcellite
+exec conky -c /home/piotr/.i3/.conkyrc_i3|/home/piotr/bin/dzen2 -bg black -fg white  -fn "-*-terminus-*-r-normal-*-12-*-*-72-c-60-*-*" -w 450  -y 1 -ta l -x 159
+exec conky -c /home/piotr/.i3/conkytodo_plain
+exec --no-startup-id conky -c /home/piotr/.i3/conky_i3help
+exec --no-startup-id eval $(cat ~/.fehbg) #setting up background
+exec rfkill block 1
+exec /usr/bin/parcellite
+exec --no-startup-id kupfer --no-splash
+
 #exec wicd-client
 
 

@@ -29,6 +29,7 @@ exec kmix
 exec xset b off
 #exec pidgin
 exec --no-startup-id eval $(cat ~/.fehbg) #setting up background
+exec --no-startup-id kupfer --no-splash
 #exec /usr/bin/parcellite
 exec --no-startup-id nm-applet
 #exec gnome-keyring
