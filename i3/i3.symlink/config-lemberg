@@ -142,7 +142,7 @@ bindsym $myModC+Return exec /home/piotr/bin/vt
 #launch new terminal with current directory
 bindsym $myModC+Shift+Return exec /home/piotr/bin/urxvt-cwd 
 #run j4-dmenu-desktop
-bindcode $myModC+$dC exec /home/piotr/bin/j4-dmenu-desktop 
+bindcode $myModC+$dC exec /home/piotr/bin/j4-dmenu-desktop --dmenu="dmenu -i"
 # quit 
 # bindcode Ctrl+$colonC exec --no-startup-id python /home/piotr/bin/doCommand.py quit
 bindcode $myModC+$colonC exec python /home/piotr/bin/doCommand.py quit

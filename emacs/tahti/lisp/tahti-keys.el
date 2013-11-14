@@ -274,6 +274,7 @@
        "pu" 'preview-clearout-at-point
        "pf" 'preview-cache-preamble
        "pF" 'preview-cache-preamble-off
+       "v"  'TeX-view
    )
    ;undefine some of cdlatex keys
   (fill-keymap cdlatex-mode-map
@@ -455,6 +456,7 @@
     "M-t"   'evil-window-down
     "M-/"   'hippie-expand
     ;"<f10>" 'tahti/helm-lacarte
+    "<f7>" 'flyspell-mode
     "C-<escape>" 'ESC-prefix
     "<escape>" 'tahti-esc
   )

@@ -92,3 +92,5 @@
     amendc = commit --amend
 
 
+[push]
+	default = simple

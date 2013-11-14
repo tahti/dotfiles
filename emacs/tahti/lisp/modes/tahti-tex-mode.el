@@ -72,7 +72,7 @@
   (TeX-source-specials-mode 1)
   (setq TeX-master (guess-TeX-master (buffer-file-name)))
   (add-to-list 'TeX-expand-list '("%u" okular-make-url))
-;   (flyspell-mode 1)
+  (flyspell-mode 1)
   (tahti-latex-keys)
 )
 ;; Some macros
