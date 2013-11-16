@@ -60,6 +60,26 @@
     (TeX-current-file-name-master-relative)))
 (setq TeX-view-program-selection '((output-pdf "Okular") (output-ps "Okular") (output-dvi "Okular")))
 
+;; ===== Flymake for tex-mode ====
+
+;; flymake-mode for tex uses texify by default, which only works in Windows (miktex)
+
+;; Borrowed from https://github.com/MassimoLauria/dotemacs/blob/master/init-latex.el
+(defun init-latex--flymake-setup ()
+  "Setup flymake for latex using one of the checker available on the system.
+It either tries \"lacheck\" or \"chktex\"."
+  (interactive)
+  (cond ((executable-find "lacheck")
+         (defun flymake-get-tex-args (file-name)
+           (list "lacheck" (list file-name))))
+        ((executable-find "chktex")
+         (defun flymake-get-tex-args (file-name)
+           (list "chktex" (list "-q" "-v0" file-name))))
+        (t nil)))
+
+(eval-after-load "flymake" '(init-latex--flymake-setup))
+
+
 ;; Initialisation
 (defun tahti-tex-mode-init ()
   (turn-on-cdlatex)
@@ -72,7 +92,7 @@
   (TeX-source-specials-mode 1)
   (setq TeX-master (guess-TeX-master (buffer-file-name)))
   (add-to-list 'TeX-expand-list '("%u" okular-make-url))
-;   (flyspell-mode 1)
+  (flyspell-mode 1)
   (tahti-latex-keys)
 )
 ;; Some macros
