@@ -93,6 +93,7 @@ It either tries \"lacheck\" or \"chktex\"."
   (setq TeX-master (guess-TeX-master (buffer-file-name)))
   (add-to-list 'TeX-expand-list '("%u" okular-make-url))
   (flyspell-mode 1)
+  (flymake-mode 1)
   (ispell-change-dictionary "british")
   (tahti-latex-keys)
 )
