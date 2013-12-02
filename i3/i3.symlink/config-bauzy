@@ -36,7 +36,7 @@ bar {
 exec xset b off
 #exec pidgin
 #exec nm-applet
-exec wicd-client -t
+exec --no-startup-id wicd-client -t
 exec fbxkb
 exec gnome-keyring
 exec conky -c /home/piotr/.i3/conkyrc_i3_bauzy|/home/piotr/bin/dzen2 -bg black -fg white  -fn "-*-terminus-*-r-normal-*-12-*-*-72-c-60-*-*" -w 450  -y 1 -ta l -x 159

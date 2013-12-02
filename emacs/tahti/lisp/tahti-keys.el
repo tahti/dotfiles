@@ -176,7 +176,6 @@
        ;"h" 'monky-status
        "n" 'split-window-horizontally
        ;"c" 'delete-window
-       "vg" 'magit-status
        "gn" 'next-buffer
        "gh" 'previous-buffer
        "gq" 'fill-paragraph

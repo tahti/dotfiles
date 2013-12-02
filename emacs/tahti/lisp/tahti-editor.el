@@ -5,6 +5,14 @@
 (setq comment-empty-lines 'eol)
 ;;reuse existing buffers
 (setq ns-pop-up-frames nil)
+;;
+;;
+;(defadvice find-file (around find-file-line-number
+                             ;(filename &optional wildcards)
+                             ;activate)
+  ;"Recenters the screen after going to a line in the file.";;
+  ;(recenter-top-bottom)
+;)
  ;; use utf-8 environment as default dammit
 (setq locale-coding-system 'utf-8)
 (set-language-environment 'UTF-8)
