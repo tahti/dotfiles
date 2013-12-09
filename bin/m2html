@@ -1,0 +1,4 @@
+#!/bin/sh
+#INPUT=$(cat)
+#echo $INPUT
+pandoc -f markdown -t html
