@@ -1,0 +1,415 @@
+.\" Process this file with
+.\" groff -man -Tascii vimprobable2.1
+.\"
+.TH VIMPROBABLE2 1 "JANUARY 2013" "Linux User Manuals"
+.SH NAME
+Vimprobable \- A WWW browser based on webkit with keybindings inspired by Vim, the great editor.
+
+.SH SYNOPSIS
+.B vimprobable2
+.OP \fL\-c|\-\-config
+.OP \fL\-e|\-\-embed
+.OP \fL\-h|\-\-help
+.OP \fL\-v|\-\-version
+.OP URI
+
+.SH OPTIONS
+.TP
+.BI -c " config file"
+Use the specified config file.  If none found, defaults to
+.I $HOME/.config/vimprobable/vimprobablerc
+.TP
+.BI -e " windowid"
+Given the windowid of an XEmbed-aware application, Vimprobable will use that as its parent.
+.TP
+.BI -h
+Prints out a short usage summary.
+.TP
+.BI -v
+Prints the version of Vimprobable.
+
+.SH DESCRIPTION
+Vimprobable is a WWW browser that is built around the webkit library. Vimprobable is fast. 
+Vimprobable comes without buttons and other graphic widgets. It is aimed at being controlled 
+as mouselessly as possible. It uses keybindings that are inspired by Vim, the great editor.
+.PP
+Just like Vim, moving through a webpage can be done by entering commands at the keyboard.
+Most of these commands require just one or two keystrokes.
+.PP
+Vimprobable mimics the ex-command mode of Vim. By entering a colon (:) commands like open,
+set and map can be entered.
+
+.SH QUICK START
+
+Don't want to read this entire manpage? Here are a few basic steps:
+
+.I "    " o
+Insert URL from keyboard and load it
+
+.I "    " t
+Insert URL from keyboard and load it into new window
+
+.I "    " j
+Scroll down
+
+.I "    " k
+Scroll up
+
+.I "    " d  
+Close current window
+
+.SH KEYBOARD BINDINGS
+The default keyboard bindings are explained in this section. These keybindings
+can be changed - either by the map command (changes will take effect immediately)
+or by altering
+.I vimprobablerc
+(changes in effect for each new window) or editing
+.I keymap.h
+in the source directory (in which case you will need to recompile to see changes take effect).
+
+.IP "Move through current page"
+Vimprobable recognizes the following motion commands:
+0, $, g, <shift>G, h, j, k, l, Ctrl-b, Ctrl-f, Ctrl-d, Ctrl-u, Ctrl-e, Ctrl-y
+
+.IP "Move through pages"
+These commands are used to walk through the browse-history.
+Ctrl-i, Ctrl-o, <shift>H, <shift>L
+
+
+.IP "Reloading and cancel loading"
+
+.I "    " r 
+Reload
+
+.I "    " <shift>R
+Force reload
+
+.I "    " Ctrl-c
+Cancel load
+
+.IP "Zoom in and out"
+
+.I "    " zi
+Zoom text in
+
+.I "    " zI
+Zoom full content in
+
+.I "    " zo
+Zoom text out
+
+.I "    " zO
+Zoom full content out
+
+.I "    " zz
+Zoom reset
+
+.I "    " zZ
+Zoom reset
+
+.IP "URL commands"
+
+.I "    " y
+Yank current URL into clipboard
+
+.I "    " Y
+Yank current selection into clipboard
+
+.I "    " gu
+Load URL one directory up
+
+.I "    " gU
+Load rootdirectory of current URL
+
+.I "    " gh
+Load homepage
+
+.I "    " gH
+Load homepage into new window
+
+.I "    " p
+Load URL from clipboard
+
+.I "    " P
+Load URL from clipboard into new window
+
+.I "    " o
+Insert URL from keyboard and load it
+
+.I "    " t
+Insert URL from keyboard and load it into new window
+
+.I "    " O
+Generate :open command with the current URL
+
+.I "    " T
+Generate :tabopen command with the current URL
+
+.I "    " u
+Open a new window with the URL which was closed last
+
+
+.IP Search
+
+.I "    " /
+Start search
+
+.I "    " ?
+Start backward search
+
+.I "    " n
+Next search result
+
+.I "    " N
+Previous search result
+
+
+.IP Hinting
+
+.I "    " f (or ;o)
+Follow link
+
+.I "    " F (or ;t or ;w)
+Follow link in new window
+
+.I "    " ;s
+Save the specified link (or element) to disk
+
+.I "    " ;y
+Yank the destination's location
+
+.I "    " ;O
+Generate an :open command with the link's URL (like O)
+
+.I "    " ;T or ;W
+Generate an :tabopen command with the link's URL (like T)
+
+.I "    " ;i
+Open image in current window
+
+.I "    " ;I
+Open image in new window
+
+.I "    " gi
+Focus next input field
+
+
+.SH COLON COMMANDS
+
+The following commands are entered after first entering a colon (:)
+
+.IP ":open "
+
+Insert URL from keyboard and load it
+
+Shortcut: o
+
+.IP ":tabopen "
+
+Insert URL from keyboard and load it into new window
+
+Shortcut: t
+
+.IP ":bma or :bookmark"
+
+Bookmarks the current page. 
+
+Bookmarks are retrieved by tab completion when entering a new URL.
+
+You can add tags to the bookmarks by entering tag terms after the command, e.g.
+
+:bma tag1 tag2 tag3
+
+.IP ":qt "
+
+Open all bookmarks containing a certain tag in new windows.
+
+.IP ":fo[rward] and :ba[ck]"
+
+The commands :fo, :forward, :ba and :backward move through the browse-history
+
+.IP ":re[load], :re! and :reload!"
+
+The commands :re, :reload, ;re! and :reload! are given to reload or
+force reload.
+
+.IP ":st[op]"
+
+Cancel current loading
+
+.IP ":source"
+
+Toggles between normal view and sourcecode view.
+
+
+.IP ":set"
+
+Change default settings on the fly. See 
+.I man vimprobablerc 
+for the list of settings to be changed.
+
+.IP ":map"
+
+Change default keybindings on the fly. See 
+.I man vimprobablerc 
+for the list of mappings to be changed.
+
+.IP ":quit"
+
+Close current window
+
+Shortcut: d
+
+.IP ":print"
+
+Print the current URL
+
+.IP ":zi"
+
+Zooms text in
+
+.IP ":zo"
+
+Zooms text out
+
+.IP ":pgzi"
+
+Zooms page in
+
+.IP ":pgzo"
+
+Zooms page out
+
+.SH MODES
+
+Vimprobable is a modal browser. By default, it is in command mode, meaning that
+any keystroke will be interpreted by the internal command engine. INSERT mode
+is automatically activated if an input field on a website becomes focused.
+Should this not work (due to limitations of the Webkit-GTK engine and the faulty
+HTML code of some websites, this is possible), you can manually switch the
+browser to PASSTHROUGH mode instead (Ctrl+Z). In INSERT and PASSTHROUGH modes,
+keystrokes will not be interpreted by the browser, but passed to the underlying
+engine/website.
+
+In addition, there is HINT mode. This is activated with the "f" key by default.
+Enter a the number of a link to follow it. Alternatively, you can enter the
+link text (case sensitive) to narrow down your choices.
+
+.SH QUICKMARKS
+
+Up to 9 quickmarks can be defined. These are stored as quickmark 1 up to
+quickmark 9.  You can store the URI of the current
+page as quickmark with
+
+.I :set qmark=<hotkey>
+
+Later you can recall the quickmark with
+
+.I q<hotkey>
+
+Example:
+
+:set qmark=4
+Store current URI as quickmark 4
+
+q4
+Recall quickmark 4
+
+.SH SEARCHENGINES
+
+Searchengines let you submit queries to web search engines and similar sites
+without having to type the complete URL or visit the page first.
+
+For example, if
+.I ex
+is defined as the shortcut for the search at example.com, you can use "ex
+search term" instead of an URL to search there for "search term".
+
+The following search engines (and shortcuts) are already defined in config.h:
+
+.IP i
+http://ixquick.com/do/metasearch.pl?query=%s
+.IP w
+https://secure.wikimedia.org/wikipedia/en/w/index.php?title=Special%%3ASearch&search=%s&go=Go
+.IP wd
+https://secure.wikimedia.org/wikipedia/de/w/index.php?title=Special%%3ASearch&search=%s&go=Go
+.IP d
+https://duckduckgo.com/?q=%s&t=Vimprobable
+.IP dd
+https://duckduckgo.com/html/?q=%s&t=Vimprobable
+
+.P
+
+You can always overwrite them or define your own in
+.I $HOME/.config/vimprobable/vimprobablerc.
+See vimprobablerc (5) for details.
+.B Default search engine
+
+If Vimprobable doesn't recognize an address as a valid URL or query to one of the
+defined search engines, it will use the default search engine instead. See
+.BR vimprobablerc (5)
+on how to set this default.
+
+.SH URI HANDLERS
+
+You can define external applications to handle requests for defined URI schemas.
+
+The following URI handlers are already defined in config.h:
+
+.IP ftp://
+x-terminal-emulator -e wget %s
+.IP mailto:
+x-terminal-emulator -e mutt %s
+.IP vimprobableedit:
+x-terminal-emulator -e vi %s
+
+.P
+
+See 
+.BR vimprobablerc (5)
+for details how to add or override these settings.
+
+You can always overwrite them or define your own in
+.I $HOME/.config/vimprobable/vimprobablerc.
+
+The vimprobableedit protocol plays a special role.  It is used by
+vimprobable when an external editor is called from within a text field.
+Note that vimprobable will update the text field when the forked process
+terminates.  Editors that detach from the controlling terminal (vim -g
+does, for example) terminate immediately as far as vimprobable is
+concerned, which means your changes will not be pulled into the text
+field.  If your editor suffers from that disease, check of options that
+keep it from detaching; for vim, the -f option does this.
+
+.SH FILES
+
+Please make sure you create these files before first running the browser. 
+Everything but the history, bookmarks and closed files is optional. The cookies
+file is required if you want to use cookies.
+
+.I $HOME/.config/vimprobable/vimprobablerc
+
+.I $HOME/.config/vimprobable/bookmarks
+
+.I $HOME/.config/vimprobable/cookies
+
+.I $HOME/.config/vimprobable/history
+
+.I $HOME/.config/vimprobable/closed
+
+.I $HOME/.config/vimprobable/quickmarks
+
+.I $HOME/.config/vimprobable/style.css
+
+
+.SH BUGS
+There has not been any significant bug-hunting yet.
+.SH AUTHORS
+Hannes Schueller and Matto Fransen
+.SH "SEE ALSO"
+.BR vimprobablerc (5),
+
+
+
+
+

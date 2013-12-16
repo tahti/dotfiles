@@ -1,0 +1,291 @@
+.\" Process this file with
+.\" groff -man -Tascii vimprobablerc.5
+.\"
+.TH VIMPROBABLERC 5 "FEBRUARY 2012" "Linux User Manuals"
+.SH NAME
+vimprobablerc \- The configuration file for Vimprobable
+.SH DESCRIPTION
+If you have a .config/vimprobable/vimprobablerc in your home directory, Vimprobable 
+will read it at startup.
+.PP
+The vimprobablerc file consists of a series of configuration options, one per line. Blank lines and lines starting with a 
+colon (:) are seen as comments and will be ignored.
+.SH FILES
+.I $HOME/.config/vimprobable/vimprobablerc
+.PP
+Per user configuration file. 
+.SH FORMAT
+.IP set 
+.RS
+set is used to alter a default setting. For possible options that can be altered,
+see the SETTINGS section below.
+
+Each line looks like this:
+
+.I "    " set what=value
+
+Vimprobable is not picky about white space in these lines.
+.RE 
+.IP map 
+.RS
+map is used to change the default key-binding. For possible options that 
+can be altered see the MAPPING section below.
+
+Each line looks like this:
+
+.I "    " map what=value
+
+Vimprobable is not picky about white space in these lines.
+
+.RE
+.IP misc
+.RS
+Any command listed under colon commands in vimprobable2(1) will be accepted in the config file as well.
+
+
+.SH FORMAT MODIFIED KEYS
+
+It is possible to map keys modified with eiter Control or Modkeys.
+To map a key modified with Control, use this format: <C-h>
+where C stands for the Control-key and h for the h-key.
+<M1-j> maps the combination of Mod1 and the j-key. Mod1 is
+usually the "Alt" key, Mod4 the "Windows" key.
+
+Examples:
+<C-h> : Ctrl-h
+<C-k> : Ctrl-k
+z<M1-i>: z followed by Alt-i
+
+.RE 
+
+.SH SETTINGS
+
+This section describes the possible options that can be changed from
+their default value.
+
+.IP completioncase=[true|false]
+Case sensitive (true) or insensitive tab completion.
+
+.IP homepage=URL
+Set the URL of the homepage.
+
+.IP useragent=<useragent-string>
+Replace the default useragent-string.
+
+.IP acceptlanguage=<acceptlanguage-string>
+Replace the default acceptlanguage-string.
+
+.IP scripts=[true|false]
+Enable or disable scripts.
+
+.IP plugins=[true|false]       
+Enable or disable plugins.
+
+.IP java=[true|false]       
+Enable or disable Java applets.
+
+.IP images=[true|false]
+Enable or disable autoload of images.
+
+.IP shrinkimages=[true|false]  
+Enable or disable autoshrink of images.
+
+.IP cursivefont=cursivefont-family
+Replace the default cursive font family
+
+.IP defaultencoding=encoding
+Replace the default encoding
+
+.IP defaultfont=default-font-family
+Replace the default font family
+
+.IP defaultsearch=searchengine-shortcut
+Replace the default search engine
+
+.IP escapeinput=[true|false]
+Ignore automatic focusing of input elements by websites on load.
+
+.IP fontsize=integer
+Replace the default fontsize
+
+.IP monofontsize=integer  
+Replace the default monospace fontsize
+
+.IP caret=[true|false]         
+Enable or disable caret browsing
+
+.IP fantasyfont=fantasy-font-family
+Replace the default fantasy font family
+
+.IP minimumfontsize=integer 
+Replace the default minimum font size
+
+.IP monofont=default-monospace-font-family
+Replace the default monospace font family
+
+.IP pagecache=[true|false]
+Enable or disable webkit's internal page cache
+
+.IP proxy=[true|false]
+Whether to read and use the http_proxy environment variable
+
+.IP backgrounds=[true|false]         
+Enable or disable print backgrounds
+
+.IP sansfont=default-sans-font-family
+Replace the default sans-serif font family
+
+.IP scrollbars=[true|false]
+Enable or disable scrollbars.
+
+.IP statusbar=[true|false]
+Show or hide the status bar.
+
+.IP inputbox=[true|false]
+Show or hide the input box.
+
+.IP seriffont=default-serif-font-family
+Replace the default serif font family
+
+.IP stylesheet=URL
+Replace the user stylesheet
+
+.IP webinspector=[true|false]
+Enable or disable webinspector
+
+.IP strictssl=[true|false]
+Reject or accept unverified certificates (default: true)
+
+.IP cabundle=/path/to/file
+Where CA certificates are stored (default: /etc/ssl/certs/ca-certificates.crt)
+
+.IP tempdir=/path/without/slash
+A path to a directory for temporary files (default: $TMPDIR or /tmp)
+
+.SH MAPPINGS
+
+Keys can be mapped to the following functions:
+
+.IP quit
+Close the browser
+
+.IP stop
+Stop the current loading process
+
+.IP bookmark
+Save the current website in the bookmarks
+
+.IP source
+Toggle HTML source view
+
+.IP inspect
+Opens the webinspector if the webinspector is enabled
+
+.IP jumpleft
+Scroll to left edge
+
+.IP jumpright
+Scroll to right edge
+
+.IP jumptop
+Scroll to top of the page
+
+.IP jumpbottom
+Scroll to bottom of the page
+
+.IP pageup
+Scroll one screensize up
+
+.IP pagedown
+Scroll one screensize down
+
+.IP navigationback
+Go to previous page in browser-history
+
+.IP navigationforward
+Go to next page in browser-history
+
+.IP reload
+Reload current page
+
+.IP scrollleft
+Scroll the page one step to the left
+
+.IP scrollright
+Scroll the page one step to the right
+
+.IP scrollup
+Scroll the page one step up
+
+.IP scrolldown
+Scroll the page one step down
+
+.IP openeditor
+When in a text box, open the external editor
+
+Example: 
+To map the 'R' key to reload to current page, add the following
+line into ~/.config/vimprobable/vimprobablerc:
+
+map R reload
+
+.SH MAPPING KEYS TO COLON COMMANDS
+
+Key can be mapped to any colon commands. Instead of entering an
+internal symbol for the key combination to be mapped to, enter
+a command line as you would enter it within a running browser
+instance. For example:
+
+map <C-s>=:set scripts=false
+
+This would map Control-s to disable Javascript.
+
+map i=:javascript console.log('insertmode_on')
+
+This maps the i key to manually activate INSERT mode.
+
+.SH MAPPING COMMANDS TO EXISTING COMMANDS
+
+You can create new commands by mapping them to an already 
+working command line. For example:
+
+map :bmatag1=:bookmark tag1
+
+would create a new command "bmatag1" which would bookmark
+the current page and automatically add "tag1" to it.
+
+.SH INTERACTIVE SETTING
+All settings can be changed on the fly by entering
+:set followed by one of the commands in the SETTINGS section
+above.
+
+.SH SHORTCUTS (SEARCH ENGINES)
+
+You can define new shortcuts or override the pre-defined ones
+using the following format (without the angle brackets):
+
+.RS 4
+shortcut <shortcut> <URL with at most one %s>
+.RE
+
+where the %s serves as a placeholder for the term to be inserted into the URL. 
+Other percent signs in the URL have to be escaped as %%\&. Using the shortcut
+feature without %s will simply work as shorthand to much-used bookmarks.
+
+.SH URI HANDLERS
+
+You can define external applications to handle requests for defined URI schemas
+using the following syntax (without the angle brackets):
+
+.RS 4
+handler <URI schema> <handler command with exactly one %s>
+.RE
+
+where the %s serves as a placeholder for the rest of the URI.
+
+.SH BUGS
+There has not been any significant bug-hunting yet.
+.SH AUTHORS
+Hannes Schueller and Matto Fransen
+.SH "SEE ALSO"
+.BR vimprobable2 (1),
