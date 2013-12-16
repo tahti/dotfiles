@@ -161,3 +161,8 @@ yank_title_primary= yT
 zoom= =
 zoom_in= zi
 zoom_out= zo
+tabdo= 
+reload_bookmarks= 
+reload_quickmarks= 
+print_preview= 
+visual_mode= v
