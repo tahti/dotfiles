@@ -56,6 +56,9 @@ task :install do
   if File.exists?("i3/i3.symlink/config-#{hostname}")
   `ln -s "config-#{hostname}" "i3/i3.symlink/config"`
   end
+  if !File.exists?("#{ENV["HOME"]}/.fonts")
+  `fc-cache -fv`
+  end
 end
 
 task :uninstall do

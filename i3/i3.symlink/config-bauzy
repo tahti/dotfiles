@@ -29,6 +29,7 @@ exec rfkill block 1
 # Start i3bar to display a workspace bar 
 bar {
     #mode hide
+    id bar-1
     font 		-*-terminus-*-r-normal-*-12-*-*-72-c-60-*-*
     workspace_buttons   yes
     position  	        top	
