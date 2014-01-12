@@ -1,0 +1,66 @@
+out_to_x no
+background no
+own_window no
+out_to_console yes
+
+# Update interval in seconds
+update_interval 2.0
+
+# This is the number of times Conky will update before quitting.
+# Set to zero to run forever.
+total_run_times 0
+
+max_text_width 0
+
+# Shortens units to a single character (kiB->k, GiB->G, etc.). Default is off.
+short_units yes
+
+# How strict should if_up be when testing an interface for being up?
+# The value is one of up, link or address, to check for the interface
+# being solely up, being up and having link or being up, having link
+# and an assigned IP address. 
+if_up_strictness address
+
+# Add spaces to keep things from moving about?  This only affects certain objects.
+# use_spacer should have an argument of left, right, or none
+use_spacer left
+
+double_buffer yes
+
+# Force UTF8? note that UTF8 support required XFT
+override_utf8_locale no
+
+# number of cpu samples to average
+# set to 1 to disable averaging
+cpu_avg_samples 2
+
+# Stuff after 'TEXT' will be formatted on screen
+TEXT
+ [ 
+  ${if_existing /tmp/gmail}${head /tmp/gmail 1}${endif}
+  ${if_match  ${battery_percent BAT0}!=0}\
+  { "full_text" : "\
+${if_match  ${battery_percent BAT0}<=10}${else}\
+${if_match  ${battery_percent BAT0}<=40}${else}\
+${if_match  ${battery_percent BAT0}<=80}${else}\
+${endif}${endif}${endif}\
+ ${battery_percent BAT0}%", "color":\
+${if_match  ${battery_percent BAT0}<=10}"\#FF0000"${else}\
+${if_match  ${battery_percent BAT0}<=40}"\#FFAA00"${else}\
+${if_match  ${battery_percent BAT0}<=80}"\#FFFF00"${else}\
+"\#00FF00"${endif}${endif}${endif}\
+,"min_width":"100%", "align":"center"},
+  ${endif}
+  { "full_text" : "${texeci 20 sensors | grep Physical | cut -c18-19}°C","color" :"\#00ff00", "min_width":"100°C", "align":"center"},
+  ${if_up wlan0}\
+{ "full_text" : "${downspeed wlan0} ${upspeed wlan0}", "color":"\#0099ff", "min_width":"999kB 999kB", "align":"center"},
+  ${endif}
+  ${if_up eth0}\
+{ "full_text" : " ${downspeed eth0} ${upspeed eth0}", "color":"\#0099ff", "min_width":" 999kB 999kB", "align":"center"},
+  ${endif}
+  { "full_text" : "${fs_free /home}",  "color" :"\#ffffff" },
+  { "full_text" : " ${memperc}%" , "color" :  ${if_match ${memperc}<90}"\#ffff00"${else}"\#ff0000"${endif} },
+  { "full_text" : "${time %a %d.%m.%y}",         "color" :"\#ffffff", "separator": false },
+  { "full_text" : "${time %H:%M:%S}",            "color" :"\#00ff00" }
+  ],
+
