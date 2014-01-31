@@ -1,4 +1,14 @@
-#!/bin/sh
+#!/bin/bash
+function showhelp {
+  echo "Usage"
+}
+
+function quit {
+  exit
+}
+
+showhelp
+quit
 # script that should - depending on options:
 # -add files in current directory to igrore (possibly recursively/ possibly with adding directories)
 # -add extensions in current directory to igrone (possibly recursively)
@@ -6,8 +16,4 @@
 # Initialize our own variables:
 #output_file=""
 #verbose=0
-function showhelp {
-               echo "Usage"
-               exit
-           }
-showhelp
+
