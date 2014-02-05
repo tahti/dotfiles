@@ -1,17 +1,25 @@
 #!/bin/bash
+echo $@
+echo $1
+echo "."
 if [ -z $DISPLAY ] ; then
 OPT="-s edit -t"
 else
 OPT="-s edit -c"
 fi
-if [ -z $1 ] ; then
-  emacsclient $OPT 1>/dev/null || (
+
+if [ -z "$1" ] ; then
+  emacsclient $OPT 2>/dev/null || (
   (emacs-24.3.50 --daemon=edit)
   sleep 2
   emacsclient  $OPT)
 else
-  emacsclient $OPT $@ 2>/dev/null || (
+  emacsclient $OPT "$@" 2>/dev/null || (
   (emacs-24.3.50 --daemon=edit)
   sleep 2
-  emacsclient $OPT $@)
+oldifs=$IFS
+IFS=$(echo -en "\n\b")
+  emacsclient $OPT "$@")
+IFS=$oldifs
 fi
+

@@ -42,7 +42,7 @@ TEXT
   { "full_text" : "\
 ${if_match  ${battery_percent BAT0}<=10}${else}\
 ${if_match  ${battery_percent BAT0}<=40}${else}\
-${if_match  ${battery_percent BAT0}<=80}${else}\
+${if_match  ${battery_percent BAT0}<=80}${else}\
 ${endif}${endif}${endif}\
  ${battery_percent BAT0}%", "color":\
 ${if_match  ${battery_percent BAT0}<=10}"\#FF0000"${else}\
