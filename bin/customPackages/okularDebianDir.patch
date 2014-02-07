@@ -1,7 +1,7 @@
-diff -rupN okular-4.10.5/ui/pageview.cpp okular-4.10.5-New/ui/pageview.cpp
---- okular-4.10.5/ui/pageview.cpp	2013-06-28 19:37:20.287808693 +0200
-+++ okular-4.10.5-New/ui/pageview.cpp	2013-09-29 08:47:12.322098921 +0200
-@@ -1615,8 +1615,8 @@ void PageView::keyPressEvent( QKeyEvent
+diff -rupN okular-4.11.5/ui/pageview.cpp okular-4.11.5-New/ui/pageview.cpp
+--- okular-4.11.5/ui/pageview.cpp	2014-01-02 20:33:09.000000000 +0100
++++ okular-4.11.5-New/ui/pageview.cpp	2014-02-07 17:47:32.661288618 +0100
+@@ -1637,8 +1637,8 @@ void PageView::keyPressEvent( QKeyEvent
      // move/scroll page by using keys
      switch ( e->key() )
      {
@@ -12,7 +12,7 @@ diff -rupN okular-4.10.5/ui/pageview.cpp okular-4.10.5-New/ui/pageview.cpp
          case Qt::Key_Down:
          case Qt::Key_PageDown:
          case Qt::Key_Up:
-@@ -1624,14 +1624,14 @@ void PageView::keyPressEvent( QKeyEvent
+@@ -1646,14 +1646,14 @@ void PageView::keyPressEvent( QKeyEvent
          case Qt::Key_Backspace:
              if ( e->key() == Qt::Key_Down
                   || e->key() == Qt::Key_PageDown
@@ -30,7 +30,7 @@ diff -rupN okular-4.10.5/ui/pageview.cpp okular-4.10.5-New/ui/pageview.cpp
                  slotScrollUp( singleStep );
              }
              break;
-@@ -1647,6 +1647,7 @@ void PageView::keyPressEvent( QKeyEvent
+@@ -1669,6 +1669,7 @@ void PageView::keyPressEvent( QKeyEvent
                  horizontalScrollBar()->triggerAction( QScrollBar::SliderSingleStepSub );
              break;
          case Qt::Key_Right:

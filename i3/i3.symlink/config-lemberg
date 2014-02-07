@@ -25,15 +25,20 @@ exec xset r rate 210 100
 # Start i3bar to display a workspace bar 
 bar {
     #mode hide
-    font 		-*-terminus-*-r-normal-*-12-*-*-72-c-60-*-*
+    status_command $HOME/.i3/conky_wrapper conkyrc_i3bar
+    id bar-1
+    #font pango:DejaVu Sans Mono, Ionicons, FontAwesome 8
+    font pango:DejaVu Sans Mono, Icons, FontAwesome 9
     workspace_buttons   yes
     position  	        top	
 }
+#
 exec fbxkb
 exec gnome-keyring
-exec conky -c /home/piotr/.i3/conkyrc_i3|/home/piotr/bin/dzen2 -bg black -fg white -fn Terminus-9 -w 450 -x 159 -y 0 -ta l
+#exec conky -c /home/piotr/.i3/conkyrc_i3|/home/piotr/bin/dzen2 -bg black -fg white -fn Terminus-9 -w 450 -x 159 -y 0 -ta l
 exec conky -c /home/piotr/.i3/conky_i3help
 exec conky -c /home/piotr/.i3/conkytodo_plain
+exec conky -c $HOME/.i3/conkyrc_gmail #updating gmail info
 exec numlockx on
 #exec xhost +
 exec --no-startup-id kmix
