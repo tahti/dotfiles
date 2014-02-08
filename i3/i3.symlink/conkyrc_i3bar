@@ -38,7 +38,7 @@ cpu_avg_samples 2
 TEXT
  [ 
   ${if_existing /tmp/gmail}${head /tmp/gmail 1}${endif}
-  { "full_text" : "${tail /sys/class/backlight/acpi_video0/actual_brightness 1}","color" :"\#ffff00", "min_width":"15", "align":"center"},
+  ${if_existing /sys/class/backlight/acpi_video0/actual_brightness}{ "full_text" : "${tail /sys/class/backlight/acpi_video0/actual_brightness 1}","color" :"\#ffff00", "min_width":"15", "align":"center"},${endif}
   ${if_match  ${battery_percent BAT0}!=0}\
   { "full_text" : "\
 ${if_match  ${battery_percent BAT0}<=10}${else}\
