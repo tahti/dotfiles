@@ -1,15 +1,16 @@
 #!/bin/zsh
 ID=$(xprop -root | awk '/_NET_ACTIVE_WINDOW\(WINDOW\)/{print $NF}')
+echo "before loop id:$ID">>~/ti
 #NAME=$(xprop -id $ID | awk '/WM_CLASS\(STRING\)/{print $NF}')
 PID=($(xprop -id $ID | awk '/_NET_WM_PID\(CARDINAL\)/{print $NF}'))
-CPID=($(ps --ppid $PID |awk '/^[ \t]*[0-9]/ {print $1}' ))
-echo "before loop $CPID + pid $PID">>~/ti
+CPID=($(ps --ppid $PID |awk '/^[ \t]*[0-9]/{line=$0} END{print $1}' ))
+echo "before loop cpid:$CPID + pid:$PID">>~/ti
 while [ -n "$CPID" ]
 do
-  echo "in loop $CPID">>~/ti
+  echo "in loop cpid:$CPID">>~/ti
   if [ -e "/proc/$CPID/cwd" ] 
   then
-    echo "assigned $CPID to $PID">>~/ti
+    echo "assigned cpid:$CPID to pid:$PID">>~/ti
     PID=$CPID
   fi
   CPID=$(ps --ppid $CPID |awk '/^[0-9]/ {print $1}')
@@ -19,6 +20,7 @@ done
   #echo "inc $PID ">~/tt
   ##PID=$(($PID + 2))
 #fi
+echo "after loop pid $PID">>~/ti 
 if [ -e "/proc/$PID/cwd" ]
 then
     urxvt -meta8 -cd $(readlink /proc/$PID/cwd) &
