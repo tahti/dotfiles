@@ -25,6 +25,8 @@ endfunction
 " <leader>dd to delete buffer
 noremap <leader>dd <Esc>:bd<CR>
 vnoremap <leader>dd <Esc>:bd<CR>
+" reverse string mapping
+vnoremap <leader>rv c<C-O>:set revins<CR><C-R>"<Esc>:set norevins<CR> 
 
 " Left/Right arrow keys change buffers in all modes
 "noremap <Left> <Esc>:bp<CR>
