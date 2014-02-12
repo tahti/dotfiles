@@ -3,23 +3,24 @@ echo $@
 echo $1
 echo "."
 if [ -z $DISPLAY ] ; then
-OPT="-s edit -t"
+OPT="-t -s edit"
 else
-OPT="-s edit -c"
+OPT="-c -s edit"
 fi
+#oldifs=$IFS;
+#IFS=$(echo -en "\n\b");
 
 if [ -z "$1" ] ; then
-  emacsclient $OPT 2>/dev/null || (
-  (emacs-24.3.50 --daemon=edit)
-  sleep 3
-  emacsclient  $OPT)
+  exec emacsclient $OPT 2>/dev/null || (
+  (emacs-24.3.50 --daemon=edit;
+  exec emacsclient  $OPT 2>/dev/null))
 else
-  emacsclient $OPT "$@" 2>/dev/null || (
-  (emacs-24.3.50 --daemon=edit)
-  sleep 3
-oldifs=$IFS
-IFS=$(echo -en "\n\b")
-  emacsclient $OPT "$@")
-IFS=$oldifs
+  exec emacsclient $OPT "$@" 2>/dev/null || (
+    (emacs-24.3.50 --daemon=edit)
+    until (exec emacsclient $OPT "$@");do
+      echo waiting;
+      sleep 2;
+    done)
+  #IFS=$oldifs
 fi
 

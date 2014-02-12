@@ -168,7 +168,8 @@
        "O" 'tahti-find-helm-at-alias
        "w" 'save-buffer-always
        "W" 'save-some-buffers
-       "k" 'kill-current-buffer
+       ;"k" 'kill-current-buffer
+       "k" 'server-edit
        "K" 'kill-buffer-and-window
        "<" 'tahti-cd-alias
        "d" 'dired-jump
