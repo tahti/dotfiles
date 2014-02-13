@@ -5,6 +5,7 @@ autoload -Uz any
 autoload -Uz myip
 autoload -Uz givedef
 autoload -Uz open
+autoload -Uz path
 mcd() { mkdir -p "$1" && cd "$1"; }
 pj() { python -mjson.tool } # pretty-print JSON
 cj() { curl -sS $@ | pj } # curl JSON
