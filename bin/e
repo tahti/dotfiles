@@ -1,26 +1,8 @@
-#!/bin/bash
-echo $@
-echo $1
-echo "."
+#!/bin/zsh
 if [ -z $DISPLAY ] ; then
-OPT="-t -s edit"
+OPT="-t -s edit -a \"\""
 else
-OPT="-c -s edit"
+OPT="-c -s edit -a \"\""
 fi
-#oldifs=$IFS;
-#IFS=$(echo -en "\n\b");
-
-if [ -z "$1" ] ; then
-  exec emacsclient $OPT 2>/dev/null || (
-  (emacs-24.3.50 --daemon=edit;
-  exec emacsclient  $OPT 2>/dev/null))
-else
-  exec emacsclient $OPT "$@" 2>/dev/null || (
-    (emacs-24.3.50 --daemon=edit)
-    until (exec emacsclient $OPT "$@");do
-      echo waiting;
-      sleep 2;
-    done)
-  #IFS=$oldifs
-fi
-
+#${=VAR} - do the word splitting on variable (not needed in bash)
+emacsclient ${=OPT} "$@" &! 2>/dev/null 
