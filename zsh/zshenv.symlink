@@ -6,4 +6,6 @@ export CPATH=/usr/local/uppaal/include
 eval "$(lesspipe.sh)"
 path=(~/bin $path . /sbin /usr/sbin /usr/local/sbin /opt/flex/bin) 
 LESS=(-r)
-
+export PAGER='less'
+# CTAGS Sorting in VIM/Emacs is better behaved with this in place
+export LC_COLLATE=C 

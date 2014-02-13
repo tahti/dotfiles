@@ -1,26 +1,7 @@
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/Private/dotfiles
-# your project folder that we can `c [tab]` to
-#export PROJECTS=~/Code
-autoload -U promptinit
-promptinit
 # source every .zsh file in lib
 for config_file ($ZSH/zsh/lib/*.zsh) source $config_file
-
-# use .localrc for SUPER SECRET CRAP that you don't
-# want in your public, versioned repo.
-if [[ -a ~/.localrc ]]
-then
-  source ~/.localrc
-fi
-
-
-# add a function path
-fpath=($ZSH/zsh/functions $ZSH/zsh/completions $fpath)
-# disabling as it is too slow
-# load every completion after autocomplete loads 
-#for config_file ($ZSH/zsh/**/completion.zsh) source $config_file 
-source $ZSH/zsh/lib/completion.zsh
 
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git)
@@ -39,10 +20,6 @@ for plugin ($plugins); do
     fpath=($ZSH/zsh/plugins/$plugin $fpath)
   fi
 done
-
-# initialize autocomplete here, otherwise functions won't be loaded
-autoload -U compinit 
-compinit
 
 # Load all of the plugins that were defined in ~/.zshrc
 for plugin ($plugins); do
