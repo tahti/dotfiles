@@ -1,3 +1,4 @@
+alias o='open'
 alias reload!='. ~/.zshrc'
 alias md='mkdir -p'
 alias rm='rm -v'

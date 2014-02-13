@@ -1,8 +1,8 @@
 #!/bin/zsh
 if [ -z $DISPLAY ] ; then
-OPT="-t -s edit -a \"\""
+OPT="-t"
 else
-OPT="-c -s edit -a \"\""
+OPT="-c"
 fi
 #${=VAR} - do the word splitting on variable (not needed in bash)
-emacsclient ${=OPT} "$@" &! 2>/dev/null 
+emacsclient -s edit --alternate-editor="" ${=OPT} "$@" 2>/dev/null &!
