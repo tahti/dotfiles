@@ -36,7 +36,7 @@ alias setdvp='setxkbmap -layout "pl,pl" -variant "dvp," -option "caps:swapescape
 alias t='todo.sh'
 alias aun='aunpack'
 alias apa='apack'
-alias up='sudo aptitude update;sudo aptitude -y upgrade'
+alias aup='sudo aptitude update;sudo aptitude -y upgrade'
 alias irfanview='wine ~/.wine/drive_c/Program\ Files/IrfanView/i_view32.exe'
 alias ida='wine ~/progs/IDA\ Pro\ 6.1\ Precracked/idaq.exe'
 alias objdump='objdump -C --disassembler-options=intel'
