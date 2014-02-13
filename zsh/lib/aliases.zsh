@@ -29,7 +29,6 @@ alias -s htmn=iceweasel
 ### generic aliases (ie. no special checks needed, using xalias().
 alias gpw="makepasswd --chars 12 --string 'abcdefghijklmnopqrrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+*%_-=.,!|/~'"
 alias gpwns="makepasswd --chars 12 --string 'abcdefghijklmnopqrrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-'"
-alias rot13='tr A-Za-z N-ZA-Mn-za-m'
 alias svn ignore='svn propedit svn:ignore'
 alias unsvn='find . -name ".svn" -exec rm -rf {} \;'
 alias con='conky -c /home/piotr/.i3/conkyrc_i3|/home/piotr/bin/dzen2 -bg black -fg white  -fn Terminus-9 -w 450  -y 1 -ta l -x 159&'
