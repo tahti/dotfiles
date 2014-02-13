@@ -1,0 +1,42 @@
+# -------------------------------------------------------------------
+# opening files in default applications
+# (from https://github.com/myfreeweb/zshuery/blob/master/zshuery.sh)
+# -------------------------------------------------------------------
+open() {
+    if [[ -f $1 ]]; then
+        case $1 in
+          *.tex|*.txt|*.lzz|*.h|*.java|*.xml|Makefile|*.q|*.bib) 
+            e $1
+            ;;
+          *.pdf|*.ps|*.eps|*.dvi) 
+            okular $1 2>/dev/null &!
+            ;;
+          *.html|*.htm)
+            iceweasel $1
+            ;;
+          *.exe)
+            wine $1
+            ;;
+#compressed files - unpack
+          *.tar.bz2) tar xvjf $1;;
+          *.tar.gz) tar xvzf $1;;
+          *.tar.xz) tar xvJf $1;;
+          *.tar.lzma) tar --lzma xvf $1;;
+          *.bz2) bunzip $1;;
+          *.rar) unrar $1;;
+          *.gz) gunzip $1;;
+          *.tar) tar xvf $1;;
+          *.tbz2) tar xvjf $1;;
+          *.tgz) tar xvzf $1;;
+          *.zip) unzip $1;;
+          *.Z) uncompress $1;;
+          *.7z) 7z x $1;;
+          *) 
+            echo "'$1' have no default application."
+            ;;
+    esac
+    else
+        echo "'$1' is not a valid file"
+    fi
+}
+
