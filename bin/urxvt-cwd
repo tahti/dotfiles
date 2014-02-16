@@ -23,7 +23,7 @@ done
 #echo "after loop pid $PID">>~/ti 
 if [ -e "/proc/$PID/cwd" ]
 then
-    urxvt -meta8 -cd $(readlink /proc/$PID/cwd) &
+    urxvt -meta8 -cd "$(readlink /proc/$PID/cwd)" &
     #echo "cd $PID">>~/ti 
 else
     #echo "no cd $PID">>~/ti 
