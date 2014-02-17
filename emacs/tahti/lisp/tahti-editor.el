@@ -54,6 +54,9 @@
            )
   )
 )
+;prevent emacs from asking about closing the file
+(defun server-remove-kill-buffer-hook () (remove-hook 'kill-buffer-query-functions 'server-kill-buffer-query-function)) (add-hook 'server-visit-hook 'server-remove-kill-buffer-hook) 
+
 (push 'column-marker el-get-packages)
 (defun tahti-after-column-marker()
   (custom-set-variables
