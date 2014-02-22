@@ -18,7 +18,7 @@ new_window 1pixel
 
 #exec setxkbmap -layout "pl,pl" -variant "dvp,basic" -option "caps:swapescape,grp:sclk_toggle"
 exec blueman-applet
-exec --no-startup-id kmix #showing volume control
+exec --no-startup-id kmix --keepvisibility
 #exec volumeicon
 exec numlockx on
 exec xset r rate 250 80

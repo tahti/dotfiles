@@ -20,7 +20,7 @@ new_window 1pixel
 
 exec setxkbmap -layout "pl,pl" -variant "dvp," -option "caps:swapescape,grp:sclk_toggle"
 #exec sleep 1;bluetooth-applet
-exec --no-startup-id kmix
+exec --no-startup-id kmix --keepvisibility
 exec --no-startup-id exec numlockx on
 exec rfkill unblock 0
 # Start i3bar to display a workspace bar 

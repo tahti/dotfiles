@@ -25,7 +25,7 @@ bar {
 
 exec setxkbmap pl dvp caps:swapescape 
 #
-exec kmix
+exec --no-startup-id kmix --keepvisibility
 exec xset b off
 #exec pidgin
 exec --no-startup-id eval $(cat ~/.fehbg) #setting up background

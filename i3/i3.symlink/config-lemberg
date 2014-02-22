@@ -41,7 +41,7 @@ exec conky -c /home/piotr/.i3/conkytodo_plain
 exec conky -c $HOME/.i3/conkyrc_gmail #updating gmail info
 exec numlockx on
 #exec xhost +
-exec --no-startup-id kmix
+exec --no-startup-id kmix --keepvisibility
 exec --no-startup-id pidgin
 exec --no-startup-id kupfer --no-splash
 exec --no-startup-id eval $(cat ~/.fehbg) #setting up background

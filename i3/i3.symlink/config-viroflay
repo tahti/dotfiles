@@ -37,7 +37,7 @@ exec conky -c /home/piotr/.i3/conkytodo_plain
 exec numlockx on
 exec sleep 2&&kupfer --no-splash
 #exec xhost +
-exec kmix
+exec --no-startup-id kmix --keepvisibility
 exec pidgin
 exec --no-startup-id eval $(cat ~/.fehbg) #setting up background
 #exec conky -c .i3/conkyrc_i3|dzen2 -bg black -fg white -fn Terminus-9 -w 450 -x 9 -y 0 -ta l
