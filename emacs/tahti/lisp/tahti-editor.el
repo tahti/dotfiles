@@ -134,6 +134,78 @@ Intended as `kill-buffer-query-functions' fun."
 ;; enable subword-mode that lets you move by camelCase
 (global-subword-mode 1)
 
+;;;=============highlighting==============================
+;;;
+(global-hi-lock-mode 1)
+
+(defun tahti-highlight-word-case-insensitive (word color)
+  (setq word (replace-regexp-in-string "a" "\[aA\]" word) )
+  (setq word (replace-regexp-in-string "b" "\[bB\]" word) )
+  (setq word (replace-regexp-in-string "c" "\[cC\]" word) )
+  (setq word (replace-regexp-in-string "d" "\[dD\]" word) )
+  (setq word (replace-regexp-in-string "e" "\[eE\]" word) )
+  (setq word (replace-regexp-in-string "f" "\[fF\]" word) )
+  (setq word (replace-regexp-in-string "g" "\[gG\]" word) )
+  (setq word (replace-regexp-in-string "h" "\[hH\]" word) )
+  (setq word (replace-regexp-in-string "i" "\[iI\]" word) )
+  (setq word (replace-regexp-in-string "j" "\[jJ\]" word) )
+  (setq word (replace-regexp-in-string "k" "\[kK\]" word) )
+  (setq word (replace-regexp-in-string "l" "\[lL\]" word) )
+  (setq word (replace-regexp-in-string "m" "\[mM\]" word) )
+  (setq word (replace-regexp-in-string "n" "\[nN\]" word) )
+  (setq word (replace-regexp-in-string "o" "\[oO\]" word) )
+  (setq word (replace-regexp-in-string "p" "\[pP\]" word) )
+  (setq word (replace-regexp-in-string "r" "\[rR\]" word) )
+  (setq word (replace-regexp-in-string "s" "\[sS\]" word) )
+  (setq word (replace-regexp-in-string "t" "\[tT\]" word) )
+  (setq word (replace-regexp-in-string "u" "\[uU\]" word) )
+  (setq word (replace-regexp-in-string "w" "\[wW\]" word) )
+  (setq word (replace-regexp-in-string "v" "\[vV\]" word) )
+  (setq word (replace-regexp-in-string "x" "\[xX\]" word) )
+  (setq word (replace-regexp-in-string "y" "\[yY\]" word) )
+  (setq word (replace-regexp-in-string "z" "\[zZ\]" word) )
+  (setq word (replace-regexp-in-string "\\\\" "\\\\\\\\" word))
+  (setq word (replace-regexp-in-string "\\*" "\\\\*" word))
+  (setq word (replace-regexp-in-string "\\+" "\\\\+" word))
+  (setq word (replace-regexp-in-string "\\[" "\\\\[" word))
+  (setq word (replace-regexp-in-string "\\]" "\\\\]" word))
+  ;; (insert word)
+  (let ((case-fold-search t))
+    (highlight-regexp word color) )  )
+
+
+(defun tahti-highlight-word-or-selection ()
+  (interactive)
+  (let (word tahti-hi-colors pp )
+    (setq pp (point))
+    (if (region-active-p)    ( setq word (buffer-substring  (region-beginning)  (region-end) ))
+      (let (beg end)
+	(setq beg (progn (forward-word) (point)))
+	(setq end (progn  (backward-word)  (point)))
+	(setq word (buffer-substring  beg end ))
+	))
+    (message "%s" word)
+    (setq tahti-hi-colors '(
+    			 "hi-green"
+    			 "hi-yellow"
+    			 "hi-blue"
+    			 "hi-pink"
+                 ;;"hi-red-b"
+    			 ;; "hi-black-b"
+    			 ;; "hi-black-hb"
+    			 ;; "hi-blue-b"
+    		 	 ;; "hi-green-b"
+    			 ))
+    (tahti-highlight-word-case-insensitive word  (nth (% (length hi-lock-interactive-patterns) (safe-length tahti-hi-colors)) tahti-hi-colors))
+    (goto-char pp)
+    (push word search-ring))
+  (evil-exit-visual-state))
+
+(defun tahti-unhighlight-word-or-selection ()
+  (interactive)
+  (if (> (length hi-lock-interactive-patterns) 0) (unhighlight-regexp (car (car hi-lock-interactive-patterns))) (message "No highlighting to remove"))
+  )
+
 (provide 'tahti-editor)
 ;;; tahit-ui.el ends here
 

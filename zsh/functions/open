@@ -17,6 +17,9 @@ open() {
           *.exe)
             wine $1
             ;;
+          *.xlsx)
+            libreoffice $1 2>/dev/null &!
+            ;;
 #compressed files - unpack
           *.tar.bz2) tar xvjf $1;;
           *.tar.gz) tar xvzf $1;;

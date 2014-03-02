@@ -189,6 +189,8 @@
        "t SPC" 'tahti-whitespace-toggle
        "tr" 'rainbow-mode
        "h" 'display-local-help
+       "+" 'tahti-highlight-word-or-selection
+       "-" 'tahti-unhighlight-word-or-selection
        "m" 'compile)
    ;use the non-prefixed <leader> in magit’s and gnus’ modes:
    (setq evil-leader/no-prefix-mode-rx '("magit-.*-mode" "gnus-.*-mode" "comp.*-mode" "grep-mode" "special-mode" "info-mode"))
