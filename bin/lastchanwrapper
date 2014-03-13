@@ -1,0 +1,12 @@
+#!/bin/sh
+# Wrapper for svn diff
+# Subversion provides the paths we need as the sixth and seventh
+# parameters.
+LEFT=${6}
+#we want the original name at least on one side - normally we could use $7
+RIGHT=$(echo $5|sed 's/ (revision [0-9]\+)//g') 
+echo $LEFT $RIGHT
+gvimdiff --nofork --cmd 'set shortmess=atO' $LEFT $RIGHT
+#exit 0
+# Return an errorcode of 0 if no differences were detected, 1 if some were.
+# Any other errorcode will be treated as fatal.
