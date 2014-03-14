@@ -84,7 +84,7 @@ set magic                       "Set magic on, for regular expressions
 set smartindent
 set smarttab                    " Add and delete spaces in increments of `shiftwidth' for tabs
 set synmaxcol=512               " Syntax coloring lines that are too long just slows down the world
-set shortmess=a                 " display short messages
+set shortmess=atO                " display short messages and trucate if they do not fit
 set vb
 set t_vb=                    "disable bell both visual and sound
 set foldopen=block,insert,jump,mark,percent,quickfix,search,tag,undo " These commands open folds

@@ -1,6 +1,7 @@
 (require 'tahti-keys)
 (push 'auctex el-get-packages)
 (push 'reftex el-get-packages)
+(push 'flymake el-get-packages)
 (push 'cdlatex-mode el-get-packages)
 
 ;(setq TeX-auto-save t) ;create auto directory for multiple documents

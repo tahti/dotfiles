@@ -1,0 +1,26 @@
+#!/bin/bash
+# git ls-files file - returns non zero if not in repository - empty if in repository but not tracked file and name of the file if file tracked
+# svn info file -  returns non zero if file not tracked or not in repository
+#  git log --oneline file - gives last hash of changes on file
+# git log --oneline <file> |awk 'NR==2{print $1}'|xargs -I {} git difftool --extcmd="vimdiff --cmd 'set shortmess=atO'" --no-prompt {} <file>
+if [ -f $1 ]; then
+  svn info $1 &>/dev/null
+  if [ $? -eq 0 ]; then
+    svn diff --diff-cmd=$HOME/bin/lastchanwrapper -r PREV:COMMITTED $1
+  #not in svn - we try git
+  else
+    git ls-files $1 --error-unmatch &>/dev/null
+    if [ $? -eq 0 ]; then
+      RES=$(git log --oneline $1 |awk 'NR==2{print $1}')
+      if [ -n "$RES" ]; then
+        git difftool --extcmd="gvimdiff --nofork --cmd 'set shortmess=atO'" --no-prompt $RES $1
+      else
+        echo "No changes detected in '$1'."
+      fi
+    else
+     echo "'$1' is NOT tracked by svn or git"
+    fi
+  fi
+else
+  echo "'$1' is not a regular file"
+fi
