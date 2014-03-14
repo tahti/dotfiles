@@ -3,6 +3,10 @@
 # svn info file -  returns non zero if file not tracked or not in repository
 #  git log --oneline file - gives last hash of changes on file
 # git log --oneline <file> |awk 'NR==2{print $1}'|xargs -I {} git difftool --extcmd="vimdiff --cmd 'set shortmess=atO'" --no-prompt {} <file>
+if [ $# -eq 0 ]; then
+  echo "Script need file name as argument"
+  exit 0
+fi
 if [ -f $1 ]; then
   svn info $1 &>/dev/null
   if [ $? -eq 0 ]; then
