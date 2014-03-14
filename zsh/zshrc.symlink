@@ -1,7 +1,19 @@
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/Private/dotfiles
 # source every .zsh file in lib
-for config_file ($ZSH/zsh/lib/*.zsh) source $config_file
+source $ZSH/zsh/lib/aliases.zsh
+source $ZSH/zsh/lib/completion.zsh
+source $ZSH/zsh/lib/functions.zsh
+source $ZSH/zsh/lib/git.zsh
+source $ZSH/zsh/lib/history.zsh
+source $ZSH/zsh/lib/prompt.zsh
+source $ZSH/zsh/lib/setopt.zsh
+source $ZSH/zsh/lib/spectrum.zsh
+source $ZSH/zsh/lib/theme-and-appearance.zsh
+source $ZSH/zsh/lib/zkbd.zsh
+source $ZSH/zsh/lib/zle.zsh
+#commented out as order matters
+#for config_file ($ZSH/zsh/lib/*.zsh) source $config_file 
 
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git)
