@@ -6,7 +6,7 @@ autoload -Uz myip
 autoload -Uz givedef
 autoload -Uz open
 autoload -Uz path
-autoload -Uz up
+autoload -Uz nwf
 autoload -Uz cdup
 mcd() { mkdir -p "$1" && cd "$1"; }
 pj() { python -mjson.tool } # pretty-print JSON
