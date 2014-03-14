@@ -19,26 +19,30 @@ new_window 1pixel
 #
 
 #exec xrandr --output DVI-0 --auto --mode 1920x1200 --right-of DVI-1
-exec sleep 1;xset b off
-exec sleep 2;xset r rate 250 80
 exec setxkbmap -layout "pl,pl" -variant "dvp," -option "caps:swapescape,grp:sclk_toggle"
-# Start i3bar to display a workspace bar 
+# Start i3bar to display a workspace bar \
 bar {
     #mode hide
-    font 		-*-terminus-*-r-normal-*-12-*-*-72-c-60-*-*
+    status_command $HOME/.i3/conky_wrapper conkyrc_i3bar
+    id bar-1
+    #font pango:DejaVu Sans Mono, Ionicons, FontAwesome 8
+    font pango:DejaVu Sans Mono, Icons, FontAwesome 9
     workspace_buttons   yes
     position  	        top	
 }
+
 exec fbxkb
 exec gnome-keyring
 exec conky -c /home/piotr/.i3/conkyrc_i3|/home/piotr/bin/dzen2 -bg black -fg white -fn Terminus-9 -w 450 -x 159 -y 0 -ta l
 exec conky -c /home/piotr/.i3/conky_i3help
 exec conky -c /home/piotr/.i3/conkytodo_plain
 exec numlockx on
-exec sleep 2&&kupfer --no-splash
+#exec sleep 2&&kupfer --no-splash
 #exec xhost +
 exec --no-startup-id kmix --keepvisibility
 exec xset b off
+exec xset r rate 250 80
+exec --no-startup-id wicd-client -t #showing network switcher
 #exec pidgin
 exec --no-startup-id eval $(cat ~/.fehbg) #setting up background
 #exec conky -c .i3/conkyrc_i3|dzen2 -bg black -fg white -fn Terminus-9 -w 450 -x 9 -y 0 -ta l
@@ -152,6 +156,7 @@ bindcode $myModC+$wC exec --no-startup-id i3-msg 'exec /usr/bin/sensible-browser
 
 # start dmenu (a program launcher)
 #bindcode $myModC+$dC exec ~/bin/ogimenu.sh
+bindcode $myModC+$dC exec $HOME/bin/j4-dmenu-desktop 
 
 #internal i3 commands
 bind $myModC+$iC exec ~/bin/dmenu_i3.sh
