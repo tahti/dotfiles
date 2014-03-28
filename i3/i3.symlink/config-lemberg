@@ -145,7 +145,7 @@ bindcode $myModC+Shift+$colonC kill
 #bindsym $myModC+Return exec mrxvt-full
 bindsym $myModC+Return exec /home/piotr/bin/vt 
 #launch new terminal with current directory
-bindsym $myModC+Shift+Return exec /home/piotr/bin/urxvt-cwd 
+bindsym $myModC+Shift+Return exec /home/piotr/bin/vt -cd "`xcwd`"
 #run j4-dmenu-desktop
 bindcode $myModC+$dC exec /home/piotr/bin/j4-dmenu-desktop --dmenu="dmenu -i"
 # quit 

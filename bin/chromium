@@ -1,2 +1,0 @@
-#!/bin/sh
-/usr/bin/chromium --enable-easy-off-store-extension-install
