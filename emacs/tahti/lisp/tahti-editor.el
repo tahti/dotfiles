@@ -75,8 +75,10 @@
   )
 )
 ;;; w3m ==============================================
-(setq browse-url-browser-function 'w3m-browse-url)
-(autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
+(setq browse-url-browser-function 'browse-url-firefox
+            browse-url-new-window-flag t
+            browse-url-firefox-new-window-is-tab t)
+;(autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
  ;; optional keyboard short-cut
 ;;;expand selection region ==========================
 (push 'expand-region el-get-packages)
