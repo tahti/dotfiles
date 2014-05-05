@@ -17,6 +17,9 @@ open() {
           *.exe)
             wine $1
             ;;
+          *.ppt)
+            libreoffice $1
+            ;;
           *.xlsx)
             libreoffice $1 2>/dev/null &!
             ;;
