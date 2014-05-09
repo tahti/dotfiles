@@ -1,6 +1,11 @@
 (push 'eclim el-get-packages)
 (push 'javacc-mode el-get-packages)
 (defun tahti-java-mode-init ()
+  (custom-set-variables
+    ;;
+    '(eclim-eclipse-dirs '("/opt/eclipse"))
+    '(eclim-executable "/opt/eclipse/eclim")
+  )
   (require 'eclim)
   (require 'eclimd)
   (require 'javacc-mode)
