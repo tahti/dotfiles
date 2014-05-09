@@ -20,6 +20,9 @@ open() {
           *.ppt)
             libreoffice $1
             ;;
+          *.svg)
+            eog $1
+            ;;
           *.xlsx)
             libreoffice $1 2>/dev/null &!
             ;;
