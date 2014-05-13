@@ -8,15 +8,14 @@
   )
   (setq c-basic-offset 2;;set the indentation to 2 spaces
     tab-width 2
-    indent-tabs-mode f)
+    indent-tabs-mode nil)
   (require 'eclim)
   (require 'eclimd)
-  (require 'javacc-mode)
   (setq eclim-auto-save t) ;; autosave is very important
   (eclim-mode 1)
   (if (null (get-buffer-process eclimd-process-buffer));eclimd not running
     (start-eclimd "/home/piotr/workspace"))
-  ;(global-eclim-mode)
+  (global-eclim-mode)
 
   ;Displaying compilation error messages in the echo area 
   (setq help-at-pt-display-when-idle t)
