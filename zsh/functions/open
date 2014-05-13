@@ -23,6 +23,9 @@ open() {
           *.svg)
             eog $1
             ;;
+          *.chm)
+            kchmviewer $1
+            ;;
           *.xlsx)
             libreoffice $1 2>/dev/null &!
             ;;
