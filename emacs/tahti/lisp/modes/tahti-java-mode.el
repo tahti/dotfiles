@@ -6,10 +6,12 @@
     '(eclim-eclipse-dirs '("/opt/eclipse"))
     '(eclim-executable "/opt/eclipse/eclim")
   )
+  (setq c-basic-offset 2;;set the indentation to 2 spaces
+    tab-width 2
+    indent-tabs-mode f)
   (require 'eclim)
   (require 'eclimd)
   (require 'javacc-mode)
-  (setq c-basic-offset 2) ;;set the indentation to 2 spaces
   (setq eclim-auto-save t) ;; autosave is very important
   (eclim-mode 1)
   (if (null (get-buffer-process eclimd-process-buffer));eclimd not running
