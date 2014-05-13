@@ -19,7 +19,8 @@
   ;;Treat Java 1.5 @-style annotations as comments
   (setq c-comment-start-regexp "(@|/(/|[*][*]?))")
   (modify-syntax-entry ?@ "< b" java-mode-syntax-table)
-  (local-set-key (kbd "RET") 'newline-and-indent)) ; indent on enter
+  (local-set-key (kbd "RET") 'newline-and-indent) ; indent on enter
+)
 
 (defun tahti-problems-open ()
   "Opens a new (emacs) window inside the current frame showing the current project compilation problems"
