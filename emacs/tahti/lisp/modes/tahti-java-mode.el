@@ -11,7 +11,11 @@
   (require 'javacc-mode)
   (setq c-basic-offset 2) ;;set the indentation to 2 spaces
   (setq eclim-auto-save t) ;; autosave is very important
-  (global-eclim-mode)
+  (eclim-mode 1)
+  (if (null (get-buffer-process eclimd-process-buffer));eclimd not running
+    (start-eclimd "/home/piotr/workspace"))
+  ;(global-eclim-mode)
+
   ;Displaying compilation error messages in the echo area 
   (setq help-at-pt-display-when-idle t)
   (setq help-at-pt-timer-delay 0.2)
