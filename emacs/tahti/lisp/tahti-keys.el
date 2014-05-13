@@ -399,6 +399,7 @@
    (evil-leader/set-key
        "m"  'eclim-maven-lifecycle-phase-run
        "pg" 'eclim-project-goto
+       "pb" 'eclim-project-build
        "pm" 'eclim-manage-projects
        "ee" 'tahti-problems-open
        "ep" 'eclim-problems
