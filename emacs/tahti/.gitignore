@@ -3,3 +3,5 @@ elpa
 var
 custom.el
 secrets.el
+url
+ac-comphist.dat
