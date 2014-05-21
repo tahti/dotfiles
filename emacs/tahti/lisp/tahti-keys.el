@@ -416,7 +416,7 @@
        "cd" 'eclim-java-doc-comment
        "cq" 'eclim-java-format
        "cg" 'eclim-java-generate-getter-and-setter
-       "cc" 'eclim-problems-correct
+       "cc" 'eclim-java-constructor
        "gh" 'tahti-javadoc
        )
 )
