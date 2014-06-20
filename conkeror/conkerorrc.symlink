@@ -9,7 +9,174 @@ url_completion_use_bookmarks = true;
 
 // Tabs
 require("new-tabs.js");
+//Sessions
+require("session.js");
+//Display Favicons
+http://conkeror.org/Favicons
+// favicons hook
+add_hook("mode_line_hook", mode_line_adder(buffer_icon_widget), true);
+add_hook("mode_line_hook", mode_line_adder(loading_count_widget), true);
+add_hook("mode_line_hook", mode_line_adder(buffer_count_widget), true);
+
+
+//Favicons in the read_buffer completions list
+read_buffer_show_icons = true;
+
+//Prevent focus stealing
+require("block-content-focus-change.js");
 
 // Open Middle-Clicked Links in New Buffers
 require("clicks-in-new-buffer.js");
 clicks_in_new_buffer_target = OPEN_NEW_BUFFER_BACKGROUND; // Now buffers open in background.
+
+// Some shortcuts to often used sites
+//interactive("open-googleAU", "Go to google.com.au", "follow", $browser_object = "http://www.google.com.au/");
+//interactive("open-googleDE", "Go to google.de", "follow", $browser_object = "http://www.google.de/");
+interactive("open-calendar", "Go to calendar.google.com", "follow", $browser_object = "http://calendar.google.com/");
+
+//The following code is similar to the above, except buffer history is also restored. The command it defines is called revive-buffer. 
+define_key(content_buffer_normal_keymap, "u", "my-revive-buffer");
+define_key(content_buffer_normal_keymap, "d", "my-kill-current-buffer");
+
+var kill_buffer_original = kill_buffer_original || kill_buffer;
+var killed_buffer_urls = new Array();
+var killed_buffer_histories = new Array();
+interactive("my-kill-current-buffer",
+    "close and save the current buffer for later restore",
+    function(I) {
+        if(killed_buffer_urls.length==30){
+           killed_buffer_urls.shift(); // remove older item to save
+           killed_buffer_histories.shift();
+           // memory, just save maximum 10 buffers
+       }
+       killed_buffer_urls.push(I.buffer.document.URL);
+       var hist = I.buffer.web_navigation.sessionHistory;
+       killed_buffer_histories.push(hist);
+       kill_buffer(I.buffer); //kill the current buffer
+    });
+interactive("my-revive-buffer",
+    "Loads url from a previously killed buffer",
+    function (I) {
+        if (killed_buffer_urls.length > 0) {
+            var url=killed_buffer_urls[killed_buffer_urls.length - 1]
+           // var url = yield I.minibuffer.read(
+           //     $prompt = "Restore killed url:",
+           //     $completer = all_word_completer($completions = killed_buffer_urls),
+           //     $default_completion = killed_buffer_urls[killed_buffer_urls.length - 1],
+           //     $auto_complete = "url",
+           //     $auto_complete_initial = true,
+           //     $auto_complete_delay = 0,
+           //     $match_required);
+            var window = I.window;
+            var creator = buffer_creator(content_buffer);
+            var idx = killed_buffer_urls.indexOf(url);
+
+            // Create the buffer
+            var buf = creator(window, null);
+
+            // Recover the history
+            buf.web_navigation.sessionHistory = killed_buffer_histories[idx];
+
+            // This line may seem redundant, but it's necessary.
+            var original_index = buf.web_navigation.sessionHistory.index;
+            buf.web_navigation.gotoIndex(original_index);
+
+            // Focus the new tab
+            window.buffers.current = buf;
+
+            // Remove revived from cemitery
+            killed_buffer_urls.splice(idx, 1);
+            killed_buffer_histories.splice(idx, 1);
+        } else { I.window.minibuffer.message("No killed buffer urls");
+        }
+    });
+
+// Some keybindings
+
+define_key(content_buffer_normal_keymap, "n", "forward");
+define_key(content_buffer_normal_keymap, "h", "back");
+define_key(content_buffer_normal_keymap, "M-h", "buffer-previous");
+define_key(content_buffer_normal_keymap, "M-n", "buffer-next");
+//:This binds the key 'y' in content buffers to the 'copy' command, and will cause it to prompt for any DOM node, instead of just links: 
+define_key(content_buffer_normal_keymap, "Y", "copy",
+           $browser_object = browser_object_dom_node);
+//define_key(content_buffer_normal_keymap, "j", "follow");
+//define_key(content_buffer_normal_keymap, "J", "follow-new-buffer-background");
+//define_key(content_buffer_normal_keymap, "C-x l", "find-url");
+//define_key(content_buffer_normal_keymap, "C-x t", "find-url-new-buffer");
+//define_key(content_buffer_normal_keymap, "A", "bookmark");
+//define_key(content_buffer_normal_keymap, "B", "list-bookmarks");
+//define_key(content_buffer_normal_keymap, "f1", "open-googleAU");
+//define_key(content_buffer_normal_keymap, "f2", "open-googleDE");
+//define_key(content_buffer_normal_keymap, "f3", "open-calendar");
+//define_key(content_buffer_normal_keymap, "C-x h", "open-googleAU");
+define_key(content_buffer_normal_keymap, 'v', 'view-source');
+
+// Some webjumps
+define_webjump("dict", "http://dict.leo.org/ende?lp=ende&lang=en&searchLoc=0&cmpType=relaxed&sectHdr=on&spellToler=&search=%s");
+define_webjump("imdb", "http://imdb.com/find?q=%s");
+
+// Content handlers
+external_content_handlers.set("application/pdf", "okular");
+
+
+/*
+Implements new login-manager.
+See:
+- http://librelist.com/browser//conkeror/2013/11/28/login-manager-xulrunner-24-0/
+- https://blog.mozilla.org/dolske/2013/08/21/a-change-in-password-manager/
+
+(C) Copyright 2014 thorkill
+BSD License
+*/
+
+let Cu = Components.utils;
+Cu.import("resource://gre/modules/XPCOMUtils.jsm");
+XPCOMUtils.defineLazyModuleGetter(this,
+                                  "LoginManagerContent",
+                                  "resource://gre/modules/LoginManagerContent.jsm");
+
+define_buffer_local_hook("content_buffer_dom_form_has_password_hook");
+define_buffer_local_hook("content_buffer_dom_auto_complete_hook");
+
+// passwords
+session_pref("signon.rememberSignons", true);
+session_pref("signon.expireMasterPassword", false);
+session_pref("signon.SignonFileName", "signons.txt");
+session_pref("signon.useDOMFormHasPassword", true);
+
+Cc["@mozilla.org/login-manager;1"].getService(Ci.nsILoginManager);
+
+/* debugging prefs */
+//session_pref("browser.formfill.debug", false);
+//session_pref("browser.dom.window.dump.enabled", true);
+//session_pref("javascript.options.showInConsole", true);
+//session_pref("javascript.options.strict", true);
+//session_pref("nglayout.debug.disable_xul_cache", true);
+//session_pref("nglayout.debug.disable_xul_fastload", true);
+
+add_hook("create_buffer_hook", function (buffer) {
+
+        buffer.browser.addEventListener("DOMFormHasPassword", function(event) {
+            content_buffer_dom_form_has_password_hook.run(buffer, event);
+        }, true /* captrue */);
+
+        buffer.browser.addEventListener("DOMAutoComplete", function(event) {
+            content_buffer_dom_auto_complete_hook.run(buffer, event);
+        }, true /* captrue */);
+
+        buffer.browser.addEventListener("blur", function(event) {
+            content_buffer_dom_auto_complete_hook.run(buffer, event);
+        }, true /* captrue */);
+});
+
+add_hook("content_buffer_dom_form_has_password_hook", function(buffer, event) {
+    // Sometimes onFormPassword is undefined
+    if (LoginManagerContent.onFormPassword) {
+        LoginManagerContent.onFormPassword(event);
+    }
+});
+
+add_hook("content_buffer_dom_auto_complete_hook", function(buffer, event) {
+        LoginManagerContent.onUsernameInput(event);
+});
