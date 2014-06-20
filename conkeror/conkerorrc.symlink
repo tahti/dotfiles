@@ -34,9 +34,6 @@ clicks_in_new_buffer_target = OPEN_NEW_BUFFER_BACKGROUND; // Now buffers open in
 //interactive("open-googleDE", "Go to google.de", "follow", $browser_object = "http://www.google.de/");
 interactive("open-calendar", "Go to calendar.google.com", "follow", $browser_object = "http://calendar.google.com/");
 
-//The following code is similar to the above, except buffer history is also restored. The command it defines is called revive-buffer. 
-define_key(content_buffer_normal_keymap, "u", "my-revive-buffer");
-define_key(content_buffer_normal_keymap, "d", "my-kill-current-buffer");
 
 var kill_buffer_original = kill_buffer_original || kill_buffer;
 var killed_buffer_urls = new Array();
@@ -90,27 +87,54 @@ interactive("my-revive-buffer",
         } else { I.window.minibuffer.message("No killed buffer urls");
         }
     });
+//Variables
+minibuffer_read_url_select_initial=false //Specifies whether a URL presented in the minibuffer for editing should be selected. This affects find-alternate-url.
+hint_digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 // Some keybindings
+// Create leader map
+define_keymap("leader_keymap");
+define_key(default_base_keymap, ",", leader_keymap)
 
+//Define leader map
+define_key(default_global_keymap, ", b", "switch-to-buffer")
+
+//Unbind keys
+undefine_key(content_buffer_normal_keymap,"l");
+undefine_key(content_buffer_normal_keymap,"c");
+undefine_key(content_buffer_normal_keymap,"t");
+undefine_key(content_buffer_normal_keymap,"u");
+undefine_key(content_buffer_normal_keymap,"d");
+undefine_key(content_buffer_normal_keymap,"G");
+// Global keybindings
+define_key(default_global_keymap, "M-h", "buffer-previous");
+define_key(default_global_keymap, "M-n", "buffer-next");
+define_key(default_global_keymap, "l", "find-url-new-buffer");
+define_key(default_global_keymap, "t", "cmd_scrollLineDown");
+define_key(default_global_keymap, "c", "cmd_scrollLineUp");
+define_key(default_global_keymap, "G", "cmd_moveBottom");
+//The following code is similar to the above, except buffer history is also restored. The command it defines is called revive-buffer. 
+define_key(default_global_keymap, "u", "my-revive-buffer");
+define_key(default_global_keymap, "d", "my-kill-current-buffer");
+define_key(default_global_keymap, "o", "find-url");
+define_key(default_global_keymap, "y", "copy");
+
+//Content buffer keymap
+define_key(content_buffer_normal_keymap, "O", "find-alternate-url");
 define_key(content_buffer_normal_keymap, "n", "forward");
 define_key(content_buffer_normal_keymap, "h", "back");
-define_key(content_buffer_normal_keymap, "M-h", "buffer-previous");
-define_key(content_buffer_normal_keymap, "M-n", "buffer-next");
+define_key(content_buffer_normal_keymap, "A", "bookmark");
+define_key(content_buffer_normal_keymap, "f3", "open-calendar");
+define_key(content_buffer_normal_keymap, 'v', 'view-source');
 //:This binds the key 'y' in content buffers to the 'copy' command, and will cause it to prompt for any DOM node, instead of just links: 
-define_key(content_buffer_normal_keymap, "Y", "copy",
-           $browser_object = browser_object_dom_node);
+define_key(content_buffer_normal_keymap, "Y", "copy", $browser_object = browser_object_dom_node);
 //define_key(content_buffer_normal_keymap, "j", "follow");
 //define_key(content_buffer_normal_keymap, "J", "follow-new-buffer-background");
 //define_key(content_buffer_normal_keymap, "C-x l", "find-url");
-//define_key(content_buffer_normal_keymap, "C-x t", "find-url-new-buffer");
-//define_key(content_buffer_normal_keymap, "A", "bookmark");
 //define_key(content_buffer_normal_keymap, "B", "list-bookmarks");
 //define_key(content_buffer_normal_keymap, "f1", "open-googleAU");
 //define_key(content_buffer_normal_keymap, "f2", "open-googleDE");
-//define_key(content_buffer_normal_keymap, "f3", "open-calendar");
 //define_key(content_buffer_normal_keymap, "C-x h", "open-googleAU");
-define_key(content_buffer_normal_keymap, 'v', 'view-source');
 
 // Some webjumps
 define_webjump("dict", "http://dict.leo.org/ende?lp=ende&lang=en&searchLoc=0&cmpType=relaxed&sectHdr=on&spellToler=&search=%s");
