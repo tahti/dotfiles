@@ -8,25 +8,25 @@ open() {
           *.tex|*.txt|*.lzz|*.h|*.java|*.xml|Makefile|*.q|*.bib) 
             e $1
             ;;
-          *.pdf|*.ps|*.eps|*.dvi) 
+          *.pdf|*.ps|*.eps|*.dvi|*.PDF|*.PS|*.DVI|*.EPS) 
             okular $1 2>/dev/null &!
             ;;
           *.html|*.htm)
             iceweasel $1
             ;;
-          *.exe)
+          *.exe|*.EXE)
             wine $1
             ;;
-          *.ppt)
+          *.ppt|*.PPT)
             libreoffice $1
             ;;
-          *.svg)
+          *.svg|*.SVG)
             eog $1
             ;;
           *.chm)
             kchmviewer $1
             ;;
-          *.xlsx)
+          *.xlsx|*.ods)
             libreoffice $1 2>/dev/null &!
             ;;
 #compressed files - unpack
