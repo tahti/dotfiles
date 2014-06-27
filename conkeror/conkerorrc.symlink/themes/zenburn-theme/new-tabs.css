@@ -1,0 +1,61 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+#tab2-bar {
+    background: #000000;
+}
+
+.tab2 {
+    margin: 2px 0px 0px 2px;
+    padding: 0px;
+    height: 22px;
+    border-width: 2px;
+    border-bottom-width: 0;
+    border-style: solid;
+    -moz-border-radius: 3px 3px 0 0;
+    -moz-border-left-colors: #AEAE5F #888;
+    -moz-border-right-colors: #000 #171717;
+    -moz-border-top-colors: #AEAE5F #888;
+    background: #111111;
+    color: #E0CF9F;
+    min-width: 40px;
+    max-width: 40px;
+    overflow: hidden; /* Chops end of label */
+}
+
+.tab2[selected=true] {
+    /*-moz-border-left-colors: #AEAE5F #AEAE5F;*/
+    /*-moz-border-right-colors: #AEAE5F #AEAE5F;*/
+    /*-moz-border-top-colors: #000 #000;*/
+    background: #AEAE5F;
+    color: black;
+}
+
+.tab2:hover {
+    -moz-border-left-colors: #eee #bbb;
+    -moz-border-right-colors: #333 #666;
+    -moz-border-top-colors: #eee #bbb;
+    background: #999;
+}
+
+.tab2-label {
+    margin-left: 4px;
+    padding-top: 1px;
+    color: #DCDCCC;
+    font-family: Menlo, Monaco, "DejaVu Sans Mono", "Lucida Console", monospace;
+    font-size: 10px;
+}
+
+.tab2-icon {
+    margin: 1PX !important;
+    padding: 0px;
+    min-width: 0px;
+    width: 16px;
+    height: 16px;
+    max-height: 16px;
+    -moz-border-radius: 0px;
+    /*background: black;*/
+    color: white;
+    font-family: Menlo, Monaco, "DejaVu Sans Mono", "Lucida Console", monospace;
+    font-size: 10px;
+    text-align: center;
+}

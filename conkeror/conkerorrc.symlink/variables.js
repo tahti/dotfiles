@@ -3,6 +3,11 @@
 //*****************************
 // Tabs
 require("new-tabs.js");
+tab_bar_button_close=1; //"The mouse button that closes tabs." + "0 = left, 1 = middle, 2 = right, null = disabled.");
+tab_bar_show_icon=true;// "Whether or not to show buffer icons in tabs.");
+
+require("favicon.js");
+
 //Sessions
 require("session.js");
 // auto completion in the minibuffer
