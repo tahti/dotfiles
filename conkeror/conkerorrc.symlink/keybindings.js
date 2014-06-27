@@ -32,6 +32,7 @@ define_key(default_global_keymap, "y", "copy");
 //*****************************
 // Content_buffer_map
 //*****************************
+//
 define_key(content_buffer_normal_keymap, "O", "find-alternate-url");
 define_key(content_buffer_normal_keymap, "n", "forward");
 define_key(content_buffer_normal_keymap, "h", "back");
@@ -39,6 +40,12 @@ define_key(content_buffer_normal_keymap, "A", "bookmark");
 define_key(content_buffer_normal_keymap, "f3", "open-calendar");
 define_key(content_buffer_normal_keymap, 'v', 'view-source');
 define_key(content_buffer_normal_keymap, '/', 'isearch-forward');
+define_key(content_buffer_normal_keymap, 'g', 'scroll-top-left');
+define_key(content_buffer_normal_keymap, 'C-n', 'cmd_scrollPageDown');
+define_key(content_buffer_normal_keymap, 'C-h', 'cmd_scrollPageUp');
+define_key(default_base_keymap, "C-b", default_help_keymap);
+define_key(sequence_help_keymap, "C-b", "describe-active-bindings");
+
 //:This binds the key 'y' in content buffers to the 'copy' command, and will cause it to prompt for any DOM node, instead of just links: 
 define_key(content_buffer_normal_keymap, "Y", "copy", $browser_object = browser_object_dom_node);
 //define_key(content_buffer_normal_keymap, "j", "follow");
