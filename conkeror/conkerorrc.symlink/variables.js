@@ -10,6 +10,7 @@ require("favicon.js");
 
 //Sessions
 require("session.js");
+session_auto_save_auto_load = true
 // auto completion in the minibuffer
 minibuffer_auto_complete_default = true;
 //Prevent focus stealing
