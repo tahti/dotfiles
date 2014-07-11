@@ -288,7 +288,10 @@ nmap <C-c> <Plug>(operator-html-unescape)
 vmap <C-c> <Plug>(operator-html-unescape)
 "noremap ; :
 "noremap : ;
-
+"increase number by +
+noremap + <C-a>  
+"decrease number by -
+noremap - <C-x>
 "allow to use w!! to write to a file with sudo, in case forgotten
 "http://stackoverflow.com/questions/95072/what-are-your-favorite-vim-tricks/96492#96492
 cmap w!! %!sudo tee > /dev/null %

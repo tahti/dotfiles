@@ -2545,10 +2545,10 @@ augroup END
 
 " If the GUI is already running, may still need to install the Syntax menu.
 " Don't do it when the 'M' flag is included in 'guioptions'.
-if has("menu") && has("gui_running")
-      \ && !exists("did_install_syntax_menu") && &guioptions !~# "M"
-  source <sfile>:p:h/menu.vim
-endif
+"if has("menu") && has("gui_running")
+      "\ && !exists("did_install_syntax_menu") && &guioptions !~# "M"
+  "source <sfile>:p:h/menu.vim
+"endif
 
 " Function called for testing all functions defined here.  These are
 " script-local, thus need to be executed here.
