@@ -39,3 +39,6 @@ clicks_in_new_buffer_target = OPEN_NEW_BUFFER_BACKGROUND; // Now buffers open in
 hint_digits="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 minibuffer_read_url_select_initial=false //Specifies whether a URL presented in the minibuffer for editing should be selected. This affects find-alternate-url.
 
+// cwd (set default download directory)
+cwd=get_home_directory(); 
+cwd.append("downloads");
