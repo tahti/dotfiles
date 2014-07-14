@@ -184,7 +184,7 @@ Mimicks Python's `range'"
   (interactive)
   (let ((filename (if (equal major-mode 'dired-mode)
                       default-directory
-                    (file-name-base buffer-file-name))))
+                    (file-name-nondirectory buffer-file-name))))
     (when filename
       (kill-new filename)
       (message "Copied buffer file name '%s' to the clipboard." filename))))
