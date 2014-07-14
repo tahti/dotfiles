@@ -12,7 +12,8 @@ open() {
             okular $1 2>/dev/null &!
             ;;
           *.html|*.htm)
-            iceweasel $1
+#we need absolute file for conkeror
+            conkeror `readlink -f $1`
             ;;
           *.exe|*.EXE)
             wine $1
