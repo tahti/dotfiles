@@ -162,6 +162,8 @@
        "FF" 'tahti/file-alternate
        "Ff" 'tahti/file-alternate
        "fr" 'rename-file-and-buffer
+       "yf" 'copy-file-name-to-clipboard
+       "ys" 'copy-short-file-name-to-clipboard
        "." 'evil-ex
        "/" 'moccur
        "o" 'tahti-find-at-alias
@@ -416,7 +418,7 @@
        "cd" 'eclim-java-doc-comment
        "cq" 'eclim-java-format
        "cg" 'eclim-java-generate-getter-and-setter
-       "cc" 'eclim-java-constructor
+       ;"cc" 'eclim-java-constructor
        "gh" 'tahti-javadoc
        )
 )
