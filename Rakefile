@@ -59,6 +59,23 @@ task :install do
   if !File.exists?("#{ENV["HOME"]}/.fonts")
   `fc-cache -fv`
   end
+#move default directories
+ run=%x(xdg-user-dirs-update --set DOWNLOADS ~/downloads)
+ rename("#{ENV["HOME"]}/Downloads","#{ENV["HOME"]}/downloads")
+ run=%x(xdg-user-dirs-update --set DESKTOP ~/data/desktop)
+ rename("#{ENV["HOME"]}/Desktop","#{ENV["HOME"]}/data/desktop")
+ run=%x(xdg-user-dirs-update --set TEMPLATES ~/data/templates)
+ rename("#{ENV["HOME"]}/Templates","#{ENV["HOME"]}/data/templates")
+ run=%x(xdg-user-dirs-update --set PUBLICSHARE ~/data/public)
+ rename("#{ENV["HOME"]}/Public","#{ENV["HOME"]}/data/public")
+ run=%x(xdg-user-dirs-update --set DOCUMENTS ~/data/doci)
+ rename("#{ENV["HOME"]}/Documents","#{ENV["HOME"]}/data/doci")
+ run=%x(xdg-user-dirs-update --set MUSIC ~/data/muza)
+ rename("#{ENV["HOME"]}/Music","#{ENV["HOME"]}/data/muza")
+ run=%x(xdg-user-dirs-update --set PICTURES ~/data/pics)
+ rename("#{ENV["HOME"]}/Pictures","#{ENV["HOME"]}/data/pics")
+ run=%x(xdg-user-dirs-update --set VIDEO ~/data/vids)
+ rename("#{ENV["HOME"]}/Videos","#{ENV["HOME"]}/data/vids")
 end
 
 task :uninstall do
@@ -82,6 +99,19 @@ task :uninstall do
 end
 
 task :default => 'install'
+
+def rename(from,to)
+  if !File.exists?to
+    if File.exists?from
+      `mv "#{from}" "#{to}"`
+    else
+      `mkdir "#{to}"`
+    end
+  end
+  if File.exists?from
+    FileUtils.rmdir from, :verbose => true
+  end
+end
 
 def move_dir_to_private (file)
   target = "#{ENV["HOME"]}/.#{file}"
