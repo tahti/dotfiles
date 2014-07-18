@@ -104,8 +104,8 @@ port = 993
 com="wget -q -O - https://"+GMAIL_LOGIN+":"+GMAIL_PASS+"@mail.google.com/mail/feed/atom --no-check-certificate"
 #com=["wget","-q","-O","-","https://"+GMAIL_LOGIN+":"+GMAIL_PASS+"@mail.google.com/mail/feed/atom --no-check-certificate"]
 my_env = os.environ.copy()
-my_env["http_proxy"] = "localhost:8123"
-my_env["https_proxy"] = "localhost:8123"
+#my_env["http_proxy"] = "localhost:8123"
+#my_env["https_proxy"] = "localhost:8123"
 #t=subprocess.Popen("echo $http_proxy",shell=True,env=my_env,stdout=subprocess.PIPE)
 #print t.stdout.read()
 temp=subprocess.Popen(com, shell=True,env=my_env,stdout=subprocess.PIPE)
