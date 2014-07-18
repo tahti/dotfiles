@@ -18,7 +18,7 @@ open() {
           *.exe|*.EXE)
             wine $1
             ;;
-          *.ppt|*.PPT)
+          *.ppt|*.ODT|*.odt|*.PPT)
             libreoffice $1
             ;;
           *.svg|*.SVG)
