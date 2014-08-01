@@ -27,6 +27,11 @@
 (push 'help-fns+ el-get-packages)
 (push 'help+ el-get-packages)
 (push 'color-moccur el-get-packages)
+;;;flycheck instead of flymake=======================
+(push 'flycheck el-get-packages)
+  ;(require 'flycheck)
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
 (defun tahti-after-help+ ()
   (require 'info+)
   (require 'help-mode+)

@@ -152,6 +152,12 @@
        "b" 'tahti/buffer
        "s" 'sunrise-cd
        "B" 'tahti/buffer-alternate
+       "a=" 'underline-with-char-equal
+       "a-" 'underline-with-char-minus
+       "a~" 'underline-with-char-tilde
+       "a^" 'underline-with-char-up
+       "a+" 'underline-with-char-plus
+       "at" 'adoc-toggle-title-type
        "fo" 'helm-for-files       ;open file
        "fi" 'helm-insert-file
        "fw" 'helm-write-file      ;save as dialog

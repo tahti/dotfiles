@@ -1,7 +1,6 @@
 (require 'tahti-keys)
 (push 'auctex el-get-packages)
 (push 'reftex el-get-packages)
-(push 'flymake el-get-packages)
 (push 'cdlatex-mode el-get-packages)
 
 ;(setq TeX-auto-save t) ;create auto directory for multiple documents
@@ -66,19 +65,19 @@
 ;; flymake-mode for tex uses texify by default, which only works in Windows (miktex)
 
 ;; Borrowed from https://github.com/MassimoLauria/dotemacs/blob/master/init-latex.el
-(defun init-latex--flymake-setup ()
-  "Setup flymake for latex using one of the checker available on the system.
-It either tries \"lacheck\" or \"chktex\"."
-  (interactive)
-  (cond ((executable-find "lacheck")
-         (defun flymake-get-tex-args (file-name)
-           (list "lacheck" (list file-name))))
-        ((executable-find "chktex")
-         (defun flymake-get-tex-args (file-name)
-           (list "chktex" (list "-q" "-v0" file-name))))
-        (t nil)))
+;(defun init-latex--flymake-setup ()
+  ;"Setup flymake for latex using one of the checker available on the system.
+;It either tries \"lacheck\" or \"chktex\"."
+  ;(interactive)
+  ;(cond ((executable-find "lacheck")
+         ;(defun flymake-get-tex-args (file-name)
+           ;(list "lacheck" (list file-name))))
+        ;((executable-find "chktex")
+         ;(defun flymake-get-tex-args (file-name)
+           ;(list "chktex" (list "-q" "-v0" file-name))))
+        ;(t nil)))
 
-(eval-after-load "flymake" '(init-latex--flymake-setup))
+;(eval-after-load "flymake" '(init-latex--flymake-setup))
 
 
 ;; Initialisation
@@ -93,7 +92,6 @@ It either tries \"lacheck\" or \"chktex\"."
   (TeX-source-specials-mode 1)
   (setq TeX-master (guess-TeX-master (buffer-file-name)))
   (add-to-list 'TeX-expand-list '("%u" okular-make-url))
-  (flymake-mode 1)
   (ispell-change-dictionary "british")
   (tahti-latex-keys)
 )

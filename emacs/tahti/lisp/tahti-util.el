@@ -189,5 +189,36 @@ Mimicks Python's `range'"
       (kill-new filename)
       (message "Copied buffer file name '%s' to the clipboard." filename))))
 
+(defun underline-with-char (char)
+  (interactive (list (read-from-minibuffer "Char: ")))
+  (when (= 0 (length char))
+    (error "Need a character"))
+  (setq char (aref char 0))             ; Ignore everything but the first char.
+  (save-excursion
+    (goto-char (point-at-eol))
+    (insert "\n" (make-string (- (point-at-eol)
+                            (point-at-bol))
+                         char))))
+(defun underline-with-char-equal ()
+  (interactive)
+   (underline-with-char "="))
+
+(defun underline-with-char-minus ()
+  (interactive)
+   (underline-with-char "-"))
+
+(defun underline-with-char-tilde ()
+  (interactive)
+   (underline-with-char "~"))
+
+(defun underline-with-char-up ()
+  (interactive)
+   (underline-with-char "^"))
+
+(defun underline-with-char-plus ()
+  (interactive)
+   (underline-with-char "+"))
+
+
 (provide 'tahti-util)
 
