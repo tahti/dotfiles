@@ -11,6 +11,5 @@
 
 (add-hook 'protobuf-mode-hook 'tahti-protobuf-mode-init)
 (add-to-list 'auto-mode-alist '("\\.proto\\'" . protobuf-mode))
-
 (provide 'tahti-proto-mode)
 
