@@ -48,6 +48,12 @@
            :url "https://github.com/milkypostman/powerline.git"
            :features "powerline"
     )    ;;uncomment if you want to add as submodule in vendor directory
+    (:name evil-matchit
+                     :description "Vim matchit ported into Emacs"
+                     :website "https://github.com/redguardtoo/evil-matchit"
+                     :type github
+                     :pkgname "redguardtoo/evil-matchit"
+                     :depends (evil))
     ;(:name helm
            ;:website "https://github.com/emacs-helm/helm"
            ;:description "Emacs incremental completion and selection narrowing framework"

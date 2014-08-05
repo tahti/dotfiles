@@ -24,6 +24,7 @@
 (push 'evil-leader el-get-packages)
 (push 'evil-numbers el-get-packages)
 (push 'evil-surround el-get-packages)
+(push 'evil-matchit el-get-packages)
 (push 'evil el-get-packages)
 (push 'undo-tree el-get-packages)
 
@@ -71,6 +72,8 @@
   (evil-remove-command-properties 'evil-repeat-find-reverse :jump)
   (evil-remove-command-properties 'evil-forward-sentence :jump)
   (evil-remove-command-properties 'evil-backward-sentence :jump)
+  (require 'evil-matchit)
+  (global-evil-matchit-mode 1)
 
   ;(require 'undo-tree)
   (global-undo-tree-mode 1)
