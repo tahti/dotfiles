@@ -54,6 +54,12 @@
                      :type github
                      :pkgname "redguardtoo/evil-matchit"
                      :depends (evil))
+    (:name andersl-cmake-font-lock
+                     :description "Syntax coloring support for CMake"
+                     :website "https://github.com/Lindydancer/cmake-font-lock"
+                     :type github
+                     :pkgname "Lindydancer/cmake-font-lock" 
+                     :depends (cmake-mode))
     ;(:name helm
            ;:website "https://github.com/emacs-helm/helm"
            ;:description "Emacs incremental completion and selection narrowing framework"
