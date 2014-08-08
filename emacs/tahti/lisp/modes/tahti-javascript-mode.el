@@ -1,6 +1,4 @@
 (push 'js3-mode el-get-packages)
-(push 'json-mode el-get-packages)
-(require 'json-mode)
 
 
 
