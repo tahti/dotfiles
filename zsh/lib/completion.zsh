@@ -55,8 +55,8 @@ zstyle ':completion:*' group-name ''
 #path-directories - any directories found by searching the $cdpath array
 #local-directories - subdirectories of the current working directory
 #directory-stack - entries such as `+1'; the directory stack is the set of directories defined by using the pushd command, which you can see by using the dirs command. 
-zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-directories
-cdpath=(~)
+zstyle ':completion:*:cd:*' tag-order local-directories path-directories
+cdpath=(.)
 zstyle ':completion:*:-tilde-:*' group-order 'named-directories' 'path-directories' 'expand'#
 # use /etc/hosts and known_hosts for hostname completion
 [ -r /etc/ssh/ssh_known_hosts ] && _global_ssh_hosts=(${${${${(f)"$(</etc/ssh/ssh_known_hosts)"}:#[\|]*}%%\ *}%%,*}) || _ssh_hosts=()
