@@ -119,6 +119,7 @@ source ~/.vim/misc/spell-mistakes.vim    "Add correction for spelling mistakes
 source ~/.vim/misc/template-keywords.vim "Add keywords to templates
 source ~/.vim/misc/statusLine.vim        " Set the status line the way i like it
 source ~/.vim/misc/mappings.vim          "Add keybindings
+source ~/.vim/misc/filetype.vim          "Add filetypes
 
 " Use pathogen to easily modify the runtime path to include all
 " plugins under the ~/.vim/bundle directory
@@ -265,11 +266,6 @@ if has("autocmd")
   set cinoptions=:0,g0,(0,Ws,l1
   set shiftwidth=2
 
-  " LLVM Makefiles can have names such as Makefile.rules or
-  " TEST.nightly.Makefile, so it's important to categorize them as such.
-  augroup filetype
-    au! BufRead,BufNewFile *Makefile* set filetype=make
-  augroup END
 
   " In Makefiles, don't expand tabs to spaces, since we need the actual tabs
   autocmd FileType make set noexpandtab
