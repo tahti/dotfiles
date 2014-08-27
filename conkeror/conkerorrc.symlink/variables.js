@@ -1,6 +1,7 @@
 //*****************************
 // Modules
 //*****************************
+
 // Tabs
 require("new-tabs.js");
 tab_bar_button_close=1; //"The mouse button that closes tabs." + "0 = left, 1 = middle, 2 = right, null = disabled.");
@@ -42,3 +43,31 @@ minibuffer_read_url_select_initial=false //Specifies whether a URL presented in 
 // cwd (set default download directory)
 cwd=get_home_directory(); 
 cwd.append("downloads");
+// turn off all modes
+page_mode_deactivate(cebook)
+page_mode_deactivate(gmane)
+page_mode_deactivate(google-maps)
+page_mode_deactivate(google-voice)
+page_mode_deactivate(reddit)
+page_mode_deactivate(wikipedia)
+page_mode_deactivate(eedly)
+page_mode_deactivate(google-calendar)
+page_mode_deactivate(google-reader)
+page_mode_deactivate(grooveshark)
+page_mode_deactivate(smbc)
+page_mode_deactivate(xkcd)
+page_mode_deactivate(dailymotion)
+page_mode_deactivate(github)
+page_mode_deactivate(google-gqueues)
+page_mode_deactivate(google-search-results)
+page_mode_deactivate(key-kill)
+page_mode_deactivate(stackexchange)
+page_mode_deactivate(youtube-player)
+page_mode_deactivate(duckduckgo)
+page_mode_deactivate(gmail)
+page_mode_deactivate(google-images)
+page_mode_deactivate(google-video)
+page_mode_deactivate(newsblur)
+page_mode_deactivate(twitter)
+page_mode_deactivate(youtube)
+

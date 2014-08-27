@@ -1,8 +1,6 @@
 #!/bin/sh
-cd ~/temp
 apt-get source okular
-cd okular*
-patch ui/pageview.cpp ~/bin/customPackages/okular.patch
-dpkg-source --commit . custom
+patch -p0 <~/bin/customPackages/okularDebianDir.patch
+cd okular*/
+quilt import -P fix-keys.patch ~/bin/customPackages/okularDebianDir.patch
 debuild -us -uc
-cd ..

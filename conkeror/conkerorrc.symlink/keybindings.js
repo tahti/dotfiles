@@ -1,6 +1,11 @@
+//require("key-kill");
+//key_kill_mode.test.push(build_url_regexp($domain = "github"));
+//key_kill_mode.test.push(/\/\/.*slashdot\.org\//);
+
 //*****************************
 // Leadermap
 //*****************************
+//
 define_keymap("leader_keymap");
 define_key(default_base_keymap, ",", leader_keymap)
 
