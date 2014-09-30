@@ -1,0 +1,24 @@
+diff -rupN i3-wm-4.8/src/handlers.c i3-wm-4.8New/src/handlers.c
+--- i3-wm-4.8/src/handlers.c	2014-06-15 18:12:43.000000000 +0100
++++ i3-wm-4.8New/src/handlers.c	2014-09-30 13:35:48.675407487 +0100
+@@ -730,6 +730,8 @@ static void handle_client_message(xcb_cl
+             workspace_show(ws);
+             con_focus(con);
+         } else {
++            DLOG("Request to focus ignored. Setting urgent con = %p\n", con);
++            return;
+             /* If the request is from an application, only focus if the
+              * workspace is visible. Otherwise set the urgency hint. */
+             if (workspace_is_visible(ws)) {
+diff -rupN i3-wm-4.8/src/manage.c i3-wm-4.8New/src/manage.c
+--- i3-wm-4.8/src/manage.c	2014-06-15 18:12:43.000000000 +0100
++++ i3-wm-4.8New/src/manage.c	2014-09-30 13:35:48.671407487 +0100
+@@ -349,7 +349,7 @@ void manage_window(xcb_window_t window,
+ 
+             if (workspace_is_visible(ws) && current_output == target_output) {
+                 if (!match || !match->restart_mode) {
+-                    set_focus = true;
++                      set_focus = false;
+                 } else
+                     DLOG("not focusing, matched with restart_mode == true\n");
+             } else
