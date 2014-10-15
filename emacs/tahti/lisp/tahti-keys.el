@@ -314,10 +314,12 @@
 
 (defun tahti-helm-keys ()
     (fill-keymap helm-map
-       "C-f"      'helm-execute-persistent-action
-       "C-b"      'helm-find-files-down-one-level
+       ;"C-f"      'helm-execute-persistent-action
+       ;"C-b"      'helm-find-files-down-one-level
        "C-S-n"    'helm-next-source
        "C-S-h"    'helm-previous-source
+       "C-f"      'helm-next-page
+       "C-b  "    'helm-previous-page
        "C-d"      'delete-backward-char
        "C-S-d"    'delete-forward-char
        "<left>"   'backward-char

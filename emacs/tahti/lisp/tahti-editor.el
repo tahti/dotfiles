@@ -122,9 +122,9 @@
   (when (fboundp 'pretty-control-l-mode)
     (pretty-control-l-mode 1))
   (defun tahti-after-pretty-mode ()
-    (dolist (mode '(python-mode c-mode java-mode cpp-mode))
-            (pretty-add-keywords mode '(("="  . "←")
-                                        ("==" . "≡"))))
+    ;(dolist (mode '(python-mode c-mode java-mode cpp-mode))
+            ;(pretty-add-keywords mode '(("="  . "←")
+                                        ;("==" . "≡"))))
   (global-pretty-mode 1)
 )
 ;;; ==================================================
