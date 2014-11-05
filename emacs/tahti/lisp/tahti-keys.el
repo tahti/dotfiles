@@ -228,6 +228,77 @@
     ;(call-interactively 'predictive-latex-jump-to-matching-delimiter)
     ;))
 
+;(define-key map (kbd "j") 'next-line)
+    ;(define-key map (kbd "k") 'previous-line)
+    ;(define-key map (kbd "h") 'backward-char)
+    ;(define-key map (kbd "l") 'forward-char)
+    ;(define-key map (kbd "e") 'scroll-down)
+    ;(define-key map (kbd "SPC") 'scroll-up)
+    ;(define-key map (kbd "J") 'irfc-scroll-up-one-line)
+    ;(define-key map (kbd "K") 'irfc-scroll-down-one-line)
+    ;(define-key map (kbd ",") 'end-of-buffer)
+    ;(define-key map (kbd ".") 'beginning-of-buffer)
+    ;(define-key map (kbd "T") 'irfc-render-toggle)
+    ;(define-key map (kbd "q") 'irfc-quit)
+    ;(define-key map (kbd "o") 'irfc-follow)
+    ;(define-key map (kbd "v") 'irfc-visit)
+    ;(derine-key map (kbd "r") 'irfc-reference-goto)
+    ;(define-key map (kbd "f") 'irfc-head-goto)
+    ;(define-key map (kbd "F") 'irfc-head-number-goto)
+    ;(define-key map (kbd "g") 'irfc-page-goto)
+    ;(define-key map (kbd "N") 'irfc-page-next)
+    ;(define-key map (kbd "P") 'irfc-page-prev)
+    ;(define-key map (kbd ">") 'irfc-page-last)
+    ;(define-key map (kbd "<") 'irfc-page-first)
+    ;(define-key map (kbd "b") 'irfc-page-table)
+    ;(define-key map (kbd "H") 'irfc-head-next)
+    ;(define-key map (kbd "L") 'irfc-head-prev)
+    ;(define-key map (kbd "G") 'irfc-table-jump)
+    ;(define-key map (kbd "<tab>") 'irfc-rfc-link-next)
+    ;(define-key map (kbd "<backtab>") 'irfc-rfc-link-prev)
+
+(defun tahti-irfc-keys()
+  (fill-keymap irfc-mode-map
+         "j" nil 
+         "k" nil
+         "h" nil
+         "l" nil
+         "e" nil
+         "SPC" nil
+         "J" nil
+         "K" nil
+         "," nil
+         "." nil
+         "R" 'irfc-render-toggle
+         "T" 'irfc-head-next
+         "C" 'irfc-head-prev
+         "p" 'irfc-page-goto
+         "q" nil
+         "o" 'irfc-follow
+         "v" nil
+         "r" 'irfc-reference-goto
+         "f" nil
+         "F" nil
+         "g" nil
+         "P" nil
+         ">" nil
+         "<" nil
+         "b" 'irfc-page-table
+         "L" nil
+         "G" nil
+         "C-b" 'irfc-page-prev
+         "C-f" 'irfc-page-next
+         "N" nil
+         "H" nil
+   )
+
+   (evil-leader/set-key
+       "SPC" 'irfc-table-jump
+       "e" 'read-only-mode
+   )
+
+)
+
 (defun tahti-latex-keys()
    (evil-leader/set-key
        "ie" 'LaTeX-environment

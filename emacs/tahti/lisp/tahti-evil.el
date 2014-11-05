@@ -1,3 +1,17 @@
+(custom-set-variables '(evil-overriding-maps
+  '((Buffer-menu-mode-map . nil)
+    (color-theme-mode-map . nil)
+    (comint-mode-map . nil)
+    (compilation-mode-map . nil)
+    (grep-mode-map . nil)
+    (dictionary-mode-map . nil)
+    (ert-results-mode-map . motion)
+    (irfc-mode-map . nil)
+    (Info-mode-map . motion)
+    (speedbar-key-map . nil)
+    (speedbar-file-key-map . nil)
+    (speedbar-buffers-key-map . nil))))
+
 (custom-set-variables
    '(evil-shift-width 2)  ;set shift-width
    ;If t (the default), then repeating a command with . may change the position of the cursor. If nil, then the original position is preserved.
