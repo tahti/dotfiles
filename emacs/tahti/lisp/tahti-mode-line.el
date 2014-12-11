@@ -18,10 +18,16 @@
   (setq-default mode-line-format
   '("%e"
     (:eval
-     (let* ((active (eq powerline-selected-window (selected-window)))
+     (let* ((active (powerline-selected-window-active))
             (mode-line (if active 'mode-line 'mode-line-inactive))
             (face1 (if active 'powerline-active1 'powerline-inactive1))
             (face2 (if active 'powerline-active2 'powerline-inactive2))
+            (separator-left (intern (format "powerline-%s-%s"
+                                             powerline-default-separator
+                                            (car powerline-default-separator-dir))))
+            (separator-right (intern (format "powerline-%s-%s"
+                                              powerline-default-separator
+                                              (cdr powerline-default-separator-dir))))
             (major (if active 'tahti/major-active 'powerline-inactive1))
             (lhs (list
                   (powerline-buffer-size nil 'l)
@@ -33,14 +39,15 @@
                      "%*")
 
                   (powerline-raw " ")
-                  (powerline-arrow-left nil face1)
+                  (funcall separator-left mode-line face1)
 
-                  (powerline-major-mode major 'l)
-                  (powerline-minor-modes face1 'l)
-                  (powerline-raw mode-line-process face1 'l)
+                  (powerline-raw "%4l" face1 'r)
+                  (powerline-raw ":" face1)
+                  (powerline-raw "%3c" face1 'r)
 
-                  (powerline-narrow face1 'l)
+                  evil-mode-line-tag
                   (powerline-raw " " face1)
+
 
                   (powerline-arrow-left face1 face2)
 
@@ -51,10 +58,12 @@
 
                   (powerline-arrow-right face2 face1)
 
-                  (powerline-raw "%4l" face1 'r)
-                  (powerline-raw ":" face1)
-                  (powerline-raw "%3c" face1 'r)
-                  evil-mode-line-tag
+                  (powerline-major-mode major 'l)
+                  (powerline-minor-modes face1 'l)
+                  (powerline-raw mode-line-process face1 'l)
+
+                  (powerline-narrow face1 'l)
+                  (powerline-raw " " face1)
 
                   (powerline-arrow-right face1 nil)
                   (powerline-raw " ")
@@ -72,6 +81,7 @@
                                (when (not (minibuffer-selected-window))
                                  (setq powerline-selected-window (selected-window)))))
   (not-center-theme)
+  ;(powerline-center-evil-theme)
   ;(powerline-default-theme)
   ;(powerline-center-theme)
   ;(powerline-nano-theme)
