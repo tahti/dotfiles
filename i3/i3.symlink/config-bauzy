@@ -32,7 +32,8 @@ bar {
     #font pango:DejaVu Sans Mono, Ionicons, FontAwesome 8
     font pango:DejaVu Sans Mono, Icons, FontAwesome 9
     workspace_buttons   yes
-    position  	        top	
+    position            top
+    strip_workspace_numbers yes
 }
 exec xset b off #turning off the bell
 #exec pidgin
@@ -209,7 +210,7 @@ bindcode $myModC+Shift+$nC move right
 # alternatively, you can use the cursor keys:
 bindcode $myModC+Shift+$leftC move left
 bindcode $myModC+Shift+$downC move down
-bindcode $myModC+Shift+$upC move up	
+bindcode $myModC+Shift+$upC move up  
 bindcode $myModC+Shift+$rightC move right
 
 # Change focus to next parent
@@ -255,63 +256,69 @@ bindcode $myModC+$bC border toggle
 #use M+tab to swich workspaces
 bindcode $myModC+$tabC workspace next
 bindcode $myModC+Shift+$tabC workspace prev
-workspace 1 output  DP-5
-workspace 3 output  DP-5
-workspace 5 output  DP-5
-workspace 7 output  DP-5
-workspace 9 output  DP-5
-workspace 11 output DP-5
-workspace 13 output DP-5
-workspace 2 output  DP-4
-workspace 4 output  DP-4
-workspace 6 output  DP-4
-workspace 8 output  DP-4
-workspace 10 output DP-4
-workspace 12 output DP-4
+# assign workspaces to screens
+# $  &  7 5 3 1 9 0 2 4  6  8  #
+# 13 11 7 5 3 1 9 0 2 4  6  8  10
+# 1  2  3 4 5 6 7 8 9 10 11 12 13
+workspace 1:$  output DP-5 
+workspace 2:&  output DP-5 
+workspace 3:7  output DP-5 
+workspace 4:5  output DP-5 
+workspace 5:3  output DP-5 
+workspace 6:1  output DP-5 
+workspace 7:9  output DP-5 
+workspace 8:0  output DP-4 
+workspace 9:2  output DP-4 
+workspace 10:4 output DP-4 
+workspace 11:6 output DP-4 
+workspace 12:8 output DP-4 
+workspace 13:# output DP-4 
 
-bindcode $myModC+$oneC workspace 1
-bindcode $myModC+$twoC workspace 2
-bindcode $myModC+$threeC workspace 3
-bindcode $myModC+$fourC workspace 4
-bindcode $myModC+$fiveC workspace 5
-bindcode $myModC+$sixC workspace 6
-bindcode $myModC+$sevenC workspace 7
-bindcode $myModC+$eightC workspace 8
-bindcode $myModC+$nineC workspace 9
-bindcode $myModC+$zeroC workspace 10
-bindcode $myModC+$ampC workspace 11
-bindcode $myModC+$hashC	workspace 12
-bindcode $myModC+$dollarC workspace 13
+# switch to workspace
+bindcode $myModC+$dollarC workspace 1:$
+bindcode $myModC+$ampC    workspace 2:&
+bindcode $myModC+$sevenC  workspace 3:7
+bindcode $myModC+$fiveC   workspace 4:5
+bindcode $myModC+$threeC  workspace 5:3
+bindcode $myModC+$oneC    workspace 6:1
+bindcode $myModC+$nineC   workspace 7:9
+bindcode $myModC+$zeroC   workspace 8:0
+bindcode $myModC+$twoC    workspace 9:2
+bindcode $myModC+$fourC   workspace 10:4
+bindcode $myModC+$sixC    workspace 11:6
+bindcode $myModC+$eightC  workspace 12:8
+bindcode $myModC+$hashC   workspace 13:#
+
 
 # move focused container to workspace
-bindcode $myModC+Shift+$oneC move workspace 1
-bindcode $myModC+Shift+$twoC move workspace 2
-bindcode $myModC+Shift+$threeC move workspace 3
-bindcode $myModC+Shift+$fourC move workspace 4
-bindcode $myModC+Shift+$fiveC move workspace 5
-bindcode $myModC+Shift+$sixC move workspace 6
-bindcode $myModC+Shift+$sevenC move workspace 7
-bindcode $myModC+Shift+$eightC move workspace 8
-bindcode $myModC+Shift+$nineC move workspace 9
-bindcode $myModC+Shift+$zeroC move workspace 10
-bindcode $myModC+Shift+$ampC move workspace 11
-bindcode $myModC+Shift+$hashC move workspace 12
-bindcode $myModC+Shift+$dollarC move workspace 13
+bindcode $myModC+Shift+$dollarC move workspace 1:$
+bindcode $myModC+Shift+$ampC    move workspace 2:&
+bindcode $myModC+Shift+$sevenC  move workspace 3:7
+bindcode $myModC+Shift+$fiveC   move workspace 4:5
+bindcode $myModC+Shift+$threeC  move workspace 5:3
+bindcode $myModC+Shift+$oneC    move workspace 6:1
+bindcode $myModC+Shift+$nineC   move workspace 7:9
+bindcode $myModC+Shift+$zeroC   move workspace 8:0
+bindcode $myModC+Shift+$twoC    move workspace 9:2
+bindcode $myModC+Shift+$fourC   move workspace 10:4
+bindcode $myModC+Shift+$sixC    move workspace 11:6
+bindcode $myModC+Shift+$eightC  move workspace 12:8
+bindcode $myModC+Shift+$hashC   move workspace 13:#
 
 # move focused container to workspace and change focus
-bindcode $myModC+Control+Shift+$oneC	 move workspace 1; workspace 1
-bindcode $myModC+Control+Shift+$twoC	 move workspace 2; workspace 2
-bindcode $myModC+Control+Shift+$threeC	 move workspace 3; workspace 3
-bindcode $myModC+Control+Shift+$fourC	 move workspace 4; workspace 4
-bindcode $myModC+Control+Shift+$fiveC	 move workspace 5; workspace 5
-bindcode $myModC+Control+Shift+$sixC	 move workspace 6; workspace 6
-bindcode $myModC+Control+Shift+$sevenC	 move workspace 7; workspace 7
-bindcode $myModC+Control+Shift+$eightC	 move workspace 8; workspace 8
-bindcode $myModC+Control+Shift+$nineC 	 move workspace 9; workspace 9
-bindcode $myModC+Control+Shift+$zeroC 	 move workspace 10; workspace 10
-bindcode $myModC+Control+Shift+$ampC	 move workspace 11; workspace 11
-bindcode $myModC+Control+Shift+$hashC 	 move workspace 12; workspace 12
-bindcode $myModC+Control+Shift+$dollarC	 move workspace 13; workspace 13
+bindcode $myModC+Control+Shift+$dollarC  move workspace 1:$;  workspace 1:$
+bindcode $myModC+Control+Shift+$ampC     move workspace 2:&;  workspace 2:&
+bindcode $myModC+Control+Shift+$sevenC   move workspace 3:7;  workspace 3:7
+bindcode $myModC+Control+Shift+$fiveC    move workspace 4:5;  workspace 4:5
+bindcode $myModC+Control+Shift+$threeC   move workspace 5:3;  workspace 5:3
+bindcode $myModC+Control+Shift+$oneC     move workspace 6:1;  workspace 6:1
+bindcode $myModC+Control+Shift+$nineC    move workspace 7:9;  workspace 7:9
+bindcode $myModC+Control+Shift+$zeroC    move workspace 8:0;  workspace 8:0
+bindcode $myModC+Control+Shift+$twoC     move workspace 9:2;  workspace 9:2
+bindcode $myModC+Control+Shift+$fourC    move workspace 10:4; workspace 10:4
+bindcode $myModC+Control+Shift+$sixC     move workspace 11:6; workspace 11:6
+bindcode $myModC+Control+Shift+$eightC   move workspace 12:8; workspace 12:8
+bindcode $myModC+Control+Shift+$hashC    move workspace 13:#; workspace 13:#
 
 # reload the configuration file
 bindcode $myModC+Shift+$rC reload
@@ -362,7 +369,7 @@ mode "resize" {
         # alternatively, you can use the cursor keys:
         bindcode $myModC+Shift+$leftC move left
         bindcode $myModC+Shift+$downC move down
-        bindcode $myModC+Shift+$upC move up	
+        bindcode $myModC+Shift+$upC move up  
         bindcode $myModC+Shift+$rightC move right
 }
 
