@@ -20,7 +20,8 @@ function exists { which $1 &> /dev/null }
 
 if exists percol; then
     function percol_select_history() {
-        BUFFER=$(fc -l -n -r 1 |  percol --query "$LBUFFER")
+        BUFFER=$(fc -l -n -r 1 |awk '!x[$0]++'  |  percol --query "$LBUFFER")
+                  #            ^ removes duplicate lines
         CURSOR=$#BUFFER         # move cursor
         zle -R -c               # refresh
     }
