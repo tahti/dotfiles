@@ -539,6 +539,8 @@
     "M-c"   'evil-window-up
     "M-t"   'evil-window-down
     "M-/"   'hippie-expand
+    "M-+"   'text-scale-adjust
+    "M--"   'text-scale-adjust
     ;"<f10>" 'tahti/helm-lacarte
     "<f7>" 'flyspell-mode
     "C-<escape>" 'ESC-prefix
