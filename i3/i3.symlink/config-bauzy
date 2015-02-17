@@ -53,6 +53,7 @@ exec mountavs
 #refresh rate
 #exec xrandr -r 51  
 #exec xrandr --output DP-5 --auto --mode 1680x1050 --left-of DP-4
+exec xrandr --output eDP-1 --auto --mode 1920x1080
 exec xrandr --output VGA-1 --auto --mode 1920x1200 --right-of eDP-1
 exec --no-startup-id kupfer --no-splash
 
