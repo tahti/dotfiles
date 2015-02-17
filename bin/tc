@@ -1,0 +1,2 @@
+#!/bin/sh
+wine /home/piotr/.wine64/drive_c/totalcmd/TOTALCMD64.EXE
