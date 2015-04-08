@@ -1,5 +1,6 @@
 # shortcut to this dotfiles path is $ZSH
-export ZSH=$HOME/Private/dotfiles
+#export ZSH=$HOME/Private/dotfiles
+export ZSH=$(dirname $(readlink -f $HOME/.zshrc))
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git percol)
 
@@ -13,37 +14,37 @@ is_plugin() {
 # Add all defined plugins to fpath. This must be done
 # before running compinit.
 for plugin ($plugins); do
-  if is_plugin $ZSH/zsh $plugin; then
-    fpath=($ZSH/zsh/plugins/$plugin $fpath)
+  if is_plugin $ZSH $plugin; then
+    fpath=($ZSH/plugins/$plugin $fpath)
   fi
 done
 
 # source every .zsh file in lib
-source $ZSH/zsh/lib/aliases.zsh
-source $ZSH/zsh/lib/completion.zsh
-source $ZSH/zsh/lib/functions.zsh
-source $ZSH/zsh/lib/git.zsh
-source $ZSH/zsh/lib/history.zsh
-source $ZSH/zsh/lib/prompt.zsh
-source $ZSH/zsh/lib/setopt.zsh
-source $ZSH/zsh/lib/spectrum.zsh
-source $ZSH/zsh/lib/theme-and-appearance.zsh
-source $ZSH/zsh/lib/zkbd.zsh
-source $ZSH/zsh/lib/zle.zsh
+source $ZSH/lib/aliases.zsh
+source $ZSH/lib/completion.zsh
+source $ZSH/lib/functions.zsh
+source $ZSH/lib/git.zsh
+source $ZSH/lib/history.zsh
+source $ZSH/lib/prompt.zsh
+source $ZSH/lib/setopt.zsh
+source $ZSH/lib/spectrum.zsh
+source $ZSH/lib/theme-and-appearance.zsh
+source $ZSH/lib/zkbd.zsh
+source $ZSH/lib/zle.zsh
 #commented out as order matters
 #for config_file ($ZSH/zsh/lib/*.zsh) source $config_file 
 
 # Load all of the plugins that were defined in ~/.zshrc
 for plugin ($plugins); do
-  if [ -f $ZSH/zsh/plugins/$plugin/$plugin.plugin.zsh ]; then
-    source $ZSH/zsh/plugins/$plugin/$plugin.plugin.zsh
+  if [ -f $ZSH/plugins/$plugin/$plugin.plugin.zsh ]; then
+    source $ZSH/plugins/$plugin/$plugin.plugin.zsh
   fi
 done
 
 # Load the theme
 if [ "$ZSH_THEME" = "random" ]
 then
-  themes=($ZSH/zsh/themes/*zsh-theme)
+  themes=($ZSH/themes/*zsh-theme)
   N=${#themes[@]}
   ((N=(RANDOM%N)+1))
   RANDOM_THEME=${themes[$N]}
@@ -51,9 +52,9 @@ then
   echo "[oh-my-zsh] Random theme '$RANDOM_THEME' loaded..."
   if [ ! "$ZSH_THEME" = ""  ]
   then
-    if [ -f "$ZSH/zsh/themes/$ZSH_THEME.zsh-theme" ]
+    if [ -f "$ZSH/themes/$ZSH_THEME.zsh-theme" ]
     then
-       source "$ZSH/zsh/themes/$ZSH_THEME.zsh-theme"
+       source "$ZSH/themes/$ZSH_THEME.zsh-theme"
     fi
   fi
 fi
