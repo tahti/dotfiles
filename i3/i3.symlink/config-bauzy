@@ -262,65 +262,65 @@ bindcode $myModC+Shift+$tabC workspace prev
 # $  &  7 5 3 1 9 0 2 4  6  8  #
 # 13 11 7 5 3 1 9 0 2 4  6  8  10
 # 1  2  3 4 5 6 7 8 9 10 11 12 13
-workspace 1:$  output eDP-1 
-workspace 2:&  output eDP-1 
-workspace 3:7  output eDP-1 
-workspace 4:5  output eDP-1 
-workspace 5:3  output eDP-1 
-workspace 6:1  output eDP-1 
-workspace 7:9  output eDP-1 
-workspace 8:0  output VGA-1 
-workspace 9:2  output VGA-1 
-workspace 10:4 output VGA-1 
-workspace 11:6 output VGA-1 
-workspace 12:8 output VGA-1 
-workspace 13:# output VGA-1 
+workspace "1:$"  output eDP-1 
+workspace "2:%"  output eDP-1 
+workspace "3:7"  output eDP-1 
+workspace "4:5"  output eDP-1 
+workspace "5:3"  output eDP-1 
+workspace "6:1"  output eDP-1 
+workspace "7:9"  output eDP-1 
+workspace "8:0"  output VGA-1 
+workspace "9:2"  output VGA-1 
+workspace "10:4" output VGA-1 
+workspace "11:6" output VGA-1 
+workspace "12:8" output VGA-1 
+workspace "13:#" output VGA-1 
 
 # switch to workspace
-bindcode $myModC+$dollarC workspace 1:$
-bindcode $myModC+$ampC    workspace 2:&
-bindcode $myModC+$sevenC  workspace 3:7
-bindcode $myModC+$fiveC   workspace 4:5
-bindcode $myModC+$threeC  workspace 5:3
-bindcode $myModC+$oneC    workspace 6:1
-bindcode $myModC+$nineC   workspace 7:9
-bindcode $myModC+$zeroC   workspace 8:0
-bindcode $myModC+$twoC    workspace 9:2
-bindcode $myModC+$fourC   workspace 10:4
-bindcode $myModC+$sixC    workspace 11:6
-bindcode $myModC+$eightC  workspace 12:8
-bindcode $myModC+$hashC   workspace 13:#
+bindcode $myModC+$dollarC workspace "1:$"
+bindcode $myModC+$ampC    workspace "2:%"
+bindcode $myModC+$sevenC  workspace "3:7"
+bindcode $myModC+$fiveC   workspace "4:5"
+bindcode $myModC+$threeC  workspace "5:3"
+bindcode $myModC+$oneC    workspace "6:1"
+bindcode $myModC+$nineC   workspace "7:9"
+bindcode $myModC+$zeroC   workspace "8:0"
+bindcode $myModC+$twoC    workspace "9:2"
+bindcode $myModC+$fourC   workspace "10:4"
+bindcode $myModC+$sixC    workspace "11:6"
+bindcode $myModC+$eightC  workspace "12:8"
+bindcode $myModC+$hashC   workspace "13:#"
 
 
 # move focused container to workspace
-bindcode $myModC+Shift+$dollarC move workspace 1:$
-bindcode $myModC+Shift+$ampC    move workspace 2:&
-bindcode $myModC+Shift+$sevenC  move workspace 3:7
-bindcode $myModC+Shift+$fiveC   move workspace 4:5
-bindcode $myModC+Shift+$threeC  move workspace 5:3
-bindcode $myModC+Shift+$oneC    move workspace 6:1
-bindcode $myModC+Shift+$nineC   move workspace 7:9
-bindcode $myModC+Shift+$zeroC   move workspace 8:0
-bindcode $myModC+Shift+$twoC    move workspace 9:2
-bindcode $myModC+Shift+$fourC   move workspace 10:4
-bindcode $myModC+Shift+$sixC    move workspace 11:6
-bindcode $myModC+Shift+$eightC  move workspace 12:8
-bindcode $myModC+Shift+$hashC   move workspace 13:#
+bindcode $myModC+Shift+$dollarC move workspace "1:$"
+bindcode $myModC+Shift+$ampC    move workspace "2:%"
+bindcode $myModC+Shift+$sevenC  move workspace "3:7"
+bindcode $myModC+Shift+$fiveC   move workspace "4:5"
+bindcode $myModC+Shift+$threeC  move workspace "5:3"
+bindcode $myModC+Shift+$oneC    move workspace "6:1"
+bindcode $myModC+Shift+$nineC   move workspace "7:9"
+bindcode $myModC+Shift+$zeroC   move workspace "8:0"
+bindcode $myModC+Shift+$twoC    move workspace "9:2"
+bindcode $myModC+Shift+$fourC   move workspace "10:4"
+bindcode $myModC+Shift+$sixC    move workspace "11:6"
+bindcode $myModC+Shift+$eightC  move workspace "12:8"
+bindcode $myModC+Shift+$hashC   move workspace "13:#"
 
 # move focused container to workspace and change focus
-bindcode $myModC+Control+Shift+$dollarC  move workspace 1:$;  workspace 1:$
-bindcode $myModC+Control+Shift+$ampC     move workspace 2:&;  workspace 2:&
-bindcode $myModC+Control+Shift+$sevenC   move workspace 3:7;  workspace 3:7
-bindcode $myModC+Control+Shift+$fiveC    move workspace 4:5;  workspace 4:5
-bindcode $myModC+Control+Shift+$threeC   move workspace 5:3;  workspace 5:3
-bindcode $myModC+Control+Shift+$oneC     move workspace 6:1;  workspace 6:1
-bindcode $myModC+Control+Shift+$nineC    move workspace 7:9;  workspace 7:9
-bindcode $myModC+Control+Shift+$zeroC    move workspace 8:0;  workspace 8:0
-bindcode $myModC+Control+Shift+$twoC     move workspace 9:2;  workspace 9:2
-bindcode $myModC+Control+Shift+$fourC    move workspace 10:4; workspace 10:4
-bindcode $myModC+Control+Shift+$sixC     move workspace 11:6; workspace 11:6
-bindcode $myModC+Control+Shift+$eightC   move workspace 12:8; workspace 12:8
-bindcode $myModC+Control+Shift+$hashC    move workspace 13:#; workspace 13:#
+bindcode $myModC+Control+Shift+$dollarC  move workspace "1:$";  workspace "1:$"
+bindcode $myModC+Control+Shift+$ampC     move workspace "2:%";  workspace "2:%"
+bindcode $myModC+Control+Shift+$sevenC   move workspace "3:7";  workspace "3:7"
+bindcode $myModC+Control+Shift+$fiveC    move workspace "4:5";  workspace "4:5"
+bindcode $myModC+Control+Shift+$threeC   move workspace "5:3";  workspace "5:3"
+bindcode $myModC+Control+Shift+$oneC     move workspace "6:1";  workspace "6:1"
+bindcode $myModC+Control+Shift+$nineC    move workspace "7:9";  workspace "7:9"
+bindcode $myModC+Control+Shift+$zeroC    move workspace "8:0";  workspace "8:0"
+bindcode $myModC+Control+Shift+$twoC     move workspace "9:2";  workspace "9:2"
+bindcode $myModC+Control+Shift+$fourC    move workspace "10:4"; workspace "10:4"
+bindcode $myModC+Control+Shift+$sixC     move workspace "11:6"; workspace "11:6"
+bindcode $myModC+Control+Shift+$eightC   move workspace "12:8"; workspace "12:8"
+bindcode $myModC+Control+Shift+$hashC    move workspace "13:#"; workspace "13:#"
 
 # reload the configuration file
 bindcode $myModC+Shift+$rC reload
