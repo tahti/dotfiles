@@ -44,7 +44,7 @@
   (require 'helm-buffers)
   (require 'helm-files)
   ;(require 'helm-locate)
-  (require 'helm-w3m)
+  ;(require 'helm-w3m)
   ;; helm for ffap behaves broken
   (push  '(find-file-at-point . ido-completing-read) helm-completing-read-handlers-alist)
   ;; helm for lacarte is broken
