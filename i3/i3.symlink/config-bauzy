@@ -132,6 +132,8 @@ floating_modifier $myModC
 #
 
 
+
+bindcode $myModC+$aC exec keepass2 --auto-type
 # banish mouse
 bindcode $myModC+$minusC exec $HOME/bin/banishRat
 #bindcode $ctrlC+$spaceC exec kupfer

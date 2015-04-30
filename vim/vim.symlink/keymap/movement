@@ -1,0 +1,13 @@
+" "remap movement keys to h t n
+noremap k n
+noremap K N
+noremap t gj
+noremap T J
+noremap n l
+noremap N L
+noremap c k
+noremap C K
+noremap j c
+noremap J C
+noremap l t
+noremap L T
