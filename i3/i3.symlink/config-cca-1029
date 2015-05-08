@@ -130,7 +130,7 @@ floating_modifier $myModC
 #### Exec-binds
 ##
 #
-
+bindcode $myModC+$aC exec keepass2 --auto-type
 # banish mouse
 bindcode $myModC+$minusC exec /home/piotr/bin/banishRat
 # scratchpad
