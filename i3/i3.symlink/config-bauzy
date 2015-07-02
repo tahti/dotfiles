@@ -45,7 +45,7 @@ exec gnome-keyring
 exec conky -c $HOME/.i3/conkytodo_plain # showing todo list
 exec conky -c $HOME/.i3/conkyrc_gmail #updating gmail info
 exec conky -c $HOME/.i3/conky_i3help #showing help 
-exec eval $(cat ~/.fehbg) #setting up background
+exec zsh ~/.fehbg #setting up background
 exec xkbset -a #disable slowkeys
 exec rfkill block 1
 exec /usr/bin/parcellite
