@@ -1,0 +1,89 @@
+" .vimperatorrc
+
+
+
+" a max number of listing items
+set maxitems=15
+
+" scroll height of <C-d> / <C-u>
+set scroll=3
+
+" show tabbar only
+set gui=none,tabs,addons
+
+" display tab-bar anytime
+set! browser.tabs.autoHide=false
+
+" don't animate tab-bar when switch to fullscreen
+set! browser.fullscreen.animateUp=0
+
+" hide close buttons
+set! browser.tabs.closeButtons=2
+
+
+" activate spell-check textarea/input
+set! layout.spellcheckDefault=2
+
+" don't select trailing spaces, when select words.
+set! layout.word_select.eat_space_to_next_word=false
+
+" find as you type
+set incsearch
+" highlight the terms
+set hlsearch
+" unless they contain upper-case letters
+set smartcase
+
+" tell the bell to go beep itself!
+set visualbell
+" turn off the freakin' bell
+hi Bell display: none;
+
+" Don't go into insert mode when loading a page
+set focuscontent
+
+
+" smooth scroll setting
+let g:smooziee_scroll_amount="100"
+let g:smooziee_scroll_interval="150"
+:set hintchars=aoeuidhtnspgcrlqjkmwvz
+
+" mappings {{{1
+" clear all key mappings
+" to avoid troubles from loading rc file several times
+mapclear
+cmapclear
+imapclear
+
+" set the mapleader key
+let mapleader = ","
+let g:mapleader = ","
+
+" a toggle for search highlight
+map <silent> <leader>h :set hlsearch!<CR>
+
+set toolbars=nomenu
+" toggle navigation bar - remember to set ui.key.menuAccessKeyFocuses to false
+map <silent> <A-up> :set toolbars=invnavigation<CR>
+map <silent> <leader>t :set toolbars=invnavigation<CR>
+map <silent> <leader>m :set toolbars=invmenu<CR>
+map <silent> <A-down> :set toolbars=invmenu<CR>
+" bring back/hide portions of the GUI
+" noremap <silent> <A-down> :set gui=nonavigation<CR>
+" noremap <silent> <leader>G :set guioptions-=mBT<CR>
+
+
+" tab operation {{{2
+noremap <A-h> gT
+noremap <A-n> gt
+noremap <A-S-h> :tabmove! -1<CR>
+noremap <A-S-n> :tabmove! +1<CR>
+noremap <C-n> <C-f>
+noremap <C-h> <C-b>
+noremap l :tabopen 
+noremap t jj
+noremap c kk
+noremap k n
+noremap K N
+noremap h <C-o> "previos link in history 
+noremap n <C-i> "next link in history 
