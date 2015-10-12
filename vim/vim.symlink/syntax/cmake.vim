@@ -1,0 +1,1 @@
+syn keyword cmakeStatement externalproject_add externalproject_get_property qt5_use_modules
