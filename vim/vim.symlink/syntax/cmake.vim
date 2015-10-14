@@ -1,1 +1,2 @@
-syn keyword cmakeStatement externalproject_add externalproject_get_property qt5_use_modules
+syn case ignore
+syn keyword cmakeStatement EXTERNALPROJECT_ADD EXTERNALPROJECT_GET_PROPERTY QT5_USE_MODULES SET_PROPERTY
