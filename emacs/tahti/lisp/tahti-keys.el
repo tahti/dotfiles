@@ -1,3 +1,4 @@
+;;; package --- Summary 
 (require 'tahti-util)
 (require 'tahti-func)
 (require 'tahti-helm)
@@ -292,10 +293,10 @@
          "H" nil
    )
 
-   (evil-leader/set-key
-       "SPC" 'irfc-table-jump
-       "e" 'read-only-mode
-   )
+   ;(evil-leader/set-key
+       ;"SPC" 'irfc-table-jump
+       ;"e" 'read-only-mode
+   ;)
 
 )
 
@@ -484,6 +485,8 @@
        "pm" 'eclim-manage-projects
        "ee" 'tahti-problems-open
        "ep" 'eclim-problems
+       "ec" 'eclim-problems-correct
+       "ed" 'eclim-java-show-documentation-for-current-element
        "eh" 'eclim-java-hierarchy
        "es" 'start-eclimd
        "ek" 'stop-eclimd
@@ -513,8 +516,8 @@
   (add-hook 'evil-mode-hook 'tahti-evil-keys)
   (add-hook 'sr-mode-hook 'tahti-sr-keys)
   (add-hook 'arcchive-mode-hook 'tahti-arc-keys)
-  (add-hook 'eclim-problems-mode-hook 'tahti-eclim-problems-keys)
   (add-hook 'eclim-problems-mode-hook 'evil-emacs-state)
+  (add-hook 'eclim-problems-mode-hook 'tahti-eclim-problems-keys)
   (add-hook 'eclim-mode-hook 'tahti-eclim-mode-keys)
   (add-hook 'completion-list-mode-hook 'tahti-completion-list-mode-keys)
   (add-hook 'nxml-mode-hook 'tahti-nxml-mode-keys)
@@ -557,4 +560,4 @@
 )
 
 (provide 'tahti-keys)
-;;;; tahti-keys ends here
+;;; tahti-keys ends here

@@ -1,0 +1,1 @@
+("~/Private/repos/piotrkordy/" "~/Private/repos/piotrkordy/projects/java/SPTool/project/")

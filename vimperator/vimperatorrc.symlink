@@ -85,5 +85,7 @@ noremap t jj
 noremap c kk
 noremap k n
 noremap K N
-noremap h <C-o> "previos link in history 
-noremap n <C-i> "next link in history 
+"previos link in history 
+noremap h <C-o>
+"next link in history 
+noremap n <C-i>

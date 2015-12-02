@@ -18,6 +18,7 @@
 ;;{{{ Hippie Exapnd
 (setq hippie-expand-try-functions-list
       '(
+        yas-hippie-try-expand 
         try-expand-dabbrev
         try-expand-dabbrev-visible
         try-expand-dabbrev-all-buffers

@@ -1,0 +1,18 @@
+"""""""""""""""""""""""""""" speeddating """""""""""""""""""""""""""""""""
+let g:speeddating_no_mappings = 1
+nmap  <C-A>     <Plug>SpeedDatingUp
+nmap  <C-X>     <Plug>SpeedDatingDown
+xmap  <C-A>     <Plug>SpeedDatingUp
+xmap  <C-X>     <Plug>SpeedDatingDown
+
+"increase number by +
+nmap +    <Plug>SpeedDatingUp
+"decrease number by -
+nmap -    <Plug>SpeedDatingDown
+nmap d+     <Plug>SpeedDatingNowUTC
+nmap d-     <Plug>SpeedDatingNowLocal
+
+
+"""""""""""""""""""""""""""" easyclip """""""""""""""""""""""""""""""""
+let g:EasyClipUseSubstituteDefaults = 1
+nnoremap gm m

@@ -2,18 +2,52 @@
 set nocompatible                " Use Vim settings, rather than Vi settings (much better!).
 filetype off
 set rtp+=~/.vim/bundle/vundle/
-call vundle#begin()
+call vundle#rc()
 
 " This is the Vundle package, which can be found on GitHub.
 " For GitHub repos, you specify plugins using the
 " 'user/repository' format
 Plugin 'gmarik/vundle'
+" Programming
+Plugin 'fatih/vim-go'
+Plugin 'derekwyatt/vim-scala'
+Plugin 'tpope/vim-rails'
 
 " We could also add repositories with a ".git" extension
 Plugin 'scrooloose/nerdtree.git'
+Plugin 'scrooloose/nerdcommenter.git'
 
-" All of your Plugins must be added before the following line
-call vundle#end() 
+" Colorscheme
+" Plugin 'flazz/vim-colorschemes' 
 
+
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-speeddating'
+Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-commentary'
+
+" clipboard
+Plugin 'svermeulen/vim-easyclip'
+
+" metarw + gdrive
+Plugin 'kana/vim-metarw'
+Plugin 'kana/vim-metarw-git'
+Plugin 'mattn/vim-metarw-gdrive'
+Plugin 'mattn/webapi-vim'
+
+" Utility
+Plugin 'AndrewRadev/splitjoin.vim'
+nmap sj :SplitjoinJoin<cr>
+nmap sk :SplitjoinSplit<cr>
+
+Plugin 'gmarik/sudo-gui.vim'
+
+Plugin 'gmarik/ide-popup.vim'
+Plugin 'sjl/gundo.vim'
+
+" Syntax highlight
+Plugin 'gmarik/vim-markdown'
+Plugin 'timcharper/textile.vim'
 " Now we can turn our filetype functionality back on
 filetype plugin indent on

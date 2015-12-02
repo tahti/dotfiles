@@ -1,1 +1,2 @@
+#!/bin/sh
 feh  --bg-fill '/home/piotr/.i3/romsdalshorn_normal.jpg' 

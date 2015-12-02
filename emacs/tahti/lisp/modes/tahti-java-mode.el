@@ -13,8 +13,8 @@
   (require 'eclimd)
   (setq eclim-auto-save t) ;; autosave is very important
   (eclim-mode 1)
-  (if (null (get-buffer-process eclimd-process-buffer));eclimd not running
-    (start-eclimd "/home/piotr/workspace"))
+  ;(if (null (get-buffer-process eclimd-process-buffer));eclimd not running
+    ;(start-eclimd "/home/piotr/workspace"))
   (global-eclim-mode)
 
   ;Displaying compilation error messages in the echo area 
