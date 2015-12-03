@@ -390,4 +390,4 @@ client.focused_inactive   #333333      #333333      #999999
 client.unfocused          #333333      #333333      #999999
 client.urgent             #FF0000      #8C5665      #999999
 
-
+# vim:setfiletype=i3

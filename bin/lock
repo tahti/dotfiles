@@ -1,2 +1,2 @@
 #!/bin/bash
-/usr/bin/i3lock -i /home/piotr/Desktop/Pictures/Wallpapers/lock.png -p win
+/usr/bin/i3lock -i ~/.i3/icons/lock.png -p win -d -I 5 -e -u -c 2058a1

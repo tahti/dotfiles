@@ -19,6 +19,8 @@ Plugin 'scrooloose/nerdcommenter.git'
 
 " Colorscheme
 " Plugin 'flazz/vim-colorschemes' 
+" i3 syntax
+Plugin 'PotatoesMaster/i3-vim-syntax'
 
 
 Plugin 'tpope/vim-repeat'
