@@ -17,8 +17,7 @@ new_window pixel 2
 ##
 #
 
-exec --no-startup-id xrandr --output DP1-2 --auto --mode 1920x1200 --left-of eDP1
-exec xrandr --output eDP1 --auto --mode 1600x900
+exec  ~/bin/turnmonitor.sh left
 #exec setxkbmap -layout "pl,pl" -variant "dvp,basic" -option "caps:swapescape,grp:sclk_toggle"
 #exec blueman-applet
 exec --no-startup-id kmix --keepvisibility
