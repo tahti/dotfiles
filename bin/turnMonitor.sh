@@ -20,3 +20,4 @@ then
 else
     echo "More than 2 output not implemented."
 fi
+~/.fehbg
