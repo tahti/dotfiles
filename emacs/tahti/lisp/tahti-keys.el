@@ -497,8 +497,14 @@
        "cr" 'eclim-java-refactor-rename-symbol-at-point
        "ci" 'eclim-java-import-organize
        "cf" 'eclim-java-implement
-       "cd" 'eclim-java-doc-comment
-       "cq" 'eclim-java-format
+       "cd" 'eclim-java-doc-comment 
+       ;"cq" 'eclim-java-format
+       "cq" (lambda () (interactive) (eclim-java-format) 
+              (save-excursion
+                (goto-char (point-min))
+                (when (search-forward "\t" nil t)
+                  (untabify (1- (point)) (point-max)))
+                nil))
        "cg" 'eclim-java-generate-getter-and-setter
        ;"cc" 'eclim-java-constructor
        "gh" 'tahti-javadoc
