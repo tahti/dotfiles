@@ -42,6 +42,7 @@
 )
 
 (add-hook 'java-mode-hook 'tahti-java-mode-init)
+(add-hook 'java-mode-hook 'whitespace-mode)
 ;; setup files ending in “.jjt” to open in javacc-mode
 (add-to-list 'auto-mode-alist '("\\.jjt\\'" . javacc-mode))
 (provide 'tahti-java-mode)

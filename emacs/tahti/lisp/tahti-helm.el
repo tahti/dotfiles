@@ -37,7 +37,6 @@
 (defun tahti-after-helm ()
   (require 'helm-descbinds)
   (helm-descbinds-mode) ;replace descbinds
-  (require 'helm-match-plugin)
   (require 'helm-misc)
   (require 'helm-config)
   (require 'helm-mode)
