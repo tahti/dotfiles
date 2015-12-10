@@ -1,0 +1,10 @@
+#!/bin/bash
+DEVICES=( $(pmount |grep -o "/dev/sd[a-z][0-9]\?") )
+# get length of an array
+tLen=${#DEVICES[@]}
+# use for loop read all devices 
+for (( i=0; i<${tLen}; i++ ));
+do
+  echo "Unmounting ${DEVICES[$i]}"
+  pumount ${DEVICES[$i]}
+done
