@@ -17,7 +17,7 @@ new_window pixel 2
 ##
 #
 
-exec  ~/bin/turnmonitor.sh left
+exec  sleep 2 && ~/bin/turnmonitor.sh left
 #exec setxkbmap -layout "pl,pl" -variant "dvp,basic" -option "caps:swapescape,grp:sclk_toggle"
 #exec blueman-applet
 exec --no-startup-id kmix --keepvisibility
@@ -51,7 +51,7 @@ exec xkbset -a #disable slowkeys
 #exec /usr/bin/parcellite
 exec mountavs
 #refresh rate
-exec --no-startup-id zsh ~/.fehbg #setting up background
+#exec --no-startup-id zsh ~/.fehbg #setting up background
 
 
 focus_follows_mouse no
