@@ -21,6 +21,8 @@
 ;;  )
 ;; disable mouse
 (setq sr-cursor-follows-mouse nil)
+;; replace dired
+(setq find-directory-functions (cons 'sr-dired find-directory-functions))
 
 (defun tahti-enter-fullscreen ()
   "Enter fullscreen by sending message to i3"
