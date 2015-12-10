@@ -1,6 +1,5 @@
 ;documentation for helm - https://github.com/emacs-helm/helm/wiki
-;; (require 'tahti-dirs)
-;; (require 'tahti-util)
+ (require 'tahti-i3)
 
 ;; (eval-when-compile (require 'cl))
  ;(run-with-timer 10 1800  #'start-process "updatedb" "*updatedb*"
@@ -20,10 +19,28 @@
 ;;  '(helm-ff-transformer-show-only-basename nil)
 ;;  '(helm-M-x-requires-pattern 0)
 ;;  )
-
+;;advise sunrise to save frame arrangement
+;;requires frame-cmds package
+(defun tahti-enter-fullscreen ()
+  "Enter fullscreen by sending message to i3"
+  (interactive)
+  (tahti-i3-command 0 "fullscreen enable")
+)
+(defun tahti-leave-fullscreen ()
+  "Leave fullscreen by sending message to i3"
+  (interactive)
+  (tahti-i3-command 0 "fullscreen disable")
+)
+(defun tahti-toggle-fullscreen ()
+  "Leave fullscreen by sending message to i3"
+  (interactive)
+  (tahti-i3-command 0 "fullscreen toggle")
+)
 ;;; Libraries
 (push 'sunrise-commander el-get-packages)
 
+(advice-add 'tahti-helm-files :before  #'tahti-enter-fullscreen)
+(advice-add 'sr-quit :after #'tahti-leave-fullscreen)
 
 (defun tahti-after-sr ()
   (require 'sunrise-commander)

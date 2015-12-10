@@ -164,10 +164,10 @@
        "fw" 'helm-write-file      ;save as dialog
        "fh" 'tahti/helm-history-files
        "fc" 'tahti/config-files
-       "ff" 'tahti/file
-       "fF" 'tahti/file-alternate
-       "FF" 'tahti/file-alternate
-       "Ff" 'tahti/file-alternate
+       "ff" 'tahti-file
+       "fF" 'tahti-file-alternate
+       "FF" 'tahti-file-alternate
+       "Ff" 'tahti-file-alternate
        "fr" 'rename-file-and-buffer
        "yf" 'copy-file-name-to-clipboard
        "ys" 'copy-short-file-name-to-clipboard

@@ -154,8 +154,10 @@
     (interactive)
     (helm-find-files 1))
 
-  (defun tahti/helm-files (&optional preselect)
+  (defun tahti-helm-files (&optional preselect)
     (interactive)
+    ;(tahti-enter-fullscreen)
+    ;(tahti-i3-command 0 "fullscreen enable")
     (sunrise-cd))
     ;(helm :sources tahti/file-sources
           ;:prompt "Find Files: "
@@ -165,7 +167,6 @@
           ;:buffer "*helm with files*"
           ;:keymap helm-find-files-map))
 
-
   ;;; ido-mode =========================================
   (ido-mode 'files)
   (ido-everywhere 1)
@@ -173,8 +174,8 @@
   (add-to-list 'ido-ignore-directories "node_modules")
   (setq ido-enable-flex-matching t)
 
-  (defalias 'tahti/file (f-alt 'tahti/helm-files 'ido-find-file))
-  (defalias 'tahti/file-alternate (f-alt 'ido-find-file 'tahti/helm-files))
+  (defalias 'tahti-file (f-alt 'tahti-helm-files 'ido-find-file))
+  (defalias 'tahti-file-alternate (f-alt 'ido-find-file 'tahti-helm-files))
   (defalias 'tahti/buffer (f-alt 'helm-buffers-list 'ido-switch-buffer))
   (defalias 'tahti/buffer-alternate (f-alt 'ido-switch-buffer 'helm-buffers-list))
 )
