@@ -413,8 +413,9 @@
   (define-key sr-mode-map "n"           'sr-advertised-find-file)
   (define-key sr-mode-map [M-tab]       'sr-synchronize-panes)
   (define-key sr-mode-map "/"           'sr-fuzzy-narrow)
-  (define-key sr-mode-map (kbd "C-/")        'sr-find-grep)
-  ; "g" removes fuzzy filter
+  (define-key sr-mode-map (kbd "C-/")   'sr-find-grep)
+  (define-key sr-mode-map (kbd "S-<f4>") 'sr-create-files)
+  ; "g" removes fuzzy filter - refreshes
   (define-key sr-mode-map ","           evil-leader--default-map) 
   (define-key sr-mode-map ":"           'evil-ex) 
 )
