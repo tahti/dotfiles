@@ -212,6 +212,10 @@ Intended as `kill-buffer-query-functions' fun."
   (interactive)
   (if (> (length hi-lock-interactive-patterns) 0) (unhighlight-regexp (car (car hi-lock-interactive-patterns))) (message "No highlighting to remove"))
   )
+;; do not ask question about running processes when closing emacs TODO replace flet?
+(defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
+  "Prevent annoying \"Active processes exist\" query when you quit Emacs."
+  (flet ((process-list ())) ad-do-it))
 
 (provide 'tahti-editor)
 ;;; tahit-ui.el ends here
