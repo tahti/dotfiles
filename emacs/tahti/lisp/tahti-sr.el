@@ -19,8 +19,9 @@
 ;;  '(helm-ff-transformer-show-only-basename nil)
 ;;  '(helm-M-x-requires-pattern 0)
 ;;  )
-;;advise sunrise to save frame arrangement
-;;requires frame-cmds package
+;; disable mouse
+(setq sr-cursor-follows-mouse nil)
+
 (defun tahti-enter-fullscreen ()
   "Enter fullscreen by sending message to i3"
   (interactive)
