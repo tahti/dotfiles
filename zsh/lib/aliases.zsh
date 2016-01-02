@@ -23,7 +23,7 @@ alias -s htmn=iceweasel
 ### generic aliases (ie. no special checks needed, using xalias().
 alias gpw="makepasswd --chars 12 --string 'abcdefghijklmnopqrrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+*%_-=.,!|/~'"
 alias gpwns="makepasswd --chars 12 --string 'abcdefghijklmnopqrrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-'"
-alias svn ignore='svn propedit svn:ignore'
+alias svn ignore='svn propedit svn:global-ignores'
 alias unsvn='find . -name ".svn" -exec rm -rf {} \;'
 alias setdvp='setxkbmap -layout "pl,pl" -variant "dvp," -option "caps:swapescape,grp:sclk_toggle"'
 alias t='todo.sh'
