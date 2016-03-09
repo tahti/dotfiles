@@ -15,7 +15,7 @@ then
     xrandr --output ${OUTPUTS[0]} --auto --mode ${MODES[0]}
 elif test $max -eq 2
 then
-    echo "Putting ${OUTPUTS[0]} $SIDE of ${OUTPUTS[1]}."
+    echo "Putting ${OUTPUTS[1]} $SIDE of ${OUTPUTS[0]}."
     xrandr --output ${OUTPUTS[0]} --auto --mode ${MODES[0]} --output ${OUTPUTS[1]} --${SIDE}-of ${OUTPUTS[0]} --mode ${MODES[1]}
 else
     echo "More than 2 output not implemented."

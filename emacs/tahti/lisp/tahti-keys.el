@@ -518,6 +518,15 @@
 (defun tahti-nxml-mode-keys()
   (define-key nxml-mode-map "\M-h"          'evil-window-left)
 )
+(defun tahti-irony-mode-keys()
+ "Modify keymaps used by `irony-mode'."
+
+   (message "irony mode key hook")
+   (evil-leader/set-key
+       "ci"  'cpp-auto-include
+   )
+  (local-set-key (kbd "TAB") 'company-complete-common)
+  (local-set-key [tab] 'company-complete-common))
 
 (defun tahti-global-keys()
   (add-hook 'comint-mode-hook 'tahti-comint-keys)
@@ -548,6 +557,7 @@
     "C-+"   'text-scale-increase  ;;increase font
     "C--"   'text-scale-decrease  ;;decrease font
     "M-h"   'evil-window-left
+    "M-x"   'helm-M-x
     "M-n"   'evil-window-right
     "M-c"   'evil-window-up
     "M-t"   'evil-window-down

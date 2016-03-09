@@ -11,7 +11,10 @@
     indent-tabs-mode nil)
   (require 'eclim)
   (require 'eclimd)
-  (setq eclim-auto-save t) ;; autosave is very important
+; autosave is needed by eclimd 
+  (setq eclim-auto-save t
+        auto-save-interval 99999
+        auto-save-timeout 1800) 
   (eclim-mode 1)
   ;(if (null (get-buffer-process eclimd-process-buffer));eclimd not running
     ;(start-eclimd "/home/piotr/workspace"))
@@ -19,7 +22,7 @@
 
   ;Displaying compilation error messages in the echo area 
   (setq help-at-pt-display-when-idle t)
-  (setq help-at-pt-timer-delay 0.2)
+  (setq help-at-pt-timer-delay 1.5) ;put it long so it does not disturb
   (help-at-pt-set-timer)
   ;;Treat Java 1.5 @-style annotations as comments
   (setq c-comment-start-regexp "(@|/(/|[*][*]?))")

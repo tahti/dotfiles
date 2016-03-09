@@ -1,12 +1,12 @@
 (require 'tahti-keys)
 (push 'auctex el-get-packages)
-(push 'reftex el-get-packages)
+;(push 'reftex el-get-packages)
 (push 'cdlatex-mode el-get-packages)
 
 ;(setq TeX-auto-save t) ;create auto directory for multiple documents
 (setq TeX-parse-self t
       TeX-electric-escape nil ;do not call TeX-electric-macro when \ is typed
-      reftex-plug-into-AUCTeX t
+      ;reftex-plug-into-AUCTeX t
       TeX-insert-braces nil
       TeX-source-correlate-method 'synctex
       TeX-display-help t 
@@ -83,7 +83,7 @@
 ;; Initialisation
 (defun tahti-tex-mode-init ()
   (turn-on-cdlatex)
-  (turn-on-reftex)
+  ;(turn-on-reftex)
   (turn-on-auto-fill)     ;auto break the lines to fit 80 columns
   (LaTeX-math-mode 1)
   (TeX-fold-mode 1)
