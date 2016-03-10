@@ -140,7 +140,7 @@
                                  (and (or "fixed" "hex")
                                       symbol-end)))))
     ("string" t t "\\bstring\\b")
-    ("utility" t t "\\b\\(?:pair\\s-*<\\|make_pair\\s*<\\|move\\s*(\\)")))
+    ("utility" t t "\\b\\(?:pair\\s-*<\\|make_pair\\s*(\\|move\\s*(\\)")))
 
 (defun cpp-auto-include--include-line (header)
   (save-excursion
