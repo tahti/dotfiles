@@ -117,8 +117,15 @@
     ("map" t t ,(rx (and symbol-start
                          (or "map" "multimap")
                          (* space) "<" word-boundary)))
+    ("unordered_map" t t ,(rx (and symbol-start
+                         (or "unordered_map" "unordered_multimap")
+                         (* space) "<" word-boundary)))
     ("set" t t ,(rx (and symbol-start
                          (or "set" "multiset")
+                         (* space) "<" word-boundary)))
+
+    ("unordered_set" t t ,(rx (and symbol-start
+                         (or "unordered_set" "unordered_multiset")
                          (* space) "<" word-boundary)))
     ("vector" t t "\\bvector\\s-*<")
     ("iomapip" t t ,(rx (and symbol-start
