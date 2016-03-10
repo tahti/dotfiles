@@ -525,8 +525,8 @@
    (evil-leader/set-key
        "ci"  'cpp-auto-include
    )
-  (local-set-key (kbd "TAB") 'company-complete-common)
-  (local-set-key [tab] 'company-complete-common))
+  (local-set-key (kbd "TAB") 'tahti-indent-or-complete)
+  (local-set-key [tab] 'tahti-indent-or-complete))
 
 (defun tahti-global-keys()
   (add-hook 'comint-mode-hook 'tahti-comint-keys)

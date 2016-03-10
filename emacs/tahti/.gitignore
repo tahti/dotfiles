@@ -1,4 +1,5 @@
 el-get
+irony/
 elpa
 custom.el
 secrets.el

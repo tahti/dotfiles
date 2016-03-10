@@ -17,13 +17,13 @@ new_window pixel 2
 ##
 #
 
-exec  sleep 2 && ~/bin/turnmonitor.sh left
+exec --no-startup-id ~/bin/turnmonitor.sh left
 #exec setxkbmap -layout "pl,pl" -variant "dvp,basic" -option "caps:swapescape,grp:sclk_toggle"
 #exec blueman-applet
 exec --no-startup-id kmix --keepvisibility
 #exec volumeicon
-exec numlockx on
-exec xset r rate 250 80
+exec --no-startup-id numlockx on
+exec --no-startup-id xset r rate 250 80
 #disable bluetooth
 #exec rfkill block 2
 # Start i3bar to display a workspace bar 
@@ -43,13 +43,13 @@ exec xset b off #turning off the bell
 #exec --no-startup-id wicd-client -t #showing network switcher
 exec --no-startup-id nm-applet 
 exec fbxkb #showing keyboard switcher
+exec --no-startup-id alarm-clock-applet 
 #exec conky -c $HOME/.i3/conkyrc_i3_bauzy|$HOME/bin/dzen2 -bg black -fg white  -fn "-*-terminus-*-r-normal-*-12-*-*-72-c-60-*-*" -w 450  -y 1 -ta l -x 159
-exec conky -c $HOME/.i3/conkytodo_plain # showing todo list
+exec --no-startup-id conky -c $HOME/.i3/conkytodo_plain # showing todo list
 #exec conky -c $HOME/.i3/conkyrc_gmail #updating gmail info - needs fixing
-exec conky -c $HOME/.i3/conky_i3help #showing help 
-exec xkbset -a #disable slowkeys
+exec --no-startup-id conky -c $HOME/.i3/conky_i3help #showing help 
+exec --no-startup-id xkbset -a #disable slowkeys
 #exec /usr/bin/parcellite
-exec mountavs
 #refresh rate
 #exec --no-startup-id zsh ~/.fehbg #setting up background
 
@@ -271,12 +271,12 @@ workspace "7:9"  output DP1-2
 #workspace "11:6" output VGA-1 
 #workspace "12:8" output VGA-1 
 #workspace "13:#" output VGA-1 
-workspace "8:0"  output eDP1 
-workspace "9:2"  output eDP1 
-workspace "10:4" output eDP1 
-workspace "11:6" output eDP1 
-workspace "12:8" output eDP1 
-workspace "13:#" output eDP1 
+workspace "8:0"  output DP1-2
+workspace "9:2"  output DP1-2
+workspace "10:4" output DP1-2
+workspace "11:6" output DP1-2
+workspace "12:8" output DP1-2
+workspace "13:#" output eDP1
 # switch to workspace
 bindcode $myModC+$dollarC workspace "1:$"
 bindcode $myModC+$ampC    workspace "2:%"
@@ -385,6 +385,6 @@ client.focused_inactive   #333333      #333333      #999999
 client.unfocused          #333333      #333333      #999999
 client.urgent             #FF0000      #8C5665      #999999
 
-exec --no-startup-id exec compton -c -f -O 0.2 -I 0.18 -o 0.5 -D 20
+#exec --no-startup-id exec compton -c -f -O 0.2 -I 0.18 -o 0.5 -D 20
 
 # vim:filetype=i3

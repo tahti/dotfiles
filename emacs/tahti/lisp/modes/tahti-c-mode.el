@@ -36,6 +36,24 @@
   (message "irony mode init hook")
 )
 
+(defun irony--check-expansion ()
+(save-excursion
+  (if (looking-at "\\_>") t
+    (backward-char 1)
+    (if (looking-at "\\.") t
+      (backward-char 1)
+      (if (looking-at "->") t nil)))))
+
+(defun tahti-indent-or-complete ()
+"Indent or Complete"
+(interactive)
+(cond ((and (not (use-region-p))
+            (irony--check-expansion))
+       (message "complete")
+       (company-complete-common))
+      (t
+       (message "indent")
+       (call-interactively 'c-indent-line-or-region))))
 (setq auto-mode-alist (cons '("\\.lzz$" . c-mode) auto-mode-alist))
 (add-hook 'irony-mode-hook 'tahti-irony-mode-init)
 (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)

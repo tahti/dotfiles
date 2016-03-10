@@ -46,3 +46,15 @@ stetic
 gpicview
 QtProject.conf
 sigil-ebook
+.mono/
+KeePass/
+Skype/
+adtool/
+astromenace/
+bless/
+gpick/
+htop/
+lxterminal/
+nitrogen/
+unity3d/
+wireshark/
