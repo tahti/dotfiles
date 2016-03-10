@@ -95,7 +95,7 @@
                    "unique" "unique_copy" "reverse" "reverse_copy"
                    "nth_element" "lower_bound" "upper_bound" "binary_search"
                    "next_permutation" "prev_permutation"
-                   "min" "max" "count" "random_shuffle" "swap")
+                   "min" "max" "count" "random_shuffle" "swap" "copy" "copy_if")
                (* space) "(")))
     ("numeric" t t
      ,(rx (and symbol-start
@@ -140,7 +140,7 @@
                                  (and (or "fixed" "hex")
                                       symbol-end)))))
     ("string" t t "\\bstring\\b")
-    ("utility" t t "\\b\\(?:pair\\s-*<\\|make_pair\\)")))
+    ("utility" t t "\\b\\(?:pair\\s-*<\\|make_pair\\s*<\\|move\\s*(\\)")))
 
 (defun cpp-auto-include--include-line (header)
   (save-excursion
