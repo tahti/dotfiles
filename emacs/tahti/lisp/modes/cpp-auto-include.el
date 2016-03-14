@@ -31,7 +31,7 @@
   `(("cstdio" nil t
      ,(rx (and symbol-start
                (or  (and (or "scanf" "sscanf" "puts" "sprintf" "printf"
-                             "gets" "fgets" "putchar")
+                             "gets" "getchar_unlocked" "getc_unlocked" "fgets" "putchar")
                          (* space) "(")
                     (and  (or "FILE" "stdin" "stdout" "stderr")
                           symbol-end)))))
@@ -128,7 +128,7 @@
                          (or "unordered_set" "unordered_multiset")
                          (* space) "<" word-boundary)))
     ("vector" t t "\\bvector\\s-*<")
-    ("iomapip" t t ,(rx (and symbol-start
+    ("iomanip" t t ,(rx (and symbol-start
                              (or (and (or "setprecision" "setbase" "setw")
                                       (* space) "(")
                                  (and (or "fixed" "hex")
