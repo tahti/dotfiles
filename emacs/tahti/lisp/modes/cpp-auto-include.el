@@ -133,7 +133,7 @@
                                       (* space) "(")
                                  (and (or "fixed" "hex")
                                       symbol-end)))))
-    ("fstream" t t "\\bfstream\\s-*<")
+    ("fstream" t t "\\b[oi]?fstream\\s-*<?")
     ("ctime" nil t ,(rx (and symbol-start
                              (or (and (or "time" "clock")
                                       (* space) "(")
