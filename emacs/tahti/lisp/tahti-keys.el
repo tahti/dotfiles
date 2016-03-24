@@ -300,6 +300,13 @@
 
 )
 
+(defun tahti-markdown-keys()
+   (evil-leader/set-key
+       "fi" 'markdown-insert-italic
+       "fs" 'markdown-insert-italic
+       "fb" 'markdown-insert-bold
+   )
+)
 (defun tahti-latex-keys()
    (evil-leader/set-key
        "ie" 'LaTeX-environment
@@ -312,14 +319,14 @@
        ")"  'reftex-reference
        "ir" 'reftex-reference
        "ii" 'LaTeX-insert-item  ;insert \item
-       "ifb" '(lambda () (interactive)(TeX-font nil ?\C-b)) ;insert bold
-       "ifc" '(lambda () (interactive)(TeX-font nil ?\C-c)) ;
-       "ife" '(lambda () (interactive)(TeX-font nil ?\C-e))
-       "ifi" '(lambda () (interactive)(TeX-font nil ?\C-i))
-       "ifr" '(lambda () (interactive)(TeX-font nil ?\C-r))
-       "ifs" '(lambda () (interactive)(TeX-font nil ?\C-s))
-       "ift" '(lambda () (interactive)(TeX-font nil ?\C-t)) 
-       "ifd" '(lambda () (interactive)(TeX-font nil ?\C-d)) ;delete font
+       "fb" '(lambda () (interactive)(TeX-font nil ?\C-b)) ;insert bold
+       "fc" '(lambda () (interactive)(TeX-font nil ?\C-c)) ;
+       "fe" '(lambda () (interactive)(TeX-font nil ?\C-e))
+       "fi" '(lambda () (interactive)(TeX-font nil ?\C-i))
+       "fr" '(lambda () (interactive)(TeX-font nil ?\C-r))
+       "fs" '(lambda () (interactive)(TeX-font nil ?\C-s))
+       "ft" '(lambda () (interactive)(TeX-font nil ?\C-t)) 
+       "fd" '(lambda () (interactive)(TeX-font nil ?\C-d)) ;delete font
        "fd"  '(lambda () (interactive)(TeX-font nil ?\C-d)) ;delete font
        "cr" 'TeX-comment-or-uncomment-paragraph
        "tm" 'LaTeX-math-mode

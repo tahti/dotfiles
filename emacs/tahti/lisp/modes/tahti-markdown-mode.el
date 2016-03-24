@@ -9,6 +9,7 @@
     '(markdown-list-indent-width 2)
     '(markdown-unordered-list-item-prefix "  - ")
   )
+  (tahti-markdown-keys)
 )
 
 (add-hook 'markdown-mode-hook 'tahti-markdown-mode-init)
