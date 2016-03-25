@@ -42,13 +42,13 @@ endef
 
 all 	: $(PDF)
 
-$(PDF)	: %.pdf : %.tex
+$(PDF)	: %.pdf : %.tex FORCE_MAKE
 	@$(run-pdf)
 
-$(PSF)	: %.ps : %.tex
+$(PSF)	: %.ps : %.tex FORCE_MAKE
 	@$(run-ps)
 
-$(TRG)	: %.dvi : %.tex
+$(TRG)	: %.dvi : %.tex FORCE_MAKE
 	@$(run-dvi)
 
 pdf	: $(PDF) 
@@ -64,4 +64,4 @@ clean:
 show	: $(PDF)
 	  @for i in $(PDF) ; do $(OKULAR) $$i & done
 
-.PHONY	: all clean
+.PHONY	: all clean FORCE_MAKE
