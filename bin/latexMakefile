@@ -1,35 +1,67 @@
 # Makefile for LaTeX files
+LLCSFILE = /home/piotr/Private/repos/piotrkordy/creations/templates/llncs/llncs.cls
+OKULAR = okular 
+TMPDIR = /tmp/build
+LATEXMK	= latexmk -auxdir=$(TMPDIR) -outdir=$(TMPDIR)
 
-# Original Makefile from http://www.math.psu.edu/elkin/math/497a/Makefile
-#
-# Permission is hereby granted, free of charge, to any person obtaining
-# a copy of this software and associated documentation files (the
-# "Software"), to deal in the Software without restriction, including
-# without limitation the rights to use, copy, modify, merge, publish,
-# distribute, sublicense, and/or sell copies of the Software, and to
-# permit persons to whom the Software is furnished to do so, subject to
-# the following conditions: 
+SRC	:= $(shell egrep -l '^[^%]*\\begin\{document\}' *.tex)
+TRG	= $(SRC:%.tex=%.dvi)
+PSF	= $(SRC:%.tex=%.ps)
+PDF	= $(SRC:%.tex=%.pdf)
 
-# The above copyright notice and this permission notice shall be
-# included in all copies or substantial portions of the Software. 
 
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-# IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-# CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-# TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-# SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. 
+define run-pdf
+	mkdir -p $(TMPDIR) 
+	@$(check-llncs)
+	$(LATEXMK) -pdf $<
+	mv /tmp/build/$@ .
+endef
 
-# $Id: Makefile,v 0.1 2012-12-09 11:58:11 $
-#
+define run-ps
+	mkdir -p $(TMPDIR) 
+	@$(check-llncs)
+	$(LATEXMK) -ps
+	mv /tmp/build/$@ .
+endef
 
-LATEX	= latex
-BIBTEX	= bibtex
-MAKEINDEX = makeindex
-XDVI	= xdvi -gamma 4
-DVIPS	= dvips
-DVIPDF  = dvipdft
-L2H	= latex2html
-GH	= gv
+define run-dvi
+	mkdir -p $(TMPDIR) 
+	@$(check-llncs)
+	$(LATEXMK) -dvi
+	mv /tmp/build/$@ .
+endef
 
+define check-llncs
+  echo $(shell grep '^[^%]*\\documentclass\(\[[[:alnum:],[:space:]]*\]\)\?{llncs}' $<) 
+	if ! test -e llncs.cls && grep '^[^%]*\\documentclass\(\[[[:alnum:],[:space:]]*\]\)\?{llncs}' $< ; then ln -s $(LLCSFILE); true ; fi
+endef
+
+# $< source
+# $@ target
+#	$(<:%.tex=%.bbl) source with extesion changed
+
+all 	: $(PDF)
+
+$(PDF)	: %.pdf : %.tex
+	@$(run-pdf)
+
+$(PSF)	: %.ps : %.tex
+	@$(run-ps)
+
+$(TRG)	: %.dvi : %.tex
+	@$(run-dvi)
+
+pdf	: $(PDF) 
+
+ps	: $(PSF) 
+
+dvi	: $(TRG) 
+
+clean:
+	-rm -f $(TRG) $(PSF) $(PDF) $(TRG:%.dvi=%.aux) $(TRG:%.dvi=%.bbl) $(TRG:%.dvi=%.blg) $(TRG:%.dvi=%.log) $(TRG:%.dvi=%.out) $(TRG:%.dvi=%.idx) $(TRG:%.dvi=%.ilg) $(TRG:%.dvi=%.ind) $(TRG:%.dvi=%.toc) $(TRG:%.dvi=%.d)
+	rm -Rf $(TMPDIR) 
+
+show	: $(PDF)
+	  @for i in $(PDF) ; do $(OKULAR) $$i & done
+
+.PHONY	: all clean
