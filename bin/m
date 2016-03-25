@@ -1,0 +1,66 @@
+#!/bin/zsh
+#test for makefile
+if [[ -f Makefile ]]; then
+  make $@
+elif [[ -f pom.xml ]]; then
+  mvn $@
+else
+  #no makefile
+  if test -z $1 ; then
+    #no parameter
+    if egrep -l '^[^%]*\\begin\{document\}' *.tex ; then
+        make -f /home/piotr/bin/latexMakefile
+    else
+        echo "Could not find any makefile"
+    fi
+  else
+    #we have param
+  fi
+fi
+#no makefile    
+if test -z $1 ; then
+# no parameter - look for Makefile
+    if [[ -f Makefile ]]; then
+      make
+    elif [[ -f pom.xml ]]; then
+      mvn package
+    elif egrep -l '^[^%]*\\begin\{document\}' *.tex ; then
+      make -f /home/piotr/bin/latexMakefile
+    else
+      echo "Could not find any makefile"
+    fi
+else
+# check if param is file
+  if [[ -f $1 ]]; then
+      case $1 in
+       *.tex)
+          make -f /home/piotr/bin/latexMakefile 
+          ;;
+       *.pdf|*.ps|*.dvi)
+          make -f /home/piotr/bin/latexMakefile $1
+       ;;
+#        compressed files - unpack
+       *.tar.bz2) tar xvjf $1;;
+       *.tar.gz) tar xvzf $1;;
+       *.tar.xz) tar xvJf $1;;
+       *.tar.lzma) tar --lzma xvf $1;;
+       *.bz2) bunzip $1;;
+       *.rar) unrar $1;;
+       *.gz) gunzip $1;;
+       *.tar) tar xvf $1;;
+       *.tbz2) tar xvjf $1;;
+       *.tgz) tar xvzf $1;;
+       *.zip) unzip $1;;
+       *.Z) uncompress $1;;
+       *.7z) 7z x $1;;
+       *) 
+         echo "'$1' have no default program to compile."
+       ;;
+      esac
+# param is not a file - check for makefile
+  else
+    if egrep -l '^[^%]*\\begin\{document\}' *.tex ; then
+        make -f /home/piotr/bin/latexMakefile $1
+    fi
+  fi
+fi
