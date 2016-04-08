@@ -63,6 +63,13 @@
                         (* space) "(")
                    (and (or (and "EXIT_" (1+ (in "A-Z")))
                             "NULL"))))))
+
+    ("chrono" nil t
+     ,(rx (and symbol-start
+               (or (and (or "now")
+                        (* space) "(")
+                   (and (or "chrono::" "time_point::" "duration::" "time_t" "difftime" "system_clock::" "steady_clock::" "high_resolution_clock::" "hours::" "minutes::" "seconds::" "miliseconds::" "nanoseconds::")
+                        symbol-end)))))
     ("cmath" nil t
      ,(rx (and symbol-start
                (or (and (or "powf" "powl"
