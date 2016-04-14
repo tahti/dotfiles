@@ -1,0 +1,44 @@
+# piotr ALL=(root) NOPASSWD: /usr/bin/evrouter 
+# or gpasswd -a user input
+# to get events: evrouter --dump /dev/input/event*
+# to get symbols listet: xmodmap -pkA
+# "Dell Dell USB Keyboard" "/dev/input/event5" none key/2 "fill this in!"
+# "AT Translated Set 2 keyboard" "/dev/input/event0" none key/2 "fill this in!"
+# to run as daemon: 
+# $ evrouter /dev/input/event*
+# To stop the daemon:
+# $ evrouter -q
+# $ rm -f /tmp/.evrouter*
+Window "7 Days To Die": # Window title
+#"AT Translated Set 2 keyboard" "/dev/input/event*" any key/2 "XKey/1"
+#"AT Translated Set 2 keyboard" "/dev/input/event*" any key/3 "XKey/2"
+#"AT Translated Set 2 keyboard" "/dev/input/event*" any key/4 "XKey/3"
+#"AT Translated Set 2 keyboard" "/dev/input/event*" any key/5 "XKey/4"
+#"AT Translated Set 2 keyboard" "/dev/input/event*" any key/6 "XKey/5"
+#"AT Translated Set 2 keyboard" "/dev/input/event*" any key/7 "XKey/6"
+#"AT Translated Set 2 keyboard" "/dev/input/event*" any key/8 "XKey/7"
+#"AT Translated Set 2 keyboard" "/dev/input/event*" any key/9 "XKey/8"
+#"AT Translated Set 2 keyboard" "/dev/input/event*" any key/10 "XKey/9"
+#"AT Translated Set 2 keyboard" "/dev/input/event*" any key/11 "XKey/0"
+"Dell Dell USB Keyboard" "/dev/input/event*" any key/41 "XKey/grave"
+#"Dell Dell USB Keyboard" "/dev/input/event*" any key/16 "XKey/q"
+#"Dell Dell USB Keyboard" "/dev/input/event*" any key/17 "XKey/w"
+#"Dell Dell USB Keyboard" "/dev/input/event*" any key/18 "XKey/e"
+#"Dell Dell USB Keyboard" "/dev/input/event*" any key/19 "XKey/r"
+#"Dell Dell USB Keyboard" "/dev/input/event*" any key/23 "XKey/i"
+#"Dell Dell USB Keyboard" "/dev/input/event*" any key/31 "XKey/s"
+#"Dell Dell USB Keyboard" "/dev/input/event*" any key/32 "XKey/d"
+#"Dell Dell USB Keyboard" "/dev/input/event*" any key/33 "XKey/f"
+#"Dell Dell USB Keyboard" "/dev/input/event*" any key/45 "XKey/x"
+# numbers
+"Dell Dell USB Keyboard" "/dev/input/event*" any key/2 "XKey/ampersand" 
+"Dell Dell USB Keyboard" "/dev/input/event*" any key/3 "XKey/at"
+"Dell Dell USB Keyboard" "/dev/input/event*" any key/4 "XKey/numbersign"
+"Dell Dell USB Keyboard" "/dev/input/event*" any key/5 "XKey/yen"
+"Dell Dell USB Keyboard" "/dev/input/event*" any key/6 "XKey/percent"
+"Dell Dell USB Keyboard" "/dev/input/event*" any key/7 "XKey/6"
+"Dell Dell USB Keyboard" "/dev/input/event*" any key/8 "XKey/7"
+"Dell Dell USB Keyboard" "/dev/input/event*" any key/9 "XKey/8"
+"Dell Dell USB Keyboard" "/dev/input/event*" any key/9 "XKey/8"
+#"Dell Dell USB Keyboard" "/dev/input/event*" any key/10 "XKey/9"
+#"Dell Dell USB Keyboard" "/dev/input/event*" any key/11 "XKey/0"
