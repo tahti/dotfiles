@@ -40,6 +40,7 @@ bar {
 }
 exec xset b off #turning off the bell
 #exec pidgin
+exec python /home/piotr/bin/cpmerge.py 
 #exec --no-startup-id wicd-client -t #showing network switcher
 exec --no-startup-id nm-applet 
 exec fbxkb #showing keyboard switcher
