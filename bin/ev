@@ -1,0 +1,1 @@
+evrouter -q; sudo rm /tmp/.evrouter:0; evrouter --config=/home/piotr/repos/dotfiles/evrouter/evrouterrc /dev/input/event* -f -v 
