@@ -1,8 +1,8 @@
 #!/bin/bash
-if [ $1 == "off" ]
-then
-  xset dpms force off; exit 0
-fi
+#if [ $1=="off" ]
+#then
+  #xset dpms force off; exit 0
+#fi
 if [ $# -eq 0 ]
 then
   SIDE="left" 
