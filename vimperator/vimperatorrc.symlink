@@ -46,7 +46,9 @@ set focuscontent
 " smooth scroll setting
 let g:smooziee_scroll_amount="100"
 let g:smooziee_scroll_interval="150"
-:set hintchars=aoeuidhtnspgcrlqjkmwvz
+:set hintchars=aoeuidhtnspgcrljkmwvzxbq
+" :hi Hint font-family: "Latin Modern Roman",  monospace; font-size: 10px; font-weight: bold; text-transform: uppercase; color: black; background-color: #14FF14; border-color: ButtonShadow; border-width: 0px; border-style: solid; padding: 0px 1px 0px 1px;  
+:hi Hint font-family: "Latin Modern Roman",  monospace; font-size: 10px; font-weight: bold; text-transform: uppercase; color: white; background-color: #C70100; border-color: ButtonShadow; border-width: 0px; border-style: solid; padding: 0px 1px 0px 1px;  
 
 " mappings {{{1
 " clear all key mappings
@@ -64,10 +66,10 @@ map <silent> <leader>h :set hlsearch!<CR>
 
 set toolbars=nomenu
 " toggle navigation bar - remember to set ui.key.menuAccessKeyFocuses to false
-map <silent> <A-up> :set toolbars=invnavigation<CR>
+map <silent> <A-up> :set toolbars=invnavigation<CR>:set! ui.key.menuAccessKeyFocuses=false<CR>
 map <silent> <leader>t :set toolbars=invnavigation<CR>
 map <silent> <leader>m :set toolbars=invmenu<CR>
-map <silent> <A-down> :set toolbars=invmenu<CR>
+map <silent> <A-down> :set toolbars=invmenu<CR>:set! ui.key.menuAccessKeyFocuses=false<CR>
 " bring back/hide portions of the GUI
 " noremap <silent> <A-down> :set gui=nonavigation<CR>
 " noremap <silent> <leader>G :set guioptions-=mBT<CR>
@@ -89,3 +91,5 @@ noremap K N
 noremap h <C-o>
 "next link in history 
 noremap n <C-i>
+set! ui.key.menuAccessKeyFocuses=false
+set! ui.key.menuAccessKey=0

@@ -27,7 +27,7 @@ open() {
           *.chm)
             kchmviewer $1
             ;;
-          *.xlsx|*.ods)
+          *.xlsx|*.ods|*.doc|*.xsl|*.docx)
             libreoffice $1 2>/dev/null &!
             ;;
 #compressed files - unpack
