@@ -5,6 +5,7 @@ TMPDIR = /tmp/build
 LATEXMK	= latexmk -auxdir=$(TMPDIR) -outdir=$(TMPDIR)
 
 SRC	:= $(shell egrep -l '^[^%]*\\begin\{document\}' *.tex)
+#SRC	:= $(shell egrep -l '^[^%]*\\documentclass' *.tex)
 TRG	= $(SRC:%.tex=%.dvi)
 PSF	= $(SRC:%.tex=%.ps)
 PDF	= $(SRC:%.tex=%.pdf)

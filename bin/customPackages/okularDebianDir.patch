@@ -1,6 +1,6 @@
-diff -rupN okular-15.08.0/ui/pageview.cpp okular-15.08.0_pathed/ui/pageview.cpp
---- okular-15.08.3/ui/pageview.cpp	2015-08-12 22:42:00.000000000 +0200
-+++ okular-15.08.3_patched/ui/pageview.cpp	2015-09-13 04:43:56.044883341 +0200
+diff -rupN okular-16.08.0/ui/pageview.cpp okular-16.04.2_pathed/ui/pageview.cpp
+--- okular-16.04.2/ui/pageview.cpp	2015-08-12 22:42:00.000000000 +0200
++++ okular-16.04.2_patched/ui/pageview.cpp	2015-09-13 04:43:56.044883341 +0200
 @@ -1699,8 +1699,8 @@ void PageView::keyPressEvent( QKeyEvent
      // move/scroll page by using keys
      switch ( e->key() )

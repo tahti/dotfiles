@@ -13,6 +13,7 @@ else
   if test -z $1 ; then
     #no parameter
     if egrep -l '^[^%]*\\begin\{document\}' *.tex ; then
+    #if egrep -l '^[^%]*\\documentclass' *.tex ; then
         make -f /home/piotr/bin/latexMakefile
     else
         echo "Could not find any makefile"
@@ -49,6 +50,7 @@ else
 # param is not a file
     else
       if egrep -l '^[^%]*\\begin\{document\}' *.tex ; then
+      #if egrep -l '^[^%]*\\documentclass' *.tex ; then
         make -f /home/piotr/bin/latexMakefile -j $1
       fi
     fi
