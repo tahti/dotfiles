@@ -5,7 +5,7 @@
 
 #### Change the following:
 ## To location of your todo.sh script
-TODO_SCRIPT=~/bin/todo.sh
+TODO_SCRIPT=~/bin/todo
 
 #### Do not change anything below
 ## Unless you know what you are doing
