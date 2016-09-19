@@ -156,6 +156,6 @@ show_graph_range no
 
 TEXT
 ${alignc}${color}${font}TODO - ${execi 30 /home/piotr/bin/todo -p ls | head --lines=-2 | wc -l}
-${execpi 30 /home/piotr/bin/color_todo}
+${execpi 30 /home/piotr/bin/color_todo.sh}
 #${alignc}${color}${font}TODO.TXT
 #${color}${font}${execi 60 /home/piotr/bin/todo -p ls}
