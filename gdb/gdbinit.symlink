@@ -4,3 +4,4 @@ set $ARM = 0
 set $COLOREDPROMPT = 1
 set disassembly-flavor intel
 set follow-fork-mode child
+source ~/data/progs/peda/peda.py
