@@ -11,7 +11,7 @@ open() {
           *.pdf|*.ps|*.eps|*.dvi|*.PDF|*.PS|*.DVI|*.EPS) 
             okular $1 2>/dev/null &!
             ;;
-          *.png|*.jpg|*.jpeg|*.PNG|*.JPEG|*.JPG|*.Png) 
+          *.png|*.jpg|*.jpeg|*.PNG|*.JPEG|*.JPG|*.Png|*.gif|*.GIF) 
             viewnior $1 2>/dev/null &!
             ;;
           *.html|*.htm)
