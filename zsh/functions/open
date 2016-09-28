@@ -11,9 +11,9 @@ open() {
           *.pdf|*.ps|*.eps|*.dvi|*.PDF|*.PS|*.DVI|*.EPS) 
             okular $1 2>/dev/null &!
             ;;
-
           *.png|*.jpg|*.jpeg|*.PNG|*.JPEG|*.JPG|*.Png) 
             viewnior $1 2>/dev/null &!
+            ;;
           *.html|*.htm)
 #we need absolute file for conkeror
             conkeror `readlink -f $1`
