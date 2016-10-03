@@ -11,7 +11,11 @@ noremap j c
 noremap J C
 noremap l t
 noremap L T
+noremap p P
+noremap P p
 nmap <C-h> <C-b>
 nmap <C-n> <C-f>
 vmap <C-h> <C-b>
 vmap <C-n> <C-f>
+
+" vim: set filetype=vim:

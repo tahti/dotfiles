@@ -1,3 +1,5 @@
 let mapleader=","
-source ~/.vim/keymap/plugins
 source ~/.vim/keymap/movement
+source ~/.vim/keymap/plugins
+
+" vim: set filetype=vim:

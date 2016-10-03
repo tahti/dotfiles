@@ -1,3 +1,4 @@
+" vim: filetype=vim
 " General "{{{
 set history=500            " keep 500 lines of command line history
 scriptencoding utf-8       " utf-8 all the way
@@ -7,7 +8,7 @@ set clipboard+=unnamed     " Yanks go on clipboard instead.
 set pastetoggle=<F10>      " toggle between paste and normal: for 'safer' pasting from keyboard
 set shiftround             " round indent to multiple of 'shiftwidth'
  
-set modeline
+set modeline               " turn on modelines (comments with execution)
 set modelines=5            " default numbers of lines to read for modeline instructions
 
 set autowrite              " Writes on make/shell commands
@@ -26,6 +27,7 @@ set ignorecase            " be case insensitive when searching
 set smartcase             " be case sensitive when input has a capital letter
 set incsearch             " show matches while typing
 let g:is_posix = 1        " vim's default is archaic bourne shell, bring it up to the 90s
+" set nocompatible          " use arrow keys etc.- be iMproved - set in plugins file
 " "}}}
 
 

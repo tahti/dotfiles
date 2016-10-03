@@ -1,0 +1,25 @@
+Files:
+  variables - general variables for vime
+Using Vundle as plugin manager.
+Using plugins:
+
+  - Vundle - plugin manager
+       :PlugInstall - run after changing config and restarting to install new plugins
+  - Nerd tree - file managment
+  - nedrcommenter - ,c space or  ,ci shortcuts for commenting
+  - i3-vim-syntax- syntax for i3
+  - vim-repeat - . acts in a better way 
+  - vim-speeddating - incrementing dates
+  - vim-abolish - correction, searching(:S) and change e.g. camelCase to snake_case (,rc  ,rm  ,rs) - todo in emacs
+  - vim-unimpaired - [e -change lines
+                     cos - toggle spelling
+                     [x xml encode
+                     [y c   encode
+                     [u url encode
+                     [f next file
+  - splitjoin - change between multiple line/single line (sj sk)
+  - gundo - undo tree (,u)
+
+
+Tried and not using:
+   Plugin 'svermeulen/vim-easyclip' - not copying when deleting
