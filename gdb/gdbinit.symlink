@@ -5,3 +5,8 @@ set $COLOREDPROMPT = 1
 set disassembly-flavor intel
 set follow-fork-mode child
 source ~/data/progs/peda/peda.py
+# Keep a history of all the commands typed. Search is possible using ctrl-r
+set history save on
+set history filename ~/Private/.gdb_history
+set history size 64768
+set history expansion on

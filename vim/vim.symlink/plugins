@@ -39,8 +39,9 @@ Plugin 'mattn/webapi-vim'
 
 " Utility
 Plugin 'AndrewRadev/splitjoin.vim'
-
-"Plugin 'gmarik/ide-popup.vim'
+" Files
+" todo ctrp
+" vimcommander
 Plugin 'sjl/gundo.vim.git'
 
 " Syntax highlight

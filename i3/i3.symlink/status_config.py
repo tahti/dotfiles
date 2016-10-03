@@ -35,22 +35,26 @@ status.register("mem"
                 , hints={}
                 )
 def lighter(self):
-        if self.has_xbacklight:
-            pr = float(run_through_shell(["xbacklight", "-get"]).out)
-            pr = pr * 0.1
-            if pr<1.0:
-                pr = 1
-            run_through_shell(["xbacklight", "+"+str(pr), "-time", "0"])
+        # if self.has_xbacklight:
+            # pr = float(run_through_shell(["xbacklight", "-get"]).out)
+            # pr = pr * 0.1
+            # if pr<1.0:
+                # pr = 1
+            # run_through_shell(["xbacklight", "+"+str(pr), "-time", "0"])
+
+            pr = run_through_shell(["/etc/acpi/actions/bl_up.sh", ""])
             return pr
 
 def darker(self):
-        if self.has_xbacklight:
-            pr = float(run_through_shell(["xbacklight", "-get"]).out)
-            pr = pr * 0.1
-            if pr<1.0:
-                pr = 1
-            run_through_shell(["xbacklight", "-"+str(pr), "-time", "0"])
+        # if self.has_xbacklight:
+            # pr = float(run_through_shell(["xbacklight", "-get"]).out)
+            # pr = pr * 0.1
+            # if pr<1.0:
+                # pr = 1
+            # run_through_shell(["xbacklight", "-"+str(pr), "-time", "0"])
+            pr = run_through_shell(["/etc/acpi/actions/bl_down.sh", ""])
             return pr
+            # return pr
 
 i3pystatus.backlight.Backlight.lighter = lighter 
 i3pystatus.backlight.Backlight.darker = darker 

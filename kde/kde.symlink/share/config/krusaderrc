@@ -109,7 +109,7 @@ With Icons=false
 [KrViewerWindow]
 Window Height=1176
 Window Maximized=false
-Window Width=636
+Window Width=956
 
 [Look&Feel]
 Always sort dirs by name=true
@@ -120,7 +120,7 @@ Mark Dirs=true
 Minimize To Tray=false
 Numeric permissions=true
 Quicksearch Position=top
-Show Hidden=false
+Show Hidden=true
 Show Tab Buttons=true
 Tab Bar Position=top
 
@@ -131,11 +131,11 @@ Layout=krusader:compact
 BM Jumpback=false
 BM Trash=false
 Maximized=false
-PopularUrls=file:///home/piotr/,file:///home/piotr/GNUstep/,file:///home/piotr/PDF/,file:///home/piotr/bin/,file:///home/
-PopularUrlsRank=20,17,15,12,10
-Start Position=-2,18
-Start Size=1920,1180
-cmdline history=
+PopularUrls=file:///home/piotr/.kde/share/,file:///home/piotr/.kde/,file:///home/piotr/repos/dotfiles/,file:///home/piotr/,file:///home/piotr/.kde/share/apps/konqueror/,file:///home/piotr/repos/dotfiles/kde/,file:///home/piotr/.kde/share/apps/kpdf/,file:///home/piotr/.kde/share/apps/,file:///home/piotr/.kde/share/config/,file:///home/piotr/repos/dotfiles/kde/kde.symlink/,file:///home/piotr/repos/dotfiles/kde/kde.symlink/share/,file:///home/piotr/.kde/share/kde4/services/,file:///home/piotr/.kde/share/kde4/,file:///home/piotr/.kde/share/config/colors/,file:///home/piotr/repos/dotfiles/kde/kde.symlink/share/config/,file:///home/piotr/repos/dotfiles/icons/,file:///home/piotr/repos/dotfiles/icons/icons.symlink/,file:///home/piotr/repos/dotfiles/krusader/,file:///home/piotr/repos/dotfiles/themes/,file:///home/piotr/repos/dotfiles/urxvt/urxvt.symlink/,file:///home/piotr/repos/dotfiles/urxvt/urxvt.symlink/ext/,file:///home/piotr/repos/dotfiles/urxvt/,file:///home/piotr/repos/dotfiles/vifm/,file:///home/piotr/repos/dotfiles/gdb/,file:///home/piotr/repos/dotfiles/vim/,file:///home/piotr/repos/,file:///home/piotr/.config/,file:///home/piotr/.shutter/,file:///home/piotr/.local/,file:///home/piotr/.local/share/
+PopularUrlsRank=2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+Start Position=0,20
+Start Size=1916,1176
+cmdline history=firefox,urxvt,cmd,l,ls
 
 [Protocols]
 Handled Protocols=tar,krarc,iso
@@ -147,10 +147,16 @@ Mimes For tar=application/x-xz-compressed-tar,application/x-tarz,application/x-t
 Active=0
 Queues=default
 
+[Search]
+ContainsText Completion=
+ContainsText History=
+SearchFor Completion=*
+SearchFor History=*
+
 [Startup]
-Left Side Is Active=true
+Left Side Is Active=false
 Show tool bar=false
-Splitter Sizes=958,958
+Splitter Sizes=956,956
 Vertical Mode=false
 
 [Startup][Left Tab Bar]
@@ -159,12 +165,12 @@ ActiveTab=0
 [Startup][Left Tab Bar][Tabs][Tab0]
 Properties=0
 Type=0
-Url=/home/piotr
+Url=/home/piotr/repos/dotfiles
 
 [Startup][Left Tab Bar][Tabs][Tab0][History]
 CurrentIndex=0
-CurrentItems=Steam,..,GNUstep,..,GNUstep,..,PDF,..,GNUstep
-Entrys=file:///home/piotr,file:///home/piotr/GNUstep,file:///home/piotr,file:///home/piotr/GNUstep,file:///home/piotr,file:///home/piotr/PDF,file:///home/piotr,file:///home/piotr/GNUstep,file:///home/piotr
+CurrentItems=themes,..,kde,..,..,..,..,config,share,kde.symlink,kde,..,icons
+Entrys=file:///home/piotr/repos/dotfiles,file:///home/piotr/repos/dotfiles/kde,file:///home/piotr/repos/dotfiles,file:///home/piotr/repos/dotfiles/kde,file:///home/piotr/repos/dotfiles/kde/kde.symlink,file:///home/piotr/repos/dotfiles/kde/kde.symlink/share,file:///home/piotr/repos/dotfiles/kde/kde.symlink/share/config,file:///home/piotr/repos/dotfiles/kde/kde.symlink/share,file:///home/piotr/repos/dotfiles/kde/kde.symlink,file:///home/piotr/repos/dotfiles/kde,file:///home/piotr/repos/dotfiles,file:///home/piotr/repos/dotfiles/icons,file:///home/piotr/repos/dotfiles
 
 [Startup][Left Tab Bar][Tabs][Tab0][View]
 AutoResizeColumns=false
@@ -177,17 +183,17 @@ ShowPreviews=false
 Sort Column=0
 
 [Startup][Right Tab Bar]
-ActiveTab=0
+ActiveTab=1
 
 [Startup][Right Tab Bar][Tabs][Tab0]
 Properties=0
 Type=0
-Url=/home/piotr/bin
+Url=/home/piotr/.kde/share/config
 
 [Startup][Right Tab Bar][Tabs][Tab0][History]
 CurrentIndex=0
-CurrentItems=uncompyle2,bin,piotr,..
-Entrys=file:///home/piotr/bin,file:///home/piotr,file:///home,file:///home/piotr
+CurrentItems=krusaderrc,config,share,..,..,..,services,kde4,..,..,colors,..,colors
+Entrys=file:///home/piotr/.kde/share/config,file:///home/piotr/.kde/share,file:///home/piotr/.kde,file:///home/piotr/.kde/share,file:///home/piotr/.kde/share/kde4,file:///home/piotr/.kde/share/kde4/services,file:///home/piotr/.kde/share/kde4,file:///home/piotr/.kde/share,file:///home/piotr/.kde/share/config,file:///home/piotr/.kde/share/config/colors,file:///home/piotr/.kde/share/config,file:///home/piotr/.kde/share/config/colors,file:///home/piotr/.kde/share/config
 
 [Startup][Right Tab Bar][Tabs][Tab0][View]
 AutoResizeColumns=false
@@ -198,6 +204,50 @@ IconSize=22
 Saved State=\x00\x00\x00ˇ\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\t®\x01\x00\x00\x00\x04\x00\x00\x00\x08\x00\x00\x00d\x00\x00\x00\x07\x00\x00\x00d\x00\x00\x00\x05\x00\x00\x00d\x00\x00\x00\x03\x00\x00\x00d\x00\x00\x02O\x00\x00\x00\t\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00dˇˇˇˇ\x00\x00\x00Å\x00\x00\x00\x00\x00\x00\x00\t\x00\x00\x019\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x002\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00P\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00x\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x1c\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00
 ShowPreviews=false
 Sort Column=0
+
+[Startup][Right Tab Bar][Tabs][Tab1]
+Properties=0
+Type=0
+Url=/home/piotr/.kde/share
+
+[Startup][Right Tab Bar][Tabs][Tab1][History]
+CurrentIndex=0
+CurrentItems=..,share,.kde,..,.kde,..,.kde,..,.kde,..,..,..,config
+Entrys=file:///home/piotr/.kde/share,file:///home/piotr/.kde,file:///home/piotr,file:///home/piotr/.kde,file:///home/piotr,file:///home/piotr/.kde,file:///home/piotr,file:///home/piotr/.kde,file:///home/piotr,file:///home/piotr/.kde,file:///home/piotr/.kde/share,file:///home/piotr/.kde/share/config,file:///home/piotr/.kde/share
+
+[Startup][Right Tab Bar][Tabs][Tab1][View]
+AutoResizeColumns=false
+Descending Sort Order=0
+Filter=3
+FilterApplysToDirs=false
+IconSize=22
+Saved State=\x00\x00\x00ˇ\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\t®\x01\x00\x00\x00\x04\x00\x00\x00\x08\x00\x00\x00d\x00\x00\x00\x07\x00\x00\x00d\x00\x00\x00\x05\x00\x00\x00d\x00\x00\x00\x03\x00\x00\x00d\x00\x00\x02O\x00\x00\x00\t\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00dˇˇˇˇ\x00\x00\x00Å\x00\x00\x00\x00\x00\x00\x00\t\x00\x00\x019\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x002\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00P\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00x\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x1c\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00
+ShowPreviews=false
+Sort Column=0
+
+[Synchronize]
+Asymmetric=false
+Compare By Content=false
+Deletable Button=true
+Differents Button=true
+Duplicates Button=true
+Equals Button=true
+File Filter=*
+Follow Symlinks=false
+Ignore Case=false
+Ignore Date=false
+Left Directory History=/home/piotr/repos/dotfiles/kde
+LeftToRight Button=true
+Parallel Threads=1
+Recurse Subdirectories=true
+Right Directory History=/home/piotr
+RightToLeft Button=true
+Scroll Results=false
+Singles Button=true
+State=\x00\x00\x00ˇ\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x03C\x00\x00\x00\x07\x01\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00dˇˇˇˇ\x00\x00\x00Å\x00\x00\x00\x00\x00\x00\x00\x07\x00\x00\x01&\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x000\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00H\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x18\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00H\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x000\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x01\x15\x00\x00\x00\x01\x00\x00\x00\x00
+Window Height=562
+Window Maximized=false
+Window Width=903
 
 [UserActions]
 Normal Font=DejaVu Sans Mono,9,-1,5,75,0,0,0,0,0

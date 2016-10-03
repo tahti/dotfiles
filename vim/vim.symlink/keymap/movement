@@ -17,5 +17,24 @@ nmap <C-h> <C-b>
 nmap <C-n> <C-f>
 vmap <C-h> <C-b>
 vmap <C-n> <C-f>
-
+" window movement with Alt key
+if has("gui_running")
+  map <M-c> <C-w>k
+  map <M-t> <C-w>j
+  map <M-h> <C-w>h
+  map <M-n> <C-w>l
+  inoremap <M-c> <Esc><C-w>ki
+  inoremap <M-t> <Esc><C-w>ji
+  inoremap <M-h> <Esc><C-w>hi
+  inoremap <M-n> <Esc><C-w>li
+else
+  map <Esc>[31~] <C-w>k
+  map <Esc>[29~] <C-w>j
+  map <Esc>[32~] <C-w>h
+  map <Esc>[30~] <C-w>l
+  inoremap <Esc>[31~] <Esc><C-w>ki
+  inoremap <Esc>[29~] <Esc><C-w>ji
+  inoremap <Esc>[32~] <Esc><C-w>hi
+  inoremap <Esc>[30~] <Esc><C-w>li
+endif
 " vim: set filetype=vim:

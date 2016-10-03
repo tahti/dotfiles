@@ -17,7 +17,7 @@ new_window pixel 2
 ##
 #
 
-exec --no-startup-id ~/bin/turnmonitor.sh left
+exec --no-startup-id ~/bin/turnmonitor.sh
 #exec setxkbmap -layout "pl,pl" -variant "dvp,basic" -option "caps:swapescape,grp:sclk_toggle"
 #exec blueman-applet
 exec --no-startup-id kmix --keepvisibility
@@ -259,25 +259,25 @@ bindcode $myModC+Shift+$tabC workspace prev
 # $  &  7 5 3 1 9 0 2 4  6  8  #
 # 13 11 7 5 3 1 9 0 2 4  6  8  10
 # 1  2  3 4 5 6 7 8 9 10 11 12 13
-workspace "1:$"  output DP1-2 
-workspace "2:%"  output DP1-2 
-workspace "3:7"  output DP1-2 
-workspace "4:5"  output DP1-2 
-workspace "5:3"  output DP1-2 
-workspace "6:1"  output DP1-2 
-workspace "7:9"  output DP1-2 
+workspace "1:$"  output DP-1-2 
+workspace "2:%"  output DP-1-2 
+workspace "3:7"  output DP-1-2 
+workspace "4:5"  output DP-1-2 
+workspace "5:3"  output DP-1-2
+workspace "6:1"  output DP-1-2
+workspace "7:9"  output DP-1-2
 #workspace "8:0"  output VGA-1 
 #workspace "9:2"  output VGA-1 
 #workspace "10:4" output VGA-1 
 #workspace "11:6" output VGA-1 
 #workspace "12:8" output VGA-1 
 #workspace "13:#" output VGA-1 
-workspace "8:0"  output DP1-2
-workspace "9:2"  output DP1-2
-workspace "10:4" output DP1-2
-workspace "11:6" output DP1-2
-workspace "12:8" output DP1-2
-workspace "13:#" output eDP1
+workspace "8:0"  output eDP-1
+workspace "9:2"  output eDP-1
+workspace "10:4" output eDP-1
+workspace "11:6" output eDP-1
+workspace "12:8" output eDP-1
+workspace "13:#" output eDP-1
 # switch to workspace
 bindcode $myModC+$dollarC workspace "1:$"
 bindcode $myModC+$ampC    workspace "2:%"
