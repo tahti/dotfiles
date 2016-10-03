@@ -1,0 +1,207 @@
+First Time=false
+Height 1200=1142
+State=AAAA/wAAAAD9AAAAAAAAB3wAAARVAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAIAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAAAAAAHABhAGMAdABpAG8AbgBzAFQAbwBvAGwAQgBhAHIBAAAAAP////8AAAAAAAAAAA==
+StatusBar=Disabled
+ToolBarsMovable=Disabled
+Version=2.4.0-beta3
+Width 1920=1916
+
+[Archives]
+Supported Packers=tar,gzip,bzip2,lzma,xz,unzip,zip,cpio,unrar,rar,arj,unace,dpkg,7z,rpm
+
+[Colors]
+Alternate Background=Background
+Background=0,0,0
+Current Background=128,128,128
+Current Foreground=0,0,0
+Dim Inactive Colors=false
+Directory Foreground=0,85,0
+Foreground=192,192,192
+Invalid Symlink Foreground=255,0,0
+KDE Default=false
+Marked Background=Background
+Marked Current Foreground=Marked Foreground
+Marked Foreground=0,255,255
+Quicksearch Match Background=0,0,0
+Quicksearch Match Foreground=0,255,255
+Quicksearch Non-match Background=0,0,0
+Quicksearch Non-match Foreground=255,0,0
+Show Current Item Always=false
+Statusbar Background Active=0,0,0
+Statusbar Background Inactive=0,0,0
+Statusbar Foreground Active=255,255,0
+Statusbar Foreground Inactive=128,128,128
+Symlink Foreground=170,190,103
+Synchronizer Delete Background=0,0,0
+Synchronizer Delete Foreground=128,128,128
+Synchronizer Differs Background=0,0,0
+Synchronizer Equals Background=0,0,0
+Synchronizer Equals Foreground=0,255,0
+Synchronizer LeftCopy Background=0,0,0
+Synchronizer LeftCopy Foreground=255,255,0
+Synchronizer RightCopy Background=0,0,0
+Synchronizer RightCopy Foreground=255,170,0
+
+[Dependencies]
+7z=/usr/bin/7z
+arj=/usr/bin/arj
+bzip2=/bin/bzip2
+cfv=/usr/bin/cfv
+checksum utility=/usr/bin/md5sum
+cpio=/bin/cpio
+diff utility=/usr/bin/xxdiff
+dpkg=/usr/bin/dpkg
+gzip=/bin/gzip
+kdesu=/usr/lib/kde4/libexec/kdesu
+krename=/usr/bin/krename
+krusader=/usr/bin/krusader
+locate=/usr/bin/locate
+lzma=/usr/bin/lzma
+mailer=/usr/sbin/mailer
+md5sum=/usr/bin/md5sum
+mount=/bin/mount
+rar=/usr/bin/rar
+sha1sum=/usr/bin/sha1sum
+sha224sum=/usr/bin/sha224sum
+sha256sum=/usr/bin/sha256sum
+sha384sum=/usr/bin/sha384sum
+sha512sum=/usr/bin/sha512sum
+tar=/bin/tar
+umount=/bin/umount
+unace=/usr/bin/unace
+unrar=/usr/bin/unrar
+unzip=/usr/bin/unzip
+updatedb=/usr/bin/updatedb
+xz=/usr/bin/xz
+zip=/usr/bin/zip
+
+[General]
+Editor=/usr/bin/gvim
+Terminal=/home/piotr/bin/vt -cd %d
+View In Separate Window=false
+
+[HTML Settings]
+AutomaticDetectionLanguage=1
+
+[KFileDialog Settings]
+Height 1200=600
+Recent Files[$e]=xxdiff,/usr/bin/gvim,/usr/bin/xxdiff
+Recent URLs[$e]=/usr/bin/,/usr/
+Width 1920=960
+
+[KPropertiesDialog]
+Height 1200=424
+Width 1920=460
+
+[Konfigurator]
+Window Height=680
+Window Maximized=false
+Window Width=900
+
+[KrInterBriefView]
+With Icons=false
+
+[KrInterDetailedView]
+AutoResizeColumns=false
+Saved State=\x00\x00\x00ˇ\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\t®\x01\x00\x00\x00\x04\x00\x00\x00\x08\x00\x00\x00d\x00\x00\x00\x07\x00\x00\x00d\x00\x00\x00\x05\x00\x00\x00d\x00\x00\x00\x03\x00\x00\x00d\x00\x00\x02O\x00\x00\x00\t\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00dˇˇˇˇ\x00\x00\x00Å\x00\x00\x00\x00\x00\x00\x00\t\x00\x00\x019\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x002\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00P\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00x\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x1c\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00
+With Icons=false
+
+[KrViewerWindow]
+Window Height=1176
+Window Maximized=false
+Window Width=636
+
+[Look&Feel]
+Always sort dirs by name=true
+Filelist Font=DejaVu Sans Mono,8,-1,5,75,0,0,0,0,0
+FlatOriginBar=true
+Human Readable Size=true
+Mark Dirs=true
+Minimize To Tray=false
+Numeric permissions=true
+Quicksearch Position=top
+Show Hidden=false
+Show Tab Buttons=true
+Tab Bar Position=top
+
+[PanelLayout]
+Layout=krusader:compact
+
+[Private]
+BM Jumpback=false
+BM Trash=false
+Maximized=false
+PopularUrls=file:///home/piotr/,file:///home/piotr/GNUstep/,file:///home/piotr/PDF/,file:///home/piotr/bin/,file:///home/
+PopularUrlsRank=20,17,15,12,10
+Start Position=-2,18
+Start Size=1920,1180
+cmdline history=
+
+[Protocols]
+Handled Protocols=tar,krarc,iso
+Mimes For iso=application/x-cd-image
+Mimes For krarc=application/zip,application/x-xz,application/x-rpm,application/x-lha,application/x-cpio,application/x-arj,application/x-ace,application/x-7z-compressed
+Mimes For tar=application/x-xz-compressed-tar,application/x-tarz,application/x-tar,application/x-compressed-tar,application/x-bzip-compressed-tar
+
+[QueueManager]
+Active=0
+Queues=default
+
+[Startup]
+Left Side Is Active=true
+Show tool bar=false
+Splitter Sizes=958,958
+Vertical Mode=false
+
+[Startup][Left Tab Bar]
+ActiveTab=0
+
+[Startup][Left Tab Bar][Tabs][Tab0]
+Properties=0
+Type=0
+Url=/home/piotr
+
+[Startup][Left Tab Bar][Tabs][Tab0][History]
+CurrentIndex=0
+CurrentItems=Steam,..,GNUstep,..,GNUstep,..,PDF,..,GNUstep
+Entrys=file:///home/piotr,file:///home/piotr/GNUstep,file:///home/piotr,file:///home/piotr/GNUstep,file:///home/piotr,file:///home/piotr/PDF,file:///home/piotr,file:///home/piotr/GNUstep,file:///home/piotr
+
+[Startup][Left Tab Bar][Tabs][Tab0][View]
+AutoResizeColumns=false
+Descending Sort Order=0
+Filter=3
+FilterApplysToDirs=false
+IconSize=22
+Saved State=\x00\x00\x00ˇ\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\t®\x01\x00\x00\x00\x04\x00\x00\x00\x08\x00\x00\x00d\x00\x00\x00\x07\x00\x00\x00d\x00\x00\x00\x05\x00\x00\x00d\x00\x00\x00\x03\x00\x00\x00d\x00\x00\x02O\x00\x00\x00\t\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00dˇˇˇˇ\x00\x00\x00Å\x00\x00\x00\x00\x00\x00\x00\t\x00\x00\x019\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x002\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00P\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00x\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x1c\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00
+ShowPreviews=false
+Sort Column=0
+
+[Startup][Right Tab Bar]
+ActiveTab=0
+
+[Startup][Right Tab Bar][Tabs][Tab0]
+Properties=0
+Type=0
+Url=/home/piotr/bin
+
+[Startup][Right Tab Bar][Tabs][Tab0][History]
+CurrentIndex=0
+CurrentItems=uncompyle2,bin,piotr,..
+Entrys=file:///home/piotr/bin,file:///home/piotr,file:///home,file:///home/piotr
+
+[Startup][Right Tab Bar][Tabs][Tab0][View]
+AutoResizeColumns=false
+Descending Sort Order=0
+Filter=3
+FilterApplysToDirs=false
+IconSize=22
+Saved State=\x00\x00\x00ˇ\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\t®\x01\x00\x00\x00\x04\x00\x00\x00\x08\x00\x00\x00d\x00\x00\x00\x07\x00\x00\x00d\x00\x00\x00\x05\x00\x00\x00d\x00\x00\x00\x03\x00\x00\x00d\x00\x00\x02O\x00\x00\x00\t\x01\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00dˇˇˇˇ\x00\x00\x00Å\x00\x00\x00\x00\x00\x00\x00\t\x00\x00\x019\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x002\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00P\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00x\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x1c\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00
+ShowPreviews=false
+Sort Column=0
+
+[UserActions]
+Normal Font=DejaVu Sans Mono,9,-1,5,75,0,0,0,0,0
+Use Fixed Font=true
+
+[ViewerModule]
+FirstRun=false

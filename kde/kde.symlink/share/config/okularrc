@@ -1,0 +1,59 @@
+Height 900=876
+MenuBar=Disabled
+State=AAAA/wAAAAD9AAAAAAAABjwAAANMAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgEAAAAA/////wAAAAAAAAAA
+Width 1600=1596
+
+[Colors]
+CurrentPalette=Forty Colors
+
+[Desktop Entry]
+FullScreen=false
+shouldShowMenuBarComingFromFullScreen=true
+shouldShowToolBarComingFromFullScreen=true
+
+[KFileDialog Settings]
+Height 1200=600
+Height 900=450
+Recent Files[$e]=100F_2015.pdf,$HOME/data/references/wazne/paseport.png,$HOME/Private/repos/piotrkordy/notes/taxes/luxembourg2015/100F_2015.pdf
+Recent URLs[$e]=$HOME/Private/repos/piotrkordy/notes/taxes/luxembourg2015/,$HOME/data/references/wazne/
+Width 1600=800
+Width 1920=960
+
+[MainWindow]
+Height 1200=1124
+Height 800=776
+Height 900=824
+State=AAAA/wAAAAD9AAAAAAAAB3wAAARRAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAA
+ToolBarsMovable=Disabled
+Width 1280=572
+Width 1600=796
+Width 1920=1916
+
+[Notification Messages]
+presentationInfo=false
+
+[Print Preview]
+Height 1200=500
+Width 1920=600
+
+[Recent Files]
+File1[$e]=$HOME/Private/repos/piotrkordy/codeExamples/ctf/d-ctf_2016/revcrypt200/1-s2.0-S0022000003000060-main.pdf
+File10[$e]=$HOME/PDF/ACFrOgAQTVJiM6dBdVJ65zYuHowyW8Rij4EY1YjunT5o0-8hGoc-ocp7qb14SiII.pdf
+File2[$e]=$HOME/Private/repos/piotrkordy/codeExamples/ctf/_references/assembler/sse/x86-intrin-cheatsheet-v2.1.pdf
+File3[$e]=$HOME/downloads/CTMCchapter121906.pdf
+File4[$e]=$HOME/downloads/Math450Lect05.pdf
+File5[$e]=$HOME/downloads/Quantitative+Evaluation+of+Systems.pdf
+File6[$e]=$HOME/Private/repos/piotrkordy/codeExamples/ctf/_references/assembler/radare2/radare2book.pdf
+File7[$e]=$HOME/PDF/251servation.pdf
+File8[$e]=$HOME/PDF/emails.pdf
+File9[$e]=$HOME/PDF/PDF.pdf
+Name1[$e]=1-s2.0-S0022000003000060-main.pdf
+Name10[$e]=ACFrOgAQTVJiM6dBdVJ65zYuHowyW8Rij4EY1YjunT5o0-8hGoc-ocp7qb14SiII.pdf
+Name2[$e]=x86-intrin-cheatsheet-v2.1.pdf
+Name3[$e]=CTMCchapter121906.pdf
+Name4[$e]=Math450Lect05.pdf
+Name5[$e]=Quantitative+Evaluation+of+Systems.pdf
+Name6[$e]=radare2book.pdf
+Name7[$e]=251servation.pdf
+Name8[$e]=emails.pdf
+Name9[$e]=PDF.pdf
