@@ -131,8 +131,8 @@ Layout=krusader:compact
 BM Jumpback=false
 BM Trash=false
 Maximized=false
-PopularUrls=file:///home/piotr/.kde/share/,file:///home/piotr/.kde/,file:///home/piotr/repos/dotfiles/,file:///home/piotr/,file:///home/piotr/.kde/share/apps/konqueror/,file:///home/piotr/repos/dotfiles/kde/,file:///home/piotr/.kde/share/apps/kpdf/,file:///home/piotr/.kde/share/apps/,file:///home/piotr/.kde/share/config/,file:///home/piotr/repos/dotfiles/kde/kde.symlink/,file:///home/piotr/repos/dotfiles/kde/kde.symlink/share/,file:///home/piotr/.kde/share/kde4/services/,file:///home/piotr/.kde/share/kde4/,file:///home/piotr/.kde/share/config/colors/,file:///home/piotr/repos/dotfiles/kde/kde.symlink/share/config/,file:///home/piotr/repos/dotfiles/icons/,file:///home/piotr/repos/dotfiles/icons/icons.symlink/,file:///home/piotr/repos/dotfiles/krusader/,file:///home/piotr/repos/dotfiles/themes/,file:///home/piotr/repos/dotfiles/urxvt/urxvt.symlink/,file:///home/piotr/repos/dotfiles/urxvt/urxvt.symlink/ext/,file:///home/piotr/repos/dotfiles/urxvt/,file:///home/piotr/repos/dotfiles/vifm/,file:///home/piotr/repos/dotfiles/gdb/,file:///home/piotr/repos/dotfiles/vim/,file:///home/piotr/repos/,file:///home/piotr/.config/,file:///home/piotr/.shutter/,file:///home/piotr/.local/,file:///home/piotr/.local/share/
-PopularUrlsRank=2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+PopularUrls=file:///home/piotr/.kde/share/apps/krusader/,file:///home/piotr/.kde/share/config/,file:///home/piotr/.kde/share/,file:///home/piotr/.kde/share/apps/,file:///home/piotr/repos/dotfiles/,file:///home/piotr/.kde/,file:///home/piotr/,file:///home/piotr/.kde/share/apps/konqueror/,file:///home/piotr/repos/dotfiles/kde/,file:///home/piotr/.kde/share/apps/kpdf/,file:///home/piotr/repos/dotfiles/kde/kde.symlink/,file:///home/piotr/repos/dotfiles/kde/kde.symlink/share/,file:///home/piotr/.kde/share/kde4/services/,file:///home/piotr/.kde/share/kde4/,file:///home/piotr/.kde/share/config/colors/,file:///home/piotr/repos/dotfiles/kde/kde.symlink/share/config/,file:///home/piotr/repos/dotfiles/icons/,file:///home/piotr/repos/dotfiles/icons/icons.symlink/,file:///home/piotr/repos/dotfiles/krusader/,file:///home/piotr/repos/dotfiles/themes/,file:///home/piotr/repos/dotfiles/urxvt/urxvt.symlink/,file:///home/piotr/repos/dotfiles/urxvt/urxvt.symlink/ext/,file:///home/piotr/repos/dotfiles/urxvt/,file:///home/piotr/repos/dotfiles/vifm/,file:///home/piotr/repos/dotfiles/gdb/,file:///home/piotr/repos/dotfiles/vim/,file:///home/piotr/repos/,file:///home/piotr/.config/,file:///home/piotr/.shutter/,file:///home/piotr/.local/
+PopularUrlsRank=17,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 Start Position=0,20
 Start Size=1916,1176
 cmdline history=firefox,urxvt,cmd,l,ls
@@ -208,12 +208,12 @@ Sort Column=0
 [Startup][Right Tab Bar][Tabs][Tab1]
 Properties=0
 Type=0
-Url=/home/piotr/.kde/share
+Url=/home/piotr/.kde/share/config
 
 [Startup][Right Tab Bar][Tabs][Tab1][History]
 CurrentIndex=0
-CurrentItems=..,share,.kde,..,.kde,..,.kde,..,.kde,..,..,..,config
-Entrys=file:///home/piotr/.kde/share,file:///home/piotr/.kde,file:///home/piotr,file:///home/piotr/.kde,file:///home/piotr,file:///home/piotr/.kde,file:///home/piotr,file:///home/piotr/.kde,file:///home/piotr,file:///home/piotr/.kde,file:///home/piotr/.kde/share,file:///home/piotr/.kde/share/config,file:///home/piotr/.kde/share
+CurrentItems=okularrc,config,..,..,krusader,apps,..,apps,share,.kde,..,.kde,..
+Entrys=file:///home/piotr/.kde/share/config,file:///home/piotr/.kde/share,file:///home/piotr/.kde/share/apps,file:///home/piotr/.kde/share/apps/krusader,file:///home/piotr/.kde/share/apps,file:///home/piotr/.kde/share,file:///home/piotr/.kde/share/apps,file:///home/piotr/.kde/share,file:///home/piotr/.kde,file:///home/piotr,file:///home/piotr/.kde,file:///home/piotr,file:///home/piotr/.kde
 
 [Startup][Right Tab Bar][Tabs][Tab1][View]
 AutoResizeColumns=false
