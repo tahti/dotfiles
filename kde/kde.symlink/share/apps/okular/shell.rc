@@ -24,7 +24,7 @@
   <!--Action name="file_print" /-->
  </ToolBar>
  <ActionProperties scheme="Default">
-  <Action shortcut="Ctrl+W" name="file_close"/>
+  <Action shortcut="Ctrl+W; Ctrl+F4" name="file_close"/>
   <Action shortcut="Ctrl+Q; Q" name="file_quit"/>
  </ActionProperties>
 </kpartgui>
