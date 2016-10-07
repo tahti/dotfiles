@@ -22,12 +22,12 @@ Width 1920=960
 [MainWindow]
 Height 1200=1176
 Height 800=776
-Height 900=824
-State=AAAA/wAAAAD9AAAAAAAAA7wAAASFAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAA
+Height 900=876
+State=AAAA/wAAAAD9AAAAAAAAB3wAAASFAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAEAAAAWAG0AYQBpAG4AVABvAG8AbABCAGEAcgAAAAAA/////wAAAAAAAAAA
 ToolBarsMovable=Disabled
 Width 1280=572
 Width 1600=796
-Width 1920=956
+Width 1920=1916
 
 [Notification Messages]
 presentationInfo=false
@@ -37,23 +37,23 @@ Height 1200=500
 Width 1920=600
 
 [Recent Files]
-File1[$e]=$HOME/Private/repos/piotrkordy/codeExamples/ctf/d-ctf_2016/revcrypt200/1-s2.0-S0022000003000060-main.pdf
-File10[$e]=$HOME/PDF/ACFrOgAQTVJiM6dBdVJ65zYuHowyW8Rij4EY1YjunT5o0-8hGoc-ocp7qb14SiII.pdf
-File2[$e]=$HOME/Private/repos/piotrkordy/codeExamples/ctf/_references/assembler/sse/x86-intrin-cheatsheet-v2.1.pdf
-File3[$e]=$HOME/downloads/CTMCchapter121906.pdf
-File4[$e]=$HOME/downloads/Math450Lect05.pdf
+File1[$e]=$HOME/PDF/251servation.pdf
+File10[$e]=$HOME/Private/repos/piotrkordy/books/programming/cpp/C_GUI_programming_with_Qt_4.pdf
+File2[$e]=$HOME/PDF/emails.pdf
+File3[$e]=$HOME/PDF/PDF.pdf
+File4[$e]=$HOME/PDF/ACFrOgAQTVJiM6dBdVJ65zYuHowyW8Rij4EY1YjunT5o0-8hGoc-ocp7qb14SiII.pdf
 File5[$e]=$HOME/downloads/Quantitative+Evaluation+of+Systems.pdf
-File6[$e]=$HOME/Private/repos/piotrkordy/codeExamples/ctf/_references/assembler/radare2/radare2book.pdf
-File7[$e]=$HOME/PDF/251servation.pdf
-File8[$e]=$HOME/PDF/emails.pdf
-File9[$e]=$HOME/PDF/PDF.pdf
-Name1[$e]=1-s2.0-S0022000003000060-main.pdf
-Name10[$e]=ACFrOgAQTVJiM6dBdVJ65zYuHowyW8Rij4EY1YjunT5o0-8hGoc-ocp7qb14SiII.pdf
-Name2[$e]=x86-intrin-cheatsheet-v2.1.pdf
-Name3[$e]=CTMCchapter121906.pdf
-Name4[$e]=Math450Lect05.pdf
+File6[$e]=$HOME/Private/repos/piotrkordy/projects/java/ADTool2/docs/CTMCchapter121906.pdf
+File7[$e]=$HOME/Private/repos/piotrkordy/projects/java/ADTool2/docs/Math450Lect05.pdf
+File8[$e]=$HOME/Private/repos/piotrkordy/projects/java/ADTool2/docs/stochastic-I-CTMC.pdf
+File9[$e]=$HOME/Private/repos/piotrkordy/projects/java/ADTool2/docs/markovChains.pdf
+Name1[$e]=251servation.pdf
+Name10[$e]=C_GUI_programming_with_Qt_4.pdf
+Name2[$e]=emails.pdf
+Name3[$e]=PDF.pdf
+Name4[$e]=ACFrOgAQTVJiM6dBdVJ65zYuHowyW8Rij4EY1YjunT5o0-8hGoc-ocp7qb14SiII.pdf
 Name5[$e]=Quantitative+Evaluation+of+Systems.pdf
-Name6[$e]=radare2book.pdf
-Name7[$e]=251servation.pdf
-Name8[$e]=emails.pdf
-Name9[$e]=PDF.pdf
+Name6[$e]=CTMCchapter121906.pdf
+Name7[$e]=Math450Lect05.pdf
+Name8[$e]=stochastic-I-CTMC.pdf
+Name9[$e]=markovChains.pdf

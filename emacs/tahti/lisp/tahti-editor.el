@@ -107,12 +107,13 @@
    )
 
 ;;;; vimvars =========================================
-(push 'vimvars el-get-packages)
-(defun tahti-after-vimvars ()
-  (add-hook 'find-file-hook 'vimvars-obey-vim-modeline))
-  (tahti-global-keys) ;run at the last package
+;(push 'vimvars el-get-packages)
+;(defun tahti-after-tahti-var()
+  ;(message "Enabling VIMvars ")
 
-(provide 'tahti-editor)
+  ;(add-hook 'find-file-hook 'tahti-var-obey-vim-modeline))
+(tahti-global-keys) ;run at the last package
+
 
 ;;; pretty-mode ======================================
 (setq pp^L-^L-string (concat (make-string 30 ? ) "⁂" (make-string 30 ? ))

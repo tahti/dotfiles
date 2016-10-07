@@ -28,4 +28,15 @@ nmap sk :SplitjoinSplit<cr>
 """""""""""""""""""""""""""" gundo """""""""""""""""""""""""""""""""
 nnoremap <leader>u :GundoToggle<CR>
 let g:gundo_prefer_python3 = 1
+"""""""""""""""""""""""""""" dragvisuals """""""""""""""""""""""""""""""""
+
+vmap  <expr>  <S-h>  DVB_Drag('left')
+vmap  <expr>  <S-n>  DVB_Drag('right')
+vmap  <expr>  <S-t>  DVB_Drag('down')
+vmap  <expr>  <S-c>  DVB_Drag('up')
+vmap <expr> D DVB_Duplicate()
+" Remove any introduced trailing whitespace after moving...
+let g:DVB_TrimWS = 1
+
+
 " vim: set filetype=vim:

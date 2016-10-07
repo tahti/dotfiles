@@ -85,9 +85,9 @@ git_arrows() {
     # split on tabs
     arrow_status=(${(ps:\t:)arrow_status})
     local left=${arrow_status[1]} right=${arrow_status[2]}
-
-    (( ${right:-0} > 0 )) && arrows+="%F{011}⇣%f"
-    (( ${left:-0} > 0 )) && arrows+="%F{012}⇡%f"
+# spectrum_ls to get all colors
+    (( ${right:-0} > 0 )) && arrows+="%F{226}▼%f"
+    (( ${left:-0} > 0 )) && arrows+="%F{196}▲%f"
 
     echo $arrows
 }

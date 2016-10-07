@@ -17,6 +17,7 @@ nmap <C-h> <C-b>
 nmap <C-n> <C-f>
 vmap <C-h> <C-b>
 vmap <C-n> <C-f>
+noremap <space> za
 " window movement with Alt key
 if has("gui_running")
   map <M-c> <C-w>k

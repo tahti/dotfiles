@@ -26,7 +26,7 @@ alias gpwns="makepasswd --chars 12 --string 'abcdefghijklmnopqrrstuvwxyzABCDEFGH
 alias svn ignore='svn propedit svn:global-ignores'
 alias unsvn='find . -name ".svn" -exec rm -rf {} \;'
 alias setdvp='setxkbmap -layout "pl,pl" -variant "dvp," -option "caps:swapescape,grp:sclk_toggle"'
-alias t='todo.sh'
+alias t='~/bin/todo'
 alias irfanview='wine ~/.wine/drive_c/Program\ Files/IrfanView/i_view32.exe'
 alias ida='wine ~/progs/IDA\ Pro\ 6.1\ Precracked/idaq.exe'
 alias objdump='objdump -C --disassembler-options=intel'

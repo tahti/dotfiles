@@ -39,9 +39,17 @@ Plugin 'mattn/webapi-vim'
 
 " Utility
 Plugin 'AndrewRadev/splitjoin.vim'
+" use B to use actions on a region or S for search
+Plugin 'vis' 
+Plugin 'cecutil' " dependency for dragvisuals
+Plugin 'Align'  " align e. g. to = and dependency for dragvisuals
+Plugin 'atweiden/vim-dragvisuals'
+Plugin 'tpope/vim-characterize' " override ga with more useful info
+
 " Files
 " todo ctrp
 " vimcommander
+" syntastic: git
 Plugin 'sjl/gundo.vim.git'
 
 " Syntax highlight
