@@ -21,7 +21,7 @@ zstyle ':vcs_info:*' formats ' %b' 'x%R'
 # styles above, not only by a branch name but also by a revision number. This
 # style lets you modify how that string should look. Default:"%b:%r" (for bzr, svn, svk and hg)  
 zstyle ':vcs_info:*' actionformats ' %b|%a' 'x%R'
-zstyle ':vcs_info:svn*' branchformat '%b:%r'
+#zstyle ':vcs_info:svn*' branchformat '%b:%r'
 
 autoload colors && colors
 
@@ -60,10 +60,16 @@ git_dirty() {
 
 
 arrows() {
-  if svn info >/dev/null 2>&1; then
-    echo ""
-  else
+  local rev=$(LANG=C svn info 2> /dev/null |grep 'Last Changed Rev' | awk '{print $4}')
+  if [ -z $rev ]; then
     git_arrows
+  else
+    #local remrev=$(LANG=C svn info -rHEAD 2> /dev/null |grep 'Last Changed Rev' | awk '{print $4}')
+    #if [ $rev -eq $remrev ]; then
+      #echo ":%F{green}$remrev"
+    #else
+      #echo ":%F{red}$remrev"
+    #fi
   fi
 }
 
@@ -110,5 +116,5 @@ precmd() {
 }
 
 export PROMPT='%(?..%? )%(?.%F{yellow}.%F{red})▶%f '
-export RPROMPT='`dirty`%F{241}$vcs_info_msg_0_%f `arrows``suspended_jobs`'
+export RPROMPT='`dirty`%F{241}$vcs_info_msg_0_%f`arrows``suspended_jobs`'
 #export RPROMPT='`dirty`%F{241}$vcs_info_msg_0_%f `suspended_jobs`'
