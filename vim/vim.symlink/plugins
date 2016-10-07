@@ -51,7 +51,7 @@ Plugin 'tpope/vim-characterize' " override ga with more useful info
 " vimcommander
 " syntastic: git
 Plugin 'sjl/gundo.vim.git'
-
+Plugin 'ctrlp.vim' " ,b - fuzzy search of files/buffers
 " Syntax highlight
 Plugin 'gmarik/vim-markdown'
 Plugin 'timcharper/textile.vim'

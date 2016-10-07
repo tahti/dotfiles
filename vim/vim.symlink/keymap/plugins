@@ -28,6 +28,8 @@ nmap sk :SplitjoinSplit<cr>
 """""""""""""""""""""""""""" gundo """""""""""""""""""""""""""""""""
 nnoremap <leader>u :GundoToggle<CR>
 let g:gundo_prefer_python3 = 1
+"""""""""""""""""""""""""""" CtrlP   """""""""""""""""""""""""""""""""
+map <leader>b :CtrlPBuffer<CR>
 """""""""""""""""""""""""""" dragvisuals """""""""""""""""""""""""""""""""
 
 vmap  <expr>  <S-h>  DVB_Drag('left')
