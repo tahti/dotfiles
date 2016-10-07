@@ -60,16 +60,10 @@ git_dirty() {
 
 
 arrows() {
-  local rev=$(LANG=C svn info 2> /dev/null |grep 'Last Changed Rev' | awk '{print $4}')
-  if [ -z $rev ]; then
-    git_arrows
+  if svn info >/dev/null 2>&1; then
+    echo ""
   else
-    #local remrev=$(LANG=C svn info -rHEAD 2> /dev/null |grep 'Last Changed Rev' | awk '{print $4}')
-    #if [ $rev -eq $remrev ]; then
-      #echo ":%F{green}$remrev"
-    #else
-      #echo ":%F{red}$remrev"
-    #fi
+    git_arrows
   fi
 }
 
