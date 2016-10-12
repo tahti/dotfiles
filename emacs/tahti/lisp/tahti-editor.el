@@ -106,12 +106,6 @@
    (add-hook 'kill-emacs-hook #'recentf-cleanup)
    )
 
-;;;; vimvars =========================================
-;(push 'vimvars el-get-packages)
-;(defun tahti-after-tahti-var()
-  ;(message "Enabling VIMvars ")
-
-  ;(add-hook 'find-file-hook 'tahti-var-obey-vim-modeline))
 (tahti-global-keys) ;run at the last package
 
 

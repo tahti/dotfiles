@@ -1,4 +1,5 @@
 " This must be first, because it changes other options as a side effect.
+
 set nocompatible                " Use Vim settings, rather than Vi settings (much better!).
 filetype off
 set rtp+=~/.vim/bundle/vundle/

@@ -91,29 +91,45 @@
   "Check the top of a file for VIM-style settings, and obey them.
 Only the first `tahti-var-chars-in-file-head' characters of the file
 are checked for VIM variables.   You can use this in `find-file-hook'."
+  (message "tahti-var-obey-vim-modeline start")
   (when (tahti-var-should-obey-modeline)
     (save-excursion
       ;; Look for something like this: vi: set sw=4 ts=4:
       ;; We should look for it in a comment, but for now
       ;; we won't worry about the syntax of the major mode.
       (goto-char (point-min))
-      (if (and
-           (re-search-forward tahti-var-modeline-re
-		  (line-end-position tahti-var-check-lines) t)
-           (tahti-var-accept-tag (match-string 1) (match-string 2)))
+      (if (or
+            (and
+              (re-search-forward tahti-var-modeline-re
+		            (line-end-position tahti-var-check-lines) t)
+              (tahti-var-accept-tag (match-string 1) (match-string 2))
+            )
+            (and
+              ((lambda() 
+                (goto-char (point-max))  ;search at the end also
+                (re-search-forward tahti-var-modeline-re
+		                (line-end-position (- tahti-var-check-lines)) t -1)
+              ))
+              (tahti-var-accept-tag (match-string 1) (match-string 2))
+            )
+          )
           (progn
-            (message "found a modeline: %s" (match-string 0))
+            (message "Found a modeline: %s" (match-string 0))
             (let ((settings-end (match-end 4)))
-	;; We ignore the local suffix, since for Emacs
-	;; most settings will be buffer-local anyway.
-	;;(message "found VIM settings %s" (match-string 4))
-	(goto-char (match-beginning 4))
-	(while (re-search-forward
-	        " *\\([^= ]+\\)\\(=\\([^ :]+\\)\\)?" settings-end t)
-	  (let ((variable (tahti-var-expand-option-name (match-string 1))))
-	    (if (match-string 3)
-	        (tahti-var-assign variable (match-string 3))
-	      (tahti-var-enable-feature variable))))))))))
+              ;; We ignore the local suffix, since for Emacs
+              ;; most settings will be buffer-local anyway.
+              ;;(message "found VIM settings %s" (match-string 4))
+              (goto-char (match-beginning 4))
+              (while (re-search-forward
+                      " *\\([^= ]+\\)\\(=\\([^ :]+\\)\\)?" settings-end t)
+                (let ((variable (tahti-var-expand-option-name (match-string 1))))
+                  (if (match-string 3)
+                      (tahti-var-assign variable (match-string 3))
+                    (tahti-var-enable-feature variable)))
+              )
+            )
+          )
+        ))))
 
 
 (defun tahti-var-set-indent (indent)
@@ -179,7 +195,7 @@ are checked for VIM variables.   You can use this in `find-file-hook'."
    (t (message "Don't know how to emulate VIM feature %s" var))))
 
   ;;;; vimvars =========================================
-
+(message "Enabling VIMvars ")
 (add-hook 'find-file-hook 'tahti-var-obey-vim-modeline)
 
 (provide 'tahti-var)
