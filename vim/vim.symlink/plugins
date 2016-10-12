@@ -45,6 +45,7 @@ Plugin 'cecutil' " dependency for dragvisuals
 Plugin 'Align'  " align e. g. to = and dependency for dragvisuals
 Plugin 'atweiden/vim-dragvisuals'
 Plugin 'tpope/vim-characterize' " override ga with more useful info
+Plugin 'jceb/vim-orgmode' " override ga with more useful info
 
 " Files
 " todo ctrp
