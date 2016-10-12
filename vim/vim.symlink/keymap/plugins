@@ -40,5 +40,5 @@ vmap <expr> D DVB_Duplicate()
 " Remove any introduced trailing whitespace after moving...
 let g:DVB_TrimWS = 1
 
-noremap <leader><Space> :set hlsearch!<CR>
+noremap <leader><Space> :nohl<CR>
 " vim: set filetype=vim:

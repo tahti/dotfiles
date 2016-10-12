@@ -18,6 +18,9 @@ nmap <C-n> <C-f>
 vmap <C-h> <C-b>
 vmap <C-n> <C-f>
 noremap <space> za
+" search selection
+vn * y/<C-R>"<CR>
+vn # y?<C-R>"<CR>
 " window movement with Alt key
 if has("gui_running")
   map <M-c> <C-w>k
