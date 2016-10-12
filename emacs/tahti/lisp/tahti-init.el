@@ -63,7 +63,9 @@
       (when (fboundp func)
           (message "[tahti-init] run tahti-after-%s" name) 
           (funcall func)))))
-
+;; load files from lisp/tahti-*el
+;; get packages from el-get-packages  using el-get sync
+;; run tahti-after-(modulename) functions
 (defun tahti-init ()
   "Emacs start entry"
   (add-to-list 'package-archives

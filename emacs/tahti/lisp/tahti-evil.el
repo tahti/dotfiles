@@ -35,40 +35,48 @@
    '(evil-leader/leader ",")
    '(evil-leader/in-all-states t)
  )
+
+;(let ((search-functions
+       ;'(forward
+         ;backward
+         ;word-forward
+         ;word-backward
+         ;unbounded-word-forward
+         ;unbounded-word-backward
+         ;next
+         ;previous)))
+  ;(dolist (fun search-functions)
+    ;(let ((isearch (intern (format "evil-search-%s" fun)))
+          ;(evil-search (intern (format "evil-ex-search-%s" fun))))
+        ;(substitute-key-definition
+         ;isearch evil-search evil-motion-state-map))))
+
 (push 'evil-leader el-get-packages)
 (push 'evil-numbers el-get-packages)
 (push 'evil-surround el-get-packages)
 (push 'evil-matchit el-get-packages)
 (push 'evil el-get-packages)
 (push 'undo-tree el-get-packages)
+(push 'highlight el-get-packages)
+;(push 'evil-search-highlight-persist el-get-packages)
+;(push 'evil-search-highlight-persist el-get-packages)
 
-(defun tahti-search-selection-backward (beg end)
-  "search for selected text in backward direction"
-  (interactive "r")
-  (when (evil-visual-state-p)
-    (let (
-          (selection (buffer-substring-no-properties beg end))
-         )
-      (evil-exit-visual-state)
-      (setq isearch-forward nil)
-      (evil-search (regexp-quote selection) nil t)
-    )
-  )
-)
 
-(defun tahti-search-selection-forward (beg end)
-  "search for selected text in forward direction"
-  (interactive "r")
-  (when (evil-visual-state-p)
-    (let (
-          (selection (buffer-substring-no-properties beg end))
-         )
-      (evil-exit-visual-state)
-      (setq isearch-forward t)
-      (evil-search (regexp-quote selection) t t)
-    )
-  )
-)
+;(defun tahti-search-selection-forward (beg end)
+  ;"search for selected text in forward direction"
+  ;(interactive "r")
+  ;(when (evil-visual-state-p)
+    ;(let (
+          ;(selection (buffer-substring-no-properties beg end))
+         ;)
+      ;(evil-exit-visual-state)
+      ;(setq isearch-forward t)
+      ;(evil-search (regexp-quote selection) t t)
+    ;)
+  ;)
+;)
+
+
 (defun tahti-goto-mark ()
   (interactive)
   (call-interactively 'evil-goto-mark)
@@ -76,6 +84,67 @@
 )
  ;(require 'smex)
 (defun tahti-after-evil ()
+  (defun tahti/begin-search (beg end direction do_mark)
+    (when (evil-visual-state-p)
+      (evil-exit-visual-state)
+      (let ((found)
+            (selection (regexp-quote (buffer-substring-no-properties beg end))))
+        (if (eq evil-search-module 'isearch)
+            (progn
+              (setq isearch-forward direction)
+              (setq found (evil-search selection direction t)))
+          (let ((pattern (evil-ex-make-search-pattern selection))
+                (direction (if direction 'forward 'backward)))
+            (setq evil-ex-search-direction direction)
+            (setq evil-ex-search-pattern pattern)
+            (evil-ex-search-activate-highlight pattern)
+            ;; update search history unless this pattern equals the
+            ;; previous pattern
+            (unless (equal (car-safe evil-ex-search-history) selection)
+              (push selection evil-ex-search-history))
+            (evil-push-search-history selection (eq direction 'forward))
+            (setq found (evil-ex-search-next))))
+        (when (and do_mark found)
+          (push-mark (+ (point) (- end beg)) nil t))
+        )))
+  (defun tahti-search-clear-highlight ()
+       "Clear evil-search or evil-ex-search persistent highlights."
+       (interactive)
+       (case evil-search-module
+         ('isearch (evil-search-highlight-persist-remove-all))
+         ('evil-search (evil-ex-nohighlight))))
+  (evil-define-motion tahti-search-selection-backward (beg end)
+    "Search for selected text in backward direction."
+    :jump t
+    :repeat nil
+    (interactive "<r>")
+    (tahti/begin-search beg end nil nil)
+  )
+
+  (evil-define-motion tahti-search-selection-forward (beg end)
+    "Search for selected text in forward direction."
+    :jump t
+    :repeat nil
+    (interactive "<r>")
+    (tahti/begin-search beg end t nil)
+  )
+
+   (evil-define-motion tahti-search-and-select-backward (beg end)
+    "Search for selected text in backward direction."
+    :jump t
+    :repeat nil
+    (interactive "<r>")
+    (tahti/begin-search beg end nil t)
+  )
+
+   (evil-define-motion tahti-search-and-select-forward (beg end)
+    "Search for selected text in forward direction."
+    :jump t
+    :repeat nil
+    (interactive "<r>")
+    (tahti/begin-search beg end t t)
+  )
+
   (evil-add-command-properties 'evil-goto-mark :jump t)
   (evil-remove-command-properties 'evil-forward-section-begin :jump)
   (evil-remove-command-properties 'evil-find-char :jump)
@@ -88,7 +157,6 @@
   (evil-remove-command-properties 'evil-backward-sentence :jump)
   (require 'evil-matchit)
   (global-evil-matchit-mode 1)
-
   ;(require 'undo-tree)
   (global-undo-tree-mode 1)
   (message "Evil loading")
@@ -119,7 +187,20 @@
     (setq evil-operator-state-cursor '("#FFDD00" hollow))
     (setq evil-motion-state-cursor   '("blue" box))
     (setq evil-emacs-state-cursor    '("green" box))
+  (set-face-background 'lazy-highlight "#5F8787") ; make searching highlight same as in vim
+
   (evil-mode 1)
+   ;(custom-set-variables
+   ;'(evil-search-module (quote evil-search)))
+  (evil-select-search-module 'evil-search-module 'evil-search)
+  ;(evil-flash-hook nil)
+  ;(setq evil-flash-delay 0)
+  ;(setq lazy-highlight-cleanup nil)
+  ;(setq lazy-highlight-initial-delay 0)
+  ;(require 'advice)
+  ;(require 'evil-search)
+  ;(require 'highlight)
+
 )
 (provide 'tahti-evil)
 ;;;; tahti-evil.el ends here

@@ -41,12 +41,15 @@
     (fill-keymap evil-visual-state-map
       "*"  'tahti-search-selection-forward
       "#"  'tahti-search-selection-backward
+      "0"  'tahti-search-and-select-forward
+      "`"  'tahti-search-and-select-backward
       "+"  'er/expand-region
       "-"  'er/contract-region
       "ac"  'er/mark-comment
       "aa"  'mark-whole-buffer
       "an"  'narrow-to-region
       "ah"  'widen
+      "SPC" 'tahti-search-clear-highlight
       "a|"  (lambda ()(interactive)
                      (setq current-prefix-arg '(4)) ;C-u
                      (call-interactively 'shell-command-on-region))
@@ -199,6 +202,7 @@
        "tr" 'rainbow-mode
        "h" 'display-local-help
        "+" 'tahti-highlight-word-or-selection
+       "SPC" 'tahti-search-clear-highlight
        "-" 'tahti-unhighlight-word-or-selection
        "m" 'compile)
    ;use the non-prefixed <leader> in magit’s and gnus’ modes:

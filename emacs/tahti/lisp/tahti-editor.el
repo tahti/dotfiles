@@ -15,7 +15,7 @@
 ;)
  ;; use utf-8 environment as default dammit
 (setq locale-coding-system 'utf-8)
-(set-language-environment 'UTF-8)
+(set-language-environment 'utf-8)
 (set-locale-environment "UTF-8")
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
@@ -27,6 +27,8 @@
 (push 'help-fns+ el-get-packages)
 (push 'help+ el-get-packages)
 (push 'color-moccur el-get-packages)
+;(push 'highlight-symbol el-get-packages)
+
 ;;;flycheck instead of flymake=======================
 (push 'flycheck el-get-packages)
   ;(require 'flycheck)
@@ -39,6 +41,11 @@
   (require 'help+)
   (require 'color-moccur)
 )
+
+;(defun tahti-after-highlight-symbol()
+  ;(require 'highlight-symbol)
+;)
+
 (custom-set-variables
  '(tab-width 2)
  '(indent-tabs-mode nil)

@@ -1,6 +1,6 @@
 ;; modeline==========================================
 (push 'powerline el-get-packages)
-
+(push 'modeline-posn el-get-packages)
 (defface tahti/major-active
   '((t (:foreground "white" :inherit powerline-active1)))
   "Tahti major-mode face 1.")
@@ -77,6 +77,7 @@
 )
 
 (defun tahti-after-powerline ()
+  (require 'modeline-posn)
   (add-hook 'post-command-hook (lambda ()
                                (when (not (minibuffer-selected-window))
                                  (setq powerline-selected-window (selected-window)))))
