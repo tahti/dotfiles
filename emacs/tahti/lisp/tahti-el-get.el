@@ -30,6 +30,14 @@
            :type git
            :url "https://github.com/emacsmirror/cedet.git"
     ) 
+    (:name evil-mc
+           :type git
+           :url "https://github.com/gabesoft/evil-mc"
+    ) 
+    (:name evil-mc-extras
+           :type git
+           :url "https://github.com/gabesoft/evil-mc-extras"
+    ) 
     (:name vimvars
            :description "Provide support for VI-style mode lines in Emacs."
            :type git

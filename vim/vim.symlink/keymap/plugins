@@ -23,13 +23,22 @@ silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
 """""""""""""""""""""""""""" sudo """""""""""""""""""""""""""""""""
 command W silent w !sudo tee % > /dev/null
 """""""""""""""""""""""""""" splitjoin """""""""""""""""""""""""""""""""
-nmap sj :SplitjoinJoin<cr>
-nmap sk :SplitjoinSplit<cr>
+nmap <leader>sj :SplitjoinJoin<cr>
+nmap <leader>sk :SplitjoinSplit<cr>
 """""""""""""""""""""""""""" gundo """""""""""""""""""""""""""""""""
 nnoremap <leader>u :GundoToggle<CR>
 let g:gundo_prefer_python3 = 1
 """""""""""""""""""""""""""" CtrlP   """""""""""""""""""""""""""""""""
 map <leader>b :CtrlPBuffer<CR>
+"""""""""""""""""""""""""""" Sneak """""""""""""""""""""""""""""""""
+    nmap s <Plug>Sneak_s
+    "replace 'f' with 1-char Sneak
+    nmap f <Plug>Sneak_f
+    nmap F <Plug>Sneak_F
+    xmap f <Plug>Sneak_f
+    xmap F <Plug>Sneak_F
+    omap f <Plug>Sneak_f
+    omap F <Plug>Sneak_F
 """""""""""""""""""""""""""" dragvisuals """""""""""""""""""""""""""""""""
 
 vmap  <expr>  <S-h>  DVB_Drag('left')

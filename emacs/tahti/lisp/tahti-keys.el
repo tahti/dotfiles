@@ -31,8 +31,8 @@
            (equal 'compilation-mode major-mode) 
            (equal 'grep-mode major-mode) 
            (equal 'completion-list-mode major-mode) 
-           (equal 'special-mode major-mode) 
-           (equal 'apropos-mode major-mode)) 
+   j       (equal 'special-mode major-mode) 
+   k       (equal 'apropos-mode major-mode)) 
        (kill-buffer-and-window))
       ((equal 'undo-tree-visualizer-mode major-mode) (undo-tree-visualizer-quit))
       (t (keyboard-escape-quit))))
@@ -49,7 +49,7 @@
       "aa"  'mark-whole-buffer
       "an"  'narrow-to-region
       "ah"  'widen
-      "SPC" 'tahti-search-clear-highlight
+      "SPC" 'tahtiksearch-clear-highlight
       "a|"  (lambda ()(interactive)
                      (setq current-prefix-arg '(4)) ;C-u
                      (call-interactively 'shell-command-on-region))
@@ -148,7 +148,35 @@
         "C-r" 'winner-redo
         ;; shadow rotating in evil-window-map
         "C-R" 'winner-redo
-    )
+        )
+      (let (
+        (keys '((",ra" . evil-mc-make-all-cursors)
+                ("M-a" . evil-mc-make-all-cursors)
+                (",ru" . evil-mc-undo-all-cursors)
+                ("M-u" . evil-mc-undo-all-cursors)
+                (",rp" . evil-mc-pause-cursors)
+                ("M-p" . evil-mc-pause-cursors)
+                (",rr" . evil-mc-resume-cursors)
+                ("M-r" . evil-mc-resume-cursors)
+                (",rf" . evil-mc-make-and-goto-first-cursor)
+                (",rl" . evil-mc-make-and-goto-last-cursor)
+                (",rh" . evil-mc-make-cursor-here)
+                ("C-b" . evil-mc-make-cursor-here)
+;;                 (",rT" . evil-mc-make-and-goto-next-cursor)
+                ("M-t" . evil-mc-make-and-goto-next-cursor)
+                (",rt" . evil-mc-skip-and-goto-next-cursor)
+                ("C-t" . evil-mc-skip-and-goto-next-cursor)
+                ("M-c" . evil-mc-make-and-goto-prev-cursor)
+                ("C-c" . evil-mc-skip-and-goto-prev-cursor)
+;;                 ("M-n" . evil-mc-make-and-goto-next-match)
+;;                 ("C-n" . evil-mc-skip-and-goto-next-match)
+;;                 (",rj" . evil-mc-make-and-goto-prev-match)
+;;                 (",rk" . evil-mc-skip-and-goto-prev-match)
+                )))
+    (dolist (key-data keys)
+      (evil-define-key 'normal evil-mc-key-map (kbd (car key-data)) (cdr key-data))
+      (evil-define-key 'visual evil-mc-key-map (kbd (car key-data)) (cdr key-data))))
+    
 ;; evil leader is set in tahti-evil.el to ","
    (evil-leader/set-key
        "c SPC" 'tahti-toggle-comment
@@ -204,7 +232,7 @@
        "+" 'tahti-highlight-word-or-selection
        "SPC" 'tahti-search-clear-highlight
        "-" 'tahti-unhighlight-word-or-selection
-       "m" 'compile)
+       "m" 'evil-mc-mode)
    ;use the non-prefixed <leader> in magit’s and gnus’ modes:
    (setq evil-leader/no-prefix-mode-rx '("magit-.*-mode" "gnus-.*-mode" "comp.*-mode" "grep-mode" "special-mode" "info-mode"))
 

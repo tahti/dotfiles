@@ -47,7 +47,7 @@ Plugin 'Align'  " align e. g. to = and dependency for dragvisuals
 Plugin 'atweiden/vim-dragvisuals'
 Plugin 'tpope/vim-characterize' " override ga with more useful info
 Plugin 'jceb/vim-orgmode' " override ga with more useful info
-
+Plugin 'justinmk/vim-sneak' " s to search for two letters; extend f over many lines
 " Files
 " todo ctrp
 " vimcommander

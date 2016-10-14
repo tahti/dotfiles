@@ -36,21 +36,6 @@
    '(evil-leader/in-all-states t)
  )
 
-;(let ((search-functions
-       ;'(forward
-         ;backward
-         ;word-forward
-         ;word-backward
-         ;unbounded-word-forward
-         ;unbounded-word-backward
-         ;next
-         ;previous)))
-  ;(dolist (fun search-functions)
-    ;(let ((isearch (intern (format "evil-search-%s" fun)))
-          ;(evil-search (intern (format "evil-ex-search-%s" fun))))
-        ;(substitute-key-definition
-         ;isearch evil-search evil-motion-state-map))))
-
 (push 'evil-leader el-get-packages)
 (push 'evil-numbers el-get-packages)
 (push 'evil-surround el-get-packages)
@@ -58,23 +43,8 @@
 (push 'evil el-get-packages)
 (push 'undo-tree el-get-packages)
 (push 'highlight el-get-packages)
-;(push 'evil-search-highlight-persist el-get-packages)
-;(push 'evil-search-highlight-persist el-get-packages)
-
-
-;(defun tahti-search-selection-forward (beg end)
-  ;"search for selected text in forward direction"
-  ;(interactive "r")
-  ;(when (evil-visual-state-p)
-    ;(let (
-          ;(selection (buffer-substring-no-properties beg end))
-         ;)
-      ;(evil-exit-visual-state)
-      ;(setq isearch-forward t)
-      ;(evil-search (regexp-quote selection) t t)
-    ;)
-  ;)
-;)
+(push 'evil-mc el-get-packages)
+(push 'evil-mc-extras el-get-packages)
 
 
 (defun tahti-goto-mark ()
@@ -158,6 +128,8 @@
   (require 'evil-matchit)
   (global-evil-matchit-mode 1)
   ;(require 'undo-tree)
+  (require 'evil-mc)
+  ;(global-evil-mc-mode  1) ;; enable
   (global-undo-tree-mode 1)
   (message "Evil loading")
   ;Indicator settings
