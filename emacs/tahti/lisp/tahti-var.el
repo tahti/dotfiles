@@ -157,6 +157,7 @@ are checked for VIM variables.   You can use this in `find-file-hook'."
   (cond
    ((equal var "filetype") 
     (cond ((equal val "vim") (vimrc-mode))
+          ((equal val "org") (org-mode))
      (t (message "Don't know how to assign filetype to %s" val))
     )
    )
