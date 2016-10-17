@@ -191,10 +191,10 @@ bindsym $myModC+space focus mode_toggle
 bindcode $myModC+$fC fullscreen
 
 # change focus to next window
-bindcode $myModC+$hC focus left
+bindcode $myModC+$hC focus left;exec $HOME/bin/banishRat
 bindcode $myModC+$tC focus down
 bindcode $myModC+$cC focus up
-bindcode $myModC+$nC focus right
+bindcode $myModC+$nC focus right;exec $HOME/bin/banishRat
 # alternatively, you can use the cursor keys:
 bindcode $myModC+$leftC focus left
 bindcode $myModC+$downC focus down
