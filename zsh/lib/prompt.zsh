@@ -31,15 +31,12 @@ dirty() {
     local root=$(LANG=C svn info 2> /dev/null | sed -n 's/^Working Copy Root Path: //p')
     if svn status $root 2> /dev/null | command grep -Eq '^\s*[ACDIM!?L]'; then
       # Grep exits with 0 when "One or more lines were selected", return "dirty".
-      #echo "red"
       echo "%F{red}✗%f"
     else
       # Otherwise, no lines were found, or an error occurred. Return clean.
-      #echo "green"
       echo "%F{green}✔%f"
     fi
   else
-    #echo "git"
     git_dirty
   fi
 }
@@ -48,7 +45,6 @@ dirty() {
 git_dirty() {
     # check if we're in a git repo
     command git rev-parse --is-inside-work-tree &>/dev/null || return
-
     # check if it's dirty
     command git diff --quiet --ignore-submodules HEAD &>/dev/null;
     if [[ $? -eq 1 ]]; then
@@ -66,7 +62,6 @@ arrows() {
     git_arrows
   fi
 }
-
 
 # get the status of the current branch and it's remote
 # If there are changes upstream, display a ⇣
@@ -104,11 +99,41 @@ suspended_jobs() {
     fi
 }
 
-precmd() {
+# Right-hand prompt
+function RCMD() {
     vcs_info
-    print -P '\n%F{51}%F{green}%~'
+    echo "`dirty`%F{241}$vcs_info_msg_0_%f `arrows``suspended_jobs`"
 }
 
+ASYNC_PROC=0
+function precmd() {
+    print -P '\n%F{51}%F{green}%~'
+    function async() {
+        # save to temp file
+        printf "%s" "$(RCMD)" > "/tmp/zsh_tmp_prompt"
+
+        # signal parent
+        kill -s USR1 $$
+    }
+    # do not clear RPROMPT, let it persist
+
+    # kill child if necessary
+    if [[ "${ASYNC_PROC}" != 0 ]]; then
+        kill -s HUP $ASYNC_PROC >/dev/null 2>&1 || :
+    fi
+    # start background computation
+    async &!
+    ASYNC_PROC=$!
+}
+
+function TRAPUSR1() {
+    # read from temp file
+    RPROMPT="$(cat /tmp/zsh_tmp_prompt)"
+    # reset proc number
+    ASYNC_PROC=0
+    # redisplay
+    zle && zle reset-prompt
+}
 export PROMPT='%(?..%? )%(?.%F{yellow}.%F{red})▶%f '
-export RPROMPT='`dirty`%F{241}$vcs_info_msg_0_%f`arrows``suspended_jobs`'
-#export RPROMPT='`dirty`%F{241}$vcs_info_msg_0_%f `suspended_jobs`'
+export RPROMPT='' #set asynchronously dynamically
+#export RPROMPT='`dirty`%F{241}$vcs_info_msg_0_%f`arrows``suspended_jobs`'
