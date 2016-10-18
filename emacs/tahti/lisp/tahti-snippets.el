@@ -15,12 +15,6 @@
   (tahti-yas-keys )
 )
 
-;(setq yas-prompt-functions '(yas-ido-prompt
-                             ;yas-completing-prompt))
-;(setq yas-also-auto-indent-first-line nil)
-;(setq yas-indent-line 'fixed)
-;(setq yas-triggers-iN-FIeld t)
-;(setq yas-verbosity 2)
 
 ;(defun yas-org-very-safe-expand ()
   ;(let ((yas-fallback-behavior 'return-nil)) (yas-expand)))

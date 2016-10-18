@@ -42,7 +42,6 @@ Neither dir nor alias may contain spaces.")
 (setq bookmark-default-file  (expand-file-name "bookmarks"   tahti-var-dir))
 (setq bc-bookmark-file       (expand-file-name "breadcrumb"  tahti-var-dir))
 (setq tramp-persistency-file-name (expand-file-name "tramp"  tahti-var-dir))
-(setq ido-save-directory-list-file (expand-file-name "ido"   tahti-var-dir))
 (setq save-place-file        (expand-file-name "saveplace"   tahti-var-dir))  ;file to store positions in files
 (setq-default woman-cache-filename (expand-file-name "woman-cache" tahti-var-dir))
 (setq savehist-file          (expand-file-name "savehist"    tahti-var-dir))

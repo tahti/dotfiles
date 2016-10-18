@@ -181,9 +181,8 @@
    (evil-leader/set-key
        "c SPC" 'tahti-toggle-comment
        "u" 'undo-tree-visualize
-       "b" 'tahti/buffer
+       "b" 'helm-buffers-list
        "s" 'sunrise-cd
-       "B" 'tahti/buffer-alternate
        "a=" 'underline-with-char-equal
        "a-" 'underline-with-char-minus
        "a~" 'underline-with-char-tilde
@@ -193,12 +192,9 @@
        "fo" 'helm-for-files       ;open file
        "fi" 'helm-insert-file
        "fw" 'helm-write-file      ;save as dialog
-       "fh" 'tahti/helm-history-files
-       "fc" 'tahti/config-files
-       "ff" 'tahti-file
-       "fF" 'tahti-file-alternate
-       "FF" 'tahti-file-alternate
-       "Ff" 'tahti-file-alternate
+       "fh" 'tahti-helm-history-files
+       "fc" 'tahti-config-files
+       "ff" 'sunrise-cd
        "fr" 'rename-file-and-buffer
        "yf" 'copy-file-name-to-clipboard
        "ys" 'copy-short-file-name-to-clipboard
@@ -211,9 +207,7 @@
        "k" 'kill-current-buffer
        ;"k" 'server-edit
        "K" 'kill-buffer-and-window
-       "<" 'tahti-cd-alias
        "d" 'dired-jump
-       "D" 'tahti-dired-alias
        ;"h" 'monky-status
        "n" 'split-window-horizontally
        ;"c" 'delete-window
@@ -496,8 +490,18 @@
   ;(define-key eclim-problems-mode-map "gg" 'beggining-of-buffer)
   (define-key eclim-problems-mode-map "\C-n" 'scroll-up-command)
   (define-key eclim-problems-mode-map "\C-h" 'scroll-down-command)
-
+  (evil-define-key 'normal eclim-problems-mode-map (kbd "<escape>") 'tahti-esc)
+  (evil-define-key 'normal eclim-problems-mode-map (kbd "<return>") 'eclim-problems-open-current)
+  (evil-define-key 'normal eclim-problems-mode-map (kbd "n") 'eclim-problems-open-current)
+  (evil-define-key 'normal eclim-problems-mode-map (kbd "f") 'eclim-problems-correct)
+  (evil-define-key 'normal eclim-problems-mode-map (kbd "r") 'eclim-problems-buffer-refresh)
+  (evil-define-key 'normal eclim-problems-mode-map (kbd "e") 'eclim-problems-show-errors)
+  (evil-define-key 'normal eclim-problems-mode-map (kbd "w") 'eclim-problems-show-warnings)
+  (evil-define-key 'normal eclim-problems-mode-map (kbd "a") 'eclim-problems-show-all)
+  (evil-define-key 'normal eclim-problems-mode-map (kbd "C-n") 'eclim-problems-next)
+  (evil-define-key 'normal eclim-problems-mode-map (kbd "C-p") 'eclim-problems-previous)
 )
+
 (defun tahti-completion-list-mode-keys()
  "Add keybindings to `completion-list-mode-map'.\n
   Binds `next-line to \"t\".\n
@@ -591,7 +595,7 @@
   (define-key key-translation-map "\C-b" "\C-h") ;help
 
   (fill-keymap 'global
-    "C-h y" 'yas/describe-tables  ;;help for yasnippets
+    "C-h y" 'yas-describe-tables  ;;help for yasnippets
     "C-x g" 'magit-status
     "C-+"   'text-scale-increase  ;;increase font
     "C--"   'text-scale-decrease  ;;decrease font

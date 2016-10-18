@@ -4,7 +4,7 @@
 (autoload 'windmove-find-other-window "windmove")
 (defun swap-window (direction)
   "Swap current window with the one in `direction'."
-  (interactive (list (ido-completing-read "Swap with window: "
+  (interactive (list (completing-read "Swap with window: "
                                           (mapcar 'symbol-name
                                                   '(left right down up)))))
   (let* ((dir (if (symbolp direction)

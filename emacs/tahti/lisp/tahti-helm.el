@@ -45,7 +45,6 @@
   ;(require 'helm-locate)
   ;(require 'helm-w3m)
   ;; helm for ffap behaves broken
-  (push  '(find-file-at-point . ido-completing-read) helm-completing-read-handlers-alist)
   ;; helm for lacarte is broken
   (push  '(menu-bar-open . nil) helm-completing-read-handlers-alist)
   (push  '(tmm-shortcut . nil) helm-completing-read-handlers-alist)
@@ -144,41 +143,15 @@
                      ;))
 
 
-  (defun tahti/config-files ()
+  (defun tahti-config-files ()
     (interactive)
     (helm :sources tahti/helm-config-sources
           :buffer "*helm config files*"
           :keymap helm-find-files-map))
 
-  (defun tahti/helm-history-files (&optional preselect)
+  (defun tahti-helm-history-files (&optional preselect)
     (interactive)
     (helm-find-files 1))
-
-  (defun tahti-helm-files (&optional preselect)
-    (interactive)
-    ;(tahti-enter-fullscreen)
-    ;(tahti-i3-command 0 "fullscreen enable")
-    (sunrise-cd))
-    ;(helm :sources tahti/file-sources
-          ;:prompt "Find Files: "
-          ;;:input fname
-          ;:preselect preselect
-          ;:case-fold-search helm-file-name-case-fold-search
-          ;:buffer "*helm with files*"
-          ;:keymap helm-find-files-map))
-
-  ;;; ido-mode =========================================
-  (ido-mode 'files)
-  (ido-everywhere 1)
-  (add-to-list 'ido-ignore-directories "target")
-  (add-to-list 'ido-ignore-directories "node_modules")
-  (setq ido-enable-flex-matching t)
-
-  (defalias 'tahti-file (f-alt 'tahti-helm-files 'ido-find-file))
-  (defalias 'tahti-file-alternate (f-alt 'ido-find-file 'tahti-helm-files))
-  (defalias 'tahti/buffer (f-alt 'helm-buffers-list 'ido-switch-buffer))
-  (defalias 'tahti/buffer-alternate (f-alt 'ido-switch-buffer 'helm-buffers-list))
-)
-
+  )
 (provide 'tahti-helm)
 
