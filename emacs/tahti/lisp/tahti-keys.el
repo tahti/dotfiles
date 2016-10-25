@@ -448,6 +448,8 @@
   (define-key sr-mode-map "/"           'sr-fuzzy-narrow)
   (define-key sr-mode-map (kbd "C-/")   'sr-find-grep)
   (define-key sr-mode-map (kbd "S-<f4>") 'sr-create-files)
+  (define-key sr-mode-map (kbd "S-<f5>") 'tahti-inplace-copy)
+  (define-key sr-mode-map (kbd "S-<f6>") 'tahti-inplace-rename)
   ;disable mouse
   (define-key sr-mode-map [mouse-1] nil)
   (define-key sr-mode-map [mouse-movement] nil)

@@ -39,6 +39,17 @@
   (interactive)
   (tahti-i3-command 0 "fullscreen toggle")
 )
+(defun tahti-inplace-copy ()
+  "Copy file in place"
+  (interactive)
+  (sr-inplace-do #'copy-file "Copy in place to")
+)
+
+(defun tahti-inplace-rename ()
+  "Rename file in place"
+  (interactive)
+  (sr-inplace-do #'rename-file "Rename in place to")
+)
 ;;; Libraries
 (push 'sunrise-commander el-get-packages)
 
