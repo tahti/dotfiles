@@ -4,8 +4,7 @@
 (defun tahti-after-org-mode ()
   (org-babel-do-load-languages 
    'org-babel-load-languages '((shell . t)
+                               (ditaa . t)
                                (python . t)))
-)
-
 (provide 'tahti-org)
 
