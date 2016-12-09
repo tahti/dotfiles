@@ -6,5 +6,6 @@
    'org-babel-load-languages '((shell . t)
                                (ditaa . t)
                                (python . t)))
+)
 (provide 'tahti-org)
 
