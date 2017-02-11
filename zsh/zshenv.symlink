@@ -9,3 +9,5 @@ LESS=(-r)
 export PAGER='less'
 # CTAGS Sorting in VIM/Emacs is better behaved with this in place
 export LC_COLLATE=C 
+export MYZSH=$(dirname $(readlink -f $HOME/.zshrc))
+source $MYZSH/lib/functions.zsh

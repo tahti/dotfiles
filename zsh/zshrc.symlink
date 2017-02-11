@@ -22,7 +22,6 @@ export JAVA_HOME=$(readlink -f /usr/bin/javac | sed "s:/bin/javac::")
 # source every .zsh file in lib
 source $ZSH/lib/aliases.zsh
 source $ZSH/lib/completion.zsh
-source $ZSH/lib/functions.zsh
 source $ZSH/lib/git.zsh
 source $ZSH/lib/history.zsh
 source $ZSH/lib/prompt.zsh
