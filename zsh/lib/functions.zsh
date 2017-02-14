@@ -1,5 +1,6 @@
 # add a function path
 #fpath=($ZSH/zsh/functions $ZSH/zsh/completions $fpath)
+export ZSH=$(dirname $(readlink -f $HOME/.zshrc))
 fpath=($ZSH/functions $fpath)
 autoload -Uz any
 autoload -Uz myip
