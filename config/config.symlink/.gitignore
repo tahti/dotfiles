@@ -76,4 +76,6 @@ openttd/
 org.kde.gwenviewrc
 radare2/
 systemsettingsrc
-
+IronSnout
+jd-gui.cfg
+QtProject
