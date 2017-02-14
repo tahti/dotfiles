@@ -10,3 +10,4 @@ givedef() {
     curl "dict://dict.org/d:$1"
   fi
 }
+# vim: set filetype=zsh:

@@ -7,3 +7,4 @@ nwf() {
         notify-send -u critical "\"$1\" finished"
     fi
 }
+# vim: set filetype=zsh:

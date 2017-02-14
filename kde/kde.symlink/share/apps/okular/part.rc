@@ -119,6 +119,7 @@
   <Action shortcut="Ctrl+H" name="go_previous"/>
   <Action shortcut="Z, I; Ctrl+=" name="view_zoom_in"/>
   <Action shortcut="Z, Z" name="zoom_to"/>
-  <Action shortcut="Ctrl+Home; G, G" name="first_page"/>
+  <Action shortcut="Home; G, G" name="first_page"/>
+  <Action shortcut="End; Shift+G" name="last_page"/>
  </ActionProperties>
 </kpartgui>

@@ -52,7 +52,8 @@ exec --no-startup-id conky -c $HOME/.i3/conky_i3help #showing help
 exec --no-startup-id xkbset -a #disable slowkeys
 #exec /usr/bin/parcellite
 #refresh rate
-#exec --no-startup-id zsh ~/.fehbg #setting up background
+#setting up background
+exec --no-startup-id zsh ~/.fehbg 
 
 
 focus_follows_mouse no

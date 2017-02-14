@@ -1,0 +1,112 @@
+# unpack fileName extension packer other
+aun() { 
+if [[ "$#" -eq 0 ]]; 
+then
+  echo "Give archive name as parameter to unpack it."
+else
+  if [[ -f $1 ]]; then
+    local t=$(file -b "$1")
+    case "$t" in
+      "XZ compressed data")
+         inplaceunpack "$1" xz xz -d 
+        ;;
+      "NuFile archive (apple ][) data")
+         myunpack "$1" nu nulib2 -x -r
+        ;;
+      "lzip compressed data, version: 1")
+         inplaceunpack "$1" lz lzip -d
+         ;;
+      "ZPAQ stream, level 1")
+         myunpack "$1" zpq zpaq x
+         ;;
+       "LZMA compressed data, streamed")
+         inplaceunpack "$1" xz lzma -d
+         ;;
+       "Zoo archive data"*)
+         myunpack "$1" zoo zoo -extract 
+         ;;
+       "7-zip archive data"*)
+         myunpack "$1" 7z 7z x
+         ;;
+       "ARJ archive data"*)
+         myunpack "$1" arj arj x
+         ;;
+       "Zip archive data"*)
+         myunpack "$1" zip unzip
+         ;;
+       "bzip2 compressed data"*)
+         inplaceunpack "$1" bz2 bzip2 -d 
+         ;;
+      *)
+        #read \?"I am waiting for you to press [Enter] before I continue."
+        aunpack "$@"
+        ;;
+    esac
+  else
+    aunpack "$@"
+  fi
+fi
+} 
+
+myunpack() {
+  local num=${(l:4::0:)${RANDOM}}
+  while [[ -e ./Unpack-$num ]];
+  do
+    ((num++))
+  done
+  mkdir Unpack-$num
+  local b=$(echo $1 | cut -f 1 -d '.') 
+  ln -s "$1" "__${b}.$2"
+  cd Unpack-$num
+  "${3}" "$@[4, -1]" "../__${b}.$2"
+  dothecleaningup "$b" "Unpack-$num"
+  rm "__$b.$2"
+}
+
+inplaceunpack() {
+  local num=${(l:4::0:)${RANDOM}}
+  while [[ -e ./Unpack-$num ]];
+  do
+    ((num++))
+  done
+  mkdir Unpack-$num
+  local b=$(echo "$1" | cut -f 1 -d '.') 
+  cp "$1" "Unpack-${num}/$b.$2"
+  cd "Unpack-${num}"
+  "${3}" "$@[4, -1]" "${b}.${2}"
+  dothecleaningup "$b" "Unpack-$num"
+}
+
+# give filename with no extension and unpack dir as params
+dothecleaningup() {
+  local res=$(ls)
+  if [[ $(echo "$res" |wc -w) -eq 1 ]]; then
+    if [[ -e "../$res" ]]; then
+      local num=1
+      while [[ -e "../${res}_$num" ]]; do 
+        ((num++))
+      done
+       mv "$res" "../${res}_$num"
+       echo Unpacked to "${res}_$num"
+    else
+      mv "$res" ..
+      echo Unpacked to "$res"
+    fi  
+    cd ..
+    rmdir $2
+  else
+    cd ..
+    if [[ -e "$1" ]]; then
+      local num=1
+      while [[ -e "${1}_$num" ]]; do 
+        ((num++))
+      done
+      mv "$2" "${1}_$num"
+      echo Unpacked to "${1}_$num"
+    else
+      mv "$2" "$1"
+      echo Unpacked to "${1}"
+    fi
+  fi
+}
+# vim: set filetype=zsh:
