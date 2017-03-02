@@ -25,7 +25,7 @@ else
        "Zoo archive data"*)
          myunpack "$1" zoo zoo -extract 
          ;;
-       "7-zip archive data"*)
+       "7-zip archive data"*|"Windows imaging (WIM)"*)
          myunpack "$1" 7z 7z x
          ;;
        "ARJ archive data"*)
@@ -36,6 +36,9 @@ else
          ;;
        "bzip2 compressed data"*)
          inplaceunpack "$1" bz2 bzip2 -d 
+         ;;
+       "RAR archive data"*)
+         myunpack "$1" rar unrar x
          ;;
       *)
         #read \?"I am waiting for you to press [Enter] before I continue."
@@ -58,6 +61,7 @@ myunpack() {
   local b=$(echo $1 | cut -f 1 -d '.') 
   ln -s "$1" "__${b}.$2"
   cd Unpack-$num
+  echo $(pwd) 
   "${3}" "$@[4, -1]" "../__${b}.$2"
   dothecleaningup "$b" "Unpack-$num"
   rm "__$b.$2"

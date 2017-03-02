@@ -27,6 +27,8 @@
 (push 'help-fns+ el-get-packages)
 (push 'help+ el-get-packages)
 (push 'color-moccur el-get-packages)
+(push 'goto-last-change  el-get-packages)
+
 ;(push 'highlight-symbol el-get-packages)
 
 ;;;flycheck instead of flymake=======================
