@@ -38,6 +38,7 @@
       (t (keyboard-escape-quit))))
 
 (defun tahti-evil-keys ()
+    (evil-define-key 'normal org-mode-map (kbd "SPC") 'org-toggle-latex-fragment)
     (fill-keymap evil-visual-state-map
       "*"  'tahti-search-selection-forward
       "#"  'tahti-search-selection-backward
