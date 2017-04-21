@@ -32,13 +32,19 @@ up(){
   # && sudo wget http://winhelp2002.mvps.org/hosts.txt -O /etc/hosts &&
   #sudo cat ~/.etchosts | sudo tee -a /etc/hosts > /dev/null
 }
-
+export APTCLEAN_EXCEPTIONS="skypeforlinux"
 apt-clean() {
-  echo "****** apt clean ************"
   sudo apt clean &&
-  echo "******* purge obsolete ***********"
-  sudo apt purge $(aptitude -F '%p' search '?obsolete') 
-  echo "******* autoremove ***********"
+  local SED_TMP=""
+  for p in ${=APTCLEAN_EXCEPTIONS}; do
+    local SED_TMP="${SED_TMP}s/\b$p\b//g;"
+  done
+  local REMOVE=$(aptitude -F '%p' search '?obsolete'|sed -e "$SED_TMP")
+  if [ ! -z $REMOVE ]; then
+    echo "Removing the following packages: " $REMOVE
+    sudo apt purge $REMOVE
+  fi
+  echo "******* autoremove ********"
   sudo apt autoremove
 }
 urlencode() { python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1])" $1 }
