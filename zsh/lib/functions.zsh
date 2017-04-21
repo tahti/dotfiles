@@ -32,9 +32,13 @@ up(){
   # && sudo wget http://winhelp2002.mvps.org/hosts.txt -O /etc/hosts &&
   #sudo cat ~/.etchosts | sudo tee -a /etc/hosts > /dev/null
 }
+
 apt-clean() {
+  echo "****** apt clean ************"
   sudo apt clean &&
+  echo "******* purge obsolete ***********"
   sudo apt purge $(aptitude -F '%p' search '?obsolete') 
+  echo "******* autoremove ***********"
   sudo apt autoremove
 }
 urlencode() { python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1])" $1 }
