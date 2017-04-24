@@ -1,0 +1,2 @@
+#!/bin/sh
+python ~/data/progs/shellnoob/shellnoob.py --intel $*
