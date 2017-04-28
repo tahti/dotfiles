@@ -7,6 +7,9 @@ else
   if [[ -f $1 ]]; then
     local t=$(file -b "$1")
     case "$t" in
+       *"tar archive"*)
+         myunpack "$1" tar tar xvf 
+         ;;
       "XZ compressed data")
          inplaceunpack "$1" xz xz -d 
         ;;
@@ -41,74 +44,78 @@ else
          myunpack "$1" rar unrar x
          ;;
       *)
-        #read \?"I am waiting for you to press [Enter] before I continue."
+        read \?"I am waiting for you to press [Enter] before I continue."
         aunpack "$@"
         ;;
     esac
   else
+    read \?"I am waitinG for you to press [Enter] before I continue."
     aunpack "$@"
   fi
 fi
 } 
 
 myunpack() {
-  local num=${(l:4::0:)${RANDOM}}
-  while [[ -e ./Unpack-$num ]];
-  do
-    ((num++))
-  done
-  mkdir Unpack-$num
-  local b=$(echo $1 | cut -f 1 -d '.') 
-  ln -s "$1" "__${b}.$2"
-  cd Unpack-$num
+  local tmpdir=$(mktemp -d /tmp/aun-XXXXXX)
+  local sourcedir=$(pwd)
+  local b=$(echo $1 | cut -f 1 -d '.')
+  rm -Rf "/tmp/aun__${b}.$2"
+  echo "ln -s \"$1\" \"/tmp/aun__${b}.$2\""
+  echo "$(ls /tmp)"
+  ln -s "$sourcedir/$1" "/tmp/aun__${b}.$2"
+  cd $tmpdir
   echo $(pwd) 
-  "${3}" "$@[4, -1]" "../__${b}.$2"
-  dothecleaningup "$b" "Unpack-$num"
-  rm "__$b.$2"
+  echo "${3}" "$@[4, -1]" "../__${b}.$2" 
+  "${3}" "$@[4, -1]" "../aun__${b}.$2"
+  dothecleaningup "$b" $tmpdir $sourcedir
+  rm "/tmp/aun__$b.$2"
 }
 
 inplaceunpack() {
-  local num=${(l:4::0:)${RANDOM}}
-  while [[ -e ./Unpack-$num ]];
-  do
-    ((num++))
-  done
-  mkdir Unpack-$num
+  local tmpdir=$(mktemp -d /tmp/aun-XXXXXX)
+  local sourcedir=$(pwd)
   local b=$(echo "$1" | cut -f 1 -d '.') 
-  cp "$1" "Unpack-${num}/$b.$2"
-  cd "Unpack-${num}"
+  cp "$1" "$tmpdir/$b.$2"
+  cd "$tmpdir"
   "${3}" "$@[4, -1]" "${b}.${2}"
-  dothecleaningup "$b" "Unpack-$num"
+  dothecleaningup "$b" "$tmpdir" $sourcedir
 }
 
 # give filename with no extension and unpack dir as params
-dothecleaningup() {
+dothecleaningup() {#$1 filename, $2 - tmpdir, $3 - sourcedir
   local res=$(ls)
   if [[ $(echo "$res" |wc -w) -eq 1 ]]; then
-    if [[ -e "../$res" ]]; then
+    if [[ $(file -b "$res") == *'tar archive'* ]]; then
+       tar xvf $res
+       rm $res
+    fi 
+  fi 
+  local res=$(ls)
+  if [[ $(echo "$res" |wc -w) -eq 1 ]]; then
+    if [[ -e "$3/$res" ]]; then
       local num=1
-      while [[ -e "../${res}_$num" ]]; do 
+      while [[ -e "$3/${res}_$num" ]]; do 
         ((num++))
       done
-       mv "$res" "../${res}_$num"
-       echo Unpacked to "${res}_$num"
+       local unp="${res}_$num"
     else
-      mv "$res" ..
-      echo Unpacked to "$res"
-    fi  
-    cd ..
+      local unp="${res}"
+    fi
+    echo Unpacked to "$unp"
+    mv "$res" "$3/$unp"
+    cd $3
     rmdir $2
   else
-    cd ..
+    cd $3
     if [[ -e "$1" ]]; then
       local num=1
       while [[ -e "${1}_$num" ]]; do 
         ((num++))
       done
-      mv "$2" "${1}_$num"
+      mv "$2" "$3/${1}_$num"
       echo Unpacked to "${1}_$num"
     else
-      mv "$2" "$1"
+      mv "$2" "$3/$1"
       echo Unpacked to "${1}"
     fi
   fi
