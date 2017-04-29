@@ -44,12 +44,12 @@ else
          myunpack "$1" rar unrar x
          ;;
       *)
-        read \?"I am waiting for you to press [Enter] before I continue."
+        #read \?"I am waiting for you to press [Enter] before I continue."
         aunpack "$@"
         ;;
     esac
   else
-    read \?"I am waitinG for you to press [Enter] before I continue."
+    #read \?"I am waitinG for you to press [Enter] before I continue."
     aunpack "$@"
   fi
 fi
