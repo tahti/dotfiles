@@ -83,6 +83,11 @@
 0.0.0.0 br.naked.com
 0.0.0.0 broadcast.piximedia.fr
 0.0.0.0 broadent.vo.llnwd.net
+0.0.0.0 www.youtube.com
+0.0.0.0 niezalezna.pl 
+0.0.0.0 telewizjarepublika.pl 
+0.0.0.0 demotywatory.pl
+
 
 # The following lines are desirable for IPv6 capable hosts
 ::1     localhost ip6-localhost ip6-loopback
