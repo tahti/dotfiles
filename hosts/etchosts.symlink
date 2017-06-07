@@ -1,6 +1,7 @@
 127.0.0.1	localhost
-127.0.1.1	wpp061.uni.lux	wpp061
-127.0.0.1       gramsec	
+127.0.0.1	wpp061.uni.lux
+127.0.0.1	wpp061
+127.0.0.1 gramsec
 0.0.0.0 cydoor.com
 0.0.0.0 j.2004cms.com			# cydoor
 0.0.0.0 jbaventures.cjt1.net
@@ -104,6 +105,8 @@
 0.0.0.0 porn.xxx 
 0.0.0.0 vip.pornbraze.com
 0.0.0.0 pornbraze.com
+0.0.0.0 memy.pl 
+0.0.0.0 fabrykamemow.pl
 # The following lines are desirable for IPv6 capable hosts
 ::1     localhost ip6-localhost ip6-loopback
 ff02::1 ip6-allnodes
