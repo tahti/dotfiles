@@ -18,6 +18,7 @@ set autoread               " Automatically read a file that has changed on disk
 set directory=~/.vim/swap " where to store the swap files
 set backupdir=~/.vim/swap " where to store the swap files
 
+set equalprg=astyle       " use astyle for gg=G 
 set nobackup              " don't make a (permanent) backup when saving files
 set nowritebackup
 set noswapfile            " Turn off swapfiles
