@@ -1,0 +1,386 @@
+#i3 config file (v4)
+#
+#set home directory
+#set $HOME /home/piotr
+
+#exec xmessage -file /etc/i3/welcome
+
+# The IPC interface allows programs like an external workspace bar
+# (i3-wsbar) or i3-msg (can be used to "remote-control" i3) to work.
+ipc-socket ~/.i3/ipc.sock
+new_window pixel 2
+
+
+#
+##
+#### Startup programs
+##
+#
+
+#exec setxkbmap -layout "pl,pl" -variant "dvp,basic" -option "caps:swapescape,grp:sclk_toggle"
+#exec blueman-applet
+exec --no-startup-id kmix --keepvisibility
+#exec volumeicon
+exec --no-startup-id numlockx on
+exec --no-startup-id xset r rate 250 80
+#disable bluetooth
+#exec rfkill block 2
+# Start i3bar to display a workspace bar 
+bar {
+    #mode hide
+    #status_command $HOME/.i3/conky_wrapper conkyrc_i3barWPP
+    status_command python3 /home/piotr/.i3/status_config.py
+    id bar-1
+    #font pango:DejaVu Sans Mono, Ionicons, FontAwesome 8
+    font pango:DejaVu Sans Mono, Icons, FontAwesome 9
+    workspace_buttons   yes
+    position            top
+    strip_workspace_numbers yes
+}
+exec xset b off #turning off the bell
+#exec pidgin
+exec python /home/piotr/bin/cpmerge.py 
+#exec --no-startup-id wicd-client -t #showing network switcher
+exec --no-startup-id nm-applet 
+exec fbxkb #showing keyboard switcher
+exec --no-startup-id alarm-clock-applet 
+#exec conky -c $HOME/.i3/conkyrc_i3_bauzy|$HOME/bin/dzen2 -bg black -fg white  -fn "-*-terminus-*-r-normal-*-12-*-*-72-c-60-*-*" -w 450  -y 1 -ta l -x 159
+exec --no-startup-id conky -c $HOME/.i3/conkytodo_plain # showing todo list
+#exec conky -c $HOME/.i3/conkyrc_gmail #updating gmail info - needs fixing
+exec --no-startup-id conky -c $HOME/.i3/conky_i3help #showing help 
+exec --no-startup-id xkbset -a #disable slowkeys
+#exec /usr/bin/parcellite
+#refresh rate
+#setting up background
+exec --no-startup-id zsh ~/.fehbg 
+
+
+focus_follows_mouse no
+workspace_auto_back_and_forth yes
+
+#
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+# to make shortcuts layout independent assign variables to keycodes
+set $myModC Mod4
+set $tabC 23
+set $delC 119
+set $dollarC 49
+set $ampC 10
+set $sevenC 11
+set $fiveC 12
+set $threeC 13
+set $oneC 14
+set $nineC 15
+set $zeroC 16
+set $twoC 17
+set $fourC 18
+set $sixC 19
+set $eightC 20
+set $hashC 21
+set $colonC 24
+set $comaC 25
+set $dotC 26
+set $pC 27
+set $yC 28
+set $fC 29
+set $gC 30
+set $cC 31
+set $rC 32
+set $lC 33
+set $aC 38
+set $oC 39
+set $eC 40
+set $uC 41
+set $iC 42
+set $dC 43
+set $hC 44
+set $tC 45
+set $nC 46
+set $sC 47
+set $minusC 48
+set $apostropheC 52
+set $qC 53
+set $jC 54
+set $kC 55
+set $xC 56
+set $bC 57
+set $mC 58
+set $wC 59
+set $vC 60
+set $zC 61
+set $upC 111
+set $leftC 113
+set $rightC 114
+set $downC 116
+set $spaceC 65
+
+# font for window titles. ISO 10646 = Unicode
+#font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+font xft:DejaVu Sans Mono 9
+
+# Use Mouse+$myModC to drag floating windows to their wanted position
+floating_modifier $myModC
+#
+##
+#### Exec-binds
+##
+#
+
+
+
+bindcode $myModC+$aC exec keepass2 --auto-type
+# banish mouse
+bindcode $myModC+$minusC exec $HOME/bin/banishRat
+#bindcode $ctrlC+$spaceC exec kupfer
+# scratchpad
+# Make the currently focused window a scratchpad
+bindcode $myModC+$qC move scratchpad
+# Show the first scratchpad window
+bindcode $myModC+$dotC scratchpad show
+
+# kill focused window
+bindcode $myModC+Shift+$colonC kill
+
+# start a terminal
+bindsym $myModC+Return exec $HOME/bin/vt
+#launch new terminal with current directory
+bindsym $myModC+Shift+Return exec $HOME/bin/urxvt-cwd 
+#laurch j4-dmenu-desktop
+bindcode $myModC+$dC exec $HOME/bin/j4-dmenu-desktop 
+
+# start a browser
+bindcode $myModC+$wC exec --no-startup-id i3-msg 'exec /usr/bin/sensible-browser'
+
+# quit - not working
+#bindcode $myModC+$colonC exec --no-startup-id python $HOME/bin/doCommand.py quit
+
+# lock the screen
+bind $myModC+$lC exec $HOME/bin/lock
+
+#
+##
+#### Window/Layer binds
+##
+#
+
+# change container layout (stacked, tabbed, default)
+bindcode $myModC+$oC layout stacking
+bindcode $myModC+$eC layout tabbed
+bindcode $myModC+$uC layout default
+
+#force to use focus parent to switch container
+force_focus_wrapping no
+bindcode $myModC+$gC focus parent
+
+# focus the child container
+bindcode $myModC+Shift+$gC focus child
+
+# focus tiling
+bindcode $myModC+$mC focus tiling
+
+# focus floating
+bindcode $myModC+Shift+$mC focus floating
+
+# toggle tiling / floating
+bindsym $myModC+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $myModC+space focus mode_toggle
+
+# enter fullscreen mode for the focused container
+bindcode $myModC+$fC fullscreen
+
+# change focus to next window
+bindcode $myModC+$hC focus left;exec $HOME/bin/banishRat
+bindcode $myModC+$tC focus down
+bindcode $myModC+$cC focus up
+bindcode $myModC+$nC focus right;exec $HOME/bin/banishRat
+# alternatively, you can use the cursor keys:
+bindcode $myModC+$leftC focus left
+bindcode $myModC+$downC focus down
+bindcode $myModC+$upC focus up
+bindcode $myModC+$rightC focus right
+
+# move focused window
+bindcode $myModC+Shift+$hC move left
+bindcode $myModC+Shift+$tC move down
+bindcode $myModC+Shift+$cC move up
+bindcode $myModC+Shift+$nC move right
+# alternatively, you can use the cursor keys:
+bindcode $myModC+Shift+$leftC move left
+bindcode $myModC+Shift+$downC move down
+bindcode $myModC+Shift+$upC move up  
+bindcode $myModC+Shift+$rightC move right
+
+# Change focus to next parent
+bindcode $myModC+Control+$hC workspace prev
+bindcode $myModC+Control+$tC workspace prev
+bindcode $myModC+Control+$cC workspace next
+bindcode $myModC+Control+$nC workspace next
+# alternatively, you can use the cursor keys:
+bindcode $myModC+Control+$leftC workspace prev
+bindcode $myModC+Control+$downC  workspace prev;workspace prev
+bindcode $myModC+Control+$upC workspace next;workspace next
+bindcode $myModC+Control+$rightC workspace next
+
+# Change focus to next parent
+bindcode $myModC+Control+Shift+$hC focus parent;focus left;focus child
+bindcode $myModC+Control+Shift+$tC focus parent;focus down;focus child
+bindcode $myModC+Control+Shift+$cC focus parent;focus up;focus child
+bindcode $myModC+Control+Shift+$nC focus parent;focus right;focus child
+# alternatively, you can use the cursor keys:
+bindcode $myModC+Control+Shift+$leftC focus parent;focus right;focus child
+bindcode $myModC+Control+Shift+$downC focus parent;focus down;focus child
+bindcode $myModC+Control+Shift+$upC focus parent;focus up;focus child
+bindcode $myModC+Control+Shift+$rightC focus parent;focus right;focus child
+
+# split in horizontal orientation
+bindcode $myModC+$sC split h
+
+# split in vertical orientation
+bindcode $myModC+$vC split v
+#toggle borders
+
+bindcode $myModC+$bC border toggle
+#
+##
+#### Workspace binds
+##
+#
+
+# Assign workspaces
+#assign "iceweasel" 3
+#assign "firefox" 3
+
+#use M+tab to swich workspaces
+bindcode $myModC+$tabC workspace next
+bindcode $myModC+Shift+$tabC workspace prev
+# assign workspaces to screens
+# $  &  7 5 3 1 9 0 2 4  6  8  #
+# 13 11 7 5 3 1 9 0 2 4  6  8  10
+# 1  2  3 4 5 6 7 8 9 10 11 12 13
+workspace "1:$"  output HDMI-1 
+workspace "2:%"  output HDMI-1 
+workspace "3:7"  output HDMI-1 
+workspace "4:5"  output HDMI-1 
+workspace "5:3"  output HDMI-1
+workspace "6:1"  output HDMI-1
+workspace "7:9"  output HDMI-1
+workspace "8:0"  output eDP-1
+workspace "9:2"  output eDP-1
+workspace "10:4" output eDP-1
+workspace "11:6" output eDP-1
+workspace "12:8" output eDP-1
+workspace "13:#" output eDP-1
+# switch to workspace
+bindcode $myModC+$dollarC workspace "1:$"
+bindcode $myModC+$ampC    workspace "2:%"
+bindcode $myModC+$sevenC  workspace "3:7"
+bindcode $myModC+$fiveC   workspace "4:5"
+bindcode $myModC+$threeC  workspace "5:3"
+bindcode $myModC+$oneC    workspace "6:1"
+bindcode $myModC+$nineC   workspace "7:9"
+bindcode $myModC+$zeroC   workspace "8:0"
+bindcode $myModC+$twoC    workspace "9:2"
+bindcode $myModC+$fourC   workspace "10:4"
+bindcode $myModC+$sixC    workspace "11:6"
+bindcode $myModC+$eightC  workspace "12:8"
+bindcode $myModC+$hashC   workspace "13:#"
+
+
+# move focused container to workspace
+bindcode $myModC+Shift+$dollarC move workspace "1:$"
+bindcode $myModC+Shift+$ampC    move workspace "2:%"
+bindcode $myModC+Shift+$sevenC  move workspace "3:7"
+bindcode $myModC+Shift+$fiveC   move workspace "4:5"
+bindcode $myModC+Shift+$threeC  move workspace "5:3"
+bindcode $myModC+Shift+$oneC    move workspace "6:1"
+bindcode $myModC+Shift+$nineC   move workspace "7:9"
+bindcode $myModC+Shift+$zeroC   move workspace "8:0"
+bindcode $myModC+Shift+$twoC    move workspace "9:2"
+bindcode $myModC+Shift+$fourC   move workspace "10:4"
+bindcode $myModC+Shift+$sixC    move workspace "11:6"
+bindcode $myModC+Shift+$eightC  move workspace "12:8"
+bindcode $myModC+Shift+$hashC   move workspace "13:#"
+
+# move focused container to workspace and change focus
+bindcode $myModC+Control+Shift+$dollarC  move workspace "1:$";  workspace "1:$"
+bindcode $myModC+Control+Shift+$ampC     move workspace "2:%";  workspace "2:%"
+bindcode $myModC+Control+Shift+$sevenC   move workspace "3:7";  workspace "3:7"
+bindcode $myModC+Control+Shift+$fiveC    move workspace "4:5";  workspace "4:5"
+bindcode $myModC+Control+Shift+$threeC   move workspace "5:3";  workspace "5:3"
+bindcode $myModC+Control+Shift+$oneC     move workspace "6:1";  workspace "6:1"
+bindcode $myModC+Control+Shift+$nineC    move workspace "7:9";  workspace "7:9"
+bindcode $myModC+Control+Shift+$zeroC    move workspace "8:0";  workspace "8:0"
+bindcode $myModC+Control+Shift+$twoC     move workspace "9:2";  workspace "9:2"
+bindcode $myModC+Control+Shift+$fourC    move workspace "10:4"; workspace "10:4"
+bindcode $myModC+Control+Shift+$sixC     move workspace "11:6"; workspace "11:6"
+bindcode $myModC+Control+Shift+$eightC   move workspace "12:8"; workspace "12:8"
+bindcode $myModC+Control+Shift+$hashC    move workspace "13:#"; workspace "13:#"
+
+# reload the configuration file
+bindcode $myModC+Shift+$rC reload
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindcode $myModC+Shift+Control+$rC restart
+
+# exit i3 (logs you out of your X session)
+bindcode $myModC+Control+$delC exit
+
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # They resize the border in the direction you pressed, e.g.
+        # when pressing left, the window is resized so that it has
+        # more space on its left
+
+        bindsym h resize shrink left 10 px or 3 ppt
+        bindsym Shift+h resize grow left 10 px or 3 ppt
+
+        bindsym t resize grow down 10 px or 3 ppt
+        bindsym Shift+t resize shrink down 10 px or 3 ppt
+
+        bindsym c resize shrink up  10 px or 3 ppt
+        bindsym Shift+c resize grow up 10 px or 3 ppt
+
+        bindsym n resize grow right 10 px or 3 ppt
+        bindsym Shift+n resize shrink right 10 px or 3 ppt
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        # change focus to next window
+        bindcode $myModC+$hC focus left
+        bindcode $myModC+$tC focus down
+        bindcode $myModC+$cC focus up
+        bindcode $myModC+$nC focus right
+        # alternatively, you can use the cursor keys:
+        bindcode $myModC+$leftC focus left
+        bindcode $myModC+$downC focus down
+        bindcode $myModC+$upC focus up
+        bindcode $myModC+$rightC focus right
+
+        # move focused window
+        bindcode $myModC+Shift+$hC move left
+        bindcode $myModC+Shift+$tC move down
+        bindcode $myModC+Shift+$cC move up
+        bindcode $myModC+Shift+$nC move right
+        # alternatively, you can use the cursor keys:
+        bindcode $myModC+Shift+$leftC move left
+        bindcode $myModC+Shift+$downC move down
+        bindcode $myModC+Shift+$upC move up  
+        bindcode $myModC+Shift+$rightC move right
+}
+
+# Enter resize mode
+bindcode $myModC+$rC mode "resize"
+
+#Set up custom colors    border       bg            text       indicator
+client.focused            #DA6F00      #DA6F00      #000000    #900000
+client.focused_inactive   #333333      #333333      #999999
+client.unfocused          #333333      #333333      #999999
+client.urgent             #FF0000      #8C5665      #999999
+
+#exec --no-startup-id exec compton -c -f -O 0.2 -I 0.18 -o 0.5 -D 20
+exec --no-startup-id ~/bin/turnmonitor.sh
+
+# vim:filetype=i3

@@ -79,7 +79,7 @@ status.register("cpu_usage"
 
 battery = status.register("battery"
         , alert=True
-        , format="{remaining}{status}"
+        , format="{percentage_design:.2f}%{status}"
         , charging_color="#FFFF00"
         , color="#FF793D"
         , status= {'CHR': 'm ', 'DIS': 'm ⚡', 'FULL': '', 'DPL': ''}
