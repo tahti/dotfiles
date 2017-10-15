@@ -82,7 +82,7 @@ battery = status.register("battery"
         , format="{percentage_design:.2f}%{status}"
         , charging_color="#FFFF00"
         , color="#FF793D"
-        , status= {'CHR': 'm ', 'DIS': 'm ⚡', 'FULL': '', 'DPL': ''}
+        , status= {'CHR': ' ', 'DIS': ' ⚡', 'FULL': '', 'DPL': ''}
         , not_present_text=""
        )
 status.register("disk"

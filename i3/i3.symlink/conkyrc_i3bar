@@ -52,7 +52,7 @@ ${if_match  ${battery_percent BAT0}<=80}"\#FFFF00"${else}\
 "\#00FF00"${endif}${endif}${endif}\
 ,"min_width":"100%", "align":"center"},
   ${endif}
-  { "full_text" : "${texeci 20 sensors | grep Physical | cut -c18-19}°C","color" :"\#00ff00", "min_width":"100°C", "align":"center"},
+  { "full_text" : "${texeci 20 sensors | grep Core | cut -c17-18}°C","color" :"\#00ff00", "min_width":"100°C", "align":"center"},
   ${if_up wlan0}\
 { "full_text" : "${downspeed wlan0} ${upspeed wlan0}", "color":"\#0099ff", "min_width":"999kB 999kB", "align":"center"},
   ${endif}
