@@ -53,7 +53,7 @@
 ;;; Libraries
 (push 'sunrise-commander el-get-packages)
 
-(advice-add 'tahti-helm-files :before  #'tahti-enter-fullscreen)
+(advice-add 'sunrise-cd :before  #'tahti-enter-fullscreen)
 (advice-add 'sr-quit :after #'tahti-leave-fullscreen)
 
 (defun tahti-after-sr ()
