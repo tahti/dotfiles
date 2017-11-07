@@ -114,7 +114,7 @@ def cycle(self, increment=1):
             upFormat= ""
 
         self.format_down=symbol
-        self.format_up=symbol+upFormat+"  {network_graph}{kbs}K"
+        self.format_up=symbol+upFormat+"  {network_graph_recv}{bytes_recv}K"
         if self.network_traffic:
             self.network_traffic.clear_counters()
             self.kbs_arr = [0.0] * self.graph_width
@@ -132,7 +132,7 @@ if len(intf) > 0:
                 , dynamic_color=False
                 , interface=intf[0]
                 , format_down=symbol
-                , format_up=symbol+upFormat+"  {network_graph}{kbs}K"
+                , format_up=symbol+upFormat+"  {network_graph_recv}{bytes_recv}K"
                 , color_up="#0099ff"
                 , start_color="#0099ff"
                 , end_color="#0099ff"
