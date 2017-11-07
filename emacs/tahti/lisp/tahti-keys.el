@@ -183,7 +183,7 @@
        "c SPC" 'tahti-toggle-comment
        "u" 'undo-tree-visualize
        "b" 'helm-buffers-list
-       "s" 'sunrise-cd
+       "s" 'tahti-cd
        "a=" 'underline-with-char-equal
        "a-" 'underline-with-char-minus
        "a~" 'underline-with-char-tilde
@@ -195,7 +195,7 @@
        "fw" 'helm-write-file      ;save as dialog
        "fh" 'tahti-helm-history-files
        "fc" 'tahti-config-files
-       "ff" 'sunrise-cd
+       "ff" 'tahti-cd
        "fr" 'rename-file-and-buffer
        "yf" 'copy-file-name-to-clipboard
        "ys" 'copy-short-file-name-to-clipboard

@@ -153,5 +153,10 @@
     (interactive)
     (helm-find-files 1))
   )
+  (defun tahti-cd ()
+    (interactive)
+    (tahti-enter-fullscreen)
+    (sunrise-cd)
+  )
 (provide 'tahti-helm)
 
