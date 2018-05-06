@@ -18,7 +18,7 @@ new_window pixel 2
 #
 
 #exec setxkbmap -layout "pl,pl" -variant "dvp,basic" -option "caps:swapescape,grp:sclk_toggle"
-#exec blueman-applet
+exec blueman-applet
 exec --no-startup-id kmix --keepvisibility
 #exec volumeicon
 exec --no-startup-id numlockx on
@@ -126,9 +126,10 @@ floating_modifier $myModC
 ##
 #
 
+# toggle keyboard layout
+bindcode $myModC+$kC exec "/home/piotr/bin/xkb-toggle"
 
-
-bindcode $myModC+$aC exec keepass2 --auto-type
+bindcode $myModC+$aC exec "keepass2 --auto-type"
 # banish mouse
 bindcode $myModC+$minusC exec $HOME/bin/banishRat
 #bindcode $ctrlC+$spaceC exec kupfer
@@ -182,10 +183,10 @@ bindcode $myModC+$mC focus tiling
 bindcode $myModC+Shift+$mC focus floating
 
 # toggle tiling / floating
-bindsym $myModC+Shift+space floating toggle
+bindcode $myModC+Shift+$commaC floating toggle
 
 # change focus between tiling / floating windows
-bindsym $myModC+space focus mode_toggle
+bindcode $myModC+$comaC focus mode_toggle
 
 # enter fullscreen mode for the focused container
 bindcode $myModC+$fC fullscreen
