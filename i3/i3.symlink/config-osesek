@@ -183,7 +183,7 @@ bindcode $myModC+$mC focus tiling
 bindcode $myModC+Shift+$mC focus floating
 
 # toggle tiling / floating
-bindcode $myModC+Shift+$commaC floating toggle
+bindcode $myModC+Shift+$comaC floating toggle
 
 # change focus between tiling / floating windows
 bindcode $myModC+$comaC focus mode_toggle
