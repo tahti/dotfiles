@@ -16,8 +16,11 @@ mounted = set()
 
 def check(action, device):
     major = os.major(device.device_number)
-    return device.get('DEVTYPE') == 'partition' and device.get('SUBSYSTEM') == 'block' and (major == 3 or major == 8)
-
+    good = device.get('SUBSYSTEM') == 'block' and (major == 3 or major == 8)
+    if not good:
+      return False
+    if device.get('DEVTYPE') == 'partition' or device.get('DEVTYPE') == 'disk':
+      return device.get('ID_FS_TYPE') != None 
 
 def react(action, device):
     #print('USB device %s,++++++++++++++++++++++++++++++' % action, end="")

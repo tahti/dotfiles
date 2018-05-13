@@ -1,6 +1,7 @@
 """
 Call xset on keyboard changes.
 """
+import time
 
 # ---- conf begin
 xset_args = ['r', 'rate', '250', '50']
@@ -15,4 +16,5 @@ def check(action, device):
 
 def react(action, device):
     print('new keyboard attached')
+    time.sleep(1)
     invoke('xset', *xset_args)
