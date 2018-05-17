@@ -383,6 +383,6 @@ client.unfocused          #333333      #333333      #999999
 client.urgent             #FF0000      #8C5665      #999999
 
 #exec --no-startup-id exec compton -c -f -O 0.2 -I 0.18 -o 0.5 -D 20
-exec --no-startup-id ~/bin/turnmonitor.sh
+exec --no-startup-id autorandr -c 
 
 # vim:filetype=i3
