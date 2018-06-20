@@ -16,7 +16,7 @@ macopen() {
             ;;
           *.html|*.htm)
 #we need absolute file for conkeror
-            conkeror `readlink -f $1`
+            conkeror `readlink $1`
             ;;
           *.exe|*.EXE)
             wine $1

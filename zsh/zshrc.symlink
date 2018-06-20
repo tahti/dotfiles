@@ -18,7 +18,7 @@ for plugin ($plugins); do
     fpath=($ZSH/plugins/$plugin $fpath)
   fi
 done
-#export JAVA_HOME=$(readlink -f /usr/bin/javac | sed "s:/bin/javac::")
+#export JAVA_HOME=$(readlink /usr/bin/javac | sed "s:/bin/javac::")
 source /etc/profile
 # source every .zsh file in lib
 source $ZSH/lib/aliases.zsh
