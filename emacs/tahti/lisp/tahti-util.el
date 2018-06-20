@@ -30,7 +30,7 @@ A `spec' can be a `read-kbd-macro'-readable string or a vector."
                (string (read-kbd-macro spec))
                (t (error "wrong argument")))))
     (funcall setter-fun key cmd)))
-d(defmacro require-and-exec (feature &rest body)
+(defmacro require-and-exec (feature &rest body)
    "Require the feature and execute body if it was successfully loaded."
      (declare (indent defun))
        `(if (require ,feature nil 'noerror)
