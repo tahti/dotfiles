@@ -3,8 +3,8 @@
 (defun tahti-java-mode-init ()
   (custom-set-variables
     ;;
-    '(eclim-eclipse-dirs '("/opt/eclipse"))
-    '(eclim-executable "/opt/eclipse/eclim")
+    '(eclim-eclipse-dirs '("/Applications/Eclipse.app/Contents/Eclipse/"))
+    '(eclim-executable "/Applications/Eclipse.app/Contents/Eclipse/eclim")
   )
   (setq c-basic-offset 2;;set the indentation to 2 spaces
     tab-width 2

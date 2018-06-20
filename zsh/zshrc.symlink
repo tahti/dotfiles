@@ -1,6 +1,6 @@
 # shortcut to this dotfiles path is $ZSH
 #export ZSH=$HOME/Private/dotfiles
-export ZSH=$(dirname $(readlink -f $HOME/.zshrc))
+export ZSH=$(dirname $(readlink $HOME/.zshrc))
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git percol)
 
@@ -18,7 +18,8 @@ for plugin ($plugins); do
     fpath=($ZSH/plugins/$plugin $fpath)
   fi
 done
-export JAVA_HOME=$(readlink -f /usr/bin/javac | sed "s:/bin/javac::")
+#export JAVA_HOME=$(readlink -f /usr/bin/javac | sed "s:/bin/javac::")
+source /etc/profile
 # source every .zsh file in lib
 source $ZSH/lib/aliases.zsh
 source $ZSH/lib/completion.zsh
@@ -57,4 +58,7 @@ then
     fi
   fi
 fi
+
+export PATH=$BRAZIL_CLI_BIN:$PATH
+path=(~/Library/Python/3.6/bin /usr/local/bin ~/bin /sbin /usr/sbin /usr/local/sbin /opt/flex/bin /usr/local/texlive/2017/bin/x86_64-darwin ~/.toolbox/bin $path) 
 

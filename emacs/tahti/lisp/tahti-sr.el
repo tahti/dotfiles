@@ -1,6 +1,4 @@
 ;documentation for helm - https://github.com/emacs-helm/helm/wiki
- (require 'tahti-i3)
-
 ;; (eval-when-compile (require 'cl))
  ;(run-with-timer 10 1800  #'start-process "updatedb" "*updatedb*"
                                           ;"updatedb" "-U" (expand-file-name "~")
@@ -25,19 +23,21 @@
 (setq find-directory-functions (cons 'sr-dired find-directory-functions))
 
 (defun tahti-enter-fullscreen ()
-  "Enter fullscreen by sending message to i3"
+  "Enter fullscreen" 
   (interactive)
-  (tahti-i3-command 0 "fullscreen enable")
+  (if (frame-parameter nil 'fullscreen)
+    (toggle-frame-fullscreen))
 )
 (defun tahti-leave-fullscreen ()
-  "Leave fullscreen by sending message to i3"
+  "Leave fullscreen"
   (interactive)
-  (tahti-i3-command 0 "fullscreen disable")
+  (if (frame-parameter nil 'fullscreen)
+    (toggle-frame-fullscreen))
 )
 (defun tahti-toggle-fullscreen ()
   "Leave fullscreen by sending message to i3"
   (interactive)
-  (tahti-i3-command 0 "fullscreen toggle")
+  (toggle-frame-fullscreen)
 )
 (defun tahti-inplace-copy ()
   "Copy file in place"

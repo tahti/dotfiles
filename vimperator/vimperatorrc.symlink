@@ -66,20 +66,20 @@ map <silent> <leader>h :set hlsearch!<CR>
 
 set toolbars=nomenu
 " toggle navigation bar - remember to set ui.key.menuAccessKeyFocuses to false
-map <silent> <A-up> :set toolbars=invnavigation<CR>:set! ui.key.menuAccessKeyFocuses=false<CR>
+map <silent> <M-up> :set toolbars=invnavigation<CR>:set! ui.key.menuAccessKeyFocuses=false<CR>
 map <silent> <leader>t :set toolbars=invnavigation<CR>
 map <silent> <leader>m :set toolbars=invmenu<CR>
-map <silent> <A-down> :set toolbars=invmenu<CR>:set! ui.key.menuAccessKeyFocuses=false<CR>
+map <silent> <M-down> :set toolbars=invmenu<CR>:set! ui.key.menuAccessKeyFocuses=false<CR>
 " bring back/hide portions of the GUI
-" noremap <silent> <A-down> :set gui=nonavigation<CR>
+" noremap <silent> <M-down> :set gui=nonavigation<CR>
 " noremap <silent> <leader>G :set guioptions-=mBT<CR>
 
 
 " tab operation {{{2
-noremap <A-h> gT
-noremap <A-n> gt
-noremap <A-S-h> :tabmove! -1<CR>
-noremap <A-S-n> :tabmove! +1<CR>
+noremap <M-h> gT
+noremap <M-n> gt
+noremap <M-S-h> :tabmove! -1<CR>
+noremap <M-S-n> :tabmove! +1<CR>
 noremap <C-n> <C-f>
 noremap <C-h> <C-b>
 noremap l :tabopen 
@@ -87,6 +87,9 @@ noremap t jj
 noremap c kk
 noremap k n
 noremap K N
+map zi <C-+>
+map zo <C-->
+map zz <C-=>
 "previos link in history 
 noremap h <C-o>
 "next link in history 

@@ -2,10 +2,9 @@
 (push 'cmake-mode el-get-packages)
 (push 'andersl-cmake-font-lock el-get-packages)
 
-(require 'cmake-mode)
-;(require 'andersl-cmake-font-lock)
 (autoload 'cmake-font-lock-activate "cmake-font-lock" nil t)
-
+(defun tahti-after-cmake-mode ()
+    (require 'cmake-mode))
 ;(defun tahti-cmake-mode-init ()
   ;(autoload 'andersl-cmake-font-lock-activate "andersl-cmake-font-lock" nil t)
 ;)

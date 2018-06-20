@@ -58,6 +58,7 @@ Plugin 'ctrlp.vim' " ,b - fuzzy search of files/buffers
 " Syntax highlight
 Plugin 'gmarik/vim-markdown'
 Plugin 'timcharper/textile.vim'
+Plugin 'chikamichi/mediawiki.vim'
 " Now we can turn our filetype functionality back on
 filetype plugin indent on
 " Modeline and Notes {

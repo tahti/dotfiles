@@ -8,7 +8,8 @@ alias web='iceweasel'
 alias gvim='gvim --servername gvim'
 alias v='gvim --remote'
 alias sec='iceweasel -P Secure -no-remote'
-alias la='ls -alh --color=auto'
+alias l='ls -ah'
+alias la='ls -alh'
 alias sub='svn'
 alias du='du -h'
 alias lp='lp -o media=a4'
@@ -30,7 +31,6 @@ alias t='~/bin/todo'
 alias irfanview='wine ~/.wine/drive_c/Program\ Files/IrfanView/i_view32.exe'
 alias ida='wine ~/progs/IDA\ Pro\ 6.1\ Precracked/idaq.exe'
 alias objdump='objdump -C --disassembler-options=intel'
-alias k=kupfer
 
 #global aliases
 alias -g ...='../..'
@@ -39,4 +39,4 @@ alias -g .....='../../../..'
 alias -g ......='../../../../..'
 alias -g .......='../../../../../..'
 alias -g ........='../../../../../../..'
-
+alias msgview='java -jar /usr/local/MSGViewer-1.9/MSGViewer.jar'

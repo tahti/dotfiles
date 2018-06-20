@@ -89,9 +89,8 @@
   )
 )
 ;;; w3m ==============================================
-(setq browse-url-browser-function 'browse-url-firefox
-            browse-url-new-window-flag t
-            browse-url-firefox-new-window-is-tab t)
+(setq browse-url-browser-function (quote browse-url-generic))
+(setq browse-url-generic-program "open")
 ;(autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
  ;; optional keyboard short-cut
 ;;;expand selection region ==========================
@@ -219,7 +218,7 @@ Intended as `kill-buffer-query-functions' fun."
 ;; do not ask question about running processes when closing emacs TODO replace flet?
 (defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
   "Prevent annoying \"Active processes exist\" query when you quit Emacs."
-  (flet ((process-list ())) ad-do-it))
+  (cl-flet ((process-list ())) ad-do-it))
 
 (provide 'tahti-editor)
 ;;; tahit-ui.el ends here

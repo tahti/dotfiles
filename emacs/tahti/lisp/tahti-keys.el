@@ -39,6 +39,8 @@
 
 (defun tahti-evil-keys ()
     (evil-define-key 'normal org-mode-map (kbd "SPC") 'org-toggle-latex-fragment)
+    (evil-define-key 'normal org-mode-map (kbd "s-<return>") 'org-meta-return)
+    (evil-define-key 'insert org-mode-map (kbd "s-<return>") 'org-meta-return)
     (fill-keymap evil-visual-state-map
       "*"  'tahti-search-selection-forward
       "#"  'tahti-search-selection-backward
@@ -438,14 +440,14 @@
 )
 ;keys for sunrise commander
 (defun tahti-sr-keys ()
-  (define-key sr-mode-map "\M-n"        'sr-change-window)
-  (define-key sr-mode-map "\M-h"        'sr-change-window)
-  (define-key sr-mode-map "\M-t"        'evil-window-down) ;was 'sr-traspose-panes
+  (define-key sr-mode-map (kbd "s-n")   'sr-change-window)
+  (define-key sr-mode-map (kbd "s-h")   'sr-change-window)
+  (define-key sr-mode-map (kbd "s-t")   'evil-window-down) ;was 'sr-traspose-panes
   (define-key sr-mode-map "t"           'dired-next-line)
   (define-key sr-mode-map "c"           'dired-previous-line)
   (define-key sr-mode-map "h"           'sr-dired-prev-subdir)
   (define-key sr-mode-map "n"           'sr-advertised-find-file)
-  (define-key sr-mode-map [M-tab]       'sr-synchronize-panes)
+  (define-key sr-mode-map [\s-tab]      'sr-synchronize-panes)
   (define-key sr-mode-map "/"           'sr-fuzzy-narrow)
   (define-key sr-mode-map (kbd "C-/")   'sr-find-grep)
   (define-key sr-mode-map (kbd "S-<f4>") 'sr-create-files)
@@ -460,8 +462,8 @@
 )
 (defun tahti-comint-keys()
   (fill-keymap comint-mode-map
-               "C-M-t" 'comint-next-input
-               "C-M-c" 'comint-previous-input
+               "C-s-t" 'comint-next-input
+               "C-s-c" 'comint-previous-input
                "M-p" nil
                "M-n" nil)
 )
@@ -518,7 +520,7 @@
   (let ((map (make-keymap)))
     (suppress-keymap map)
     (define-key map (kbd "<tab>") 'forward-button)
-    (define-key map (kbd "S-<tab>") 'backward-button)
+    (define-key map (kbd "s-<tab>") 'backward-button)
     (define-key map (kbd "q") 'eclim-quit-window)
     (define-key map (kbd "<escape>") 'eclim-quit-window)
     (define-key map (kbd "t") 'next-line)
@@ -562,7 +564,7 @@
 )
 
 (defun tahti-nxml-mode-keys()
-  (define-key nxml-mode-map "\M-h"          'evil-window-left)
+  (define-key nxml-mode-map "\s-h"          'evil-window-left)
 )
 (defun tahti-irony-mode-keys()
  "Modify keymaps used by `irony-mode'."
@@ -602,14 +604,19 @@
     "C-x g" 'magit-status
     "C-+"   'text-scale-increase  ;;increase font
     "C--"   'text-scale-decrease  ;;decrease font
-    "M-h"   'evil-window-left
-    "M-x"   'helm-M-x
-    "M-n"   'evil-window-right
-    "M-c"   'evil-window-up
-    "M-t"   'evil-window-down
-    "M-/"   'hippie-expand
-    "M-+"   'text-scale-adjust
-    "M--"   'text-scale-adjust
+    "s-x"   'helm-M-x
+    "s-h"   'evil-window-left
+    "s-n"   'evil-window-right
+    "s-c"   'evil-window-up
+    "s-t"   'evil-window-down
+    "s-H"   'evil-window-move-far-left
+    "s-N"   'evil-window-move-far-right
+    "s-C"   'evil-window-move-very-top
+    "s-T"   'evil-window-move-very-bottom
+    "M-f"   'tahti-toggle-fullscreen
+    "s-/"   'hippie-expand
+    "s-+"   'text-scale-adjust
+    "s--"   'text-scale-adjust
     ;"<f10>" 'tahti/helm-lacarte
     "<f7>" 'flyspell-mode
     "C-<escape>" 'ESC-prefix

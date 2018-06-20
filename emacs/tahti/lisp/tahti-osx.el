@@ -1,9 +1,3 @@
-;; Emacs users obviously have little need for Command and Option keys,
-;; but they do need Meta and Super
-(when (eq system-type 'darwin)
-  (setq mac-command-modifier 'super)
-  (setq mac-option-modifier 'meta)
-  (setq ns-function-modifier 'hyper)
 
   (defun tahti-swap-meta-and-super ()
     "Swap the mapping of meta and super. Very useful for people using their Mac
@@ -18,20 +12,7 @@
         (setq mac-command-modifier 'super)
         (setq mac-option-modifier 'meta)
         (message "Command is now bound to SUPER and Option is bound to META."))))
-  (define-key tahti-mode-map (kbd "C-c w") 'tahti-swap-meta-and-super)
-
-  ;; mac friendly font
-  ;; Menlo-12
-  (set-face-attribute 'default nil :font "Cousine-12")
-
-  ;; make sure path is correct when launched as application
-  (setenv "PATH" (concat "/usr/local/share/python:/usr/local/bin:/usr/local/sbin:" (getenv "PATH")))
-  (push "/usr/local/bin" exec-path)
-  (push "/usr/local/sbin" exec-path)
-  (push "/usr/local/share/python" exec-path)
-
-  ;; keybinding to toggle full screen mode
-  (global-set-key (quote [M-f10]) (quote ns-toggle-fullscreen))
+  ;(define-key tahti-mode-map (kbd "C-c w") 'tahti-swap-meta-and-super)
 
   ;; Move to trash when deleting stuff
   (setq delete-by-moving-to-trash t

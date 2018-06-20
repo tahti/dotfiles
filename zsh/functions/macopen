@@ -1,0 +1,59 @@
+# -------------------------------------------------------------------
+# opening files in default applications
+# (from https://github.com/myfreeweb/zshuery/blob/master/zshuery.sh)
+# -------------------------------------------------------------------
+macopen() {
+    if [[ -f $1 ]]; then
+        case $1 in
+          *.tex|*.txt|*.lzz|*.h|*.java|*.xml|Makefile|*.q|*.bib) 
+            e $1
+            ;;
+          *.pdf|*.ps|*.eps|*.dvi|*.PDF|*.PS|*.DVI|*.EPS) 
+            okular $1 2>/dev/null &!
+            ;;
+          *.png|*.jpg|*.jpeg|*.PNG|*.JPEG|*.JPG|*.Png|*.gif|*.GIF|*.ico|*.ICO) 
+            viewnior $1 2>/dev/null &!
+            ;;
+          *.html|*.htm)
+#we need absolute file for conkeror
+            conkeror `readlink -f $1`
+            ;;
+          *.exe|*.EXE)
+            wine $1
+            ;;
+          *.ppt|*.ODT|*.odt|*.PPT|*.rtf)
+            libreoffice $1
+            ;;
+          *.svg|*.SVG)
+            eog $1
+            ;;
+          *.chm)
+            kchmviewer $1
+            ;;
+          *.xlsx|*.ods|*.doc|*.xsl|*.docx)
+            libreoffice $1 2>/dev/null &!
+            ;;
+#compressed files - unpack
+          *.tar.bz2) tar xvjf $1;;
+          *.tar.gz) tar xvzf $1;;
+          *.tar.xz) tar xvJf $1;;
+          *.tar.lzma) tar --lzma xvf $1;;
+          *.bz2) bunzip $1;;
+          *.rar) unrar $1;;
+          *.gz) gunzip $1;;
+          *.tar) tar xvf $1;;
+          *.tbz2) tar xvjf $1;;
+          *.tgz) tar xvzf $1;;
+          *.zip) unzip $1;;
+          *.Z) uncompress $1;;
+          *.7z) 7z x $1;;
+          *) 
+            echo "'$1' have no default application."
+            ;;
+    esac
+    else
+        echo "'$1' is not a valid file"
+    fi
+}
+# vim: set filetype=zsh:
+
