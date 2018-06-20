@@ -4,7 +4,7 @@ set history=500            " keep 500 lines of command line history
 scriptencoding utf-8       " utf-8 all the way
 set encoding=utf-8
 set timeoutlen=250         " Time to wait after ESC (default causes an annoying delay)
-set clipboard+=unnamed     " Yanks go on clipboard instead.
+set clipboard=unnamed     " Yanks go on clipboard instead.
 set pastetoggle=<F10>      " toggle between paste and normal: for 'safer' pasting from keyboard
 set shiftround             " round indent to multiple of 'shiftwidth'
  
