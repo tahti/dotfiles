@@ -25,14 +25,23 @@ else
        "LZMA compressed data, streamed")
          inplaceunpack "$1" xz lzma -d
          ;;
+       "RPM"*)
+         myunpack "$1" rpm unar 
+         ;;
+       "ASCII cpio archive"*)
+         myunpack "$1" cpio unar 
+         ;;
+       "Debian binary package"*)
+         myunpack "$1" deb unar 
+         ;;
        "Zoo archive data"*)
-         myunpack "$1" zoo zoo -extract 
+         myunpack "$1" zoo unar 
          ;;
        "7-zip archive data"*|"Windows imaging (WIM)"*)
-         myunpack "$1" 7z 7z x
+         myunpack "$1" 7z unar
          ;;
        "ARJ archive data"*)
-         myunpack "$1" arj arj x
+         myunpack "$1" arj unar
          ;;
        "Zip archive data"*)
          myunpack "$1" zip unzip
@@ -41,7 +50,7 @@ else
          inplaceunpack "$1" bz2 bzip2 -d 
          ;;
        "RAR archive data"*)
-         myunpack "$1" rar unrar x
+         myunpack "$1" rar unar
          ;;
       *)
         #read \?"I am waiting for you to press [Enter] before I continue."

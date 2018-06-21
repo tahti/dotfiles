@@ -25,7 +25,7 @@
 (defun tahti-enter-fullscreen ()
   "Enter fullscreen" 
   (interactive)
-  (if (frame-parameter nil 'fullscreen)
+  (if (not (frame-parameter nil 'fullscreen))
     (toggle-frame-fullscreen))
 )
 (defun tahti-leave-fullscreen ()
