@@ -5,7 +5,7 @@ fpath=($ZSH/functions $fpath)
 autoload -Uz any
 autoload -Uz myip
 autoload -Uz givedef
-autoload -Uz open
+autoload -Uz macopen
 autoload -Uz path
 autoload -Uz cdup
 autoload -Uz nwf
@@ -15,7 +15,7 @@ mcd() { mkdir -p "$1" && cd "$1"; }
 pj() { python -mjson.tool } # pretty-print JSON
 cj() { curl -sS $@ | pj } # curl JSON
 l() { ls -a -h --color=auto "$@" }
-o() { open "$@" }
+o() { macopen "$@" }
 apa(){ apack "$@"} 
 md5() { echo -n $1 | openssl md5 /dev/stdin }
 sha1() { echo -n $1 | openssl sha1 /dev/stdin }
