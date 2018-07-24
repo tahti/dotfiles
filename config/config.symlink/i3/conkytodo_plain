@@ -67,8 +67,8 @@ conky.config = {
 -- Minimum size of text area
   minimum_width = 280, minimum_height = 5,
 
--- Size of the standard text buffer (default is 128 bytes).
-  text_buffer_size = 1024,
+-- Size of the standard text buffer (default is 256 bytes).
+  text_buffer_size = 512,
 
 -- Draw shades?
   draw_shades = true,
