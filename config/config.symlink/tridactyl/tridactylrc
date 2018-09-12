@@ -1,0 +1,59 @@
+" Settings for Tridactyl 
+
+" Move this to $XDG_CONFIG_DIR/tridactyl/tridactylrc (that's
+" ~/.config/tridactyl/tridactylrc to mere mortals) or ~/.tridactylrc and
+" install the native messenger (:installnative in Tridactyl). Run :source to
+" get it in the browser, or just restart.
+
+" NB: If you want "vim-like" behaviour where removing a line from 
+" here makes the setting disappear, uncomment the line below.
+
+"sanitise tridactyllocal tridactylsync
+"
+" General settings
+"
+" Prevent pages from stealing focus (may break som JS editors)
+set allowautofocus false
+
+set smoothscroll false 
+set hintchars aoeuidhtnspgcrljkmwvzxbq
+
+" Make Tridactyl work on more sites at the expense of some security
+set csp clobber
+fixamo_quiet
+set newtab about:blank
+"
+" Binds 
+"
+" see https://github.com/tridactyl/tridactyl/blob/master/src/config.ts to get
+" an idea
+"
+" NORMAL MODE "
+"
+" Comment toggler for Reddit and Hacker News
+bind ;c hint -c [class*="expand"],[class="togg"]
+"
+bind <M-h> tabprev
+bind <M-n> tabnext
+bind <SM-h> tabmove -1
+bind <SM-n> tabmove +1
+bind <C-n> scrollpage 1
+bind <C-h> scrollpage -1
+bind l fillcmdline tabopen
+bind L current_url tabopen
+bind t scrollline 3
+bind c scrollline -3
+bind h back
+bind n forward
+"
+" set {ignoremaps,inputmaps,imaps}.[key-sequence] [ex string]
+" inputmaps contain all of the bindings for "input mode".
+" imaps contain all of the bindings for "insert mode".
+set inputmaps.<S-Escape> mode ignore 
+""" URL redirects """
+
+" New reddit is bad
+autocmd DocStart www.reddit.com js tri.excmds.urlmodify("-t", "www", "old")
+
+" This will have to do until someone writes us a nice syntax file :)
+" vim: set filetype=vim:
