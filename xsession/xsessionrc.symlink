@@ -1,0 +1,3 @@
+#!/bin/bash
+# Set this to prevent kmix missing icons
+export XDG_CURRENT_DESKTOP="xfce"
