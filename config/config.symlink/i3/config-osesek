@@ -20,6 +20,7 @@ new_window pixel 2
 
 #exec setxkbmap -layout "pl,pl" -variant "dvp,basic" -option "caps:swapescape,grp:sclk_toggle"
 exec blueman-applet
+exec udevedu
 exec --no-startup-id kmix --keepvisibility
 #exec volumeicon
 exec --no-startup-id numlockx on
