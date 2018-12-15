@@ -3,7 +3,7 @@
 
 (push 'yasnippet el-get-packages)
 (defun tahti-after-yasnippet ()
-  ;(setq yas-snippet-dirs '("/home/piotr/.emacs.d/el-get/yasnippet/snippets"))
+  ;(setq yas-snippet-dirs '("~/.emacs.d/el-get/yasnippet/snippets"))
   ;(add-to-list 'yas-snippet-dirs tahti-snippets-dir)
 ;; Disable the load of the default snippets, I prefer to use mine or none of
 ;; them

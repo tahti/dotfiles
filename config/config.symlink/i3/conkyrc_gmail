@@ -6,6 +6,6 @@ out_to_console yes
 # Set to zero to run forever.
 total_run_times 0
 TEXT
-${execi 120 python /home/piotr/bin/gmailI3bar.py}
+${execi 120 python ~/bin/gmailI3bar.py}
 
 

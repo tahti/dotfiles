@@ -181,7 +181,7 @@ URxvt*scrollBar_right: true
 URxvt*scrollstyle: rxvt
 
 !tabbed with url launcher
-URxvt.perl-lib: /home/piotr/.urxvt
+URxvt.perl-lib: ~/.urxvt
 URxvt.perl-ext-common:  default,url-select,keyboard-select
 !URxvt.perl-ext-common:  default,tabbed
 URxvt.keysym.M-r:   perl:keyboard-select:copy

@@ -1,16 +1,9 @@
 # i3 config file (v4)
 #
+#set home directory
 set $CONFIG ~/.config/i3
-exec /usr/bin/gnome-session
-exec /usr/bin/unity-settings-daemon
 
-exec --no-startup-id echo "$0: DESKTOP_AUTOSTART_ID $DESKTOP_AUTOSTART_ID, registering with org.gnome.SessionManager"
-exec --no-startup-id dbus-send --session --print-reply=literal --dest=org.gnome.SessionManager "/org/gnome/SessionManager" org.gnome.SessionManager.RegisterClient "string:i3" "string:$DESKTOP_AUTOSTART_ID"
-
-exec /usr/bin/gnome-screensaver
-exec /usr/bin/xcompmgr
-
-font xft:DejaVu Sans Mono 9
+#exec xmessage -file /etc/i3/welcome
 
 # The IPC interface allows programs like an external workspace bar
 # (i3-wsbar) or i3-msg (can be used to "remote-control" i3) to work.
@@ -25,11 +18,11 @@ new_window pixel 2
 #
 
 #exec setxkbmap -layout "pl,pl" -variant "dvp,basic" -option "caps:swapescape,grp:sclk_toggle"
-##exec blueman-applet
-##exec udevedu
-##exec --no-startup-id kmix --keepvisibility
+exec blueman-applet
+exec udevedu
+exec --no-startup-id kmix --keepvisibility
 #exec volumeicon
-#exec --no-startup-id numlockx on # moved to /etc/lightdm/lightdm.conf greeter-setup-script=/usr/bin/numlockx on
+exec --no-startup-id numlockx on
 exec --no-startup-id xset r rate 250 80
 #disable bluetooth
 #exec rfkill block 2
@@ -47,11 +40,11 @@ bar {
 }
 exec xset b off #turning off the bell
 #exec pidgin
-##exec python /home/piotr/bin/cpmerge.py 
+# exec python ~/bin/cpmerge.py 
 #exec --no-startup-id wicd-client -t #showing network switcher
-##exec --no-startup-id nm-applet 
-##exec fbxkb #showing keyboard switcher
-##exec --no-startup-id alarm-clock-applet 
+exec --no-startup-id nm-applet 
+exec fbxkb #showing keyboard switcher
+exec --no-startup-id alarm-clock-applet 
 #exec conky -c $CONFIG/conkyrc_i3_bauzy|$HOME/bin/dzen2 -bg black -fg white  -fn "-*-terminus-*-r-normal-*-12-*-*-72-c-60-*-*" -w 450  -y 1 -ta l -x 159
 exec --no-startup-id conky -c $CONFIG/conkytodo_plain # showing todo list
 #exec conky -c $CONFIG/conkyrc_gmail #updating gmail info - needs fixing
@@ -60,7 +53,7 @@ exec --no-startup-id xkbset -a #disable slowkeys
 #exec /usr/bin/parcellite
 #refresh rate
 #setting up background
-##exec --no-startup-id zsh ~/.fehbg 
+exec --no-startup-id zsh ~/.fehbg 
 
 
 focus_follows_mouse no
@@ -124,6 +117,7 @@ set $spaceC 65
 
 # font for window titles. ISO 10646 = Unicode
 #font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+font xft:DejaVu Sans Mono 9
 
 # Use Mouse+$myModC to drag floating windows to their wanted position
 floating_modifier $myModC
@@ -267,19 +261,19 @@ bindcode $myModC+Shift+$tabC workspace prev
 # $  &  7 5 3 1 9 0 2 4  6  8  #
 # 13 11 7 5 3 1 9 0 2 4  6  8  10
 # 1  2  3 4 5 6 7 8 9 10 11 12 13
-workspace "1:$"  output eDP-1
-workspace "2:%"  output eDP-1
-workspace "3:7"  output eDP-1
-workspace "4:5"  output eDP-1
-workspace "5:3"  output eDP-1
-workspace "6:1"  output eDP-1
-workspace "7:9"  output DP-1-2
-workspace "8:0"  output DP-1-2
-workspace "9:2"  output DP-1-2
-workspace "10:4" output DP-1-2
-workspace "11:6" output DP-1-2
-workspace "12:8" output DP-1-2
-workspace "13:#" output DP-1-2
+workspace "1:$"  output HDMI-1 
+workspace "2:%"  output HDMI-1 
+workspace "3:7"  output HDMI-1 
+workspace "4:5"  output HDMI-1 
+workspace "5:3"  output HDMI-1
+workspace "6:1"  output HDMI-1
+workspace "7:9"  output HDMI-1
+workspace "8:0"  output eDP-1
+workspace "9:2"  output eDP-1
+workspace "10:4" output eDP-1
+workspace "11:6" output eDP-1
+workspace "12:8" output eDP-1
+workspace "13:#" output eDP-1
 # switch to workspace
 bindcode $myModC+$dollarC workspace "1:$"
 bindcode $myModC+$ampC    workspace "2:%"
@@ -368,7 +362,7 @@ mode "resize" {
         bindcode $myModC+$rightC focus right
 
         # move focused window
-        bindcode $myModC+Shife+$hC move left
+        bindcode $myModC+Shift+$hC move left
         bindcode $myModC+Shift+$tC move down
         bindcode $myModC+Shift+$cC move up
         bindcode $myModC+Shift+$nC move right

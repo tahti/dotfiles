@@ -1,5 +1,5 @@
 # Makefile for LaTeX files
-LLCSFILE = /home/piotr/Private/repos/piotrkordy/creations/templates/llncs/llncs.cls
+LLCSFILE = ~/Private/repos/piotrkordy/creations/templates/llncs/llncs.cls
 OKULAR = okular 
 TMPDIR = /tmp/build
 LATEXMK	= latexmk -auxdir=$(TMPDIR) -outdir=$(TMPDIR)

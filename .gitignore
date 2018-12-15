@@ -6,3 +6,4 @@ config/config.symlink/kupfer/*
 pentadactyl/pentadactyl.symlink/info/default/local-marks
 i3/i3.symlink/config
 .svn
+.rake_tasks*

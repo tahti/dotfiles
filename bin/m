@@ -14,7 +14,7 @@ else
     #no parameter
     if egrep -l '^[^%]*\\begin\{document\}' *.tex ; then
     #if egrep -l '^[^%]*\\documentclass' *.tex ; then
-        make -f /home/piotr/bin/latexMakefile
+        make -f ~/bin/latexMakefile
     else
         echo "Could not find any makefile"
     fi
@@ -24,10 +24,10 @@ else
     if [[ -f $1 ]]; then
       case $1 in
        *.tex)
-          make -f /home/piotr/bin/latexMakefile -j
+          make -f ~/bin/latexMakefile -j
           ;;
        *.pdf|*.ps|*.dvi)
-          make -f /home/piotr/bin/latexMakefile -j $1
+          make -f ~/bin/latexMakefile -j $1
        ;;
 #        compressed files - unpack
        *.tar.bz2) tar xvjf $1;;
@@ -51,7 +51,7 @@ else
     else
       if egrep -l '^[^%]*\\begin\{document\}' *.tex ; then
       #if egrep -l '^[^%]*\\documentclass' *.tex ; then
-        make -f /home/piotr/bin/latexMakefile -j $1
+        make -f ~/bin/latexMakefile -j $1
       fi
     fi
   fi

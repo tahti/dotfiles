@@ -1,13 +1,13 @@
 " This must be first, because it changes other options as a side effect.
-
 set nocompatible                " Use Vim settings, rather than Vi settings (much better!).
 filetype off
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim/
+call vundle#begin()
 " This is the Vundle package, which can be found on GitHub.
 " For GitHub repos, you specify plugins using the
 " 'user/repository' format
-Plugin 'gmarik/vundle'
+Plugin 'VundleVim/Vundle.vim'
+"Plugin 'gmarik/vundle'
 " Programming
 "Plugin 'fatih/vim-go'
 "Plugin 'derekwyatt/vim-scala'
