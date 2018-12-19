@@ -152,11 +152,14 @@ bindcode $myModC+Shift+$colonC kill
 # brightness
 bindsym XF86MonBrightnessUp exec --no-startup-id ~/bin/brightlight -i 1 -p
 bindsym XF86MonBrightnessDown exec --no-startup-id ~/bin/brightlight -d 1 -p
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +2%; exec pactl set-sink-mute @DEFAULT_SINK@ 0
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -2%; exec pactl set-sink-mute @DEFAULT_SINK@ 0
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 # start a terminal
 bindsym $myModC+Return exec $HOME/bin/vt
 #launch new terminal with current directory
 bindsym $myModC+Shift+Return exec $HOME/bin/urxvt-cwd 
-#laurch j4-dmenu-desktop
+#launch j4-dmenu-desktop
 bindcode $myModC+$dC exec $HOME/bin/j4-dmenu-desktop 
 
 # start a browser
