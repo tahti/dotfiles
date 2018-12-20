@@ -4,7 +4,7 @@ Call xset on keyboard changes.
 import time
 
 # ---- conf begin
-xset_args = ['r', 'rate', '250', '50']
+xset_args = ['r', 'rate', '250', '80']
 # ---- conf end
 
 from udevedu.utils import invoke
