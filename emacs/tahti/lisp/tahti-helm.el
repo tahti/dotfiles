@@ -100,7 +100,7 @@
   ;; --------------------------------------------------
   ;; disable y-n question for inserting a file 
     (defadvice helm-insert-file(around stfu compile activate)
-      (flet ((yes-or-no-p (&rest args) t)
+      (cl-flet ((yes-or-no-p (&rest args) t)
              (y-or-n-p (&rest args) t))
         ad-do-it))
 
