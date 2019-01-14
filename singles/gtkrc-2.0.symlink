@@ -1,5 +1,5 @@
 # -- THEME AUTO-WRITTEN BY gtk-theme-switch2 DO NOT EDIT
-include "~/.themes/Mac4Lin_GTK_Aqua_v0.3/gtk-2.0/gtkrc"
+# include "~/.themes/Mac4Lin_GTK_Aqua_v0.3/gtk-2.0/gtkrc"
 
 style "user-font"
 {
