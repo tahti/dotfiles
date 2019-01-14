@@ -31,9 +31,9 @@ A `spec' can be a `read-kbd-macro'-readable string or a vector."
                (t (error "wrong argument")))))
     (funcall setter-fun key cmd)))
 
-(defmacro require-and-exec (feature &optional &rest body)
-  "Require the feature and execute body if it was successfull loaded."
-  (declare (indent 1))
+(defmacro require-and-exec (feature &rest body)
+  "Require the feature and execute body if it was successfully loaded."
+  (declare (indent defun))
   `(if (require ,feature nil 'noerror)
         (progn ,@body)
     (message (format "%s not loaded" ,feature))))
