@@ -1,0 +1,38 @@
+set hlsearch
+set history=1000
+noremap k n
+noremap K N
+noremap t gj
+noremap T J
+noremap n l
+noremap N L
+noremap c k
+noremap C K
+noremap j c
+noremap J C
+noremap l t
+noremap L T
+noremap p P
+noremap P p
+nmap <C-h> <C-b>
+nmap <C-n> <C-f>
+vmap <C-h> <C-b>
+vmap <C-n> <C-f>
+vn <silent> * y/<C-R>"<CR>
+vn <silent> # y?<C-R>"<CR>
+map <M-c> <C-w>k
+map <M-t> <C-w>j
+map <M-h> <C-w>h
+map <M-n> <C-w>l
+inoremap <M-c> <Esc><C-w>ki
+inoremap <M-t> <Esc><C-w>ji
+inoremap <M-h> <Esc><C-w>hi
+inoremap <M-n> <Esc><C-w>li
+" code refactoring
+nnoremap <space>rr :action RenameElement<cr>
+" code navigation
+nnoremap <space>] :action GotoImplementation<cr>
+nnoremap <space>[ :action GotoSuperMethod<cr>
+nnoremap <space>u :action FindUsages<cr>
+nnoremap <space>gt :action GotoTest<cr>
+nnoremap <space>k :action HighlightUsagesInFile<cr>
