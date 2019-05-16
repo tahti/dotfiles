@@ -219,7 +219,7 @@ Intended as `kill-buffer-query-functions' fun."
 ;; do not ask question about running processes when closing emacs TODO replace flet?
 (defadvice save-buffers-kill-emacs (around no-query-kill-emacs activate)
   "Prevent annoying \"Active processes exist\" query when you quit Emacs."
-  (flet ((process-list ())) ad-do-it))
+  (cl-flet ((process-list ())) ad-do-it))
 
 (provide 'tahti-editor)
 ;;; tahit-ui.el ends here

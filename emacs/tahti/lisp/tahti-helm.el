@@ -100,7 +100,7 @@
   ;; --------------------------------------------------
   ;; disable y-n question for inserting a file 
     (defadvice helm-insert-file(around stfu compile activate)
-      (flet ((yes-or-no-p (&rest args) t)
+      (cl-flet ((yes-or-no-p (&rest args) t)
              (y-or-n-p (&rest args) t))
         ad-do-it))
 
@@ -121,7 +121,7 @@
             ,(tahti/helm-dir-deep "Vim" (expand-file-name "../../vim/" (file-truename tahti-config-dir)) t)
             ,(tahti/helm-dir-deep "Urxvt" (expand-file-name  "../../urxvt/" (file-truename tahti-config-dir)) t)
             ((name . "Dot")
-             (candidates . ,(append (ls-files "~/.i3/" t)
+             (candidates . ,(append (ls-files "~/.config/i3/" t)
                                     (ls-files "~/bin" t)
                                     (ls-files (expand-file-name "../../singles/"(file-truename  tahti-config-dir)) t)))
              (action . (("Open" . find-file)))
