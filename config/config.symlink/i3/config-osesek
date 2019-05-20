@@ -27,8 +27,9 @@ new_window pixel 2
 
 #exec setxkbmap -layout "pl,pl" -variant "dvp,basic" -option "caps:swapescape,grp:sclk_toggle"
 ##exec blueman-applet
-##exec udevedu
-exec --no-startup-id kmix --keepvisibility
+exec udevedu
+##exec --no-startup-id kmix --keepvisibility
+exec --no-startup-id pasystray --keepvisibility
 #exec volumeicon
 #exec --no-startup-id numlockx on # moved to /etc/lightdm/lightdm.conf greeter-setup-script=/usr/bin/numlockx on
 exec --no-startup-id xset r rate 250 80
@@ -52,6 +53,7 @@ exec xset b off #turning off the bell
 #exec --no-startup-id wicd-client -t #showing network switcher
 ##exec --no-startup-id nm-applet 
 ##exec fbxkb #showing keyboard switcher
+exec gxneur #showing keyboard switcher
 ##exec --no-startup-id alarm-clock-applet 
 #exec conky -c $CONFIG/conkyrc_i3_bauzy|$HOME/bin/dzen2 -bg black -fg white  -fn "-*-terminus-*-r-normal-*-12-*-*-72-c-60-*-*" -w 450  -y 1 -ta l -x 159
 exec --no-startup-id conky -c $CONFIG/conkytodo_plain # showing todo list
@@ -160,7 +162,7 @@ bindsym $myModC+Return exec $HOME/bin/vt
 #launch new terminal with current directory
 bindsym $myModC+Shift+Return exec $HOME/bin/urxvt-cwd 
 #launch j4-dmenu-desktop
-bindcode $myModC+$dC exec $HOME/bin/j4-dmenu-desktop 
+bindcode $myModC+$dC exec --no-startup-id $HOME/bin/j4-dmenu-desktop --term="i3-sensible-terminal"
 
 # start a browser
 bindcode $myModC+$wC exec --no-startup-id i3-msg 'exec /usr/bin/sensible-browser'

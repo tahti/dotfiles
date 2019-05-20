@@ -44,7 +44,8 @@ exec xset b off #turning off the bell
 # exec python ~/bin/cpmerge.py 
 #exec --no-startup-id wicd-client -t #showing network switcher
 exec --no-startup-id nm-applet 
-exec fbxkb #showing keyboard switcher
+#exec fbxkb #showing keyboard switcher
+exec gxneur #showing keyboard switcher
 exec --no-startup-id alarm-clock-applet 
 #exec conky -c $CONFIG/conkyrc_i3_bauzy|$HOME/bin/dzen2 -bg black -fg white  -fn "-*-terminus-*-r-normal-*-12-*-*-72-c-60-*-*" -w 450  -y 1 -ta l -x 159
 exec --no-startup-id conky -c $CONFIG/conkytodo_plain # showing todo list
