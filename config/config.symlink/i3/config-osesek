@@ -6,10 +6,11 @@ exec /usr/bin/unity-settings-daemon
 
 exec --no-startup-id echo "$0: DESKTOP_AUTOSTART_ID $DESKTOP_AUTOSTART_ID, registering with org.gnome.SessionManager"
 exec --no-startup-id dbus-send --session --print-reply=literal --dest=org.gnome.SessionManager "/org/gnome/SessionManager" org.gnome.SessionManager.RegisterClient "string:i3" "string:$DESKTOP_AUTOSTART_ID"
-exec --no-startup-id synclient HorizEdgeScroll=1 VertEdgeScroll=1 VertScrollDelta=111
-
-#exec /usr/bin/gnome-screensaver
-exec /usr/bin/xcompmgr
+# exec --no-startup-id synclient HorizEdgeScroll=1 VertEdgeScroll=1 VertScrollDelta=111
+# add to /etc/X11/xorg.conf.d/30-touchpad.conf
+#        Option "HerizEdgeScroll" "1"
+#        Option "VertEdgeScroll" "1"
+#        Option "VertScrollDelta" "111"
 
 font xft:DejaVu Sans Mono 9
 
@@ -27,18 +28,13 @@ new_window pixel 2
 
 #exec setxkbmap -layout "pl,pl" -variant "dvp,basic" -option "caps:swapescape,grp:sclk_toggle"
 ##exec blueman-applet
-exec udevedu
-##exec --no-startup-id kmix --keepvisibility
-exec --no-startup-id pasystray --keepvisibility
-#exec volumeicon
-#exec --no-startup-id numlockx on # moved to /etc/lightdm/lightdm.conf greeter-setup-script=/usr/bin/numlockx on
-exec --no-startup-id xset r rate 250 80
 #disable bluetooth
-#exec rfkill block 2
+exec udevedu
+exec --no-startup-id pasystray --keepvisibility
 # Start i3bar to display a workspace bar 
 bar {
     #mode hide
-    #status_command $CONFIG/conky_wrapper conkyrc_i3barWPP
+    #status_command $CONFIG/conky_wrapper conkyrc_i3bar
     status_command python3 $CONFIG/status_config.py
     id bar-1
     #font pango:DejaVu Sans Mono, Ionicons, FontAwesome 8
@@ -47,24 +43,14 @@ bar {
     position            top
     strip_workspace_numbers yes
 }
-exec xset b off #turning off the bell
-#exec pidgin
-##exec python /home/piotr/bin/cpmerge.py 
-#exec --no-startup-id wicd-client -t #showing network switcher
-##exec --no-startup-id nm-applet 
-##exec fbxkb #showing keyboard switcher
+##exec python /home/piotr/bin/cpmerge.py #Clipboard manager
 exec gxneur #showing keyboard switcher
-##exec --no-startup-id alarm-clock-applet 
-#exec conky -c $CONFIG/conkyrc_i3_bauzy|$HOME/bin/dzen2 -bg black -fg white  -fn "-*-terminus-*-r-normal-*-12-*-*-72-c-60-*-*" -w 450  -y 1 -ta l -x 159
 exec --no-startup-id conky -c $CONFIG/conkytodo_plain # showing todo list
-#exec conky -c $CONFIG/conkyrc_gmail #updating gmail info - needs fixing
 exec --no-startup-id conky -c $CONFIG/conky_i3help #showing help 
 exec --no-startup-id xkbset -a #disable slowkeys
-#exec /usr/bin/parcellite
 #refresh rate
 #setting up background
-exec --no-startup-id feh --bg-fill ~/.config/i3/romsdalshorn_normal.jpg
-
+exec --no-startup-id feh --bg-fill $CONFIG/romsdalshorn_normal.jpg
 
 focus_follows_mouse no
 workspace_auto_back_and_forth yes
@@ -141,7 +127,7 @@ bindcode $myModC+$kC exec "~/bin/xkb-toggle"
 
 bindcode $myModC+$aC exec "keepass2 --auto-type"
 # banish mouse
-bindcode $myModC+$minusC exec $HOME/bin/banishRat
+bindcode $myModC+$minusC exec ~/bin/banishRat
 #bindcode $ctrlC+$spaceC exec kupfer
 # scratchpad
 # Make the currently focused window a scratchpad
@@ -152,26 +138,26 @@ bindcode $myModC+$dotC scratchpad show
 # kill focused window
 bindcode $myModC+Shift+$colonC kill
 # brightness
-bindsym XF86MonBrightnessUp exec --no-startup-id ~/bin/brightlight -i 1 -p
-bindsym XF86MonBrightnessDown exec --no-startup-id ~/bin/brightlight -d 1 -p
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +2%; exec pactl set-sink-mute @DEFAULT_SINK@ 0
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -2%; exec pactl set-sink-mute @DEFAULT_SINK@ 0
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+#bindsym XF86MonBrightnessUp exec --no-startup-id ~/bin/brightlight -i 1 -p
+#bindsym XF86MonBrightnessDown exec --no-startup-id ~/bin/brightlight -d 1 -p
+#bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +2%; exec pactl set-sink-mute @DEFAULT_SINK@ 0
+#bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -2%; exec pactl set-sink-mute @DEFAULT_SINK@ 0
+#bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 # start a terminal
-bindsym $myModC+Return exec $HOME/bin/vt
+bindsym $myModC+Return exec ~/bin/vt
 #launch new terminal with current directory
-bindsym $myModC+Shift+Return exec $HOME/bin/urxvt-cwd 
+bindsym $myModC+Shift+Return exec ~/bin/urxvt-cwd 
 #launch j4-dmenu-desktop
-bindcode $myModC+$dC exec --no-startup-id $HOME/bin/j4-dmenu-desktop --term="i3-sensible-terminal"
+bindcode $myModC+$dC exec --no-startup-id ~/bin/j4-dmenu-desktop --term="i3-sensible-terminal"
 
 # start a browser
 bindcode $myModC+$wC exec --no-startup-id i3-msg 'exec /usr/bin/sensible-browser'
 
 # quit - not working
-#bindcode $myModC+$colonC exec --no-startup-id python $HOME/bin/doCommand.py quit
+#bindcode $myModC+$colonC exec --no-startup-id python ~/bin/doCommand.py quit
 
 # lock the screen
-bind $myModC+$lC exec $HOME/bin/lock
+bind $myModC+$lC exec ~/bin/lock
 
 #
 ##
@@ -207,10 +193,10 @@ bindcode $myModC+$comaC focus mode_toggle
 bindcode $myModC+$fC fullscreen
 
 # change focus to next window
-bindcode $myModC+$hC focus left;exec $HOME/bin/banishRat
+bindcode $myModC+$hC focus left;exec ~/bin/banishRat
 bindcode $myModC+$tC focus down
 bindcode $myModC+$cC focus up
-bindcode $myModC+$nC focus right;exec $HOME/bin/banishRat
+bindcode $myModC+$nC focus right;exec ~/bin/banishRat
 # alternatively, you can use the cursor keys:
 bindcode $myModC+$leftC focus left
 bindcode $myModC+$downC focus down
@@ -276,18 +262,19 @@ bindcode $myModC+Shift+$tabC workspace prev
 # 13 11 7 5 3 1 9 0 2 4  6  8  10
 # 1  2  3 4 5 6 7 8 9 10 11 12 13
 workspace "1:$"  output eDP-1
-workspace "2:%"  output DP-1-1
-workspace "3:7"  output DP-1-1
-workspace "4:5"  output DP-1-1
-workspace "5:3"  output DP-1-1
-workspace "6:1"  output DP-1-1
-workspace "7:9"  output DP-1-1
-workspace "8:0"  output DP-1-1
-workspace "9:2"  output DP-1-1
-workspace "10:4" output DP-1-1
-workspace "11:6" output DP-1-1
-workspace "12:8" output DP-1-1
-workspace "13:#" output HDMI-1 
+workspace "2:%"  output DVI-I-2-2
+workspace "3:7"  output DVI-I-2-2
+workspace "4:5"  output DVI-I-2-2
+workspace "5:3"  output DVI-I-2-2
+workspace "6:1"  output DVI-I-2-2
+workspace "7:9"  output DVI-I-1-1
+workspace "8:0"  output DVI-I-1-1
+workspace "9:2"  output DVI-I-1-1
+workspace "10:4" output DVI-I-1-1
+workspace "11:6" output DVI-I-1-1
+workspace "12:8" output DVI-I-1-1
+workspace "13:#" output DVI-I-1-1
+
 # switch to workspace
 bindcode $myModC+$dollarC workspace "1:$"
 bindcode $myModC+$ampC    workspace "2:%"
@@ -376,7 +363,7 @@ mode "resize" {
         bindcode $myModC+$rightC focus right
 
         # move focused window
-        bindcode $myModC+Shife+$hC move left
+        bindcode $myModC+Shift+$hC move left
         bindcode $myModC+Shift+$tC move down
         bindcode $myModC+Shift+$cC move up
         bindcode $myModC+Shift+$nC move right
@@ -396,7 +383,8 @@ client.focused_inactive   #333333      #333333      #999999
 client.unfocused          #333333      #333333      #999999
 client.urgent             #FF0000      #8C5665      #999999
 
-#exec --no-startup-id exec compton -c -f -O 0.2 -I 0.18 -o 0.5 -D 20
 exec --no-startup-id autorandr -c 
+exec xset b off #turning off the bell
+exec xset r rate 250 80
 
 # vim:filetype=i3
