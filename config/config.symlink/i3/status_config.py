@@ -4,6 +4,9 @@ import i3pystatus.network
 import i3pystatus.backlight
 from i3pystatus import Status
 from i3pystatus.core.command import run_through_shell
+from os.path import expanduser
+home = expanduser("~")
+
 intf = netifaces.interfaces()
 if intf[0].startswith("lo"):
     intf = intf[1:]
@@ -35,25 +38,15 @@ status.register("mem"
                 , alert_color="#FF0000"
                 , hints={}
                 )
-def lighter(self):
-        # if self.has_xbacklight:
-            # pr = float(run_through_shell(["xbacklight", "-get"]).out)
-            # pr = pr * 0.1
-            # if pr<1.0:
-                # pr = 1
-            # run_through_shell(["xbacklight", "+"+str(pr), "-time", "0"])
 
-            pr = run_through_shell(["/etc/acpi/actions/bl_up.sh", ""])
+def lighter(self):
+            pr = run_through_shell([home+ "/bin/brightlight", "-i", "1", "-p"])
+#            pr = run_through_shell(["/etc/acpi/actions/bl_up.sh", ""])
             return pr
 
 def darker(self):
-        # if self.has_xbacklight:
-            # pr = float(run_through_shell(["xbacklight", "-get"]).out)
-            # pr = pr * 0.1
-            # if pr<1.0:
-                # pr = 1
-            # run_through_shell(["xbacklight", "-"+str(pr), "-time", "0"])
-            pr = run_through_shell(["/etc/acpi/actions/bl_down.sh", ""])
+            pr = run_through_shell([home+"/bin/brightlight", "-d", "1", "-p"])
+#            pr = run_through_shell(["/etc/acpi/actions/bl_down.sh", ""])
             return pr
             # return pr
 
