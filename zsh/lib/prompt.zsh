@@ -23,6 +23,12 @@ zstyle ':vcs_info:*' formats ' %b' 'x%R'
 zstyle ':vcs_info:*' actionformats ' %b|%a' 'x%R'
 #zstyle ':vcs_info:svn*' branchformat '%b:%r'
 
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+  local C_PROMPT="red"
+else
+  local C_PROMPT="green"
+fi
+
 autoload colors && colors
 
 dirty() {
@@ -107,7 +113,7 @@ function RCMD() {
 
 ASYNC_PROC=0
 function precmd() {
-    print -P '\n%F{51}%F{green}%~'
+    print -P '\n%F{51}%F{$C_PROMPT}%~'
     function async() {
         # save to temp file
         printf "%s" "$(RCMD)" > "/tmp/zsh_tmp_prompt"
