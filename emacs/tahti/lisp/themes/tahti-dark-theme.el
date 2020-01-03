@@ -571,11 +571,11 @@
        ((,class (:inherit org-agenda-date :slant italic underline: t))) t)
      `(org-agenda-done ((,class (:foreground ,green))) t)
      `(org-archived ((,class (:foreground ,tahti-comments :weight normal))))
-     `(org-block ((,class (:foreground ,tahti-comments))))
+     `(org-block ((,class (:foreground ,cyan-hc))))
      `(org-block-begin-line ((,class (:foreground ,tahti-comments :slant italic))))
      `(org-checkbox ((,class (:background ,tahti-bg :foreground ,tahti-fg
                                           :box (:line-width 1 :style released-button)))))
-     `(org-code ((,class (:foreground ,tahti-comments))))
+     `(org-code ((,class (:foreground ,green-hc))))
      `(org-date ((,class (:foreground ,blue :underline t))))
      `(org-done ((,class (:weight bold :foreground ,green))))
      `(org-ellipsis ((,class (:foreground ,tahti-comments))))
