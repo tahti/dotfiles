@@ -1,56 +1,24 @@
 # i3 config file (v4)
 #
 set $CONFIG ~/.config/i3
-exec /usr/bin/gnome-session
-exec /usr/bin/unity-settings-daemon
 
-exec --no-startup-id echo "$0: DESKTOP_AUTOSTART_ID $DESKTOP_AUTOSTART_ID, registering with org.gnome.SessionManager"
-exec --no-startup-id dbus-send --session --print-reply=literal --dest=org.gnome.SessionManager "/org/gnome/SessionManager" org.gnome.SessionManager.RegisterClient "string:i3" "string:$DESKTOP_AUTOSTART_ID"
+font pango:DejaVu Sans Mono 9
+# font pango:Copse 10 
+
+# Use Mouse+$myModC to drag floating windows to their wanted position
+floating_modifier $myModC
+
 # exec --no-startup-id synclient HorizEdgeScroll=1 VertEdgeScroll=1 VertScrollDelta=111
 # add to /etc/X11/xorg.conf.d/30-touchpad.conf
 #        Option "HerizEdgeScroll" "1"
 #        Option "VertEdgeScroll" "1"
 #        Option "VertScrollDelta" "111"
 
-font xft:DejaVu Sans Mono 9
 
 # The IPC interface allows programs like an external workspace bar
 # (i3-wsbar) or i3-msg (can be used to "remote-control" i3) to work.
 ipc-socket $CONFIG/ipc.sock
 new_window pixel 2
-
-
-#
-##
-#### Startup programs
-##
-#
-
-#exec setxkbmap -layout "pl,pl" -variant "dvp,basic" -option "caps:swapescape,grp:sclk_toggle"
-##exec blueman-applet
-#disable bluetooth
-exec udevedu
-exec --no-startup-id pasystray --keepvisibility
-# Start i3bar to display a workspace bar 
-bar {
-    #mode hide
-    #status_command $CONFIG/conky_wrapper conkyrc_i3bar
-    status_command python3 $CONFIG/status_config.py
-    id bar-1
-    #font pango:DejaVu Sans Mono, Ionicons, FontAwesome 8
-    font pango:DejaVu Sans Mono, Icons, FontAwesome 9
-    workspace_buttons   yes
-    position            top
-    strip_workspace_numbers yes
-}
-##exec python /home/piotr/bin/cpmerge.py #Clipboard manager
-exec gxneur #showing keyboard switcher
-exec --no-startup-id conky -c $CONFIG/conkytodo_plain # showing todo list
-exec --no-startup-id conky -c $CONFIG/conky_i3help #showing help 
-exec --no-startup-id xkbset -a #disable slowkeys
-#refresh rate
-#setting up background
-exec --no-startup-id feh --bg-fill $CONFIG/romsdalshorn_normal.jpg
 
 focus_follows_mouse no
 workspace_auto_back_and_forth yes
@@ -114,8 +82,6 @@ set $spaceC 65
 # font for window titles. ISO 10646 = Unicode
 #font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 
-# Use Mouse+$myModC to drag floating windows to their wanted position
-floating_modifier $myModC
 #
 ##
 #### Exec-binds
@@ -123,7 +89,7 @@ floating_modifier $myModC
 #
 
 # toggle keyboard layout
-bindcode $myModC+$kC exec "~/bin/xkb-toggle"
+bindcode $myModC+$spaceC exec "~/bin/xkb-toggle"
 
 bindcode $myModC+$aC exec "keepass2 --auto-type"
 # banish mouse
@@ -140,25 +106,31 @@ bindcode $myModC+Shift+$colonC kill
 # brightness
 bindsym XF86MonBrightnessUp exec --no-startup-id ~/bin/brightlight -i 1 -p
 bindsym XF86MonBrightnessDown exec --no-startup-id ~/bin/brightlight -d 1 -p
-#bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +2%; exec pactl set-sink-mute @DEFAULT_SINK@ 0
-#bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -2%; exec pactl set-sink-mute @DEFAULT_SINK@ 0
-#bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+# volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ +2%"; exec --no-startup-id "pactl set-sink-mute @DEFAULT_SINK@ 0"
+bindsym XF86AudioLowerVolume exec --no-startup-id "pactl set-sink-volume @DEFAULT_SINK@ -2%"; exec --no-startup-id "pactl set-sink-mute @DEFAULT_SINK@ 0"
+bindsym XF86AudioMute exec  --no-startup-id "pactl set-sink-mute @DEFAULT_SINK@ toggle"
+
 # start a terminal
 bindsym $myModC+Return exec ~/bin/vt
+
 #launch new terminal with current directory
 bindsym $myModC+Shift+Return exec ~/bin/urxvt-cwd 
+
 #launch j4-dmenu-desktop
 bindcode $myModC+$dC exec --no-startup-id ~/bin/j4-dmenu-desktop --term="i3-sensible-terminal"
 
 # start a browser
 bindcode $myModC+$wC exec --no-startup-id i3-msg 'exec /usr/bin/sensible-browser'
 
-# quit - not working
-#bindcode $myModC+$colonC exec --no-startup-id python ~/bin/doCommand.py quit
-
 # lock the screen
 bind $myModC+$lC exec ~/bin/lock
 
+# scrot of full screen
+bindsym --release Print exec --no-startup-id scrot -e 'mv $f ~/PDF/screenshots'
+
+# scrot of selected area
+bindsym --release $myModC+XF86AudioMute exec --no-startup-id scrot -s -e 'mv $f ~/PDF/screenshots'
 #
 ##
 #### Window/Layer binds
@@ -377,11 +349,58 @@ mode "resize" {
 # Enter resize mode
 bindcode $myModC+$rC mode "resize"
 
-#Set up custom colors    border       bg            text       indicator
+#Set up custom colors     border       bg           text       indicator
 client.focused            #DA6F00      #DA6F00      #000000    #900000
 client.focused_inactive   #333333      #333333      #999999
 client.unfocused          #333333      #333333      #999999
 client.urgent             #FF0000      #8C5665      #999999
+
+#
+##
+#### Startup programs
+##
+#
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec_always --no-startup-id feh --bg-fill $CONFIG/romsdalshorn_normal.jpg
+# i3 bar alternative
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+
+#exec setxkbmap -layout "pl,pl" -variant "dvp,basic" -option "caps:swapescape,grp:sclk_toggle"
+#exec blueman-applet
+
+# automounting but mtp is not yet supported
+#exec --no-startup-id udiskie --tray
+
+#disable bluetooth
+exec --no-startup-id udevedu
+
+# voulume up/down
+exec --no-startup-id pasystray --keepvisibility
+# Start i3bar to display a workspace bar 
+bar {
+    #mode hide
+    #status_command $CONFIG/conky_wrapper conkyrc_i3bar
+    status_command python3 $CONFIG/status_config.py
+    id bar-1
+    #font pango:DejaVu Sans Mono, Ionicons, FontAwesome 8
+    font pango:DejaVu Sans Mono, Icons, FontAwesome 9
+    workspace_buttons   yes
+    position            top
+    strip_workspace_numbers yes
+}
+##exec python /home/piotr/bin/cpmerge.py #Clipboard manager
+exec gxneur #showing keyboard switcher
+exec --no-startup-id conky -c $CONFIG/conkytodo_plain # showing todo list
+exec --no-startup-id conky -c $CONFIG/conky_i3help #showing help 
+exec --no-startup-id xkbset -a #disable slowkeys
+#refresh rate
+#setting up background
+
+exec /usr/bin/gnome-session
+exec /usr/bin/unity-settings-daemon
+
+exec --no-startup-id echo "$0: DESKTOP_AUTOSTART_ID $DESKTOP_AUTOSTART_ID, registering with org.gnome.SessionManager"
+exec --no-startup-id dbus-send --session --print-reply=literal --dest=org.gnome.SessionManager "/org/gnome/SessionManager" org.gnome.SessionManager.RegisterClient "string:i3" "string:$DESKTOP_AUTOSTART_ID"
 
 exec --no-startup-id autorandr -c 
 exec xset b off #turning off the bell

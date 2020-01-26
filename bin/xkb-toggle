@@ -1,2 +1,2 @@
 #!/bin/sh
-$HOME/bin/xkb-switcher -n
+$HOME/bin/xkb-switch -n

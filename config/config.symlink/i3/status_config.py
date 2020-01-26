@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import netifaces
 import i3pystatus.network
+import i3pystatus.xkblayout
 import i3pystatus.backlight
 from i3pystatus import Status
 from i3pystatus.core.command import run_through_shell
@@ -16,6 +17,12 @@ intf = sorted(intf, key = i3pystatus.network.sysfs_interface_up, reverse=True)
 status = Status(standalone = True)
 
  # starting from right
+status.register("xkblayout"
+                , format="{symbol}"
+                , on_upscroll = ['change_layout', 1]
+                , on_downscroll = ['change_layout', 1]
+                )
+
 status.register("clock"
                 , format="%H:%M:%S"
                 , interval=1
