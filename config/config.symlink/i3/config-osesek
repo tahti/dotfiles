@@ -389,7 +389,6 @@ bar {
     strip_workspace_numbers yes
 }
 ##exec python /home/piotr/bin/cpmerge.py #Clipboard manager
-exec gxneur #showing keyboard switcher
 exec --no-startup-id conky -c $CONFIG/conkytodo_plain # showing todo list
 exec --no-startup-id conky -c $CONFIG/conky_i3help #showing help 
 exec --no-startup-id xkbset -a #disable slowkeys
