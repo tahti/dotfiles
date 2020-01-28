@@ -1,0 +1,19 @@
+#!/bin/bash
+mwinit-sync () {
+  local _files
+  if ! _files="$(mwinit --list)"
+  then
+    echo "Please authorize with Midway"
+    mwinit -o && mwinit-sync
+    return $?
+  fi
+  _files=($(echo "$_files" | sed -rn "s@^$HOME/?@@p"))
+  local _file
+  for _file in "${_files[@]}"
+  do
+    rsync "$HOME/$_file" ${1:- ${USER}.aka.corp.amazon.com}:"$_file"
+    echo "${_file} ->" ${1:- ${USER}.aka.corp.amazon.com}:"$_file" 
+  done
+}
+
+mwinit-sync
