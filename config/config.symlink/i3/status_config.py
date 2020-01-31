@@ -4,6 +4,8 @@ import i3pystatus.network
 import i3pystatus.xkblayout
 import i3pystatus.backlight
 from i3pystatus import Status
+from i3pystatus.weather import weathercom
+from i3pystatus import Status
 from i3pystatus.core.command import run_through_shell
 from os.path import expanduser
 home = expanduser("~")
@@ -95,6 +97,21 @@ status.register("disk"
     , critical_limit=5
     )
 
+def getWindDirection():
+  pass
+
+status.register(
+    'weather',
+    format='<span font=\"20\">[{icon}]</span> <span color=\"yellow\">{current_temp}{temp_unit}</span><span color=\"#ff4d4d\">[{high_temp}{temp_unit}]</span><span color=\"#b3ecff\"> [{low_temp}{temp_unit}]</span> [{dewpoint}💧] <span color=\"#e600e6\">{wind_speed}km/h {wind_direction}</span> <span color=\"#00e600\">{pressure}{pressure_trend}</span> [ {update_error}]',
+    interval=900,
+    colorize=True,
+    hints={'markup': 'pango'},
+    backend=weathercom.Weathercom(
+        location_code='LUXX0003',
+        units='metric',
+        update_error='<span color="#ff0000">!</span>',
+    ),
+)
 # print(bl.darker())
 # bl.darker()
 # battery.fdict["remaining"]=i3pystatus.core.util.TimeWrapper(0, "%E%h:%Mm")
@@ -143,13 +160,6 @@ if len(intf) > 0:
                 , on_downscroll = ['cycle', -1]
                 )
 
-
-
-# status.register("weather"
-    # , location_code= "FRXX0114"
-    # , units= "metric"
-    # , format="{current_temp}"
-    # )
 
 status.run()
 
