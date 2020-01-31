@@ -27,12 +27,14 @@
 (defun tahti-enter-fullscreen ()
   "Enter fullscreen by sending message to i3"
   (interactive)
-  (tahti-i3-command 0 "fullscreen enable")
+;  (tahti-i3-command 0 "fullscreen enable")
+  (set-frame-parameter nil 'fullscreen 'fullboth)
 )
 (defun tahti-leave-fullscreen ()
   "Leave fullscreen by sending message to i3"
   (interactive)
-  (tahti-i3-command 0 "fullscreen disable")
+  (set-frame-parameter nil 'fullscreen nil)
+;  (tahti-i3-command 0 "fullscreen disable")
 )
 (defun tahti-toggle-fullscreen ()
   "Leave fullscreen by sending message to i3"
