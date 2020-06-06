@@ -1,2 +1,2 @@
 #!/bin/sh
-feh --bg-fill '/home/piotr/.config/i3/romsdalshorn_normal.jpg' 
+'feh' '--bg-fill' '/home/ANT.AMAZON.COM/kordy/.config/i3/romsdalshorn_normal.jpg' 

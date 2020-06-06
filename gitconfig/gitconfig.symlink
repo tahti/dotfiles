@@ -1,6 +1,6 @@
 [user]
     name = Piotr Kordy
-    email = pkordy@googlemail.com
+    email = kordy@amazon.com
 [core]
     whitespace = fix,-indent-with-non-tab,trailing-space
     excludesfile = ~/.gitignore

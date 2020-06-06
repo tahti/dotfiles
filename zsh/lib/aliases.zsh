@@ -31,6 +31,7 @@ alias irfanview='wine ~/.wine/drive_c/Program\ Files/IrfanView/i_view32.exe'
 alias ida='wine ~/progs/IDA\ Pro\ 6.1\ Precracked/idaq.exe'
 alias objdump='objdump -C --disassembler-options=intel'
 alias k=kupfer
+alias bb=brazil-build
 
 #global aliases
 alias -g ...='../..'

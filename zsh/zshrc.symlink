@@ -11,6 +11,12 @@ is_plugin() {
     || test -f $base_dir/plugins/$name/_$name
 }
 
+for f in SDETools envImprovement AmazonAwsCli OdinTools; do
+    if [[ -d /apollo/env/$f ]]; then
+        export PATH=$PATH:/apollo/env/$f/bin
+    fi
+done
+
 # Add all defined plugins to fpath. This must be done
 # before running compinit.
 for plugin ($plugins); do
@@ -58,3 +64,5 @@ then
   fi
 fi
 
+export PATH=$HOME/.toolbox/bin:$PATH
+kinit kordy@ANT.AMAZON.COM -f -k -t $HOME/.ssh/kordy.keytab

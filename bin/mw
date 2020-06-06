@@ -13,8 +13,11 @@ mwinit-sync () {
   do
     echo -n "${_file} ->" ${1:- ${USER}.aka.corp.amazon.com}:"$_file" 
     rsync "$HOME/$_file" ${1:- ${USER}.aka.corp.amazon.com}:"$_file"
+#    echo -n "${_file} ->" ${1:- patkranz.aka.corp.amazon.com}:"$_file" 
+#    rsync "$HOME/$_file" ${1:- patkranz.aka.corp.amazon.com}:"$_file"
     echo  "  done." 
   done
 }
-
 mwinit-sync
+echo kinit kordy@ANT.AMAZON.COM -k -t ~/.ssh/kordy.keytab
+kinit kordy@ANT.AMAZON.COM -k -t ~/.ssh/kordy.keytab
