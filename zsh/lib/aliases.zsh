@@ -32,6 +32,7 @@ alias ida='wine ~/progs/IDA\ Pro\ 6.1\ Precracked/idaq.exe'
 alias objdump='objdump -C --disassembler-options=intel'
 alias k=kupfer
 alias bb=brazil-build
+alias sam="brazil-build-tool-exec sam"
 
 #global aliases
 alias -g ...='../..'
