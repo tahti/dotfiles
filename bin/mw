@@ -1,23 +1,50 @@
 #!/bin/bash
+
 mwinit-sync () {
   local _files
   if ! _files="$(mwinit --list)"
   then
     echo "Please authorize with Midway"
-    mwinit -o && mwinit-sync
+    mwinit --aea -o && mwinit-sync
     return $?
   fi
   _files=($(echo "$_files" | sed -n "s|^$HOME/||p"))
   local _file
   for _file in "${_files[@]}"
   do
-    echo -n "${_file} ->" ${1:- ${USER}.aka.corp.amazon.com}:"$_file" 
-    rsync "$HOME/$_file" ${1:- ${USER}.aka.corp.amazon.com}:"$_file"
-#    echo -n "${_file} ->" ${1:- patkranz.aka.corp.amazon.com}:"$_file" 
-#    rsync "$HOME/$_file" ${1:- patkranz.aka.corp.amazon.com}:"$_file"
-    echo  "  done." 
+    echo -n "Copying ${_file} ->" ${1:- ${USER}.aka.corp.amazon.com}:"$_file" 
+    real_file=$(realpath ${HOME}/${_file})
+    rsync "${real_file}" ${1:- ${USER}.aka.corp.amazon.com}:"$_file"
+    echo " ..done."
+    if [[ ${_file} == *"/cookie"* ]]; then
+      cookie_file=${real_file}
+    fi
   done
 }
+
+case "$(uname)" in
+    Darwin) function copyToClip() { pbcopy; } ;;
+    *)      function copyToClip() { xclip -sel clip; } ;;
+esac
+
 mwinit-sync
-echo kinit kordy@ANT.AMAZON.COM -k -t ~/.ssh/kordy.keytab
-kinit kordy@ANT.AMAZON.COM -k -t ~/.ssh/kordy.keytab
+
+if [ -f "${HOME}/.ssh/${USER}.keytab" ]; then
+  echo "Keytab file exists. Running kinit ${USER}@ANT.AMAZON.COM -k -t ${HOME}/.ssh/${USER}.keytab"
+  kinit ${USER}@ANT.AMAZON.COM -k -t ${HOME}/.ssh/${USER}.keytab
+else
+  echo "File ${HOME}/.ssh/${USER}.keytab does not exist. Skipping kinit."
+fi
+
+cat ${cookie_file} |
+while read domain _ cpath _ ts name value; do
+    if [[ $domain == "#HttpOnly_midway-auth.amazon.com" || $domain == "midway-auth.amazon.com" ]]; then
+        if [[ "$name" == session ]]; then
+            date -d@$ts +"Session cookie expires at %c"
+            echo "Session cookie copied to clipboard."
+            echo "$value" | copyToClip || echo "Could not copy to clipboard."
+            break
+        fi
+    fi
+done
+
